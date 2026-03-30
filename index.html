@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Codex Labs - The Entertainment OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f5;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.gl{font-family:'Playfair Display',serif;font-weight:700;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.btn{padding:.7rem 1.6rem;border-radius:10px;font-size:.9rem;font-weight:600;color:#fff;background:#6c5ce7;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s}
+.btn:hover{box-shadow:0 4px 30px rgba(108,92,231,.3);transform:translateY(-2px)}
+.ol{background:0 0;border:1px solid rgba(255,255,255,.12);color:#f0f0f5}
+.ol:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);box-shadow:none;transform:none}
+section{position:relative;padding:6rem 2rem;max-width:1200px;margin:0 auto}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:5rem}
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(108,92,231,.12);border:1px solid rgba(108,92,231,.2);font-size:.8rem;font-weight:500;color:#6c5ce7;margin-bottom:2rem;text-transform:uppercase;letter-spacing:.04em}
+.dot{width:6px;height:6px;border-radius:50%;background:#00cec9;animation:p 2s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem;max-width:800px}
+.hero p{font-size:1.1rem;color:#8888a0;max-width:600px;margin-bottom:2.5rem}
+.acts{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.sl{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#6c5ce7;margin-bottom:1rem}
+.st{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:1rem}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem}
+.pc{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;transition:all .4s;overflow:hidden;position:relative}
+.pc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);opacity:0;transition:opacity .4s}
+.pc:hover{background:#1a1a28;border-color:rgba(108,92,231,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.pc:hover::before{opacity:1}
+.ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem}
+.pc h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.5rem}
+.tg{font-size:.7rem;font-weight:600;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;margin-bottom:.75rem;display:inline-block}
+.pc p{color:#8888a0;font-size:.9rem}
+.fs{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.cr{display:inline-flex;padding:.4rem .8rem;border-radius:6px;background:rgba(255,193,7,.1);border:1px solid rgba(255,193,7,.2);font-size:.78rem;font-weight:600;color:#ffeaa7;margin-bottom:1.5rem}
+.ft h3{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:1rem}
+.ft p{color:#8888a0;margin-bottom:1rem}
+.fv{background:linear-gradient(135deg,rgba(108,92,231,.08),rgba(0,206,201,.05));border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2.5rem;text-align:center}
+.mn{font-family:'Playfair Display',serif;font-size:4rem;font-weight:700}
+.cs{text-align:center;padding:5rem 2rem;background:linear-gradient(135deg,rgba(108,92,231,.08),rgba(0,206,201,.05));border:1px solid rgba(255,255,255,.06);border-radius:16px;margin:4rem auto;max-width:900px}
+.cs h2{font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1rem}
+.cs p{color:#8888a0;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.82rem}
+@media(max-width:768px){section{padding:4rem 1.2rem}.pg{grid-template-columns:1fr}.fs{grid-template-columns:1fr;gap:2rem}h1{font-size:2.2rem}}
+</style></head>
+<body>
+<nav><div class="gl" style="font-size:1.35rem">&#x2B21; Codex Labs</div><a href="#sub" class="btn" style="padding:.5rem 1.2rem;font-size:.85rem">Get Early Access</a></nav>
+<section class="hero">
+<div class="badge"><span class="dot"></span> Now Building in Public</div>
+<h1>The <span class="gl">Entertainment OS</span> for the Invention Age</h1>
+<p>Modular, intelligent systems fusing entertainment, real-time invention detection, and procedural intelligence into one scalable platform.</p>
+<div class="acts"><a href="#sub" class="btn">&#x1F680; Join the Launch &#x2192;</a><a href="#prod" class="btn ol">Explore Products</a></div>
+</section>
+<section id="prod">
+<div class="sl">Product Lineup</div>
+<h2 class="st">Four systems. One ecosystem.</h2>
+<p style="color:#8888a0;max-width:600px;margin-bottom:2rem">Each product is a self-contained module that plugs into the Codex Labs platform.</p>
+<div class="pg">
+<div class="pc"><div class="ic" style="background:rgba(108,92,231,.15)">&#x1F52C;</div><span class="tg" style="background:rgba(108,92,231,.15);color:#a29bfe">SaaS / MVP</span><h3>Invention Radar</h3><p>Real-time invention detection and IP capture. Monitors innovation patterns to surface novel architectures.</p></div>
+<div class="pc"><div class="ic" style="background:rgba(0,206,201,.15)">&#x1F98C;</div><span class="tg" style="background:rgba(0,206,201,.15);color:#81ecec">Consumer / Hardware</span><h3>DeerSafe</h3><p>Intelligent wildlife safety system for real-world hazard prevention. Engineered in New England, built for everywhere.</p></div>
+<div class="pc"><div class="ic" style="background:rgba(253,121,168,.15)">&#x1F916;</div><span class="tg" style="background:rgba(253,121,168,.15);color:#fab1a0">Platform / Intelligence</span><h3>Codex-Mikey Copilot</h3><p>Procedural intelligence layer stabilizing chaotic web systems. The connective tissue of every Codex module.</p></div>
+<div class="pc"><div class="ic" style="background:rgba(255,193,7,.15)">&#x1F3AF;</div><span class="tg" style="background:rgba(255,193,7,.15);color:#ffeaa7">Entertainment / Viral</span><h3>GuessVision</h3><p>Viral entertainment blending commentary, coaching, and game modes into a director-driven cinematic experience.</p></div>
+</div></section>
+<section id="founder">
+<div class="sl">Founder</div>
+<div class="fs">
+<div class="ft"><div class="cr">&#x2B50; Marquis Who's Who in America 2026-2029</div><h3>Built by Kipp Wiggins</h3><p>Entertainment OS architect building modular SaaS MVPs from rural Connecticut. Systems where invention detection, procedural intelligence, and playful entertainment converge.</p><p>Every product engineered for momentum &#x2014; ritualized launches, clean expansion points, and systems that feel alive.</p></div>
+<div class="fv"><div class="mn gl">KW</div><div style="font-weight:600">Kipp Wiggins</div><div style="color:#55556a;font-size:.85rem">Lakeville, CT &#x00B7; Codex Labs</div></div>
+</div></section>
+<section id="sub">
+<div class="cs">
+<div class="sl">Early Access</div>
+<h2>The OS is launching.</h2>
+<p>Join the waitlist for Invention Radar, GuessVision, and the full Codex Labs platform.</p>
+<a href="mailto:kippkppwggns@aol.com?subject=Codex%20Labs%20Early%20Access&body=I'd%20like%20early%20access%20to%20Codex%20Labs." class="btn">&#x1F680; Request Early Access &#x2192;</a>
+</div></section>
+<footer><div class="gl" style="font-size:1.1rem">&#x2B21; Codex Labs</div><p>&#x00A9; 2026 Codex Labs. All rights reserved.</p><p style="margin-top:.5rem">Lakeville, Connecticut &#x00B7; Built in public</p></footer>
+</body></html>
