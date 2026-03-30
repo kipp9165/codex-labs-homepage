@@ -3,106 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Codex-Mikey Copilot - Procedural Intelligence</title>
+<title>Codex‑Mikey Copilot — Codex Labs</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f5;line-height:1.7;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
-.g{font-family:'Playfair Display',serif;font-weight:700;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.b{padding:.7rem 1.6rem;border-radius:10px;font-size:.9rem;font-weight:600;color:#fff;background:#fd79a8;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s}
-.b:hover{box-shadow:0 4px 30px rgba(253,121,168,.3);transform:translateY(-2px)}
-.o{background:0 0;border:1px solid rgba(255,255,255,.12);color:#f0f0f5}
-.o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);box-shadow:none;transform:none}
-section{position:relative;padding:6rem 2rem;max-width:1200px;margin:0 auto}
-.h{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:5rem}
-.bd{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(253,121,168,.12);border:1px solid rgba(253,121,168,.2);font-size:.8rem;font-weight:500;color:#fd79a8;margin-bottom:2rem;text-transform:uppercase;letter-spacing:.04em}
-.dt{width:6px;height:6px;border-radius:50%;background:#fab1a0;animation:p 2s infinite}
-@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
-h1{font-family:'Playfair Display',serif;font-size:clamp(2.5rem,6vw,4.5rem);font-weight:700;line-height:1.1;margin-bottom:1.5rem;max-width:800px}
-.h p{font-size:1.1rem;color:#8888a0;max-width:600px;margin-bottom:2.5rem}
-.ac{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-.sl{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#fd79a8;margin-bottom:1rem}
-.st{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;margin-bottom:1rem}
-.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:2rem}
-.c{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;transition:all .4s;overflow:hidden;position:relative}
-.c::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#fd79a8,#fab1a0);opacity:0;transition:opacity .4s}
-.c:hover{background:#1a1a28;border-color:rgba(253,121,168,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.c:hover::before{opacity:1}
-.ic{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem;background:rgba(253,121,168,.15)}
-.c h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.5rem}
-.c p{color:#8888a0;font-size:.9rem}
-.pr{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-top:2rem}
-.pp{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:2rem;text-align:center;transition:all .4s;position:relative;overflow:hidden}
-.pp::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#fd79a8,#fab1a0);opacity:0;transition:opacity .4s}
-.pp:hover{border-color:rgba(253,121,168,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.pp:hover::before{opacity:1}
-.pp.pk{border-color:rgba(253,121,168,.3);background:linear-gradient(135deg,rgba(253,121,168,.06),rgba(250,177,160,.04))}
-.pp.pk::before{opacity:1}
-.tg{font-size:.7rem;font-weight:600;text-transform:uppercase;padding:.2rem .6rem;border-radius:4px;display:inline-block;background:rgba(253,121,168,.15);color:#fab1a0;margin-bottom:.5rem}
-.pn{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;margin:.5rem 0}
-.pn span{font-size:1rem;font-weight:400;color:#8888a0}
-.pp ul{list-style:none;text-align:left;margin:1.5rem 0}
-.pp li{padding:.4rem 0;color:#8888a0;font-size:.88rem;border-bottom:1px solid rgba(255,255,255,.04)}
-.pp li::before{content:'\2713';color:#fd79a8;font-weight:700;margin-right:.5rem}
-.cs{text-align:center;padding:5rem 2rem;background:linear-gradient(135deg,rgba(253,121,168,.08),rgba(250,177,160,.05));border:1px solid rgba(255,255,255,.06);border-radius:16px;margin:4rem auto;max-width:900px}
-.cs h2{font-family:'Playfair Display',serif;font-size:2.2rem;margin-bottom:1rem}
-.cs p{color:#8888a0;margin-bottom:2rem;max-width:500px;margin-left:auto;margin-right:auto}
-footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.82rem}
-@media(max-width:768px){section{padding:4rem 1.2rem}.pg,.pr{grid-template-columns:1fr}h1{font-size:2.2rem}}
-</style></head>
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(10,10,15,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:.75rem}
+.logo-mark{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#a29bfe,#6c5ce7);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:#fff;flex-shrink:0}
+.logo-text{display:flex;flex-direction:column;gap:0}
+.logo-text .brand{font-size:.7rem;font-weight:600;color:#8888a0;letter-spacing:.06em;text-transform:uppercase;line-height:1}
+.logo-text .product{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:#f0f0f5;line-height:1.2}
+.nav-links{display:flex;align-items:center;gap:1.25rem}
+.nav-back{font-size:.82rem;color:#8888a0;transition:color .2s}
+.nav-back:hover{color:#f0f0f5}
+.btn{padding:.55rem 1.3rem;border-radius:8px;font-size:.82rem;font-weight:600;color:#fff;background:#a29bfe;display:inline-flex;align-items:center;gap:.4rem;transition:all .25s;border:none;cursor:pointer}
+.btn:hover{background:#b3aeff;box-shadow:0 4px 20px rgba(162,155,254,.3);transform:translateY(-1px)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.12);color:#f0f0f5}
+.btn-ghost:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.04);box-shadow:none;transform:none}
+main{padding-top:4rem}
+.hero{max-width:1100px;margin:0 auto;padding:5rem 2rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.badge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .85rem;border-radius:100px;background:rgba(162,155,254,.1);border:1px solid rgba(162,155,254,.18);font-size:.72rem;font-weight:600;color:#a29bfe;margin-bottom:1.25rem;text-transform:uppercase;letter-spacing:.05em}
+.hero-left h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.8vw,2.9rem);font-weight:700;line-height:1.15;margin-bottom:.9rem;color:#f0f0f5}
+.hero-left p{font-size:.93rem;color:#8888a0;margin-bottom:1.6rem;max-width:440px}
+.hero-actions{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{font-size:.7rem;padding:.25rem .65rem;border-radius:4px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);color:#8888a0;font-weight:500}
+.hero-right{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.8rem}
+.hero-right h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:1rem;color:#f0f0f5}
+.feature-list{list-style:none}
+.feature-list li{font-size:.88rem;color:#8888a0;padding:.5rem 0 .5rem 1.2rem;position:relative;border-bottom:1px solid rgba(255,255,255,.04)}
+.feature-list li:last-child{border-bottom:none}
+.feature-list li::before{content:'→';position:absolute;left:0;color:#a29bfe;font-weight:600}
+section{max-width:1100px;margin:0 auto;padding:3.5rem 2rem}
+.section-label{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#a29bfe;margin-bottom:.6rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.8vw,2rem);font-weight:700;margin-bottom:.75rem}
+.section-body{color:#8888a0;font-size:.91rem;max-width:600px;margin-bottom:1.5rem}
+.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.how-list{list-style:none;margin-top:.75rem}
+.how-list li{font-size:.88rem;color:#8888a0;padding:.45rem 0 .45rem 1.2rem;position:relative;border-bottom:1px solid rgba(255,255,255,.04)}
+.how-list li:last-child{border-bottom:none}
+.how-list li::before{content:'→';position:absolute;left:0;color:#a29bfe;font-weight:600}
+.divider{border:none;border-top:1px solid rgba(255,255,255,.06);margin:0}
+.roles-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem}
+.role-card{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:1.8rem;transition:all .3s}
+.role-card:hover{border-color:rgba(162,155,254,.2);transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.3)}
+.role-card h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.9rem}
+.role-list{list-style:none}
+.role-list li{font-size:.85rem;color:#8888a0;padding:.4rem 0 .4rem 1.1rem;position:relative;border-bottom:1px solid rgba(255,255,255,.04)}
+.role-list li:last-child{border-bottom:none}
+.role-list li::before{content:'→';position:absolute;left:0;color:#a29bfe;font-weight:600}
+.cta-block{background:linear-gradient(135deg,rgba(162,155,254,.07),rgba(108,92,231,.04));border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:3rem 2rem;text-align:center;max-width:680px;margin:0 auto}
+.cta-block h2{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:.6rem}
+.cta-block p{color:#8888a0;font-size:.9rem;max-width:420px;margin:0 auto 1.4rem}
+footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.78rem;display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto}
+footer a{color:#a29bfe;transition:color .2s}
+footer a:hover{color:#b3aeff}
+@media(max-width:768px){.hero{grid-template-columns:1fr;gap:2rem;padding:3.5rem 1.2rem 2.5rem}.how-grid,.roles-grid{grid-template-columns:1fr;gap:1.5rem}section{padding:2.5rem 1.2rem}nav{padding:.85rem 1.2rem}footer{flex-direction:column;gap:.5rem;padding:1.5rem 1.2rem}}
+</style>
+</head>
 <body>
-<nav><a href="index.html" class="g" style="font-size:1.35rem">&#x2B21; Codex Labs</a><a href="mailto:kippkppwggns@aol.com?subject=Codex-Mikey%20Access" class="b" style="padding:.5rem 1.2rem;font-size:.85rem">Get Access</a></nav>
-<section class="h">
-<div class="bd"><span class="dt"></span> Platform Intelligence</div>
-<h1>The <span class="g">Procedural Brain</span> Behind Every Module</h1>
-<p>Codex-Mikey Copilot is the connective intelligence layer that stabilizes chaotic web systems and orchestrates every product in the Codex Labs ecosystem.</p>
-<div class="ac"><a href="mailto:kippkppwggns@aol.com?subject=Codex-Mikey%20Access" class="b">&#x1F9E0; Request Access &#x2192;</a><a href="index.html" class="b o">&#x2190; All Products</a></div>
-</section>
-<section>
-<div class="sl">Core Capabilities</div>
-<h2 class="st">Intelligence that adapts.</h2>
-<p style="color:#8888a0;max-width:600px;margin-bottom:2rem">Four procedural engines working in concert to keep complex systems stable, responsive, and evolving.</p>
-<div class="pg">
-<div class="c"><div class="ic">&#x1F3AF;</div><h3>System Orchestration</h3><p>Manages multi-service architectures in real time. Routes, balances, and stabilizes chaotic web environments automatically.</p></div>
-<div class="c"><div class="ic">&#x1F517;</div><h3>Module Bridging</h3><p>Connects Invention Radar, DeerSafe, and GuessVision into one seamless data fabric. Shared context across every product.</p></div>
-<div class="c"><div class="ic">&#x1F9E0;</div><h3>Procedural Memory</h3><p>Learns operational patterns over time. Adapts workflows, caches decisions, and accelerates repeat processes with zero config.</p></div>
-<div class="c"><div class="ic">&#x1F6E1;</div><h3>Error Recovery</h3><p>Detects failures before users do. Self-healing pipelines with automatic rollback, retry logic, and incident logging.</p></div>
-</div>
-</section>
-<section id="pricing">
-<div class="sl">Pricing</div>
-<h2 class="st">Scale your intelligence layer.</h2>
-<p style="color:#8888a0;max-width:600px;margin-bottom:2rem">Every tier includes the full procedural engine. Scale with your architecture.</p>
-<div class="pr">
-<div class="pp">
-<div class="tg">Builder</div>
-<div class="pn">$19<span>/mo</span></div>
-<ul><li>2 connected modules</li><li>Basic orchestration</li><li>Procedural memory (7-day)</li><li>Email support</li></ul>
-<a href="mailto:kippkppwggns@aol.com?subject=Codex-Mikey%20Builder" class="b" style="width:100%;justify-content:center">Get Started</a>
-</div>
-<div class="pp pk">
-<div class="tg">Architect &#x2022; Popular</div>
-<div class="pn">$49<span>/mo</span></div>
-<ul><li>Unlimited modules</li><li>Full procedural intelligence</li><li>Procedural memory (90-day)</li><li>Error recovery &amp; self-healing</li><li>Priority support</li></ul>
-<a href="mailto:kippkppwggns@aol.com?subject=Codex-Mikey%20Architect" class="b" style="width:100%;justify-content:center">Get Started</a>
-</div>
-<div class="pp">
-<div class="tg">Enterprise</div>
-<div class="pn">$149<span>/mo</span></div>
-<ul><li>Custom module integrations</li><li>Dedicated orchestration instance</li><li>Unlimited procedural memory</li><li>White-label deployment</li><li>Dedicated account manager</li></ul>
-<a href="mailto:kippkppwggns@aol.com?subject=Codex-Mikey%20Enterprise" class="b" style="width:100%;justify-content:center">Contact Sales</a>
-</div>
-</div>
-</section>
-<section>
-<div class="cs">
-<div class="sl">Early Access</div>
-<h2>The brain is booting up.</h2>
-<p>Codex-Mikey Copilot is in active development. Join the waitlist to be first when procedural intelligence goes live.</p>
-<a href="mailto:kippkppwggns@aol.com?subject=Codex-Mikey%20Waitlist" class="b">&#x1F680; Join Waitlist &#x2192;</a>
-</div>
-</section>
-<footer><div class="g" style="font-size:1.1rem">&#x2B21; Codex Labs</div><p>&#x00A9; 2026 Codex Labs. All rights reserved.</p><p style="margin-top:.5rem">Lakeville, Connecticut &#x00B7; Built in public</p></footer>
-</body></html>
+<nav>
+  <div class="logo">
+    <div class="logo-mark">M</div>
+    <div class="logo-text">
+      <span class="brand">Codex Labs</span>
+      <span class="product">Codex&#x2011;Mikey Copilot</span>
+    </div>
+  </div>
+  <div class="nav-links">
+    <a href="index.html" class="nav-back">&#x2190; Back to OS</a>
+    <a href="mailto:kippkppwggns@aol.com?subject=Codex-Mikey%20Integration" class="btn">Talk about Codex&#x2011;Mikey</a>
+  </div>
+</nav>
+
+<main>
+  <div class="hero">
+    <div class="hero-left">
+      <div class="badge">Procedural Intelligence &middot; Cross&#x2011;Product</div>
+      <h1>A copilot that knows the whole Codex.</h1>
+      <p>Codex&#x2011;Mikey is the procedural intelligence layer that sits across the entire Entertainment OS. It remembers flows, stabilizes chaotic systems, and turns every product &mdash; from Invention Radar to DeerSafe to GuessVision &mdash; into a place you can live inside, not just click through.</p>
+      <div class="hero-actions">
+        <a href="mailto:kippkppwggns@aol.com?subject=Codex-Mikey%20Stack%20Inquiry" class="btn">Explore Codex&#x2011;Mikey for your stack</a>
+        <a href="#roles" class="btn btn-ghost">View roles</a>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">Cross&#x2011;product lens</span>
+        <span class="tag">Procedural guidance</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <h2>What Codex&#x2011;Mikey does</h2>
+      <ul class="feature-list">
+        <li>Guides users through complex flows step by step.</li>
+        <li>Remembers prior actions and context across products.</li>
+        <li>Stabilizes brittle workflows and surfaces the next best move.</li>
+        <li>Acts as a narrative layer for the entire Entertainment OS.</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <section id="roles">
+    <div class="how-grid">
+      <div>
+        <div class="section-label">Roles inside the Entertainment OS</div>
+        <h2 class="section-title">Codex&#x2011;Mikey shows up differently depending on where you meet it.</h2>
+        <p class="section-body">Each product in the OS has a distinct context. Codex&#x2011;Mikey adapts its guidance to match the domain, the workflow, and the user&rsquo;s current position in the stack.</p>
+      </div>
+      <div>
+        <ul class="how-list" style="margin-top:2.5rem">
+          <li><strong>Invention Radar:</strong> walks founders from idea intake to report interpretation.</li>
+          <li><strong>DeerSafe:</strong> helps operators interpret detections and tune thresholds.</li>
+          <li><strong>GuessVision:</strong> acts as a procedural host for guessing formats and shows.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section>
+    <div class="section-label">Why It Matters</div>
+    <h2 class="section-title">Most systems fall apart at the edges.</h2>
+    <p class="section-body">Where tools meet, where humans forget, where context gets lost &mdash; Codex&#x2011;Mikey is designed to live in those edges, carrying context forward and keeping the whole lattice from tearing itself apart.</p>
+    <div class="roles-grid">
+      <div class="role-card">
+        <h3>Streamlines user experience</h3>
+        <ul class="role-list">
+          <li>Reduces cognitive load for users moving between products.</li>
+          <li>Turns multi&#x2011;step flows into guided ceremonies.</li>
+          <li>Gives the entire Codex Labs ecosystem a single, coherent voice.</li>
+        </ul>
+      </div>
+      <div class="role-card" style="border-color:rgba(162,155,254,.2);box-shadow:0 0 32px rgba(162,155,254,.06)">
+        <h3>Procedural intelligence</h3>
+        <ul class="role-list">
+          <li>Learns from every interaction across the OS.</li>
+          <li>Anticipates next steps before users ask.</li>
+          <li>Keeps the system coherent under pressure.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <section style="text-align:center">
+    <div class="cta-block">
+      <div class="section-label" style="margin-bottom:.75rem">Early Access</div>
+      <h2>Want Codex&#x2011;Mikey in your environment?</h2>
+      <p>Codex&#x2011;Mikey is not a generic assistant &mdash; it&rsquo;s a procedural layer that needs a real stack to live in. Early integrations will be bespoke and founder&#x2011;led.</p>
+      <a href="mailto:kippkppwggns@aol.com?subject=Codex-Mikey%20Integration" class="btn">Email to explore an integration</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>&#x00A9; 2026 Codex Labs &middot; Codex&#x2011;Mikey Copilot</span>
+  <a href="index.html">Back to Codex Labs OS</a>
+</footer>
+</body>
+</html>
