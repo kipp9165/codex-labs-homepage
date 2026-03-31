@@ -1,9 +1,0 @@
-name: Reset GitHub Pages Deployment
-on:
-  workflow_dispatch:
-jobs:
-  reset:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Remove old Pages artifact
-        run: echo "Resetting GitHub Pages deployment environment."
