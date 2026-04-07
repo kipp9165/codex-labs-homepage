@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Invention Radar — Monthly Access · Codex Labs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f5;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.g{font-family:'Playfair Display',serif;font-weight:700;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.b{padding:.7rem 1.6rem;border-radius:10px;font-size:.9rem;font-weight:600;color:#fff;background:#6c5ce7;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;border:none;cursor:pointer}
+.b:hover{box-shadow:0 4px 30px rgba(108,92,231,.3);transform:translateY(-2px)}
+.o{background:0 0;border:1px solid rgba(255,255,255,.12);color:#f0f0f5}
+.o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);box-shadow:none;transform:none}
+section{position:relative;padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.he{min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:5rem}
+.ba{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(108,92,231,.12);border:1px solid rgba(108,92,231,.2);font-size:.75rem;font-weight:500;color:#6c5ce7;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.04em}
+.dt{width:6px;height:6px;border-radius:50%;background:#6c5ce7;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.he p{font-size:1rem;color:#8888a0;max-width:540px;margin-bottom:2rem}
+.ac{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.sl{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#6c5ce7;margin-bottom:.8rem}
+.st{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.8rem}
+.sd{color:#8888a0;max-width:560px;margin-bottom:2rem;font-size:.92rem}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
+.fc{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.6rem;transition:all .4s;position:relative;overflow:hidden}
+.fc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#6c5ce7,#00cec9);opacity:0;transition:opacity .4s}
+.fc:hover{background:#1a1a28;border-color:rgba(108,92,231,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.fc:hover::before{opacity:1}
+.fi{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.7rem;background:rgba(108,92,231,.15)}
+.fc h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.3rem}
+.fc p{color:#8888a0;font-size:.83rem}
+.sku{background:#12121a;border:1px solid rgba(108,92,231,.3);border-radius:16px;padding:2.4rem;text-align:center;max-width:480px;margin:2rem auto 0;box-shadow:0 0 40px rgba(108,92,231,.08)}
+.sku h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.4rem}
+.pc{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;margin:.6rem 0 .2rem}
+.pc span{font-size:.85rem;font-weight:400;color:#8888a0}
+.pn{color:#8888a0;font-size:.8rem;margin-bottom:1.4rem}
+.sku ul{list-style:none;text-align:left;margin-bottom:1.6rem}
+.sku li{font-size:.83rem;color:#8888a0;padding:.28rem 0 .28rem 1.3rem;position:relative}
+.sku li::before{content:'\2192';position:absolute;left:0;color:#6c5ce7;font-weight:600}
+.sku .b{width:100%;justify-content:center}
+footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.78rem}
+@media(max-width:768px){section{padding:3rem 1.2rem}.fg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+    <a href="index.html" class="g" style="font-size:1.2rem">&#x2B21; Codex Labs</a>
+    <a href="invention-radar.html" style="font-size:.82rem;color:#8888a0">&#x2190; Invention Radar</a>
+  </div>
+  <a href="#access" class="b" style="padding:.5rem 1.1rem;font-size:.82rem">Get Access</a>
+</nav>
+
+<section class="he">
+  <div class="ba"><span class="dt"></span> Invention Radar &middot; Monthly Access</div>
+  <h1><span class="g">Monthly Access</span></h1>
+  <p style="font-size:1.15rem;color:#f0f0f5;margin-bottom:.4rem;font-family:'Playfair Display',serif">Real-time patent search, anomaly detection, and research scanning.</p>
+  <p>Start monitoring invention patterns today. Full access to core detection tools with no long-term commitment.</p>
+  <div class="ac">
+    <a href="#access" class="b">&#x1F680; Get Started &#x2192;</a>
+    <a href="#features" class="b o">See Features</a>
+  </div>
+</section>
+
+<section id="features">
+  <div class="sl">Capabilities</div>
+  <h2 class="st">Detect. Capture. Protect.</h2>
+  <p class="sd">Full access to the Invention Radar core engine — real-time patent scanning, anomaly alerts, and novelty scoring for active researchers.</p>
+  <div class="fg">
+    <div class="fc">
+      <div class="fi">&#x1F50D;</div>
+      <h3>Real-Time Patent Search</h3>
+      <p>Live queries across patent databases and technical publications. Continuous feed of emerging filings in your domains.</p>
+    </div>
+    <div class="fc">
+      <div class="fi" style="background:rgba(0,206,201,.15)">&#x26A1;</div>
+      <h3>Anomaly Detection</h3>
+      <p>AI-powered pattern analysis surfaces unexpected novelty clusters and unusual filing velocity before trends peak.</p>
+    </div>
+    <div class="fc">
+      <div class="fi" style="background:rgba(253,121,168,.15)">&#x1F4C4;</div>
+      <h3>Research Scanning</h3>
+      <p>Automated sweeps of preprint servers, academic journals, and technical forums to capture idea emergence early.</p>
+    </div>
+    <div class="fc">
+      <div class="fi" style="background:rgba(255,193,7,.15)">&#x1F4CA;</div>
+      <h3>Novelty Scoring</h3>
+      <p>Every detection scored for originality and IP viability. Prioritize what matters and skip the noise.</p>
+    </div>
+  </div>
+</section>
+
+<section id="access">
+  <div class="sl">Pricing</div>
+  <h2 class="st">Monthly Access</h2>
+  <p class="sd">Full core access on a flexible monthly cycle. Cancel or upgrade at any time.</p>
+  <div class="sku">
+    <h3>Invention Radar — Monthly Access</h3>
+    <div class="pc">$9<span>.99/mo</span></div>
+    <div class="pn">Billed monthly &middot; cancel anytime</div>
+    <ul>
+      <li>Real-time patent search</li>
+      <li>Anomaly detection alerts</li>
+      <li>Research scanning across 5 domains</li>
+      <li>Novelty scoring on all detections</li>
+      <li>IP capture log (100 entries)</li>
+      <li>Email digest reports</li>
+    </ul>
+    <a href="mailto:kippkppwggns@aol.com?subject=Invention%20Radar%20Monthly%20Access&body=I'd%20like%20Monthly%20Access%20to%20Invention%20Radar." class="b">&#x1F680; Start Monthly Access</a>
+  </div>
+</section>
+
+<footer>
+  <div class="g" style="font-size:1rem">&#x2B21; Codex Labs</div>
+  <p>&copy; 2026 Codex Labs &middot; Lakeville, CT</p>
+  <p style="margin-top:.3rem">
+    <a href="invention-radar.html" style="color:#6c5ce7">&#x2190; Back to Invention Radar</a>
+    &nbsp;&middot;&nbsp;
+    <a href="index.html" style="color:#00cec9">Home</a>
+  </p>
+</footer>
+</body>
+</html>
