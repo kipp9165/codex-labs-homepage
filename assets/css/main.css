@@ -1,0 +1,157 @@
+/* Codex Labs — Universal Layout Frame v1.0 */
+
+/* ── Reset ────────────────────────────────────────── */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* ── Base ─────────────────────────────────────────── */
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:#0a0a0f;
+  color:#f0f0f5;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+
+/* ── Navigation ───────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1rem 2rem;
+  background:rgba(10,10,15,.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-left{display:flex;align-items:center;gap:1.5rem}
+.nav-logo{
+  font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;
+  background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.nav-back{font-size:.82rem;color:#8888a0}
+
+/* ── Gradient text utility ────────────────────────── */
+.g{
+  font-family:'Playfair Display',serif;font-weight:700;
+  background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+/* ── Buttons ──────────────────────────────────────── */
+.b{
+  padding:.7rem 1.6rem;border-radius:10px;font-size:.9rem;font-weight:600;
+  color:#fff;background:var(--accent,#6c5ce7);
+  display:inline-flex;align-items:center;gap:.5rem;
+  transition:all .3s;border:none;cursor:pointer;
+}
+.b:hover{box-shadow:0 4px 30px rgba(108,92,231,.3);transform:translateY(-2px)}
+.o{background:transparent;border:1px solid rgba(255,255,255,.12);color:#f0f0f5}
+.o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);box-shadow:none;transform:none}
+
+/* ── Layout ───────────────────────────────────────── */
+section{position:relative;padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.he{
+  min-height:90vh;display:flex;flex-direction:column;
+  justify-content:center;align-items:center;text-align:center;padding-top:5rem;
+}
+.ac{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+
+/* ── Badge ────────────────────────────────────────── */
+.ba{
+  display:inline-flex;align-items:center;gap:.5rem;
+  padding:.4rem 1rem;border-radius:100px;
+  background:var(--badge-bg,rgba(108,92,231,.12));
+  border:1px solid var(--badge-border,rgba(108,92,231,.2));
+  font-size:.75rem;font-weight:500;
+  color:var(--badge-color,#6c5ce7);
+  margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.04em;
+}
+.dt{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--dot-color,#6c5ce7);animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── Typography ───────────────────────────────────── */
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:1rem;
+}
+.he p{font-size:1rem;color:#8888a0;max-width:540px;margin-bottom:2rem}
+.he .sub{font-size:1.15rem;color:#f0f0f5;margin-bottom:.4rem;font-family:'Playfair Display',serif}
+.sl{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--accent,#6c5ce7);margin-bottom:.8rem}
+.st{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.8rem}
+.sd{color:#8888a0;max-width:560px;margin-bottom:2rem;font-size:.92rem}
+
+/* ── Price display ────────────────────────────────── */
+.price-box{
+  display:inline-flex;flex-direction:column;align-items:center;
+  margin:1.2rem 0 2rem;
+}
+.price-amount{
+  font-family:'Playfair Display',serif;font-size:clamp(2.6rem,6vw,4rem);font-weight:700;
+  color:#f0f0f5;line-height:1;
+}
+.price-period{font-size:.9rem;color:#8888a0;margin-top:.2rem}
+
+/* ── Feature cards ────────────────────────────────── */
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
+.fc{
+  background:#12121a;border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;padding:1.6rem;
+  transition:all .4s;position:relative;overflow:hidden;
+}
+.fc::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(135deg,var(--accent,#6c5ce7),#00cec9);
+  opacity:0;transition:opacity .4s;
+}
+.fc:hover{background:#1a1a28;border-color:rgba(108,92,231,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.fc:hover::before{opacity:1}
+.fi{
+  width:42px;height:42px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;font-size:1.2rem;
+  margin-bottom:.7rem;background:rgba(108,92,231,.15);
+}
+.fc h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.3rem}
+.fc p{color:#8888a0;font-size:.83rem}
+
+/* ── Included list ────────────────────────────────── */
+.inc-list{list-style:none;text-align:left;margin-bottom:1.5rem}
+.inc-list li{
+  font-size:.88rem;color:#8888a0;padding:.3rem 0 .3rem 1.4rem;
+  position:relative;border-bottom:1px solid rgba(255,255,255,.04);
+}
+.inc-list li::before{content:'\2192';position:absolute;left:0;color:var(--accent,#6c5ce7);font-weight:600}
+
+/* ── Included card ────────────────────────────────── */
+.inc-card{
+  background:#12121a;border:1px solid rgba(255,255,255,.06);
+  border-radius:16px;padding:2rem;margin-top:2rem;
+}
+.inc-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1rem}
+
+/* ── CTA block ────────────────────────────────────── */
+.cs{
+  text-align:center;padding:3.5rem 2rem;
+  background:linear-gradient(135deg,rgba(108,92,231,.08),rgba(0,206,201,.05));
+  border:1px solid rgba(255,255,255,.06);border-radius:16px;
+  margin:2rem auto;max-width:750px;
+}
+.cs h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.7rem}
+.cs p{color:#8888a0;margin-bottom:1.5rem;max-width:450px;margin-left:auto;margin-right:auto;font-size:.9rem}
+
+/* ── Footer ───────────────────────────────────────── */
+footer{
+  text-align:center;padding:2rem;
+  border-top:1px solid rgba(255,255,255,.06);
+  color:#55556a;font-size:.78rem;
+}
+footer .footer-back{margin-top:.3rem}
+footer .footer-back a{color:#00cec9}
+
+/* ── Responsive ───────────────────────────────────── */
+@media(max-width:768px){
+  section{padding:3rem 1.2rem}
+  .fg{grid-template-columns:1fr}
+}
