@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>SentinelX AI — Codex Labs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f5;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.g{font-family:'Playfair Display',serif;font-weight:700;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.b{padding:.7rem 1.6rem;border-radius:10px;font-size:.9rem;font-weight:600;color:#fff;background:#e84393;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;border:none;cursor:pointer}
+.b:hover{box-shadow:0 4px 30px rgba(232,67,147,.3);transform:translateY(-2px)}
+.o{background:0 0;border:1px solid rgba(255,255,255,.12);color:#f0f0f5}
+.o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);box-shadow:none;transform:none}
+section{position:relative;padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.he{min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:5rem}
+.ba{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(232,67,147,.12);border:1px solid rgba(232,67,147,.2);font-size:.75rem;font-weight:500;color:#e84393;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.04em}
+.dt{width:6px;height:6px;border-radius:50%;background:#e84393;animation:p 2s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.he p{font-size:1rem;color:#8888a0;max-width:540px;margin-bottom:2rem}
+.ac{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.sl{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#e84393;margin-bottom:.8rem}
+.st{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.8rem}
+.sd{color:#8888a0;max-width:560px;margin-bottom:2rem;font-size:.92rem}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
+.fc{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.6rem;transition:all .4s;position:relative;overflow:hidden}
+.fc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#e84393,#6c5ce7);opacity:0;transition:opacity .4s}
+.fc:hover{background:#1a1a28;border-color:rgba(232,67,147,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.fc:hover::before{opacity:1}
+.fi{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.7rem;background:rgba(232,67,147,.15)}
+.fc h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.3rem}
+.fc p{color:#8888a0;font-size:.83rem}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:center}
+.si{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem}
+.sn{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#e84393}
+.si p{color:#8888a0;font-size:.8rem;margin-top:.2rem}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;margin-top:2rem}
+.pr{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.8rem;text-align:center;transition:all .4s;position:relative}
+.pp{border-color:rgba(232,67,147,.3);box-shadow:0 0 40px rgba(232,67,147,.1)}
+.pp::after{content:'POPULAR';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#e84393;color:#fff;font-size:.6rem;font-weight:700;padding:.2rem .7rem;border-radius:100px;letter-spacing:.06em}
+.pr:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.pr h3{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:.3rem}
+.pc{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;margin:.5rem 0 .2rem}
+.pc span{font-size:.8rem;font-weight:400;color:#8888a0}
+.pn{color:#8888a0;font-size:.78rem;margin-bottom:1rem}
+.pr ul{list-style:none;text-align:left;margin-bottom:1rem}
+.pr li{font-size:.8rem;color:#8888a0;padding:.25rem 0 .25rem 1.2rem;position:relative}
+.pr li::before{content:'\2192';position:absolute;left:0;color:#e84393;font-weight:600}
+.pr .b{width:100%;justify-content:center}
+.cs{text-align:center;padding:3.5rem 2rem;background:linear-gradient(135deg,rgba(232,67,147,.08),rgba(108,92,231,.05));border:1px solid rgba(255,255,255,.06);border-radius:16px;margin:2rem auto;max-width:750px}
+.cs h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.7rem}
+.cs p{color:#8888a0;margin-bottom:1.5rem;max-width:450px;margin-left:auto;margin-right:auto;font-size:.9rem}
+footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.78rem}
+@media(max-width:768px){section{padding:3rem 1.2rem}.fg,.pg,.sg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div style="display:flex;align-items:center;gap:1.5rem"><a href="index.html" class="g" style="font-size:1.2rem">&#x2B21; Codex Labs</a><a href="index.html" style="font-size:.82rem;color:#8888a0">&#x2190; Home</a></div><a href="#pricing" class="b" style="padding:.5rem 1.1rem;font-size:.82rem">View Pricing</a></nav>
+<section class="he">
+<div class="ba"><span class="dt"></span> Enterprise &middot; AI Security</div>
+<h1><span class="g">SentinelX AI</span></h1>
+<p style="font-size:1.15rem;color:#f0f0f5;margin-bottom:.4rem;font-family:'Playfair Display',serif">Autonomous threat detection. Zero blind spots.</p>
+<p>AI-native security monitoring that identifies, classifies, and neutralizes threats across your entire digital perimeter — before they escalate.</p>
+<div class="ac"><a href="#pricing" class="b">&#x1F6E1;&#xFE0F; Get Protected &#x2192;</a><a href="#ft" class="b o">See Features</a></div>
+</section>
+<section>
+<div class="sg">
+<div class="si"><div class="sn">99.7%</div><p>Threat detection accuracy across test environments</p></div>
+<div class="si"><div class="sn">&lt;200ms</div><p>Detection-to-alert response time</p></div>
+<div class="si"><div class="sn">24/7</div><p>Continuous autonomous monitoring</p></div>
+</div>
+</section>
+<section id="ft">
+<div class="sl">Capabilities</div>
+<h2 class="st">AI that never sleeps.</h2>
+<p class="sd">SentinelX AI combines behavioral analytics, anomaly detection, and zero-day pattern recognition into a single autonomous layer.</p>
+<div class="fg">
+<div class="fc"><div class="fi">&#x1F50D;</div><h3>Behavioral Analytics</h3><p>Baselines normal activity patterns. Flags deviations instantly. No rules to write — the AI learns your environment.</p></div>
+<div class="fc"><div class="fi" style="background:rgba(108,92,231,.15)">&#x1F9E0;</div><h3>Zero-Day Detection</h3><p>Pattern-based recognition identifies novel attack vectors before signatures exist in any database.</p></div>
+<div class="fc"><div class="fi" style="background:rgba(0,206,201,.15)">&#x26A1;</div><h3>Autonomous Response</h3><p>Configurable automated containment. Isolate, block, or alert based on threat severity and confidence score.</p></div>
+<div class="fc"><div class="fi" style="background:rgba(255,193,7,.15)">&#x1F4CA;</div><h3>Threat Intelligence</h3><p>Live feed of emerging attack patterns. Cross-tenant signal sharing keeps your perimeter ahead of the threat landscape.</p></div>
+</div>
+</section>
+<section id="pricing">
+<div class="sl">Pricing</div>
+<h2 class="st">Security that scales with you.</h2>
+<p class="sd">From solo operators to enterprise security teams. Every plan includes core AI monitoring.</p>
+<div class="pg">
+<div class="pr">
+<h3>Starter</h3>
+<div class="pc">$49<span>/mo</span></div>
+<div class="pn">Small teams &amp; startups</div>
+<ul><li>Up to 10 monitored endpoints</li><li>Behavioral anomaly detection</li><li>Email &amp; push alerts</li><li>7-day threat log</li><li>Monthly reports</li></ul>
+<a href="mailto:kippkppwggns@aol.com?subject=SentinelX%20Starter" class="b o">Start Starter</a>
+</div>
+<div class="pr pp">
+<h3>Pro</h3>
+<div class="pc g">$149<span>/mo</span></div>
+<div class="pn">Growing organizations</div>
+<ul><li>Unlimited endpoints</li><li>Zero-day pattern detection</li><li>Autonomous response rules</li><li>90-day threat archive</li><li>API integration</li><li>Priority support</li></ul>
+<a href="mailto:kippkppwggns@aol.com?subject=SentinelX%20Pro" class="b">&#x1F6E1;&#xFE0F; Start Pro</a>
+</div>
+<div class="pr">
+<h3>Enterprise</h3>
+<div class="pc">Custom</div>
+<div class="pn">Security-first organizations</div>
+<ul><li>Everything in Pro</li><li>Dedicated AI model tuning</li><li>Custom response playbooks</li><li>SIEM integration</li><li>Compliance reporting</li><li>Dedicated analyst</li></ul>
+<a href="mailto:kippkppwggns@aol.com?subject=SentinelX%20Enterprise" class="b o">Contact Sales</a>
+</div>
+</div>
+</section>
+<section>
+<div class="cs">
+<div class="sl">Early Access</div>
+<h2>Your perimeter. Defended.</h2>
+<p>SentinelX AI is onboarding early customers now. Secure your environment before threats find you.</p>
+<a href="mailto:kippkppwggns@aol.com?subject=SentinelX%20Early%20Access" class="b">&#x1F6E1;&#xFE0F; Request Access &#x2192;</a>
+</div>
+</section>
+<section style="text-align:center;padding:1.5rem 2rem 2.5rem;">
+<!-- NO LISTING YET -->
+<a href="#" class="b">🛒 Open Listing →</a>
+</section>
+<footer>
+<div class="g" style="font-size:1rem">&#x2B21; Codex Labs</div>
+<p>&copy; 2026 Codex Labs &middot; Lakeville, CT</p>
+<p style="margin-top:.3rem"><a href="index.html" style="color:#e84393">Back to Home</a></p>
+</footer>
+</body>
+</html>
