@@ -1,0 +1,96 @@
+/* Codex Labs Universal Footer v1.0 */
+
+.cl-footer {
+  background: #0d0d0d;
+  border-top: 1px solid rgba(255, 255, 255, .08);
+  padding: 2.5rem 2rem 2rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  color: #55556a;
+  text-align: left;
+}
+
+.cl-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cl-footer-brand {
+  flex: 1 1 180px;
+}
+
+.cl-footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  background: linear-gradient(135deg, #6c5ce7, #00cec9, #fd79a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  margin-bottom: .3rem;
+}
+
+.cl-footer-tagline {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: .78rem;
+  color: #55556a;
+  line-height: 1.5;
+}
+
+.cl-footer-nav {
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.cl-footer-nav a {
+  color: #55556a;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: .78rem;
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.cl-footer-nav a:hover {
+  color: #00cec9;
+}
+
+.cl-footer-legal {
+  flex: 1 1 180px;
+  text-align: right;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: .78rem;
+}
+
+.cl-footer-legal p {
+  margin-bottom: .3rem;
+}
+
+.cl-footer-legal a {
+  color: #00cec9;
+  text-decoration: none;
+  font-size: .78rem;
+}
+
+@media (max-width: 768px) {
+  .cl-footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cl-footer-nav {
+    justify-content: center;
+  }
+
+  .cl-footer-legal {
+    text-align: center;
+  }
+}
