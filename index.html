@@ -2,158 +2,192 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Codex Labs · The Entertainment OS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #050712;
-      --card: #101426;
-      --accent: #7b5cff;
-      --accent-soft: rgba(123, 92, 255, 0.18);
-      --text: #f5f5ff;
-      --muted: #9ca3c7;
-      --border: #1f2438;
-    }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    body {
-      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #151a3a 0, #050712 55%, #02030a 100%);
-      color: var(--text);
-      min-height: 100vh;
-      padding: 32px 16px 64px;
-      display: flex;
-      justify-content: center;
-    }
-    .shell {
-      width: 100%;
-      max-width: 960px;
-      position: relative;
-      overflow: hidden;
-    }
-    .orb {
-      position: absolute;
-      border-radius: 999px;
-      filter: blur(60px);
-      opacity: 0.55;
-      pointer-events: none;
-    }
-    .orb.one {
-      width: 420px;
-      height: 420px;
-      background: #7b5cff;
-      top: -120px;
-      left: -120px;
-    }
-    .orb.two {
-      width: 360px;
-      height: 360px;
-      background: #ff4d8a;
-      top: -80px;
-      right: -100px;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 64px;
-      position: relative;
-      z-index: 2;
-    }
-    header h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 12px;
-    }
-    header p {
-      font-size: 18px;
-      color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-      position: relative;
-      z-index: 2;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 24px;
-      border-radius: 16px;
-      transition: 0.25s ease;
-      text-decoration: none;
-      color: var(--text);
-      display: block;
-    }
-    .card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 24px var(--accent-soft);
-      transform: translateY(-4px);
-    }
-    .card h2 {
-      font-size: 22px;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.5;
-    }
-    footer {
-      margin-top: 72px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 14px;
-      position: relative;
-      z-index: 2;
-    }
-  </style>
+  <title>Codex Labs — Sovereign Digital Systems</title>
+  <meta name="description" content="Codex Labs builds scroll-class digital intelligence products. Innovation, Safety, and Intelligence — built for precision and clarity." />
+  <link rel="stylesheet" href="assets/css/fonts.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
 </head>
 
 <body>
-  <div class="shell">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
 
-    <header>
-      <h1>Codex Labs</h1>
-      <p>The Entertainment OS — modular, playful, and built for creators, founders, and curious minds.</p>
-    </header>
-
-    <div class="grid">
-      <a class="card" href="invention-radar.html">
-        <h2>Invention Radar</h2>
-        <p>Real‑time invention detection and idea capture for founders and builders.</p>
-      </a>
-
-      <a class="card" href="deersafe.html">
-        <h2>DeerSafe</h2>
-        <p>AI‑powered wildlife detection and safety alerts for rural and suburban drivers.</p>
-      </a>
-
-      <a class="card" href="guessvision.html">
-        <h2>GuessVision</h2>
-        <p>A playful, psychic‑feeling guessing engine that reacts, predicts, and entertains.</p>
-      </a>
-
-      <a class="card" href="codex-mikey.html">
-        <h2>Codex‑Mikey Copilot</h2>
-        <p>Your friendly, character‑driven inquiry assistant — the voice of the OS.</p>
-      </a>
-    </div>
-
-    <footer>
-      © 2026 Codex Labs — Built in Connecticut
-    </footer>
+  <!-- Orb gradient accents -->
+  <div class="orb-wrap" aria-hidden="true">
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
   </div>
+
+  <div class="content">
+    <div class="shell">
+
+      <!-- ── 1. MASTER BRAND HEADER ─────────────────── -->
+      <header class="site-header">
+        <h1 class="brand-name">Codex Labs</h1>
+        <p class="brand-tagline">Innovation &bull; Safety &bull; Intelligence</p>
+        <p class="brand-sub">Sovereign Digital Systems</p>
+        <p class="brand-descriptor">Built for Precision &amp; Clarity</p>
+      </header>
+
+      <hr class="divider" />
+
+      <!-- ── 2. NAVIGATION LATTICE ──────────────────── -->
+      <nav class="nav-lattice" aria-label="Codex Labs products">
+        <p class="label nav-lattice-title">Product Scrolls</p>
+        <div class="nav-grid">
+          <a class="nav-item" href="deersafe.html">
+            <span class="nav-sku">DS</span>
+            <span>
+              <span class="nav-name">DeerSafe</span>
+              <span class="nav-desc">Wildlife Detection Assistant</span>
+            </span>
+          </a>
+          <a class="nav-item" href="invention-radar.html">
+            <span class="nav-sku">IR</span>
+            <span>
+              <span class="nav-name">Invention Radar</span>
+              <span class="nav-desc">Patent Search AI</span>
+            </span>
+          </a>
+          <a class="nav-item" href="codex-mikey.html">
+            <span class="nav-sku">MW</span>
+            <span>
+              <span class="nav-name">Mikey Weather</span>
+              <span class="nav-desc">Hyperlocal Forecast Assistant</span>
+            </span>
+          </a>
+          <span class="nav-item nav-item--soon">
+            <span class="nav-sku">SX</span>
+            <span>
+              <span class="nav-name">SentinelX AI <span class="nav-soon">Coming Soon</span></span>
+              <span class="nav-desc">Threat Detection Assistant</span>
+            </span>
+          </span>
+        </div>
+      </nav>
+
+      <hr class="divider" />
+
+      <!-- ── 3. SCROLL-CLASS PHILOSOPHY BLOCK ──────── -->
+      <section class="philosophy" aria-labelledby="philosophy-headline">
+        <h2 class="philosophy-headline" id="philosophy-headline">
+          Codex Covers Everything — Or We Mint It On Request.
+        </h2>
+        <p class="philosophy-body">
+          A sovereign approach to digital intelligence.<br />
+          Every product is a scroll — precise, modular, and built to last.
+        </p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ── 4. PRODUCT GRID (SKU ICONS) ───────────── -->
+      <section class="product-grid-section" aria-label="Product SKUs">
+        <span class="label">Scroll Library</span>
+        <div class="product-grid">
+
+          <!-- DS — Wildlife Detection -->
+          <a class="product-card" href="deersafe.html">
+            <div class="product-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" />
+                <circle cx="12" cy="9" r="2.5" />
+              </svg>
+            </div>
+            <p class="product-code">DS</p>
+            <p class="product-label">Wildlife Detection</p>
+          </a>
+
+          <!-- IR — Patent Search -->
+          <a class="product-card" href="invention-radar.html">
+            <div class="product-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="7" />
+                <line x1="16.5" y1="16.5" x2="22" y2="22" />
+              </svg>
+            </div>
+            <p class="product-code">IR</p>
+            <p class="product-label">Patent Search</p>
+          </a>
+
+          <!-- MW — Hyperlocal Forecasting -->
+          <a class="product-card" href="codex-mikey.html">
+            <div class="product-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18 10a6 6 0 0 0-12 0c0 .34.03.67.08 1H6a3 3 0 0 0 0 6h12a3 3 0 0 0 0-6h-.08c.05-.33.08-.66.08-1z" />
+              </svg>
+            </div>
+            <p class="product-code">MW</p>
+            <p class="product-label">Hyperlocal Forecasting</p>
+          </a>
+
+          <!-- SX — Threat Detection -->
+          <span class="product-card product-card--soon">
+            <div class="product-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z" />
+              </svg>
+            </div>
+            <p class="product-code">SX</p>
+            <p class="product-label">Threat Detection</p>
+            <p class="product-soon">Coming Soon</p>
+          </span>
+
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ── 5. SYSTEM ARCHITECTURE SECTION ─────────── -->
+      <section class="architecture-section" aria-labelledby="arch-title">
+        <h2 class="section-title" id="arch-title">The Codex Labs System</h2>
+        <ul class="arch-list">
+          <li>
+            <span class="arch-bullet">&#x2022;</span>
+            <span><span class="arch-term">Substrate</span> <span class="arch-def">— The constitutional layer (this page)</span></span>
+          </li>
+          <li>
+            <span class="arch-bullet">&#x2022;</span>
+            <span><span class="arch-term">Scrolls</span> <span class="arch-def">— Individual SKUs</span></span>
+          </li>
+          <li>
+            <span class="arch-bullet">&#x2022;</span>
+            <span><span class="arch-term">Surfaces</span> <span class="arch-def">— Listings, cards, panels</span></span>
+          </li>
+          <li>
+            <span class="arch-bullet">&#x2022;</span>
+            <span><span class="arch-term">Execution Model</span> <span class="arch-def">— Digital delivery via eBay Messages</span></span>
+          </li>
+          <li>
+            <span class="arch-bullet">&#x2022;</span>
+            <span><span class="arch-term">Identity Protocol</span> <span class="arch-def">— Dark OS aesthetic, orb gradients, Playfair + Inter, thin&#8209;line icons</span></span>
+          </li>
+        </ul>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ── 6. FOUNDER BLOCK ───────────────────────── -->
+      <section class="founder-block" aria-label="Founder">
+        <p class="founder-location">Built in Lakeville, Connecticut</p>
+        <h2 class="founder-name">Kipp M. Wiggins</h2>
+        <p class="founder-title">Solo Founder &bull; Systems Architect</p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ── 7. UNIVERSAL FOOTER ────────────────────── -->
+      <footer class="site-footer">
+        <p class="footer-brand">Codex Labs</p>
+        <div class="footer-meta">
+          <p>Intelligence Systems &bull; 2026</p>
+          <p>Scroll&#8209;Class Digital Products</p>
+          <p>Delivered Instantly via eBay Messages</p>
+        </div>
+        <p class="footer-tagline">Codex Covers Everything — Or We Mint It On Request.</p>
+      </footer>
+
+    </div><!-- /shell -->
+  </div><!-- /content -->
+
 </body>
 </html>

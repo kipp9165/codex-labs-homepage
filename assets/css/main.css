@@ -1,0 +1,425 @@
+/* Codex Labs — Main Stylesheet
+   Dark OS Aesthetic · Scroll-Class System
+   ------------------------------------------ */
+
+/* ── Reset ───────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Tokens ──────────────────────────────── */
+:root {
+  --bg:          #0D0D0D;
+  --surface:     #141414;
+  --border:      #222222;
+  --text:        #F0F0F0;
+  --muted:       #888888;
+  --accent:      #7B5CFF;
+  --accent-soft: rgba(123, 92, 255, 0.15);
+  --orb-a:       rgba(123, 92, 255, 0.22);
+  --orb-b:       rgba(0, 180, 200, 0.14);
+  --font-title:  'Playfair Display', Georgia, serif;
+  --font-body:   'Inter', system-ui, -apple-system, sans-serif;
+  --radius:      12px;
+  --max-w:       900px;
+}
+
+/* ── Base ────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ── Layout shell ────────────────────────── */
+.shell {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+}
+
+/* ── Orb gradient accents ────────────────── */
+.orb-wrap {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.orb-a {
+  width: 480px;
+  height: 480px;
+  background: var(--orb-a);
+  top: -160px;
+  left: -160px;
+}
+
+.orb-b {
+  width: 360px;
+  height: 360px;
+  background: var(--orb-b);
+  top: 40px;
+  right: -120px;
+}
+
+/* ── Relative z-index wrapper ─────────────── */
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Utility ─────────────────────────────── */
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 64px 0;
+}
+
+.label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── Header ──────────────────────────────── */
+.site-header {
+  padding: 80px 0 72px;
+  text-align: center;
+}
+
+.brand-name {
+  font-family: var(--font-title);
+  font-size: clamp(40px, 7vw, 64px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.brand-tagline {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.brand-sub {
+  font-family: var(--font-title);
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.brand-descriptor {
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── Navigation lattice ──────────────────── */
+.nav-lattice {
+  padding: 0 0 8px;
+}
+
+.nav-lattice-title {
+  margin-bottom: 24px;
+}
+
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.nav-item:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 20px var(--accent-soft);
+}
+
+.nav-sku {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  min-width: 28px;
+}
+
+.nav-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-desc {
+  display: block;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── Philosophy block ────────────────────── */
+.philosophy {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.philosophy-headline {
+  font-family: var(--font-title);
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.philosophy-body {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Product grid ────────────────────────── */
+.product-grid-section .label {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 16px;
+}
+
+.product-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 24px var(--accent-soft);
+}
+
+.product-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 14px;
+}
+
+.product-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.product-code {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.product-label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── System architecture ─────────────────── */
+.architecture-section .section-title {
+  font-family: var(--font-title);
+  font-size: clamp(20px, 3.5vw, 28px);
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.arch-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.arch-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 14px;
+}
+
+.arch-bullet {
+  color: var(--accent);
+  font-size: 16px;
+  line-height: 1.5;
+  flex-shrink: 0;
+}
+
+.arch-term {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.arch-def {
+  color: var(--muted);
+}
+
+/* ── Founder block ───────────────────────── */
+.founder-block {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.founder-location {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.founder-name {
+  font-family: var(--font-title);
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.founder-title {
+  font-size: 13px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+}
+
+/* ── Footer ──────────────────────────────── */
+.site-footer {
+  padding: 48px 0 64px;
+  text-align: center;
+}
+
+.footer-brand {
+  font-family: var(--font-title);
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.footer-meta {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 2;
+}
+
+.footer-tagline {
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* ── Coming-soon states ──────────────────── */
+.nav-item--soon {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.nav-soon {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.product-card--soon {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.product-soon {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 6px;
+}
+
+/* ── Responsive ──────────────────────────── */
+@media (max-width: 600px) {
+  .shell {
+    padding: 0 16px;
+  }
+
+  .site-header {
+    padding: 56px 0 56px;
+  }
+
+  .nav-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
