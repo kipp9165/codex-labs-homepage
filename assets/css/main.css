@@ -1,0 +1,425 @@
+/* ================================================================
+   Codex Labs Universal Layout Frame v1.0
+   Shared stylesheet for all SKU pages
+   ================================================================ */
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:           #0D0D0D;
+  --surface:      #161616;
+  --surface-2:    #1c1c1c;
+  --border:       rgba(255, 255, 255, 0.08);
+  --text:         #f0f0f5;
+  --muted:        #888899;
+  --accent:       #6c5ce7;
+  /* per-page badge/label/stat color — overridden on each page */
+  --badge-color:  #6c5ce7;
+  --badge-bg:     rgba(108, 92, 231, 0.12);
+  --badge-border: rgba(108, 92, 231, 0.20);
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ── Navigation ── */
+.sku-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1rem 2rem;
+  background: rgba(13, 13, 13, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sku-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.sku-nav-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1.15rem;
+  background: linear-gradient(135deg, #6c5ce7, #00cec9, #fd79a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sku-nav-back {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+/* ── Layout Frame ── */
+.sku-frame {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Hero ── */
+.sku-hero {
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 4rem;
+}
+
+.sku-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 100px;
+  background: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--badge-color);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sku-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.sku-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+}
+
+.sku-desc {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 540px;
+  margin-bottom: 2rem;
+}
+
+.sku-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── Buttons ── */
+.btn {
+  padding: 0.75rem 1.6rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* ── Sections ── */
+.sku-section {
+  padding: 64px 0;
+  border-top: 1px solid var(--border);
+}
+
+.sku-section-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--badge-color);
+  margin-bottom: 0.75rem;
+}
+
+.sku-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.sku-section-desc {
+  color: var(--muted);
+  max-width: 560px;
+  margin-bottom: 2rem;
+  font-size: 0.92rem;
+}
+
+/* ── Stats Grid ── */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.stat-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.stat-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--badge-color);
+}
+
+.stat-item p {
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+/* ── Feature Grid ── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.5rem;
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+  background: var(--badge-bg);
+}
+
+.feature-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.feature-card p {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+/* ── Pricing Grid ── */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.pricing-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.8rem;
+  text-align: center;
+  position: relative;
+}
+
+.pricing-card.featured {
+  border-color: var(--badge-border);
+  box-shadow: 0 0 32px var(--badge-bg);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--badge-color);
+  color: #0D0D0D;
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.2rem 0.75rem;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pricing-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  margin-bottom: 0.3rem;
+}
+
+.pricing-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0.5rem 0 0.2rem;
+}
+
+.pricing-price span {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.pricing-note {
+  color: var(--muted);
+  font-size: 0.78rem;
+  margin-bottom: 1rem;
+}
+
+.pricing-card ul {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+
+.pricing-card li {
+  font-size: 0.8rem;
+  color: var(--muted);
+  padding: 0.22rem 0 0.22rem 1.2rem;
+  position: relative;
+}
+
+.pricing-card li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--badge-color);
+  font-weight: 600;
+}
+
+.pricing-card .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* ── CTA Block ── */
+.sku-cta {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, var(--badge-bg), rgba(0, 206, 201, 0.04));
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.sku-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 0.75rem;
+}
+
+.sku-cta p {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.9rem;
+}
+
+/* ── Footer ── */
+.sku-footer {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.sku-footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  background: linear-gradient(135deg, #6c5ce7, #00cec9, #fd79a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+  margin-bottom: 0.4rem;
+}
+
+/* ── Utilities ── */
+.grad-text {
+  background: linear-gradient(135deg, #6c5ce7, #00cec9, #fd79a8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sku-nav {
+    padding: 0.75rem 1rem;
+  }
+
+  .sku-frame {
+    padding: 0 16px;
+  }
+
+  .sku-section {
+    padding: 48px 0;
+  }
+
+  .stats-grid,
+  .feature-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr;
+  }
+}
