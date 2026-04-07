@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Invention Radar — Bundle Access · Codex Labs</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f5;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.g{font-family:'Playfair Display',serif;font-weight:700;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.b{padding:.7rem 1.6rem;border-radius:10px;font-size:.9rem;font-weight:600;color:#fff;background:linear-gradient(135deg,#6c5ce7,#fd79a8);display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;border:none;cursor:pointer}
+.b:hover{box-shadow:0 4px 30px rgba(108,92,231,.4);transform:translateY(-2px)}
+.o{background:0 0;border:1px solid rgba(255,255,255,.12);color:#f0f0f5}
+.o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);box-shadow:none;transform:none}
+section{position:relative;padding:5rem 2rem;max-width:1100px;margin:0 auto}
+.he{min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:5rem}
+.ba{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:linear-gradient(135deg,rgba(108,92,231,.15),rgba(253,121,168,.1));border:1px solid rgba(108,92,231,.3);font-size:.75rem;font-weight:500;color:#fd79a8;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.04em}
+.dt{width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,#6c5ce7,#fd79a8);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.he p{font-size:1rem;color:#8888a0;max-width:540px;margin-bottom:2rem}
+.ac{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.sl{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;background:linear-gradient(135deg,#6c5ce7,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.8rem}
+.st{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.8rem}
+.sd{color:#8888a0;max-width:560px;margin-bottom:2rem;font-size:.92rem}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
+.fc{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.6rem;transition:all .4s;position:relative;overflow:hidden}
+.fc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);opacity:0;transition:opacity .4s}
+.fc:hover{background:#1a1220;border-color:rgba(108,92,231,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.fc:hover::before{opacity:1}
+.fi{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.7rem;background:rgba(108,92,231,.15)}
+.fc h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.3rem}
+.fc p{color:#8888a0;font-size:.83rem}
+.sku{background:#12121a;border:1px solid transparent;border-radius:16px;padding:2.4rem;text-align:center;max-width:520px;margin:2rem auto 0;position:relative;background-clip:padding-box}
+.sku::before{content:'';position:absolute;inset:0;border-radius:16px;padding:1px;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.sku-glow{position:absolute;inset:0;border-radius:16px;box-shadow:0 0 60px rgba(108,92,231,.15),0 0 60px rgba(253,121,168,.08);pointer-events:none}
+.sku h3{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:.4rem}
+.pc{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;margin:.6rem 0 .2rem;background:linear-gradient(135deg,#6c5ce7,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.pc span{font-size:.85rem;font-weight:400;color:#8888a0;-webkit-text-fill-color:#8888a0}
+.pn{color:#8888a0;font-size:.8rem;margin-bottom:1.4rem}
+.sku ul{list-style:none;text-align:left;margin-bottom:1.6rem}
+.sku li{font-size:.83rem;color:#8888a0;padding:.28rem 0 .28rem 1.3rem;position:relative}
+.sku li::before{content:'\2192';position:absolute;left:0;color:#fd79a8;font-weight:600}
+.sku .b{width:100%;justify-content:center}
+.incl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:2rem}
+.ti{background:#0f0f18;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.1rem 1.2rem;text-align:left}
+.ti-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#8888a0;margin-bottom:.3rem}
+.ti-name{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.1rem}
+.ti-price{font-size:.82rem;color:#8888a0}
+footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.78rem}
+@media(max-width:768px){section{padding:3rem 1.2rem}.fg,.incl{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+    <a href="index.html" class="g" style="font-size:1.2rem">&#x2B21; Codex Labs</a>
+    <a href="invention-radar.html" style="font-size:.82rem;color:#8888a0">&#x2190; Invention Radar</a>
+  </div>
+  <a href="#access" class="b" style="padding:.5rem 1.1rem;font-size:.82rem">Get Bundle</a>
+</nav>
+
+<section class="he">
+  <div class="ba"><span class="dt"></span> Invention Radar &middot; Bundle Access</div>
+  <h1><span class="g">Bundle Access</span></h1>
+  <p style="font-size:1.15rem;color:#f0f0f5;margin-bottom:.4rem;font-family:'Playfair Display',serif">Monthly, Annual, Lifetime, and Team features in one unified license.</p>
+  <p>The complete Invention Radar ecosystem. Every tier, every capability, every future feature — under a single unified license.</p>
+  <div class="ac">
+    <a href="#access" class="b">&#x1F4E6; Get Bundle Access &#x2192;</a>
+    <a href="#features" class="b o">What's Included</a>
+  </div>
+</section>
+
+<section id="features">
+  <div class="sl">Everything, Unified</div>
+  <h2 class="st">The complete Invention Radar suite.</h2>
+  <p class="sd">Bundle Access combines every tier into one license — ideal for organizations that need maximum coverage, team collaboration, and permanent archival capability.</p>
+  <div class="fg">
+    <div class="fc">
+      <div class="fi">&#x1F50D;</div>
+      <h3>Real-Time + Priority Scanning</h3>
+      <p>All scanning tiers activated simultaneously. Monthly real-time feeds with Annual-tier priority processing and queue preference.</p>
+    </div>
+    <div class="fc">
+      <div class="fi" style="background:rgba(245,158,11,.15)">&#x267E;&#xFE0F;</div>
+      <h3>Permanent Archival Access</h3>
+      <p>Lifetime archival research mode included. Deep-history patent landscape queries with no expiration, ever.</p>
+    </div>
+    <div class="fc">
+      <div class="fi" style="background:rgba(16,185,129,.15)">&#x1F465;</div>
+      <h3>Full Team Collaboration</h3>
+      <p>Team Access multi-seat license included. Shared workspaces, unified logs, and collaborative annotations for up to 10 members.</p>
+    </div>
+    <div class="fc">
+      <div class="fi" style="background:rgba(253,121,168,.15)">&#x2B50;</div>
+      <h3>Unified Feature Roadmap</h3>
+      <p>All future releases across every tier ship to Bundle accounts first. One license covers the entire platform, permanently.</p>
+    </div>
+  </div>
+</section>
+
+<section id="access">
+  <div class="sl">Pricing</div>
+  <h2 class="st">Bundle Access</h2>
+  <p class="sd">Every Invention Radar tier in a single unified license. The definitive IP intelligence platform for serious researchers and organizations.</p>
+
+  <div style="max-width:520px;margin:0 auto">
+    <div class="sl" style="margin-bottom:.6rem">What's included</div>
+    <div class="incl">
+      <div class="ti">
+        <div class="ti-label">Tier 1</div>
+        <div class="ti-name">Monthly Access</div>
+        <div class="ti-price">$9.99/mo value</div>
+      </div>
+      <div class="ti">
+        <div class="ti-label">Tier 2</div>
+        <div class="ti-name">Annual Access</div>
+        <div class="ti-price">$79.99/yr value</div>
+      </div>
+      <div class="ti">
+        <div class="ti-label">Tier 3</div>
+        <div class="ti-name">Lifetime Access</div>
+        <div class="ti-price">$199.99 value</div>
+      </div>
+      <div class="ti">
+        <div class="ti-label">Tier 4</div>
+        <div class="ti-name">Team Access</div>
+        <div class="ti-price">$299.99/yr value</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sku">
+    <div class="sku-glow"></div>
+    <h3>Invention Radar — Bundle Access</h3>
+    <div class="pc">$399<span>.99 once</span></div>
+    <div class="pn">One-time payment &middot; all tiers included</div>
+    <ul>
+      <li>All Monthly tier features</li>
+      <li>All Annual tier features</li>
+      <li>All Lifetime tier features (permanent)</li>
+      <li>All Team tier features (up to 10 seats)</li>
+      <li>Unlimited scans, unlimited domains</li>
+      <li>Archival deep-history research mode</li>
+      <li>Shared team workspaces and unified logs</li>
+      <li>Full API access — highest rate limits</li>
+      <li>All future feature releases, every tier</li>
+      <li>Dedicated account support</li>
+    </ul>
+    <a href="mailto:kippkppwggns@aol.com?subject=Invention%20Radar%20Bundle%20Access&body=I'd%20like%20Bundle%20Access%20to%20Invention%20Radar." class="b">&#x1F4E6; Get Bundle Access</a>
+  </div>
+</section>
+
+<footer>
+  <div class="g" style="font-size:1rem">&#x2B21; Codex Labs</div>
+  <p>&copy; 2026 Codex Labs &middot; Lakeville, CT</p>
+  <p style="margin-top:.3rem">
+    <a href="invention-radar.html" style="color:#fd79a8">&#x2190; Back to Invention Radar</a>
+    &nbsp;&middot;&nbsp;
+    <a href="index.html" style="color:#00cec9">Home</a>
+  </p>
+</footer>
+</body>
+</html>
