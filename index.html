@@ -4,25 +4,18 @@
   <meta charset="UTF-8" />
   <title>Codex Labs · The Entertainment OS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/fonts.css" />
+  <link rel="stylesheet" href="assets/css/main.css" />
   <style>
     :root {
-      --bg: #050712;
-      --card: #101426;
-      --accent: #7b5cff;
-      --accent-soft: rgba(123, 92, 255, 0.18);
-      --text: #f5f5ff;
-      --muted: #9ca3c7;
-      --border: #1f2438;
+      --bg: #0d0d0d;
+      --text: #f0f0f5;
+      --muted: #8888a0;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      background: radial-gradient(circle at top, #151a3a 0, #050712 55%, #02030a 100%);
+      background: radial-gradient(circle at top, #12101f 0, #0d0d0d 55%, #080808 100%);
       color: var(--text);
       min-height: 100vh;
       padding: 32px 16px 64px;
@@ -39,26 +32,14 @@
       position: absolute;
       border-radius: 999px;
       filter: blur(60px);
-      opacity: 0.55;
+      opacity: 0.4;
       pointer-events: none;
     }
-    .orb.one {
-      width: 420px;
-      height: 420px;
-      background: #7b5cff;
-      top: -120px;
-      left: -120px;
-    }
-    .orb.two {
-      width: 360px;
-      height: 360px;
-      background: #ff4d8a;
-      top: -80px;
-      right: -100px;
-    }
+    .orb.one { width: 420px; height: 420px; background: #6c5ce7; top: -120px; left: -120px; }
+    .orb.two { width: 360px; height: 360px; background: #fd79a8; top: -80px; right: -100px; }
     header {
       text-align: center;
-      margin-bottom: 64px;
+      margin-bottom: 48px;
       position: relative;
       z-index: 2;
     }
@@ -74,39 +55,6 @@
       max-width: 600px;
       margin: 0 auto;
       line-height: 1.6;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-top: 48px;
-      position: relative;
-      z-index: 2;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 24px;
-      border-radius: 16px;
-      transition: 0.25s ease;
-      text-decoration: none;
-      color: var(--text);
-      display: block;
-    }
-    .card:hover {
-      border-color: var(--accent);
-      box-shadow: 0 0 24px var(--accent-soft);
-      transform: translateY(-4px);
-    }
-    .card h2 {
-      font-size: 22px;
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-    .card p {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.5;
     }
     footer {
       margin-top: 72px;
@@ -129,25 +77,41 @@
       <p>The Entertainment OS — modular, playful, and built for creators, founders, and curious minds.</p>
     </header>
 
-    <div class="grid">
-      <a class="card" href="invention-radar.html">
-        <h2>Invention Radar</h2>
-        <p>Real‑time invention detection and idea capture for founders and builders.</p>
+    <div class="sku-grid">
+      <a class="sku-card" href="deersafe.html">
+        <div class="sku-icon">DS</div>
+        <div class="sku-body">
+          <p class="sku-title">DeerSafe</p>
+          <p class="sku-subtitle">Wildlife Detection Assistant</p>
+        </div>
+        <span class="sku-arrow">&#x2192;</span>
       </a>
 
-      <a class="card" href="deersafe.html">
-        <h2>DeerSafe</h2>
-        <p>AI‑powered wildlife detection and safety alerts for rural and suburban drivers.</p>
+      <a class="sku-card" href="invention-radar.html">
+        <div class="sku-icon">IR</div>
+        <div class="sku-body">
+          <p class="sku-title">Invention Radar</p>
+          <p class="sku-subtitle">Patent Search AI</p>
+        </div>
+        <span class="sku-arrow">&#x2192;</span>
       </a>
 
-      <a class="card" href="guessvision.html">
-        <h2>GuessVision</h2>
-        <p>A playful, psychic‑feeling guessing engine that reacts, predicts, and entertains.</p>
+      <a class="sku-card" href="mikey-weather.html">
+        <div class="sku-icon">MW</div>
+        <div class="sku-body">
+          <p class="sku-title">Mikey Weather</p>
+          <p class="sku-subtitle">Hyperlocal Forecast Assistant</p>
+        </div>
+        <span class="sku-arrow">&#x2192;</span>
       </a>
 
-      <a class="card" href="codex-mikey.html">
-        <h2>Codex‑Mikey Copilot</h2>
-        <p>Your friendly, character‑driven inquiry assistant — the voice of the OS.</p>
+      <a class="sku-card" href="sentinelx-ai.html">
+        <div class="sku-icon">SX</div>
+        <div class="sku-body">
+          <p class="sku-title">SentinelX AI</p>
+          <p class="sku-subtitle">Threat Detection Assistant</p>
+        </div>
+        <span class="sku-arrow">&#x2192;</span>
       </a>
     </div>
 

@@ -1,0 +1,132 @@
+/* Codex Labs — Universal Layout Frame v1.0 */
+
+:root {
+  --bg: #0d0d0d;
+  --surface: #111117;
+  --surface-hover: #18181f;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-hover: rgba(255, 255, 255, 0.18);
+  --text: #f0f0f5;
+  --muted: #8888a0;
+  --accent: #6c5ce7;
+}
+
+/* ── SKU Card Grid ──────────────────────────────────── */
+
+.sku-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 48px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── SKU Card ───────────────────────────────────────── */
+
+.sku-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 22px 24px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, transform 0.22s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.sku-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: radial-gradient(circle at 0% 50%, rgba(255,255,255,0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.sku-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  transform: translateY(-3px);
+  background: var(--surface-hover);
+}
+
+/* ── SKU Icon Badge ─────────────────────────────────── */
+
+.sku-icon {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.03);
+  flex-shrink: 0;
+}
+
+/* ── SKU Body ───────────────────────────────────────── */
+
+.sku-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.sku-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sku-subtitle {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── SKU Arrow ──────────────────────────────────────── */
+
+.sku-arrow {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: color 0.22s ease, transform 0.22s ease;
+}
+
+.sku-card:hover .sku-arrow {
+  color: rgba(255, 255, 255, 0.5);
+  transform: translateX(3px);
+}
+
+/* ── Responsive ─────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .sku-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .sku-card {
+    padding: 18px 20px;
+  }
+}
