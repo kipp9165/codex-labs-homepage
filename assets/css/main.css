@@ -1,0 +1,109 @@
+/* ─── Codex Labs SKU Card Set v1.0 ─────────────────────────────────────────── */
+
+/* Grid
+   Responsive 2-up on tablet and desktop, 1-up on mobile.                  */
+.sku-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Card shell */
+.sku-card {
+  background: #101426;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-decoration: none;
+  color: #f5f5ff;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Accent top-bar — revealed on hover */
+.sku-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent2, var(--accent)));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sku-card:hover {
+  border-color: var(--accent-border, rgba(123, 92, 255, 0.3));
+  box-shadow: 0 8px 32px var(--accent-soft, rgba(123, 92, 255, 0.12));
+  transform: translateY(-4px);
+}
+
+.sku-card:hover::before {
+  opacity: 1;
+}
+
+/* Category badge */
+.sku-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--accent);
+  background: var(--accent-soft, rgba(123, 92, 255, 0.12));
+  border: 1px solid var(--accent-border, rgba(123, 92, 255, 0.2));
+  border-radius: 100px;
+  padding: 4px 12px;
+}
+
+/* Product name — gradient text matching accent pair */
+.sku-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent2, var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+/* Description */
+.sku-desc {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: #9ca3c7;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* CTA inline label */
+.sku-cta {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+/* ─── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .sku-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+  }
+}
