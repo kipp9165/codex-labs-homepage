@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mikey Weather — Codex Labs</title>
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f5;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.g{font-family:'Playfair Display',serif;font-weight:700;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.b{padding:.7rem 1.6rem;border-radius:10px;font-size:.9rem;font-weight:600;color:#fff;background:#00b4d8;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;border:none;cursor:pointer}
+.b:hover{box-shadow:0 4px 30px rgba(0,180,216,.3);transform:translateY(-2px)}
+.o{background:0 0;border:1px solid rgba(255,255,255,.12);color:#f0f0f5}
+.o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);box-shadow:none;transform:none}
+section{position:relative;padding:4.5rem 2rem;max-width:1100px;margin:0 auto}
+.he{min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:5rem}
+.ba{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(0,180,216,.12);border:1px solid rgba(0,180,216,.2);font-size:.75rem;font-weight:500;color:#00b4d8;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.04em}
+.dt{width:6px;height:6px;border-radius:50%;background:#00b4d8;animation:p 2s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
+.he p{font-size:1rem;color:#8888a0;max-width:540px;margin-bottom:2rem}
+.ac{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.sl{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#00b4d8;margin-bottom:.8rem}
+.st{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.8rem}
+.sd{color:#8888a0;max-width:560px;margin-bottom:2rem;font-size:.92rem}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.fc{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem;transition:all .4s;position:relative;overflow:hidden}
+.fc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#00b4d8,#0077b6);opacity:0;transition:opacity .4s}
+.fc:hover{background:#1a1a28;transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.fc:hover::before{opacity:1}
+.fi{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.6rem;background:rgba(0,180,216,.15)}
+.fc h3{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.3rem}
+.fc p{color:#8888a0;font-size:.82rem}
+.sg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:center}
+.si{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.5rem}
+.sn{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:#00b4d8}
+.si p{color:#8888a0;font-size:.8rem;margin-top:.2rem}
+.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem;margin-top:2rem}
+.pr{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.8rem;text-align:center;transition:all .4s;position:relative}
+.pp{border-color:rgba(0,180,216,.3);box-shadow:0 0 40px rgba(0,180,216,.1)}
+.pp::after{content:'BEST VALUE';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#00b4d8;color:#0a0a0f;font-size:.6rem;font-weight:700;padding:.2rem .7rem;border-radius:100px;letter-spacing:.06em}
+.pr:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.pr h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:.3rem}
+.pc{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;margin:.5rem 0 .2rem}
+.pc span{font-size:.8rem;font-weight:400;color:#8888a0}
+.pn{color:#8888a0;font-size:.78rem;margin-bottom:1rem}
+.pr ul{list-style:none;text-align:left;margin-bottom:1rem}
+.pr li{font-size:.8rem;color:#8888a0;padding:.22rem 0 .22rem 1.2rem;position:relative}
+.pr li::before{content:'\2192';position:absolute;left:0;color:#00b4d8;font-weight:600}
+.pr .b{width:100%;justify-content:center}
+footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.78rem}
+@media(max-width:768px){section{padding:3rem 1.2rem}.fg,.pg,.sg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <div style="display:flex;align-items:center;gap:1.5rem">
+    <a href="index.html" class="g" style="font-size:1.2rem">&#x2B21; Codex Labs</a>
+    <a href="index.html" style="font-size:.82rem;color:#8888a0">&#x2190; Home</a>
+  </div>
+  <a href="#pricing" class="b" style="padding:.5rem 1.1rem;font-size:.82rem">View Pricing</a>
+</nav>
+
+<section class="he">
+  <div class="ba"><span class="dt"></span> Consumer &middot; Weather Intelligence</div>
+  <h1><span class="g">Mikey Weather</span></h1>
+  <p style="font-size:1.12rem;color:#f0f0f5;margin-bottom:.4rem;font-family:'Playfair Display',serif">Hyper-local weather intelligence, delivered conversationally.</p>
+  <p>AI-powered forecasts that learn your patterns, adapt to your location, and speak plain English. Weather that actually makes sense.</p>
+  <div class="ac">
+    <a href="#pricing" class="b">&#x26C5; Get Mikey Weather &#x2192;</a>
+    <a href="#features" class="b o">See Features</a>
+  </div>
+</section>
+
+<section>
+  <div class="sg">
+    <div class="si"><div class="sn">72hr</div><p>Hyper-local forecast window</p></div>
+    <div class="si"><div class="sn">98%</div><p>Short-range accuracy rate</p></div>
+    <div class="si"><div class="sn">&lt;2s</div><p>Conversational response time</p></div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="sl">Features</div>
+  <h2 class="st">Weather that thinks with you.</h2>
+  <p class="sd">Mikey Weather turns raw atmospheric data into clear, actionable guidance — tailored to how you actually live.</p>
+  <div class="fg">
+    <div class="fc">
+      <div class="fi">&#x1F4CD;</div>
+      <h3>Hyper-Local Forecasts</h3>
+      <p>Street-level precision using micro-weather sensors and satellite fusion. Not your zip code — your exact location.</p>
+    </div>
+    <div class="fc">
+      <div class="fi" style="background:rgba(108,92,231,.15)">&#x1F9E0;</div>
+      <h3>Conversational AI</h3>
+      <p>Ask "Should I run outside at 6pm?" and get a real answer. Natural language queries, intelligent contextual responses.</p>
+    </div>
+    <div class="fc">
+      <div class="fi" style="background:rgba(0,180,216,.2)">&#x26A1;</div>
+      <h3>Severe Weather Alerts</h3>
+      <p>Push alerts calibrated to your risk tolerance. Early warnings for severe events, customizable thresholds, zero noise.</p>
+    </div>
+    <div class="fc">
+      <div class="fi" style="background:rgba(253,121,168,.15)">&#x1F4C5;</div>
+      <h3>Pattern Learning</h3>
+      <p>Learns your schedule and routines. Proactive morning briefings, travel advisories, and seasonal planning built in.</p>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="sl">Pricing</div>
+  <h2 class="st">Your forecast, your way.</h2>
+  <p class="sd">Every plan includes the core Mikey Weather AI engine and hyper-local forecasting.</p>
+  <div class="pg">
+    <div class="pr">
+      <h3>Basic</h3>
+      <div class="pc">Free</div>
+      <div class="pn">For casual weather watchers</div>
+      <ul>
+        <li>24hr hyper-local forecast</li>
+        <li>3 saved locations</li>
+        <li>Basic severe weather alerts</li>
+        <li>Daily AI briefing</li>
+      </ul>
+      <a href="mailto:kippkppwggns@aol.com?subject=Mikey%20Weather%20Basic" class="b o">Get Started</a>
+    </div>
+    <div class="pr pp">
+      <h3>Pro</h3>
+      <div class="pc g">$4<span>/mo</span></div>
+      <div class="pn">For planners and outdoor enthusiasts</div>
+      <ul>
+        <li>72hr hyper-local forecast</li>
+        <li>Unlimited locations</li>
+        <li>Full conversational AI</li>
+        <li>Pattern learning &amp; routines</li>
+        <li>Priority severe weather alerts</li>
+        <li>API access</li>
+      </ul>
+      <a href="mailto:kippkppwggns@aol.com?subject=Mikey%20Weather%20Pro" class="b">&#x26C5; Go Pro</a>
+    </div>
+    <div class="pr">
+      <h3>Family</h3>
+      <div class="pc">$9<span>/mo</span></div>
+      <div class="pn">Up to 6 household members</div>
+      <ul>
+        <li>Everything in Pro</li>
+        <li>6 individual profiles</li>
+        <li>Shared household alerts</li>
+        <li>School &amp; commute tracking</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="mailto:kippkppwggns@aol.com?subject=Mikey%20Weather%20Family" class="b o">Get Family Plan</a>
+    </div>
+  </div>
+</section>
+
+<section class="codex-cta">
+  <h2 class="cta-title">Available on eBay</h2>
+  <p class="cta-sub">Purchase Mikey Weather through the official Codex Labs eBay listing.</p>
+  <a href="#" class="cta-btn">Shop on eBay &#x2192;</a>
+</section>
+
+<footer>
+  <div class="g" style="font-size:1rem">&#x2B21; Codex Labs</div>
+  <p>&#169; 2026 Codex Labs &middot; Lakeville, CT</p>
+  <p style="margin-top:.3rem"><a href="index.html" style="color:#00b4d8">Back to Home</a></p>
+</footer>
+</body>
+</html>
