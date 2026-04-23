@@ -31,6 +31,13 @@ a {
   color: inherit;
 }
 
+a:focus-visible,
+button:focus-visible,
+.button:focus-visible {
+  outline: 2px solid var(--accent-soft);
+  outline-offset: 2px;
+}
+
 .skip-link {
   position: absolute;
   left: -9999px;
