@@ -16,6 +16,17 @@ def _default_price_id(default_price):
 
 def _serialize_price(price):
     recurring = price.get("recurring")
+    recurring_data = None
+    if recurring:
+        recurring_data = {
+            "interval": recurring.get("interval"),
+            "interval_count": recurring.get("interval_count"),
+            "usage_type": recurring.get("usage_type"),
+            "aggregate_usage": recurring.get("aggregate_usage"),
+            "trial_period_days": recurring.get("trial_period_days"),
+            "meter": recurring.get("meter"),
+        }
+
     return {
         "id": price.get("id"),
         "nickname": price.get("nickname"),
@@ -26,16 +37,7 @@ def _serialize_price(price):
         "unit_amount_decimal": price.get("unit_amount_decimal"),
         "billing_scheme": price.get("billing_scheme"),
         "metadata": price.get("metadata") or {},
-        "recurring": {
-            "interval": recurring.get("interval"),
-            "interval_count": recurring.get("interval_count"),
-            "usage_type": recurring.get("usage_type"),
-            "aggregate_usage": recurring.get("aggregate_usage"),
-            "trial_period_days": recurring.get("trial_period_days"),
-            "meter": recurring.get("meter"),
-        }
-        if recurring
-        else None,
+        "recurring": recurring_data,
     }
 
 
