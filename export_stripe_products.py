@@ -44,18 +44,25 @@ def _serialize_price(price):
 def main():
     api_key = os.getenv("STRIPE_API_KEY")
     if not api_key:
-        raise SystemExit("Missing STRIPE_API_KEY environment variable.")
+        raise SystemExit(
+            "Missing STRIPE_API_KEY environment variable. "
+            "Please set it with your Stripe API key."
+        )
 
     stripe.api_key = api_key
     output_path = Path(__file__).resolve().parent / "products.json"
+    prices_by_product_id = {}
+    for price in stripe.Price.list(limit=100).auto_paging_iter():
+        product_id = price.get("product")
+        if isinstance(product_id, dict):
+            product_id = product_id.get("id")
+        if not product_id:
+            continue
+        prices_by_product_id.setdefault(product_id, []).append(_serialize_price(price))
+
     exported_products = []
 
     for product in stripe.Product.list(limit=100).auto_paging_iter():
-        prices = [
-            _serialize_price(price)
-            for price in stripe.Price.list(product=product["id"], limit=100).auto_paging_iter()
-        ]
-
         exported_products.append(
             {
                 "id": product.get("id"),
@@ -64,7 +71,7 @@ def main():
                 "active": product.get("active"),
                 "default_price_id": _default_price_id(product.get("default_price")),
                 "metadata": product.get("metadata") or {},
-                "prices": prices,
+                "prices": prices_by_product_id.get(product.get("id"), []),
             }
         )
 
