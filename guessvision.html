@@ -1,79 +1,60 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GuessVision — Codex Labs</title><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"><style>
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#e0e0e0;line-height:1.6}
-a{color:inherit;text-decoration:none}.n{position:fixed;top:0;width:100%;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);z-index:100;border-bottom:1px solid rgba(255,255,255,.06)}
-.nl{color:#fd79a8;font-weight:600;font-size:.9rem}.nb{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#fd79a8,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nc{padding:8px 20px;background:linear-gradient(135deg,#fd79a8,#e84393);border-radius:20px;font-weight:600;font-size:.85rem;color:#fff}
-.h{padding:140px 32px 80px;text-align:center;max-width:800px;margin:0 auto}.hb{display:inline-block;padding:6px 16px;background:rgba(253,121,168,.12);border:1px solid rgba(253,121,168,.3);border-radius:20px;font-size:.8rem;color:#fd79a8;font-weight:600;margin-bottom:24px}
-.ht{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:800;background:linear-gradient(135deg,#fd79a8,#e84393,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:16px}
-.hs{font-size:1.15rem;color:#a0a0b0;max-width:600px;margin:0 auto 32px}
-.s{padding:60px 32px;max-width:1100px;margin:0 auto}.st{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;text-align:center;margin-bottom:8px}
-.ss{text-align:center;color:#a0a0b0;margin-bottom:40px;font-size:.95rem}
-.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.c{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:28px 24px;transition:all .3s ease}.c:hover{transform:translateY(-4px);border-color:rgba(253,121,168,.3);box-shadow:0 8px 30px rgba(253,121,168,.08)}
-.ci{font-size:2rem;margin-bottom:12px}.cn{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:8px}.cd{color:#a0a0b0;font-size:.88rem;line-height:1.5}
-.ps{padding:80px 32px;max-width:1100px;margin:0 auto}.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-.pc{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:36px 28px;text-align:center;position:relative;transition:all .3s ease}.pc:hover{transform:translateY(-4px);border-color:rgba(253,121,168,.25)}
-.pp{position:absolute;top:-12px;left:50%;transform:translateX(-50%);padding:4px 16px;background:linear-gradient(135deg,#fd79a8,#e84393);border-radius:12px;font-size:.75rem;font-weight:700;color:#fff;text-transform:uppercase}
-.pn{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:4px}.pt{color:#a0a0b0;font-size:.82rem;margin-bottom:16px}
-.pr{font-size:2.5rem;font-weight:800;background:linear-gradient(135deg,#fd79a8,#e84393);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:4px}.pm{color:#a0a0b0;font-size:.82rem;margin-bottom:20px}
-.pf{list-style:none;text-align:left;margin-bottom:28px}.pf li{padding:6px 0;font-size:.85rem;color:#c0c0d0;border-bottom:1px solid rgba(255,255,255,.04)}.pf li::before{content:'✓ ';color:#fd79a8;font-weight:700}
-.pb{display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#fd79a8,#e84393);border-radius:24px;font-weight:600;font-size:.9rem;color:#fff;transition:all .3s ease}.pb:hover{transform:scale(1.05);box-shadow:0 4px 20px rgba(253,121,168,.3)}
-.f{padding:40px 32px;text-align:center;border-top:1px solid rgba(255,255,255,.06);color:#606070;font-size:.82rem;margin-top:60px}
-@media(max-width:768px){.ht{font-size:2.2rem}.g,.pg{grid-template-columns:1fr}.n{padding:12px 16px}}
-</style></head><body>
-<nav class="n"><a href="index.html" class="nl">← Home</a><span class="nb">GuessVision</span><a href="#pricing" class="nc">Start Playing</a></nav>
-<section class="h"><div class="hb">Entertainment · Viral Platform</div><h1 class="ht">GuessVision</h1><p class="hs">Viral entertainment blending commentary, coaching, and game modes into a director-driven cinematic experience.</p></section>
-<section class="s"><h2 class="st">Experience Modes</h2><p class="ss">Four ways to play. One universe of entertainment.</p><div class="g">
-<div class="c"><div class="ci">🎬</div><h3 class="cn">Director Mode</h3><p class="cd">Cinematic game experiences driven by AI narration and real-time drama. You set the scene — the engine brings it to life.</p></div>
-<div class="c"><div class="ci">🎙️</div><h3 class="cn">Live Commentary</h3><p class="cd">AI-powered play-by-play that reacts to every moment. Dynamic tone-shifting from hype to analysis to comedy.</p></div>
-<div class="c"><div class="ci">🏆</div><h3 class="cn">League Play</h3><p class="cd">Structured seasons with rankings, rituals, and progression. Compete in themed leagues with friends or the world.</p></div>
-<div class="c"><div class="ci">🎯</div><h3 class="cn">Prediction Engine</h3><p class="cd">Real-time scoring on calls, reads, and strategic instincts. Your accuracy builds your reputation and rank.</p></div>
-</div></section>
-<section class="ps" id="pricing"><h2 class="st">Choose Your Role</h2><p class="ss">From spectator to showrunner — pick your level.</p><div class="pg">
-<div class="pc"><h3 class="pn">Viewer</h3><p class="pt">Watch & React</p><p class="pr">Free</p><p class="pm">forever</p><ul class="pf"><li>Watch live sessions</li><li>Basic predictions</li><li>Community chat</li><li>Weekly highlights</li></ul><a href="mailto:kippkppwggns@aol.com?subject=GuessVision%20Viewer%20Access" class="pb">Get Access</a></div>
-<div class="pc"><span class="pp">Popular</span><h3 class="pn">Player</h3><p class="pt">Compete & Climb</p><p class="pr">$9</p><p class="pm">per month</p><ul class="pf"><li>Full game modes</li><li>Coaching insights</li><li>League access</li><li>Custom avatars</li><li>Replay library</li><li>Season rewards</li></ul><a href="mailto:kippkppwggns@aol.com?subject=GuessVision%20Player%20Plan" class="pb">Join Now</a></div>
-<div class="pc"><h3 class="pn">Director</h3><p class="pt">Create & Monetize</p><p class="pr">$29</p><p class="pm">per month</p><ul class="pf"><li>Everything in Player</li><li>Create experiences</li><li>Custom commentary AI</li><li>Analytics dashboard</li><li>Monetization tools</li><li>API access</li></ul><a href="mailto:kippkppwggns@aol.com?subject=GuessVision%20Director%20Plan" class="pb">Start Directing</a></div>
-</div></section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GuessVision | Codex Labs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/main.css" />
+</head>
+<body>
+  <nav class="site-nav" aria-label="Primary">
+    <div class="site-nav__inner">
+      <a class="brand" href="index.html">Codex Labs</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="deersafe.html">DeerSafe</a></li>
+        <li><a href="guessvision.html" aria-current="page">GuessVision</a></li>
+        <li><a href="founders-manual.html">Founder’s Manual</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<div style="text-align:center; margin:1.5rem 0 1rem;">
-  <a href="https://pay.codexlitigation.org/b/14AfZh2WjgiF20Mfwkfbv3Q"
-     target="_blank"
-     style="
-       display:inline-block;
-       padding:14px 26px;
-       background:#6c4bff;
-       color:#ffffff;
-       font-size:16px;
-       font-weight:600;
-       border-radius:10px;
-       text-decoration:none;
-       font-family:Inter, sans-serif;
-       box-shadow:0 3px 10px rgba(108,75,255,0.28);
-       transition:all 0.22s ease;
-     "
-     onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 16px rgba(108,75,255,0.45)';"
-     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 10px rgba(108,75,255,0.28)';"
-  >
-    Get Access — $29/mo
-  </a>
-</div>
+  <main class="page">
+    <section class="hero">
+      <span class="kicker">Entertainment Applications</span>
+      <h1>GuessVision runs on the same foundational layer as our infrastructure products.</h1>
+      <p class="lead">GuessVision demonstrates how consumer experiences can use Codex Labs routing, pricing, and decision infrastructure while staying lightweight for users.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="products.html">See Live Plans</a>
+        <a class="btn btn-secondary" href="founders-manual.html">Learn the Build Pattern</a>
+      </div>
+    </section>
 
-</section>
+    <section class="section">
+      <h2>Platform-aligned capabilities</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>Tiered Access</h3>
+          <p>Codex Free, Starter, Professional, and Business plans provide straightforward user progression.</p>
+        </article>
+        <article class="card">
+          <h3>Billing Reliability</h3>
+          <p>Checkout-backed subscriptions and one-time purchases are integrated through one unified products catalog.</p>
+        </article>
+        <article class="card">
+          <h3>Operational Consistency</h3>
+          <p>Shared infrastructure enables common governance, reporting, and product delivery standards across app lines.</p>
+        </article>
+      </div>
+    </section>
+  </main>
 
-<div style="text-align:center; margin:1.5rem 0 1rem;">
-</div>
-
-<footer style="text-align:center; margin-top:1rem;">
-  <div class="g" style="font-size:1rem">⬡ Codex Labs</div>
-  <p>© 2026 Codex Labs · Lakeville, CT</p>
-  <p style="margin-top:.3rem">
-    <a href="index.html" style="color:#00cec9">Back to Home</a>
-  </p>
-</footer>
-
-</body>
-</html>
-
-  
+  <footer class="footer">
+    © 2026 Codex Labs · GuessVision
+  </footer>
 </body>
 </html>
