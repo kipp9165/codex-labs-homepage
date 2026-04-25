@@ -1,79 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Products — Codex Labs</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex Labs Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="guessvision.html">GuessVision</a>
-      <a href="deersafe.html">DeerSafe</a>
-      <a href="codex-mikey.html">Codex Mikey</a>
-    </nav>
-  </header>
-
-  <main class="page">
-    <section class="hero">
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html" class="active">Products</a>
+    <a href="guessvision.html">GuessVision</a>
+    <a href="deersafe.html">DeerSafe</a>
+    <a href="codex-mikey.html">Codex Mikey</a>
+    <a href="founders-manual.html">Founder's Manual</a>
+  </nav>
+  <div class="shell">
+    <header>
       <h1>Codex Labs Products</h1>
-      <p>Real, Stripe-backed products and toolkits from the Codex Labs stack.</p>
-    </section>
+      <p style="margin-top:12px; margin-bottom:32px; color:var(--muted); font-size:1.2em;">All the latest products, toolkits, and entertainment modules in the Codex Labs modular stack.</p>
+    </header>
 
-    <section class="products-grid">
-      <h2>Governance Substrate</h2>
-      <div class="cards">
-        <article class="card">
+    <section style="margin-bottom:48px;">
+      <h2 style="text-align:center;margin-bottom:24px;font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;">Governance Substrate</h2>
+      <div class="grid" style="gap:32px;">
+        <div class="card" style="text-align:center;">
           <h3>Codex Free</h3>
-          <p>Entry tier governance substrate for exploration and onboarding.</p>
-          <p class="price">$0</p>
-          <a class="button" href="https://pay.codexlitigation.org/b/7sY9AT68v3vTbBm3NCfbv3L">Get Access</a>
-        </article>
-        <article class="card">
+          <p>$0/mo</p>
+          <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/7sY9AT68v3vTbBm3NCfbv3L">Get Started</a>
+        </div>
+        <div class="card" style="text-align:center;">
           <h3>Codex Starter</h3>
-          <p>Core substrate for individuals and small teams.</p>
-          <p class="price">$9/mo</p>
-          <a class="button" href="https://pay.codexlitigation.org/b/8x29AT68v0jHgVG4RGfbv3E">Subscribe</a>
-        </article>
-        <article class="card">
+          <p>$9/mo</p>
+          <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/8x29AT68v0jHgVG4RGfbv3E">Buy Now</a>
+        </div>
+        <div class="card" style="text-align:center;">
           <h3>Codex Professional</h3>
-          <p>Advanced governance substrate for operators and builders.</p>
-          <p class="price">$14/mo</p>
-          <a class="button" href="https://pay.codexlitigation.org/b/4gM9AT0Ob3vT7l6ck8fbv3F">Subscribe</a>
-        </article>
-        <article class="card">
+          <p>$14/mo</p>
+          <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/4gM9AT0Ob3vT7l6ck8fbv3F">Buy Now</a>
+        </div>
+        <div class="card" style="text-align:center;">
           <h3>Codex Business</h3>
-          <p>Full suite for organizations and enterprises.</p>
-          <p class="price">$29/mo</p>
-          <a class="button" href="https://pay.codexlitigation.org/b/9B68wPaoL0jHbBm3NCfbv3G">Subscribe</a>
-        </article>
+          <p>$29/mo</p>
+          <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/9B68wPaoL0jHbBm3NCfbv3G">Buy Now</a>
+        </div>
       </div>
     </section>
 
-    <section class="products-grid">
-      <h2>Toolkits</h2>
-      <div class="cards">
-        <article class="card">
+    <section style="margin-bottom:48px;">
+      <h2 style="font-family:'Playfair Display',serif;"><span>Toolkits</span></h2>
+      <div class="grid" style="gap:32px;">
+        <div class="card" style="text-align:center;">
           <h3>Codex Litigation Toolkit</h3>
-          <p>One-time activation of litigation-grade sovereign infrastructure for pro se litigants.</p>
-          <p class="price">One-time</p>
-          <a class="button disabled">Available via Codex Labs</a>
-        </article>
-        <article class="card">
+          <p>For legal AI, discovery and post-litigation research.</p>
+          <a class="button disabled" tabindex="-1">Available via Codex Labs</a>
+        </div>
+        <div class="card" style="text-align:center;">
           <h3>Codex Buyer Flow Toolkit</h3>
-          <p>Stripe → Bitly → Dropbox automated buyer flow and instant delivery.</p>
-          <p class="price">One-time</p>
-          <a class="button disabled">Available via Codex Labs</a>
-        </article>
+          <p>Transaction/review suite for digital goods and marketplaces.</p>
+          <a class="button disabled" tabindex="-1">Available via Codex Labs</a>
+        </div>
       </div>
     </section>
-  </main>
 
-  <footer class="site-footer">
-    <p>Codex Labs · Governance, tooling, and infrastructure.</p>
-  </footer>
+    <section style="margin-bottom:48px;">
+      <h2 style="font-family:'Playfair Display',serif;margin-bottom:18px;">Applied Products</h2>
+      <div class="grid" style="gap:32px;">
+        <div class="card" style="text-align:center;">
+          <h3>DeerSafe — Dash / Pro / Fleet</h3>
+          <p>AI‑powered wildlife detection and safety alerts for drivers.</p>
+          <a class="button disabled" tabindex="-1">Available via Codex Labs</a>
+        </div>
+        <div class="card" style="text-align:center;">
+          <h3>GuessVision — Viewer / Player / Director</h3>
+          <p>Viral prediction, coaching, and entertainment platform.</p>
+          <a class="button disabled" tabindex="-1">Available via Codex Labs</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © 2026 Codex Labs — Built in Connecticut
+    </footer>
+  </div>
 </body>
 </html>
