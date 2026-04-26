@@ -9,121 +9,161 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Inter',system-ui,sans-serif;background:#0a0a0f;color:#f0f0f5;line-height:1.7;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
-.g{font-family:'Playfair Display',serif;font-weight:700;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:1.7rem}
+.g{font-family:'Playfair Display',serif;font-weight:700;background:linear-gradient(135deg,#6c5ce7,#00cec9,#fd79a8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent}
 .b{padding:.7rem 1.6rem;border-radius:10px;font-size:.9rem;font-weight:600;color:#fff;background:#6c5ce7;display:inline-flex;align-items:center;gap:.5rem;transition:all .3s;border:none;cursor:pointer}
 .b:hover{box-shadow:0 4px 30px rgba(108,92,231,.3);transform:translateY(-2px)}
 .o{background:0 0;border:1px solid rgba(255,255,255,.12);color:#f0f0f5}
 .o:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);box-shadow:none;transform:none}
-section{position:relative;padding:5rem 2rem;max-width:1100px;margin:0 auto}
-.he{min-height:90vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-top:5rem}
-.ba{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;border-radius:100px;background:rgba(108,92,231,.12);border:1px solid rgba(108,92,231,.2);font-size:.75rem;font-weight:500;color:#6c5ce7;margin-bottom:1.5rem;text-transform:uppercase;letter-spacing:.04em}
-.dt{width:6px;height:6px;border-radius:50%;background:#00cec9;animation:p 2s infinite}
-@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
-h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
-.he p{font-size:1rem;color:#8888a0;max-width:540px;margin-bottom:2rem}
-.ac{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
-.sl{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:#6c5ce7;margin-bottom:.8rem}
-.st{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;margin-bottom:.8rem}
-.sd{color:#8888a0;max-width:560px;margin-bottom:2rem;font-size:.92rem}
-.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.5rem}
-.fc{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.6rem;transition:all .4s;position:relative;overflow:hidden}
-.fc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(135deg,#6c5ce7,#00cec9);opacity:0;transition:opacity .4s}
-.fc:hover{background:#1a1a28;border-color:rgba(108,92,231,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.fc:hover::before{opacity:1}
-.fi{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:.7rem;background:rgba(108,92,231,.15)}
-.fc h3{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.3rem}
-.fc p{color:#8888a0;font-size:.83rem}
-.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-top:2rem}
-.pr{background:#12121a;border:1px solid rgba(255,255,255,.06);border-radius:16px;padding:1.8rem;text-align:center;transition:all .4s;position:relative}
-.pp{border-color:rgba(108,92,231,.3);box-shadow:0 0 40px rgba(108,92,231,.1)}
-.pp::after{content:'POPULAR';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#6c5ce7;color:#fff;font-size:.6rem;font-weight:700;padding:.2rem .7rem;border-radius:100px;letter-spacing:.06em}
-.pr:hover{transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
-.pr h3{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:.3rem}
-.pc{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:700;margin:.5rem 0 .2rem}
-.pc span{font-size:.8rem;font-weight:400;color:#8888a0}
-.pn{color:#8888a0;font-size:.78rem;margin-bottom:1rem}
-.pr ul{list-style:none;text-align:left;margin-bottom:1rem}
-.pr li{font-size:.8rem;color:#8888a0;padding:.25rem 0 .25rem 1.2rem;position:relative}
-.pr li::before{content:'\2192';position:absolute;left:0;color:#00cec9;font-weight:600}
-.pr .b{width:100%;justify-content:center}
-.cs{text-align:center;padding:3.5rem 2rem;background:linear-gradient(135deg,rgba(108,92,231,.08),rgba(0,206,201,.05));border:1px solid rgba(255,255,255,.06);border-radius:16px;margin:2rem auto;max-width:750px}
-.cs h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.7rem}
-.cs p{color:#8888a0;margin-bottom:1.5rem;max-width:450px;margin-left:auto;margin-right:auto;font-size:.9rem}
-footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.78rem}
-@media(max-width:768px){section{padding:3rem 1.2rem}.fg,.pg{grid-template-columns:1fr}}
+.product-hero {text-align:center; padding:5.5rem 2rem 3rem 2rem; max-width:900px; margin:0 auto;}
+.product-hero h1 {font-family:'Playfair Display',serif;font-size:clamp(2.7rem,5vw,4rem);font-weight:700;letter-spacing:-1px;margin-bottom:.7rem;}
+.product-hero .tagline {font-size:1.2rem; font-weight:600; color:#7b5cff; margin-bottom:.7rem;}
+.product-hero .subtagline {font-size:1.02rem; color:#bcbcec; max-width:700px; margin:0 auto 2rem; line-height:1.65;}
+.product-hero .button {margin-top:1.7rem;}
+.section {padding:2.8rem 2rem;max-width:900px;margin:0 auto;}
+.section h2 {font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;margin-bottom:.8rem;color:#f0f0f5;}
+.section p {font-size:1.02rem; color:#c0c0d0; margin-bottom:.9rem; line-height:1.64;}
+.feature-list {list-style:disc inside;color:#e0e0f5;margin-bottom:.3rem;padding-left:1em;}
+.feature-list li {margin-bottom:.3rem;font-size:1.01rem;}
+.grid-2 {display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.7rem 2.5rem;margin-top:1.7rem;}
+.grid-2 h3 {font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:600;margin-bottom:.3rem;color:#7b5cff;}
+.steps {list-style-type:decimal;margin-left:1.4em;margin-bottom:.8rem;font-size:1.01rem;}
+.steps li {margin-bottom:.44rem;}
+.pricing-section {padding-top:3.5rem;}
+.pricing-grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2.2rem;max-width:720px;margin:2.2rem auto 0 auto;}
+.pricing-card {background:#191a2a;border:1px solid #23243a;border-radius:13px;padding:2.1rem 1.1rem;text-align:center;box-shadow:0 2px 24px rgba(123,92,255,0.04);}
+.pricing-card h3 {margin-bottom:.45rem;font-size:1rem;font-family:'Playfair Display',serif;font-weight:700;color:#fff;}
+.pricing-card p {margin-bottom:.8rem;font-size:1.1rem;font-weight:600;color:#a09af0;}
+.pricing-card .button {margin-top:.1rem;}
+.cta {text-align:center;padding:3.8rem 2rem;}
+.cta h2 {font-family:'Playfair Display',serif;font-size:1.30rem;font-weight:700;margin-bottom:.5rem;}
+.cta p {font-size:1.08rem; color:#c0c0d0; margin-bottom:1.2rem;}
+.cta .button {margin-top:.7rem;}
+@media(max-width:768px){.product-hero{padding-top:3.2rem}.section{padding:1.4rem 1rem}.pricing-grid,.grid-2{grid-template-columns:1fr}.pricing-section{padding-top:1.7rem}}
+footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.78rem;margin-top:1.5rem}
 </style></head>
 <body>
-<nav><div style="display:flex;align-items:center;gap:1.5rem"><a href="index.html" class="g" style="font-size:1.2rem">&#x2B21; Codex Labs</a><a href="index.html" style="font-size:.82rem;color:#8888a0">&#x2190; Home</a></div><a href="#pricing" class="b" style="padding:.5rem 1.1rem;font-size:.82rem">View Pricing</a></nav>
-<section class="he">
-<div class="ba"><span class="dt"></span> Lead Product &middot; SaaS MVP</div>
-<h1><span class="g">Invention Radar</span></h1>
-<p style="font-size:1.15rem;color:#f0f0f5;margin-bottom:.4rem;font-family:'Playfair Display',serif">Real-time invention detection and IP capture.</p>
-<p>Monitor innovation patterns across domains. Surface novel architectures before anyone else. Protect IP the moment it emerges.</p>
-<div class="ac"><a href="#pricing" class="b">&#x1F680; Get Started &#x2192;</a><a href="#ft" class="b o">See Features</a></div>
-</section>
-<section id="ft">
-<div class="sl">Capabilities</div>
-<h2 class="st">Detect. Capture. Protect.</h2>
-<p class="sd">Scans innovation landscapes in real time and delivers actionable intelligence on emerging IP opportunities.</p>
-<div class="fg">
-<div class="fc"><div class="fi">&#x1F50D;</div><h3>Pattern Scanning</h3><p>Automated detection across patent filings, research papers, and technical domains. Continuous monitoring, zero manual effort.</p></div>
-<div class="fc"><div class="fi" style="background:rgba(0,206,201,.15)">&#x1F9E0;</div><h3>Novelty Scoring</h3><p>AI-powered scoring rates each discovery for originality, market potential, and IP viability.</p></div>
-<div class="fc"><div class="fi" style="background:rgba(253,121,168,.15)">&#x1F512;</div><h3>IP Capture Logs</h3><p>Timestamped, immutable records of every detection. Defensible documentation from day one.</p></div>
-<div class="fc"><div class="fi" style="background:rgba(255,193,7,.15)">&#x1F4CA;</div><h3>Trend Intelligence</h3><p>Visualize invention velocity across industries. Spot convergence patterns ahead of the curve.</p></div>
-</div></section>
-<section id="pricing">
-<div class="sl">Pricing</div>
-<h2 class="st">Choose your radar range.</h2>
-<p class="sd">Start small, scale as your portfolio grows. All plans include core detection.</p>
-<div class="pg">
-<div class="pr">
-<h3>Scout</h3>
-<div class="pc">$29<span>/mo</span></div>
-<div class="pn">Individual inventors</div>
-<ul><li>3 monitored domains</li><li>Weekly scan reports</li><li>Basic novelty scoring</li><li>IP log (50 entries)</li><li>Email alerts</li></ul>
-<a href="mailto:kippkppwggns@aol.com?subject=Invention%20Radar%20Scout&body=I'd%20like%20the%20Scout%20plan." class="b o">Start Scout</a>
-</div>
-<div class="pr pp">
-<h3>Pro</h3>
-<div class="pc g">$79<span style="background:none;-webkit-text-fill-color:#8888a0">/mo</span></div>
-<div class="pn">Teams &amp; serious innovators</div>
-<ul><li>Unlimited domains</li><li>Real-time scanning</li><li>Advanced novelty + market scoring</li><li>Unlimited IP logs</li><li>Trend dashboard</li><li>API access</li></ul>
-<a href="mailto:kippkppwggns@aol.com?subject=Invention%20Radar%20Pro&body=I'd%20like%20the%20Pro%20plan." class="b">&#x1F680; Start Pro</a>
-</div>
-<div class="pr">
-<h3>Enterprise</h3>
-<div class="pc">$199<span>/mo</span></div>
-<div class="pn">IP-intensive organizations</div>
-<ul><li>Everything in Pro</li><li>Multi-team workspaces</li><li>Custom detection models</li><li>Priority patent alerts</li><li>Account manager</li><li>Custom integrations</li></ul>
-<a href="mailto:kippkppwggns@aol.com?subject=Invention%20Radar%20Enterprise&body=I'd%20like%20Enterprise%20info." class="b o">Contact Sales</a>
-</div>
-</div></section>
-  
-<div style="text-align:center; margin:1.5rem 0 1rem;">
-  <a href="https://pay.codexlitigation.org/b/14AfZh2WjgiF20Mfwkfbv3Q"
-     target="_blank"
-     style="
-       display:inline-block;
-       padding:14px 26px;
-       background:#6c4bff;
-       color:#ffffff;
-       font-size:16px;
-       font-weight:600;
-       border-radius:10px;
-       text-decoration:none;
-       font-family:Inter, sans-serif;
-       box-shadow:0 3px 10px rgba(108,75,255,0.28);
-       transition:all 0.22s ease;
-     "
-     onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 16px rgba(108,75,255,0.45)';"
-     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 10px rgba(108,75,255,0.28)';"
-  >
-    Get Access — $29/mo
-  </a>
-</div>
+<nav><div style="display:flex;align-items:center;gap:1.5rem"><a href="index.html" class="g" style="font-size:1.2rem">&#x2B21; Codex Labs</a><a href="index.html" style="font-size:.82rem;color:#8888aa;">Home</a><a href="products.html" style="font-size:.82rem;color:#8888aa;">Products</a><a href="deersafe.html" style="font-size:.82rem;color:#8888aa;">DeerSafe</a><a href="guessvision.html" style="font-size:.82rem;color:#8888aa;">GuessVision</a><a href="codex-mikey.html" style="font-size:.82rem;color:#8888aa;">Mikey Copilot</a><a href="founders-manual.html" style="font-size:.82rem;color:#8888aa;">Founder's Manual</a></div></nav>
 
-<footer style="text-align:center; margin-top:1rem;">
+<!-- LAUNCH EDITION MAIN CONTENT -->
+<section class="product-hero">
+  <h1>Invention Radar</h1>
+  <p class="tagline">AI‑Powered Novelty Detection for the Invention Age</p>
+  <p class="subtagline">
+    See what exists. See what’s emerging. See what’s possible.
+    Turn any idea into a full novelty scan, similarity map, risk profile, and opportunity breakdown — in seconds.
+  </p>
+  <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/14A6oHdAX5E134Q5VKfbv3T">Start with Codex Access — $29/mo</a>
+</section>
+
+<section class="section">
+  <h2>What Invention Radar Does</h2>
+  <p>
+    A complete intelligence instrument for founders, creators, and operators. Invention Radar analyzes your idea against the global landscape of patents, research, products, markets, and emerging signals — then returns a structured, founder‑grade report.
+  </p>
+  <ul class="feature-list">
+    <li>Novelty score</li>
+    <li>Similarity clusters</li>
+    <li>Market adjacency</li>
+    <li>Risk profile</li>
+    <li>Opportunity map</li>
+    <li>Suggested pivots</li>
+    <li>Strategic positioning</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Who It’s For</h2>
+  <div class="grid-2">
+    <div>
+      <h3>Founders</h3>
+      <p>Validate ideas before you build. Find whitespace. Avoid dead ends.</p>
+    </div>
+    <div>
+      <h3>Creators</h3>
+      <p>Test concepts, formats, and entertainment ideas. See what’s been done — and what hasn’t.</p>
+    </div>
+    <div>
+      <h3>Operators</h3>
+      <p>Scan internal proposals. Evaluate initiatives. Support decisions with real intelligence.</p>
+    </div>
+    <div>
+      <h3>Researchers</h3>
+      <p>Map the frontier. Track emerging patterns. Understand the invention landscape.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2>How It Works</h2>
+  <ol class="steps">
+    <li><strong>Submit an idea</strong> — a sentence, paragraph, or full concept.</li>
+    <li><strong>Radar scans the landscape</strong> — patents, research, products, markets, and signals.</li>
+    <li><strong>Receive a structured report</strong> — novelty, similarity, risk, opportunity, and strategy.</li>
+    <li><strong>Iterate with Codex Mikey Copilot</strong> — refine, pivot, or expand your idea.</li>
+  </ol>
+</section>
+
+<section class="section">
+  <h2>Why It Matters</h2>
+  <p>
+    Innovation is no longer about guessing — it’s about seeing. Invention Radar gives you clarity, confidence, direction, and strategic advantage. It turns the invention process from chaos into ceremony.
+  </p>
+</section>
+
+<section class="section">
+  <h2>Features</h2>
+  <ul class="feature-list">
+    <li>Novelty scoring</li>
+    <li>Similarity clustering</li>
+    <li>Opportunity mapping</li>
+    <li>Risk analysis</li>
+    <li>Market adjacency</li>
+    <li>Strategic pivots</li>
+    <li>Procedural briefs</li>
+    <li>Exportable reports</li>
+    <li>Integration with Codex Mikey Copilot</li>
+  </ul>
+</section>
+
+<section class="section pricing-section">
+  <h2>Pricing</h2>
+  <p>Invention Radar is part of the Codex Labs Access Pass — your unified subscription to the entire Codex Labs ecosystem.</p>
+
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <h3>Codex Access</h3>
+      <p>$29/mo</p>
+      <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/14A6oHdAX5E134Q5VKfbv3T">Start Access</a>
+    </div>
+
+    <div class="pricing-card">
+      <h3>Codex Access Team</h3>
+      <p>$79/mo</p>
+      <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/28E6oH2Wj4zXdJu1Fufbv3U">Start Team</a>
+    </div>
+
+    <div class="pricing-card">
+      <h3>Codex Access Team Annual</h3>
+      <p>$799/yr</p>
+      <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/5kQ14n9kH1nL0WIac0fbv3V">Start Annual</a>
+    </div>
+
+    <div class="pricing-card">
+      <h3>Codex Access Enterprise</h3>
+      <p>$2,499/yr</p>
+      <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/cNifZh40nc2peNy4RGfbv3W">Start Enterprise</a>
+    </div>
+  </div>
+</section>
+
+<section class="section cta">
+  <h2>Start Scanning Your Ideas Today</h2>
+  <p>Turn uncertainty into intelligence. Turn ideas into opportunities.</p>
+  <a class="button" target="_blank" href="https://pay.codexlitigation.org/b/14A6oHdAX5E134Q5VKfbv3T">Start with Codex Access — $29/mo</a>
+</section>
+
+<footer>
   <div class="g" style="font-size:1rem">⬡ Codex Labs</div>
   <p>© 2026 Codex Labs · Lakeville, CT</p>
   <p style="margin-top:.3rem">
