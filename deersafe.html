@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>DeerSafe — Codex Labs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#e0e0e0;line-height:1.6}
+    a{color:inherit;text-decoration:none}
+    .n{position:fixed;top:0;width:100%;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);z-index:100;border-bottom:1px solid rgba(255,255,255,.06)}
+    .nl{color:#7b5cff;font-weight:600;font-size:.9rem}
+    .nb{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#7b5cff,#00cec9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent}
+    .nc{padding:8px 20px;background:linear-gradient(135deg,#7b5cff,#00cec9);border-radius:20px;font-weight:600;font-size:.85rem;color:#fff}
+    .product-hero{text-align:center;padding:5.5rem 2rem 3rem 2rem;max-width:900px;margin:0 auto}
+    .product-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.7rem,5vw,4rem);font-weight:700;letter-spacing:-1px;margin-bottom:.7rem}
+    .product-hero .tagline{font-size:1.2rem;font-weight:600;color:#7b5cff;margin-bottom:.7rem}
+    .product-hero .subtagline{font-size:1.02rem;color:#99fcec;max-width:700px;margin:0 auto 2rem;line-height:1.65}
+    .section{padding:2.8rem 2rem;max-width:900px;margin:0 auto}
+    .section h2{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;margin-bottom:.8rem;color:#fff}
+    .section p{font-size:1.02rem;color:#e0fce0;margin-bottom:.9rem;line-height:1.64}
+    .feature-list{list-style:disc inside;color:#c9f3f9;margin-bottom:.3rem;padding-left:1em;}
+    .feature-list li{margin-bottom:.3rem;font-size:1.01rem}
+    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.7rem 2.5rem;margin-top:1.7rem}
+    .grid-2 h3{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:600;margin-bottom:.3rem;color:#7b5cff}
+    .steps{list-style-type:decimal;margin-left:1.4em;margin-bottom:.8rem;font-size:1.01rem}
+    .steps li{margin-bottom:.44rem}
+    .cta{text-align:center;padding:3.8rem 2rem;}
+    .cta h2{font-family:'Playfair Display',serif;font-size:1.30rem;font-weight:700;margin-bottom:.5rem;}
+    .cta p{font-size:1.08rem; color:#7b5cff;margin-bottom:1.2rem;}
+    .cta .button{margin-top:.7rem;}
+    .button{display:inline-block;padding:13px 33px;background:linear-gradient(135deg,#7b5cff,#00cec9);color:#fff;font-weight:600;font-size:1.08rem;border:none;border-radius:24px;text-decoration:none;transition:all .3s}
+    .button:hover{filter:brightness(1.04);box-shadow:0 6px 24px rgba(123,92,255,.12)}
+    @media(max-width:768px){.product-hero{padding-top:3.2rem}.section{padding:1.4rem 1rem}.grid-2{grid-template-columns:1fr}.cta{padding:2.2rem 1rem;}}
+    footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);color:#55556a;font-size:.82rem;margin-top:1.5rem}
+  </style>
+</head>
+<body>
+  <nav class="n"><a href="index.html" class="nl">← Home</a><span class="nb">DeerSafe</span><a href="#" class="nc" style="pointer-events:none;opacity:.7">Start Now</a></nav>
+
+  <!-- LAUNCH EDITION MAIN CONTENT -->
+  <section class="product-hero">
+    <h1>DeerSafe</h1>
+    <p class="tagline">AI‑Powered Wildlife Detection & Risk Intelligence</p>
+    <p class="subtagline">
+      Real-time anomaly detection for drivers, operators, and safety systems.  
+      Built for clarity, speed, and sovereign control.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>What DeerSafe Does</h2>
+    <p>
+      DeerSafe is a visual intelligence instrument that detects wildlife, anomalies, and collision risks in real time.  
+      It is engineered for drivers, fleets, insurers, and operators who need reliable, high-speed detection.
+    </p>
+    <ul class="feature-list">
+      <li>Real-time wildlife detection</li>
+      <li>Collision-risk scoring</li>
+      <li>Anomaly classification</li>
+      <li>Heatmap and event exports</li>
+      <li>Telemetry overlays</li>
+      <li>Operator-grade performance</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>Who It’s For</h2>
+    <div class="grid-2">
+      <div>
+        <h3>Drivers</h3>
+        <p>Detect wildlife and hazards before they become collisions.</p>
+      </div>
+      <div>
+        <h3>Fleets</h3>
+        <p>Reduce incidents, improve safety, and protect vehicles at scale.</p>
+      </div>
+      <div>
+        <h3>Insurers</h3>
+        <p>Analyze wildlife risk, validate events, and reduce claims.</p>
+      </div>
+      <div>
+        <h3>Researchers</h3>
+        <p>Study wildlife patterns and environmental signals with precision.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>How It Works</h2>
+    <ol class="steps">
+      <li><strong>Capture video or images</strong> — from dashcams or mobile devices.</li>
+      <li><strong>DeerSafe analyzes the feed</strong> — detecting wildlife, anomalies, and risk.</li>
+      <li><strong>Receive structured outputs</strong> — events, heatmaps, summaries, and telemetry.</li>
+      <li><strong>Export or integrate</strong> — for fleets, insurers, or research workflows.</li>
+    </ol>
+  </section>
+
+  <section class="section">
+    <h2>Why It Matters</h2>
+    <p>
+      Wildlife collisions cost billions annually.  
+      DeerSafe provides early detection, risk intelligence, and operator-grade clarity — reducing incidents and improving safety outcomes.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Features</h2>
+    <ul class="feature-list">
+      <li>Wildlife detection</li>
+      <li>Risk scoring</li>
+      <li>Heatmap exports</li>
+      <li>Event summaries</li>
+      <li>Telemetry overlays</li>
+      <li>Enterprise scroll integrations</li>
+      <li>Metered billing support</li>
+      <li>Operator dashboards</li>
+    </ul>
+  </section>
+
+  <section class="section cta">
+    <h2>DeerSafe is Evolving</h2>
+    <p>
+      DeerSafe is part of the Codex Labs ecosystem and will be available through  
+      both consumer and operator-grade surfaces.
+    </p>
+    <a class="button" href="products.html">Explore All Products</a>
+  </section>
+  <footer>
+    <div class="g" style="font-size:1rem">⬡ Codex Labs</div>
+    <p>© 2026 Codex Labs · Lakeville, CT</p>
+    <p style="margin-top:.3rem">
+      <a href="index.html" style="color:#00cec9">Back to Home</a>
+    </p>
+  </footer>
+</body>
+</html>
