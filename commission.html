@@ -71,6 +71,8 @@
       <p>Fill out the form below to begin your commission request. All fields are required unless noted.</p>
 
       <form class="commission-form" action="#" method="post">
+        <!-- NOTE: This form requires backend/Stripe integration before it can submit data.
+             Replace action="#" with your form handler or Stripe Payment Link URL when ready. -->
         <div class="form-row">
           <label for="c-name">Full Name</label>
           <input type="text" id="c-name" name="name" autocomplete="name" required>
@@ -137,9 +139,7 @@
 
         <div class="form-actions">
           <!-- Stripe payment integration placeholder: replace this button's action with Stripe Checkout link -->
-          <button type="submit"
-            style="background:#00c6fb;color:#fff;font-size:1.05rem;font-weight:600;padding:12px 30px;
-                   border:none;border-radius:6px;cursor:pointer;letter-spacing:0.04em;">
+          <button type="submit" class="commission-submit">
             Submit Intake Request
           </button>
         </div>
