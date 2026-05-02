@@ -49,6 +49,7 @@
       </ol>
 
       <h2>Commission Intake Form</h2>
+      <!-- Form action: replace "#" with your form handler endpoint (e.g. Formspree, Netlify Forms, or a backend route) before going live -->
       <form class="commission-form" action="#" method="post">
         <div class="form-row">
           <label for="cf-name">Your Name</label>
@@ -114,20 +115,8 @@
         </div>
 
         <div class="form-actions">
-          <!-- Stripe payment link placeholder — replace href with live Stripe Payment Link when ready -->
-          <button type="submit" class="codex-section" style="
-            display:inline-block;
-            background:#00c6fb;
-            color:#fff;
-            font-size:1.08rem;
-            font-weight:600;
-            padding:12px 30px;
-            border-radius:6px;
-            border:none;
-            cursor:pointer;
-            letter-spacing:0.05em;
-            font-family:inherit;
-          ">Submit Commission Request</button>
+          <!-- Stripe payment link placeholder — replace with live Stripe Payment Link when ready -->
+          <button type="submit" class="commission-submit-button">Submit Commission Request</button>
         </div>
         <p class="commission-note">
           After submission we will review your request and follow up by email.

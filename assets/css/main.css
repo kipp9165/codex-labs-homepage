@@ -321,6 +321,27 @@ footer {
   color: #4a4f5c;
 }
 
+.commission-submit-button {
+  display: inline-block;
+  background: #00c6fb;
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 12px 30px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  font-family: inherit;
+  transition: background .16s;
+}
+
+.commission-submit-button:hover,
+.commission-submit-button:focus {
+  background: #1570ff;
+  color: #fff;
+}
+
 /* Responsive adjustments */
 @media (min-width: 700px) {
   .product-grid {
