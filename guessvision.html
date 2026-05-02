@@ -2,133 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GuessVision — Codex Labs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    body{font-family:'Inter',sans-serif;background:#0a0a0f;color:#e0e0e0;line-height:1.6}
-    a{color:inherit;text-decoration:none}
-    .n{position:fixed;top:0;width:100%;padding:16px 32px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,15,.85);backdrop-filter:blur(20px);z-index:100;border-bottom:1px solid rgba(255,255,255,.06)}
-    .nl{color:#fd79a8;font-weight:600;font-size:.9rem}
-    .nb{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;background:linear-gradient(135deg,#fd79a8,#6c5ce7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent}
-    .nc{padding:8px 20px;background:linear-gradient(135deg,#fd79a8,#e84393);border-radius:20px;font-weight:600;font-size:.85rem;color:#fff}
-    .product-hero{text-align:center;padding:5.5rem 2rem 3rem 2rem;max-width:900px;margin:0 auto}
-    .product-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.7rem,5vw,4rem);font-weight:700;letter-spacing:-1px;margin-bottom:.7rem}
-    .product-hero .tagline{font-size:1.2rem;font-weight:600;color:#fd79a8;margin-bottom:.7rem}
-    .product-hero .subtagline{font-size:1.02rem;color:#fdb2d5;max-width:700px;margin:0 auto 2rem;line-height:1.65}
-    .section{padding:2.8rem 2rem;max-width:900px;margin:0 auto}
-    .section h2{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;margin-bottom:.8rem;color:#fff}
-    .section p{font-size:1.02rem;color:#e0cbe0;margin-bottom:.9rem;line-height:1.64}
-    .feature-list{list-style:disc inside;color:#e0e0f5;margin-bottom:.3rem;padding-left:1em;}
-    .feature-list li{margin-bottom:.3rem;font-size:1.01rem}
-    .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.7rem 2.5rem;margin-top:1.7rem}
-    .grid-2 h3{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:600;margin-bottom:.3rem;color:#fd79a8}
-    .steps{list-style-type:decimal;margin-left:1.4em;margin-bottom:.8rem;font-size:1.01rem}
-    .steps li{margin-bottom:.44rem}
-    .cta{text-align:center;padding:3.8rem 2rem;}
-    .cta h2{font-family:'Playfair Display',serif;font-size:1.30rem;font-weight:700;margin-bottom:.5rem;}
-    .cta p{font-size:1.08rem; color:#fdb2d5;margin-bottom:1.2rem;}
-    .cta .button{margin-top:.7rem;}
-    .button{display:inline-block;padding:13px 33px;background:linear-gradient(135deg,#fd79a8,#e84393);color:#fff;font-weight:600;font-size:1.08rem;border:none;border-radius:24px;text-decoration:none;transition:all .3s}
-    .button:hover{filter:brightness(1.04);box-shadow:0 6px 24px rgba(253,121,168,.12)}
-    @media(max-width:768px){.product-hero{padding-top:3.2rem}.section{padding:1.4rem 1rem}.grid-2{grid-template-columns:1fr}.cta{padding:2.2rem 1rem;}}
-    footer{text-align:center;padding:2rem;border-top:1px solid rgba(255,255,255,.06);color:#606070;font-size:.82rem;margin-top:1.5rem}
-  </style>
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <nav class="n"><a href="index.html" class="nl">← Home</a><span class="nb">GuessVision</span><a href="#" class="nc" style="pointer-events:none;opacity:.7">Start Playing</a></nav>
-  <!-- LAUNCH EDITION MAIN CONTENT -->
-  <section class="product-hero">
-    <h1>GuessVision</h1>
-    <p class="tagline">AI‑Powered Viral Prediction & Entertainment Intelligence</p>
-    <p class="subtagline">
-      Guess the future of culture. Predict what goes viral.  
-      A real-time entertainment intelligence instrument for creators, analysts, and operators.
-    </p>
-  </section>
-
-  <section class="section">
-    <h2>What GuessVision Does</h2>
-    <p>
-      GuessVision analyzes cultural signals, formats, trends, and audience behavior to forecast what will resonate — and why.  
-      It transforms entertainment intuition into measurable intelligence.
-    </p>
-    <ul class="feature-list">
-      <li>Viral prediction scoring</li>
-      <li>Format analysis</li>
-      <li>Audience resonance mapping</li>
-      <li>Trend trajectory modeling</li>
-      <li>Content opportunity detection</li>
-      <li>Competitive signal comparison</li>
-    </ul>
-  </section>
-
-  <section class="section">
-    <h2>Who It’s For</h2>
-    <div class="grid-2">
-      <div>
-        <h3>Creators</h3>
-        <p>Predict what formats will hit. Understand what audiences want next.</p>
-      </div>
-      <div>
-        <h3>Analysts</h3>
-        <p>Track cultural signals and forecast entertainment trajectories.</p>
-      </div>
-      <div>
-        <h3>Studios</h3>
-        <p>Evaluate concepts before greenlighting. Reduce risk with intelligence.</p>
-      </div>
-      <div>
-        <h3>Operators</h3>
-        <p>Use real-time cultural data to guide decisions and strategy.</p>
-      </div>
+  <nav class="vertical-nav">
+    <div class="nav-inner">
+      <span class="nav-title">Codex Labs</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="guessvision.html">GuessVision</a></li>
+        <li><a href="deersafe.html">DeerSafe</a></li>
+        <li><a href="codex-mikey.html">Codex Mikey</a></li>
+        <li><a href="founders-manual.html">Founder's Manual</a></li>
+        <li><a href="commission.html">Commission</a></li>
+      </ul>
     </div>
-  </section>
+  </nav>
 
-  <section class="section">
-    <h2>How It Works</h2>
-    <ol class="steps">
-      <li><strong>Submit a concept</strong> — a format, idea, or entertainment premise.</li>
-      <li><strong>GuessVision analyzes cultural signals</strong> — trends, formats, audience behavior.</li>
-      <li><strong>Receive a prediction report</strong> — resonance, virality, trajectory, and opportunity.</li>
-      <li><strong>Iterate with Codex Mikey Copilot</strong> — refine, reposition, or evolve the concept.</li>
-    </ol>
-  </section>
+  <div class="container">
+    <section>
+      <h1>GuessVision</h1>
+      <p>AI‑Powered Viral Prediction &amp; Entertainment Intelligence.</p>
+      <p>
+        Guess the future of culture. Predict what goes viral.
+        A real-time entertainment intelligence instrument for creators, analysts, and operators.
+      </p>
+    </section>
 
-  <section class="section">
-    <h2>Why It Matters</h2>
-    <p>
-      Entertainment is pattern recognition. GuessVision gives creators and operators the ability to see those patterns before they break out — turning intuition into intelligence.
-    </p>
-  </section>
+    <section>
+      <h2>What GuessVision Does</h2>
+      <p>
+        GuessVision analyzes cultural signals, formats, trends, and audience behavior to forecast
+        what will resonate — and why. It transforms entertainment intuition into measurable intelligence.
+      </p>
+      <ul>
+        <li>Viral prediction scoring</li>
+        <li>Format analysis</li>
+        <li>Audience resonance mapping</li>
+        <li>Trend trajectory modeling</li>
+        <li>Content opportunity detection</li>
+        <li>Competitive signal comparison</li>
+      </ul>
+    </section>
 
-  <section class="section">
-    <h2>Features</h2>
-    <ul class="feature-list">
-      <li>Viral scoring</li>
-      <li>Format clustering</li>
-      <li>Audience resonance modeling</li>
-      <li>Trend forecasting</li>
-      <li>Opportunity mapping</li>
-      <li>Competitive signal analysis</li>
-      <li>Procedural briefs</li>
-      <li>Exportable reports</li>
-      <li>Integration with Codex Mikey Copilot</li>
-    </ul>
-  </section>
+    <section>
+      <h2>Who It's For</h2>
+      <ul>
+        <li><strong>Creators</strong> — Predict what formats will hit. Understand what audiences want next.</li>
+        <li><strong>Analysts</strong> — Track cultural signals and forecast entertainment trajectories.</li>
+        <li><strong>Studios</strong> — Evaluate concepts before greenlighting. Reduce risk with intelligence.</li>
+        <li><strong>Operators</strong> — Use real-time cultural data to guide decisions and strategy.</li>
+      </ul>
+    </section>
 
-  <section class="section cta">
-    <h2>Coming Soon</h2>
-    <p>GuessVision is part of the Codex Labs ecosystem and will be available through the Codex Access Pass.</p>
-    <a class="button" href="products.html">Explore All Products</a>
-  </section>
+    <section>
+      <h2>How It Works</h2>
+      <ol>
+        <li><strong>Submit a concept</strong> — a format, idea, or entertainment premise.</li>
+        <li><strong>GuessVision analyzes cultural signals</strong> — trends, formats, audience behavior.</li>
+        <li><strong>Receive a prediction report</strong> — resonance, virality, trajectory, and opportunity.</li>
+        <li><strong>Iterate with Codex Mikey Copilot</strong> — refine, reposition, or evolve the concept.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Features</h2>
+      <ul>
+        <li>Viral scoring</li>
+        <li>Format clustering</li>
+        <li>Audience resonance modeling</li>
+        <li>Trend forecasting</li>
+        <li>Opportunity mapping</li>
+        <li>Competitive signal analysis</li>
+        <li>Procedural briefs</li>
+        <li>Exportable reports</li>
+        <li>Integration with Codex Mikey Copilot</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Coming Soon</h2>
+      <p>
+        GuessVision is part of the Codex Labs ecosystem and will be available through the Codex Access Pass.
+      </p>
+      <p><a href="products.html">Explore All Products →</a></p>
+    </section>
+  </div>
+
   <footer>
-    <div class="g" style="font-size:1rem">⬡ Codex Labs</div>
-    <p>© 2026 Codex Labs · Lakeville, CT</p>
-    <p style="margin-top:.3rem">
-      <a href="index.html" style="color:#00cec9">Back to Home</a>
-    </p>
+    <div class="footer-inner">© 2026 Codex Labs — Built in Connecticut</div>
   </footer>
 </body>
 </html>

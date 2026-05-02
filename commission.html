@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Commission — Codex Labs</title>
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <nav class="vertical-nav">
+    <div class="nav-inner">
+      <span class="nav-title">Codex Labs</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="guessvision.html">GuessVision</a></li>
+        <li><a href="deersafe.html">DeerSafe</a></li>
+        <li><a href="codex-mikey.html">Codex Mikey</a></li>
+        <li><a href="founders-manual.html">Founder's Manual</a></li>
+        <li><a href="commission.html">Commission</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container">
+    <section class="codex-section">
+      <h1>Codex Commission</h1>
+      <div class="callout">
+        Commission a sovereign instrument built specifically for your context — no templates, no shortcuts.
+      </div>
+
+      <p>
+        Codex Labs accepts a limited number of commissions each quarter. A commission is a custom-built
+        intelligence instrument — a tool, workflow, or system — designed from first principles for your
+        specific use case.
+      </p>
+
+      <h2>What You Can Commission</h2>
+      <ul>
+        <li>Custom intelligence dashboards and reporting tools</li>
+        <li>Sovereign workflow automation systems</li>
+        <li>Procedural briefs and decision frameworks</li>
+        <li>Operator-grade data pipelines and exports</li>
+        <li>Bespoke integrations with Codex Labs products</li>
+        <li>Research instruments and analysis modules</li>
+      </ul>
+
+      <h2>How It Works</h2>
+      <ol>
+        <li><strong>Submit the intake form</strong> — describe your context, goals, and constraints.</li>
+        <li><strong>We review your brief</strong> — within 3–5 business days.</li>
+        <li><strong>Scope &amp; quote</strong> — we confirm scope, timeline, and pricing.</li>
+        <li><strong>Payment &amp; build</strong> — work begins after payment is confirmed.</li>
+        <li><strong>Delivery &amp; handoff</strong> — sovereign artifact delivered with full documentation.</li>
+      </ol>
+
+      <h2>Pricing</h2>
+      <p>
+        Commission pricing is scoped per project. Most commissions fall between <strong>$500</strong>
+        and <strong>$5,000</strong> depending on complexity and timeline.
+        Enterprise and ongoing retainer arrangements are available.
+      </p>
+      <!-- Stripe payment link placeholder — replace href with live Stripe link when ready -->
+      <div class="cta">
+        <a class="cta-button" href="#intake-form">Submit Commission Intake</a>
+      </div>
+    </section>
+
+    <section class="codex-section" id="intake-form">
+      <h2>Commission Intake Form</h2>
+      <p>Fill out the form below to begin your commission request. All fields are required unless noted.</p>
+
+      <form class="commission-form" action="#" method="post">
+        <div class="form-row">
+          <label for="c-name">Full Name</label>
+          <input type="text" id="c-name" name="name" autocomplete="name" required>
+        </div>
+
+        <div class="form-row">
+          <label for="c-email">Email Address</label>
+          <input type="email" id="c-email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="form-row">
+          <label for="c-org">Organization / Company (optional)</label>
+          <input type="text" id="c-org" name="organization" autocomplete="organization">
+        </div>
+
+        <div class="form-row">
+          <label for="c-type">Commission Type</label>
+          <select id="c-type" name="commission_type" required>
+            <option value="">— Select a type —</option>
+            <option value="dashboard">Intelligence Dashboard / Reporting Tool</option>
+            <option value="workflow">Workflow Automation System</option>
+            <option value="brief">Procedural Brief / Decision Framework</option>
+            <option value="pipeline">Data Pipeline / Export Module</option>
+            <option value="integration">Codex Labs Product Integration</option>
+            <option value="research">Research Instrument / Analysis Module</option>
+            <option value="other">Other (describe below)</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="c-description">Project Description</label>
+          <textarea id="c-description" name="description" rows="6"
+            placeholder="Describe your context, goals, and what you need built." required></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="c-budget">Estimated Budget</label>
+          <select id="c-budget" name="budget" required>
+            <option value="">— Select a range —</option>
+            <option value="under500">Under $500</option>
+            <option value="500-1500">$500 – $1,500</option>
+            <option value="1500-5000">$1,500 – $5,000</option>
+            <option value="5000-plus">$5,000+</option>
+            <option value="retainer">Ongoing Retainer</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="c-timeline">Desired Timeline</label>
+          <select id="c-timeline" name="timeline" required>
+            <option value="">— Select a timeline —</option>
+            <option value="asap">As soon as possible</option>
+            <option value="2weeks">Within 2 weeks</option>
+            <option value="1month">Within 1 month</option>
+            <option value="flexible">Flexible</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label for="c-notes">Additional Notes (optional)</label>
+          <textarea id="c-notes" name="notes" rows="3"
+            placeholder="Anything else we should know — integrations, constraints, references."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <!-- Stripe payment integration placeholder: replace this button's action with Stripe Checkout link -->
+          <button type="submit"
+            style="background:#00c6fb;color:#fff;font-size:1.05rem;font-weight:600;padding:12px 30px;
+                   border:none;border-radius:6px;cursor:pointer;letter-spacing:0.04em;">
+            Submit Intake Request
+          </button>
+        </div>
+
+        <p class="commission-note">
+          Submitting this form does not guarantee a commission. We will review your request and follow up
+          by email within 3–5 business days. Payment is only collected after scope is agreed upon.
+        </p>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    <div class="footer-inner">© 2026 Codex Labs — Built in Connecticut</div>
+  </footer>
+</body>
+</html>
