@@ -1,0 +1,369 @@
+<style>
+  :root {
+    --bg: #f3f5f7;
+    --surface: #ffffff;
+    --surface-alt: #eef1f5;
+    --text: #142032;
+    --muted: #4d5d73;
+    --line: #d9e0e8;
+    --accent: #0f766e;
+    --accent-strong: #115e59;
+    --radius: 16px;
+    --shadow: 0 12px 30px rgba(18, 35, 56, 0.08);
+  }
+
+  #pricing {
+    font-family: "Space Grotesk", "Avenir Next", "Trebuchet MS", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(1100px 450px at 110% -10%, rgba(15, 118, 110, 0.16), transparent 60%),
+      radial-gradient(900px 380px at -20% 0%, rgba(17, 94, 89, 0.12), transparent 58%),
+      var(--bg);
+    padding: 64px 20px 80px;
+  }
+
+  #pricing .pricing-wrap {
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  #pricing .pricing-head {
+    margin-bottom: 30px;
+  }
+
+  #pricing h2 {
+    margin: 0 0 8px;
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    letter-spacing: 0.02em;
+  }
+
+  #pricing .pricing-sub {
+    margin: 0;
+    color: var(--muted);
+    max-width: 70ch;
+    line-height: 1.5;
+  }
+
+  #pricing .pricing-group {
+    margin-top: 34px;
+  }
+
+  #pricing .pricing-group h3 {
+    margin: 0 0 14px;
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    letter-spacing: 0.01em;
+  }
+
+  #pricing .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  #pricing .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    min-height: 220px;
+  }
+
+  #pricing .card h4 {
+    margin: 0 0 8px;
+    font-size: 1.02rem;
+    line-height: 1.35;
+  }
+
+  #pricing .card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  #pricing .price {
+    margin: 14px 0 10px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.01em;
+  }
+
+  #pricing .cta {
+    margin-top: auto;
+    text-decoration: none;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: background-color 0.2s ease;
+  }
+
+  #pricing .cta:hover,
+  #pricing .cta:focus-visible {
+    background: var(--accent-strong);
+  }
+
+  #pricing details {
+    margin-top: 10px;
+    background: var(--surface-alt);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 8px 10px;
+  }
+
+  #pricing summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  #pricing details ul {
+    margin: 8px 0 0;
+    padding-left: 18px;
+    color: var(--muted);
+  }
+
+  #pricing details li {
+    margin: 4px 0;
+    line-height: 1.35;
+  }
+
+  @media (max-width: 640px) {
+    #pricing {
+      padding: 52px 14px 64px;
+    }
+
+    #pricing .card {
+      min-height: 200px;
+      padding: 16px;
+    }
+  }
+</style>
+
+<section id="pricing">
+  <div class="pricing-wrap">
+    <header class="pricing-head">
+      <h2>Codex OS Pricing</h2>
+      <p class="pricing-sub">Scrolls, systems, rituals, protocols, vertical solutions, and bundles built for operational clarity.</p>
+    </header>
+
+    <div class="pricing-group">
+      <h3>Scrolls</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>High-Clarity Decision Protocol</h4>
+          <p>A structural method for making founder-grade decisions under pressure.</p>
+          <div class="price">$1,499.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1ZTcQrEaBFZXVsw863dV7z7hfuGvFlC5WWAhfnMKkPm4TVmFLBruBLGgg#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Strategic Command Layer</h4>
+          <p>A top-level framework for long-horizon thinking and operational alignment.</p>
+          <div class="price">$1,499.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1TpNGDZw0xC2etSvO3N7NW7JNUTpO8GzVgdpFHiqHBR9sgVJSNzenlzIM#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Operational Cohesion Scroll</h4>
+          <p>A system for maintaining structural integrity across teams and workflows.</p>
+          <div class="price">$1,499.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1xR2K455MfXeo5d7xW6m78N6SpDuKYwxu5RS5ABTcnZTso0mQJ01iBukh#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Systems Integrity Scroll</h4>
+          <p>A method for ensuring systems remain stable, predictable, and drift-resistant.</p>
+          <div class="price">$1,499.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a13cnEFLMQo2UTezcCTIGUigL5eXuSs1Na3dxX7nXimA3aSxwdB4WHG8ZX#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="pricing-group">
+      <h3>Systems</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Execution Stabilization System</h4>
+          <p>A framework for maintaining consistent operational momentum under pressure.</p>
+          <div class="price">$1,499.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1qUWtnmTMMX8fHlidAX8jCwkbnLbaqWV3ZtSbQELfOqaKjaYqu58sSF3T#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Structural Synchronization System</h4>
+          <p>A method for aligning teams, workflows, and priorities into a unified rhythm.</p>
+          <div class="price">$1,499.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1UnHaasihL4q8wS1b0guVVhbtcxiiuFgvDwtWVOl54PY5ip3VAuphK0AW#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Temporal Alignment System</h4>
+          <p>A system for coordinating short-term execution with long-horizon strategy.</p>
+          <div class="price">$1,499.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1tkZjpJxz6ZKeyve7VIzZpeoMQoEDbBRuwkG8Q40QmjD46HcrHaKur00A#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="pricing-group">
+      <h3>Rituals</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Daily Clarity Ritual</h4>
+          <p>A short, repeatable practice for establishing clarity at the start of each day.</p>
+          <div class="price">$349.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1exM6uD4XKvAMsKVNbnub7VmxbYMJPIS9lsixJWKZYTs8nDtXui4kGOXv#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Weekly Alignment Ritual</h4>
+          <p>A structured cadence for reviewing priorities, commitments, and system integrity.</p>
+          <div class="price">$349.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1Pev1L0E8Yd6peORPBQLWiteIltfPbMdQG3Zps6JhpuPRODeX9Dj23Vtj#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Monthly Strategic Reset</h4>
+          <p>A ritual for recalibrating long-horizon direction and eliminating drift.</p>
+          <div class="price">$349.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1GLQxt0PMCVgGQxJtSz6KkfuWpxDXkNGF1kPewejOGC1qqlvasW5PC83n#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="pricing-group">
+      <h3>Protocols</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Clarity Under Pressure</h4>
+          <p>Rules for maintaining clarity during high-stakes decision cycles.</p>
+          <div class="price">$349.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1JQUYZTQU2F1pYtzLSJGVCcvUXg1ta7lwxTOgM3iVNvCD3EvnhOR9nbJq#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Operational Sovereignty</h4>
+          <p>Guidelines for operating without dependency, dilution, or external drift.</p>
+          <div class="price">$349.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1JTIcisP6cnJ2qZ3pppysoirYO4SUPIbKFBGUyV2mW9hhtyaCTNczf0O0#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Structural Integrity</h4>
+          <p>Principles for ensuring systems remain stable, predictable, and aligned.</p>
+          <div class="price">$349.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1NhZYDZI0tIo7KOr3FUiXyRjtHhocOYRXmtBKA214yVlvR9pG36ze69pe#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="pricing-group">
+      <h3>Verticals</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>DeerSafe</h4>
+          <p>A Codex Labs micro-system for situational awareness and risk reduction in rural or low-visibility environments.</p>
+          <div class="price">$1,499.00</div>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1qVQxydWtjg0fOy8qMHO1Rgw9toKAQV1MSBbXIeifNWvdU8zTFoZUdW0t#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+      </div>
+    </div>
+
+    <div class="pricing-group">
+      <h3>Bundles</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Codex OS Core Scroll Pack</h4>
+          <p>Includes all core Codex scrolls in one package.</p>
+          <div class="price">$4,999.00</div>
+          <details>
+            <summary>Bundle contents</summary>
+            <ul>
+              <li>high-clarity-decision-protocol</li>
+              <li>strategic-command-layer</li>
+              <li>operational-cohesion-scroll</li>
+              <li>systems-integrity-scroll</li>
+            </ul>
+          </details>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1ET1iqfCYJBQHQNOqcHYgWLv5LC5ZEgSkX0lLOtsR18xu2yYFJJTJv7le#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Codex Systems Pack</h4>
+          <p>Includes all Codex systems for execution and alignment.</p>
+          <div class="price">$3,499.00</div>
+          <details>
+            <summary>Bundle contents</summary>
+            <ul>
+              <li>execution-stabilization-system</li>
+              <li>structural-synchronization-system</li>
+              <li>temporal-alignment-system</li>
+            </ul>
+          </details>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1z2Oz5uaOMSnFWKtqRKpWPWsJnd8Ag1AVdWFCNgvYFnchw6ozizKLdXLZ#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Codex Rituals Pack</h4>
+          <p>Includes all Codex rituals for daily, weekly, and monthly cadence.</p>
+          <div class="price">$1,199.00</div>
+          <details>
+            <summary>Bundle contents</summary>
+            <ul>
+              <li>daily-clarity-ritual</li>
+              <li>weekly-alignment-ritual</li>
+              <li>monthly-strategic-reset</li>
+            </ul>
+          </details>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1e7EyNzFSqXVN5fG4dJ2yK7SgyJkmhX3q221m0BwDmuzyDNNMchbSrmYo#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Founder Protocols Pack</h4>
+          <p>Includes all founder protocols for clarity and operational integrity.</p>
+          <div class="price">$1,199.00</div>
+          <details>
+            <summary>Bundle contents</summary>
+            <ul>
+              <li>clarity-under-pressure</li>
+              <li>operational-sovereignty</li>
+              <li>structural-integrity</li>
+            </ul>
+          </details>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1ACm6vopCZJhDr2icFIJd57IiBsLx89bCDEOoWQ6movTkfEJPteqssN8m#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Codex Vertical Pack</h4>
+          <p>Includes all current Codex vertical products.</p>
+          <div class="price">$1,499.00</div>
+          <details>
+            <summary>Bundle contents</summary>
+            <ul>
+              <li>deersafe</li>
+            </ul>
+          </details>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1tIDwq68ehOjM6oS5t5cIRyRUTlLIomw3GiLQq5dZQh5M5FWwqIKDcQzq#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+        <article class="card">
+          <h4>Codex Master Bundle</h4>
+          <p>Includes all Codex scrolls, systems, rituals, protocols, and vertical products.</p>
+          <div class="price">$4,999.00</div>
+          <details>
+            <summary>Bundle contents</summary>
+            <ul>
+              <li>high-clarity-decision-protocol</li>
+              <li>strategic-command-layer</li>
+              <li>operational-cohesion-scroll</li>
+              <li>systems-integrity-scroll</li>
+              <li>execution-stabilization-system</li>
+              <li>structural-synchronization-system</li>
+              <li>temporal-alignment-system</li>
+              <li>daily-clarity-ritual</li>
+              <li>weekly-alignment-ritual</li>
+              <li>monthly-strategic-reset</li>
+              <li>clarity-under-pressure</li>
+              <li>operational-sovereignty</li>
+              <li>structural-integrity</li>
+              <li>deersafe</li>
+            </ul>
+          </details>
+          <a class="cta" href="https://pay.codexlitigation.org/c/pay/cs_live_a1w4gL3v3SOZXnOxkPitrqvgWT4l9VUt2D2ojkF8uEHH4OTz12S1AEZ22G#fidnandhYHdWcXxpYCc%2FJ2FgY2RwaXEnKSdicGRmZGhqaWBTZHdsZGtxJz8nZmprcXdqaScpJ2R1bE5gfCc%2FJ3VuWmlsc2BaMDRXYXRLQE1nPGhTQE9KZlwwTmNcbUNsckRXT1Z8X2s9f0pkbGpnMGlMY2o8MU1NVHJPN1BDU2pUdkxdUj1NXTZtNFdXb31qNDMxUm98YVVMcmR2aFY8bUY1NVVKVGlmcUF8JyknY3dqaFZgd3Ngdyc%2FcXdwYCknZ2RmbmJ3anBrYUZqaWp3Jz8nJmNjY2NjYycpJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl" target="_blank" rel="noopener noreferrer">Checkout</a>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
