@@ -1,0 +1,14 @@
+{
+  "name": "codex-labs-webhook",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "body-parser": "^2.2.0",
+    "stripe": "^18.3.0"
+  }
+}
