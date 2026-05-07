@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verify License — Codex Labs</title>
+  <meta name="description" content="Verify your Codex Labs license key.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-title" href="index.html">Codex Labs</a>
+      <div class="site-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="portal.html">Portal</a>
+        <a href="verify.html">Verify</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="panel">
+      <section>
+        <h1>Verify License</h1>
+        <p>Enter your license key to confirm its validity and view entitlements.</p>
+        <div id="status"></div>
+
+        <form id="verify-form" style="margin-top:20px;">
+          <div class="form-group">
+            <label for="license-key">License Key</label>
+            <input type="text" id="license-key" name="license_key" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off" required>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submit-btn">Verify</button>
+        </form>
+
+        <div id="result" style="margin-top:24px;"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div>© 2026 Codex Labs · Lakeville, CT</div>
+  </footer>
+
+  <script type="module">
+    import { showAlert, escapeHtml } from './app.js';
+
+    const form = document.getElementById('verify-form');
+    const status = document.getElementById('status');
+    const result = document.getElementById('result');
+    const submitBtn = document.getElementById('submit-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const licenseKey = document.getElementById('license-key').value.trim();
+      if (!licenseKey) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Verifying…';
+      status.innerHTML = '';
+      result.innerHTML = '';
+
+      try {
+        const res = await fetch('/api/verify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ license_key: licenseKey }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (res.ok && body.valid) {
+          result.innerHTML = `
+            <div class="alert alert-success">
+              ✔ License is valid.
+              ${body.product ? `<br><strong>Product:</strong> ${escapeHtml(body.product)}` : ''}
+              ${body.email ? `<br><strong>Email:</strong> ${escapeHtml(body.email)}` : ''}
+              ${body.expires_at ? `<br><strong>Expires:</strong> ${escapeHtml(body.expires_at)}` : ''}
+            </div>`;
+        } else {
+          showAlert(result, 'error', body.error ?? 'License key is invalid or not found.');
+        }
+      } catch (err) {
+        showAlert(status, 'error', `Network error: ${err.message}`);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Verify';
+      }
+    });
+  </script>
+</body>
+</html>

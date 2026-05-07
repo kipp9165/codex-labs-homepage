@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — Codex Labs</title>
+  <meta name="description" content="Browse all Codex Labs products and activate your license.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-title" href="index.html">Codex Labs</a>
+      <div class="site-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="portal.html">Portal</a>
+        <a href="verify.html">Verify</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="panel">
+      <section>
+        <h1>Products</h1>
+        <p>Select a product to activate your license and gain access to the Codex Labs OS.</p>
+        <div id="status"></div>
+        <div class="product-grid" id="product-grid">
+          <div style="grid-column:1/-1;text-align:center;padding:32px;">
+            <span class="spinner"></span>
+            <span style="margin-left:10px;color:var(--muted);">Loading products…</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div>© 2026 Codex Labs · Lakeville, CT</div>
+  </footer>
+
+  <script type="module">
+    import { fetchJSON, formatPrice, showAlert, escapeHtml } from './app.js';
+
+    async function loadProducts() {
+      const grid = document.getElementById('product-grid');
+      const status = document.getElementById('status');
+      try {
+        const data = await fetchJSON('/api/products');
+        const products = Array.isArray(data) ? data : data.products ?? [];
+        if (!products.length) {
+          grid.innerHTML = '<p style="color:var(--muted)">No products available.</p>';
+          return;
+        }
+        grid.innerHTML = products.map(product => {
+          const lowestPrice = product.prices && product.prices.length
+            ? product.prices.reduce((a, b) => a.amount < b.amount ? a : b)
+            : null;
+          const priceDisplay = lowestPrice
+            ? `<span class="price">From ${formatPrice(lowestPrice.amount, lowestPrice.currency)}</span>`
+            : '';
+          return `
+            <div class="product-card">
+              <h3>${escapeHtml(product.name)}</h3>
+              <p>${escapeHtml(product.description ?? '')}</p>
+              ${priceDisplay}
+              <div class="card-actions">
+                <a class="btn btn-primary" href="activate.html?product=${encodeURIComponent(product.id)}">Activate</a>
+              </div>
+            </div>`;
+        }).join('');
+      } catch (err) {
+        grid.innerHTML = '';
+        showAlert(status, 'error', `Failed to load products: ${err.message}`);
+      }
+    }
+
+    loadProducts();
+  </script>
+</body>
+</html>

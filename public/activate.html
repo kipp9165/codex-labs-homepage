@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activate — Codex Labs</title>
+  <meta name="description" content="Activate your Codex Labs product license.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="site-nav">
+    <div class="site-nav-inner">
+      <a class="site-title" href="index.html">Codex Labs</a>
+      <div class="site-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="portal.html">Portal</a>
+        <a href="verify.html">Verify</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="panel">
+      <section>
+        <h1>Activate Product</h1>
+        <div id="product-info"></div>
+        <div id="status"></div>
+
+        <form id="activate-form" style="margin-top:24px;">
+          <div class="form-group">
+            <label for="license-key">License Key</label>
+            <input type="text" id="license-key" name="license_key" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <button type="submit" class="btn btn-primary" id="submit-btn">Activate</button>
+          <a href="products.html" class="btn btn-outline" style="margin-left:12px;">Back to Products</a>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div>© 2026 Codex Labs · Lakeville, CT</div>
+  </footer>
+
+  <script type="module">
+    import { getParam, fetchJSON, showAlert, escapeHtml } from './app.js';
+
+    const productId = getParam('product');
+    const productInfo = document.getElementById('product-info');
+    const status = document.getElementById('status');
+    const form = document.getElementById('activate-form');
+    const submitBtn = document.getElementById('submit-btn');
+
+    async function loadProduct() {
+      if (!productId) {
+        productInfo.innerHTML = '<div class="alert alert-info">No product selected. <a href="products.html">Browse products</a>.</div>';
+        form.style.display = 'none';
+        return;
+      }
+      try {
+        const data = await fetchJSON('/api/products');
+        const products = Array.isArray(data) ? data : data.products ?? [];
+        const product = products.find(p => p.id === productId);
+        if (product) {
+          productInfo.innerHTML = `
+            <div class="alert alert-info">
+              Activating: <strong>${escapeHtml(product.name)}</strong>
+              ${product.description ? `<br><small>${escapeHtml(product.description)}</small>` : ''}
+            </div>`;
+        }
+      } catch (_) {
+        // non-critical — continue showing the form
+      }
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const licenseKey = document.getElementById('license-key').value.trim();
+      const email = document.getElementById('email').value.trim();
+      if (!licenseKey || !email) return;
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Activating…';
+      status.innerHTML = '';
+
+      try {
+        const res = await fetch('/api/activate', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ license_key: licenseKey, email, product_id: productId }),
+        });
+        const body = await res.json().catch(() => ({}));
+        if (res.ok) {
+          showAlert(status, 'success', body.message ?? 'Product activated successfully!');
+          form.reset();
+        } else {
+          showAlert(status, 'error', body.error ?? `Activation failed (${res.status}).`);
+        }
+      } catch (err) {
+        showAlert(status, 'error', `Network error: ${err.message}`);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Activate';
+      }
+    });
+
+    loadProduct();
+  </script>
+</body>
+</html>
