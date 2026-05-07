@@ -8,10 +8,8 @@ export function subscribe(eventName, handler) {
 export function publish(eventName, payload) {
   const subs = handlers.get(eventName) || [];
   for (const handler of subs) {
-    try {
-      handler(payload);
-    } catch (e) {
-      console.error("event_handler_error", eventName, e.message);
-    }
+    Promise.resolve(handler(payload)).catch((e) =>
+      console.error("event_handler_error", eventName, e.message)
+    );
   }
 }
