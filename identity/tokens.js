@@ -3,7 +3,11 @@ import crypto from "crypto";
 const TOKEN_TTL_MS = 15 * 60 * 1000;
 
 function sign(value) {
-  return crypto.createHmac("sha256", process.env.IDENTITY_SECRET || "").update(value).digest("hex");
+  const secret = process.env.IDENTITY_SECRET;
+  if (!secret) {
+    throw new Error("identity_secret_missing");
+  }
+  return crypto.createHmac("sha256", secret).update(value).digest("hex");
 }
 
 export function generateLoginToken(email) {

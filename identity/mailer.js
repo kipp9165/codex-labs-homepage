@@ -1,7 +1,12 @@
 export async function sendMagicLink(email, token) {
   const url = process.env.MAILBRIDGE_URL;
+  const publicBaseUrl = process.env.PUBLIC_BASE_URL;
   if (!url) {
     console.error("mailbridge_url_missing");
+    return;
+  }
+  if (!publicBaseUrl) {
+    console.error("public_base_url_missing");
     return;
   }
 
@@ -15,7 +20,7 @@ export async function sendMagicLink(email, token) {
       body: JSON.stringify({
         email,
         token,
-        link: `${process.env.PUBLIC_BASE_URL}/login.html?token=${token}`
+        link: `${publicBaseUrl}/login.html?token=${token}`
       }),
       signal: controller.signal
     });

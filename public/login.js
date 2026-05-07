@@ -12,7 +12,7 @@ async function completeTokenLogin(token) {
   try {
     const response = await fetch("/api/auth/complete", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token })
     });
     const data = await response.json();
@@ -35,7 +35,7 @@ async function requestMagicLink(email) {
   try {
     await fetch("/api/auth/request", {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email })
     });
     setStatus("Check your email");
