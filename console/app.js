@@ -11,25 +11,43 @@ const setError = (message) => {
 };
 
 const apiGet = async (url) => {
-  const response = await fetch(url, { method: "GET" });
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data?.error || "request_failed");
+  try {
+    const response = await fetch(url, { method: "GET" });
+    let data = {};
+    try {
+      data = await response.json();
+    } catch {
+      data = {};
+    }
+    if (!response.ok) {
+      throw new Error(data?.error || "request_failed");
+    }
+    return data;
+  } catch (err) {
+    throw new Error(err?.message || "request_failed");
   }
-  return data;
 };
 
 const apiPost = async (url, body) => {
-  const response = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(body)
-  });
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data?.error || "request_failed");
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    });
+    let data = {};
+    try {
+      data = await response.json();
+    } catch {
+      data = {};
+    }
+    if (!response.ok) {
+      throw new Error(data?.error || "request_failed");
+    }
+    return data;
+  } catch (err) {
+    throw new Error(err?.message || "request_failed");
   }
-  return data;
 };
 
 const runJob = async (name) => {

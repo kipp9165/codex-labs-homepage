@@ -35,6 +35,14 @@ const findFunction = (module, predicates) => {
   return null;
 };
 
+const successResult = (name, startedAt, details) => ({
+  ok: true,
+  name,
+  startedAt,
+  finishedAt: new Date().toISOString(),
+  details
+});
+
 const runHealthcheck = async () => {
   const productBrain = await loadModule("../product-brain/index.js");
   if (!productBrain || typeof productBrain.listProducts !== "function") {
@@ -66,12 +74,11 @@ const runSyncDiscordRoles = async () => {
   if (!discord) {
     return { ok: false, error: "not_implemented" };
   }
-  const syncFn =
-    findFunction(discord, [
-      (name) => /^syncDiscordRolesForAll$/i.test(name),
-      (name) => /^syncDiscordRoles$/i.test(name),
-      (name) => /sync/i.test(name) && /discord/i.test(name) && /role/i.test(name)
-    ]) || null;
+  const syncFn = findFunction(discord, [
+    (name) => /^syncDiscordRolesForAll$/i.test(name),
+    (name) => /^syncDiscordRoles$/i.test(name),
+    (name) => /sync/i.test(name) && /discord/i.test(name) && /role/i.test(name)
+  ]);
   if (!syncFn) {
     return { ok: false, error: "not_implemented" };
   }
@@ -84,12 +91,11 @@ const runSyncNotionPurchases = async () => {
   if (!notion) {
     return { ok: false, error: "not_implemented" };
   }
-  const syncFn =
-    findFunction(notion, [
-      (name) => /^syncAllPurchases$/i.test(name),
-      (name) => /^syncNotionPurchases$/i.test(name),
-      (name) => /sync/i.test(name) && /notion/i.test(name) && /purchase/i.test(name)
-    ]) || null;
+  const syncFn = findFunction(notion, [
+    (name) => /^syncAllPurchases$/i.test(name),
+    (name) => /^syncNotionPurchases$/i.test(name),
+    (name) => /sync/i.test(name) && /notion/i.test(name) && /purchase/i.test(name)
+  ]);
   if (!syncFn) {
     return { ok: false, error: "not_implemented" };
   }
@@ -104,39 +110,21 @@ export const runJob = async (name) => {
   try {
     if (name === "healthcheck") {
       const details = await runHealthcheck();
-      return {
-        ok: true,
-        name,
-        startedAt,
-        finishedAt: new Date().toISOString(),
-        details
-      };
+      return successResult(name, startedAt, details);
     }
     if (name === "sync_discord_roles") {
       const result = await runSyncDiscordRoles();
       if (!result.ok) {
         return { ok: false, name, error: result.error };
       }
-      return {
-        ok: true,
-        name,
-        startedAt,
-        finishedAt: new Date().toISOString(),
-        details: result.details
-      };
+      return successResult(name, startedAt, result.details);
     }
     if (name === "sync_notion_purchases") {
       const result = await runSyncNotionPurchases();
       if (!result.ok) {
         return { ok: false, name, error: result.error };
       }
-      return {
-        ok: true,
-        name,
-        startedAt,
-        finishedAt: new Date().toISOString(),
-        details: result.details
-      };
+      return successResult(name, startedAt, result.details);
     }
     return { ok: false, name, error: "unknown_job" };
   } catch (err) {
