@@ -3,6 +3,10 @@ import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { join, dirname } from "path";
 
+if (!process.env.ARTIFACT_SECRET) {
+  throw new Error("ARTIFACT_SECRET environment variable is required");
+}
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const registry = JSON.parse(readFileSync(join(__dirname, "registry.json"), "utf8"));
 

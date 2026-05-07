@@ -1,4 +1,4 @@
-import { fetchJSON, showAlert, escapeHtml } from "./app.js";
+import { fetchJSON, showAlert } from "./app.js";
 
 const sessionId = localStorage.getItem("sessionId");
 if (!sessionId) {
@@ -13,7 +13,15 @@ if (!res || !res.ok) {
 const list = document.getElementById("artifact-list");
 for (const artifact of res.artifacts) {
   const li = document.createElement("li");
-  li.innerHTML = `<strong>${escapeHtml(artifact.title)}</strong> — v${escapeHtml(artifact.version)} <button data-id="${escapeHtml(artifact.id)}">Download</button>`;
+  const title = document.createElement("strong");
+  title.textContent = artifact.title;
+  const version = document.createTextNode(` — v${artifact.version} `);
+  const btn = document.createElement("button");
+  btn.textContent = "Download";
+  btn.dataset.id = artifact.id;
+  li.appendChild(title);
+  li.appendChild(version);
+  li.appendChild(btn);
   list.appendChild(li);
 }
 

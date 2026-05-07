@@ -11,6 +11,22 @@ import artifactsRegistry from "../artifacts/registry.json" assert { type: "json"
 const app = express();
 app.use(express.json());
 
+const downloadRateLimit = new Map();
+const RATE_WINDOW_MS = 60_000;
+const RATE_MAX = 30;
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const entry = downloadRateLimit.get(ip) || { count: 0, windowStart: now };
+  if (now - entry.windowStart > RATE_WINDOW_MS) {
+    entry.count = 0;
+    entry.windowStart = now;
+  }
+  entry.count += 1;
+  downloadRateLimit.set(ip, entry);
+  return entry.count <= RATE_MAX;
+}
+
 app.get("/api/artifacts", async (req, res) => {
   try {
     const { sessionId } = req.query;
@@ -57,10 +73,14 @@ app.post("/api/artifacts/download-token", async (req, res) => {
 
 app.get("/api/artifacts/download", (req, res) => {
   try {
+    const ip = req.ip;
+    if (!checkRateLimit(ip)) {
+      return res.status(429).json({ ok: false, error: "rate_limited" });
+    }
     const { token } = req.query;
     if (!token) return res.status(400).json({ ok: false, error: "token_required" });
     const result = verifyDownloadToken(token);
-    if (!result.ok) return res.status(403).json({ ok: false, error: "invalid_token" });
+    if (!result.ok) return res.status(403).json({ ok: false, error: result.error });
     const artifact = artifactsRegistry.find(a => a.id === result.artifactId);
     if (!artifact) return res.status(404).json({ ok: false, error: "artifact_not_found" });
     return res.redirect(302, artifact.fileUrl);
