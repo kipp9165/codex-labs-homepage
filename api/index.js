@@ -29,6 +29,10 @@ function readJson(filePath) {
 }
 
 function loadProducts() {
+  if (!fs.existsSync(surfacePath)) {
+    throw new Error(`Missing product surface file: ${surfacePath}`);
+  }
+
   const surfaceStat = fs.statSync(surfacePath);
   if (!cachedSurface || cachedSurfaceMtimeMs !== surfaceStat.mtimeMs) {
     cachedSurface = readJson(surfacePath);
@@ -65,7 +69,8 @@ function findPrice(product, lookupKey) {
 }
 
 function getBaseUrl(req) {
-  const protocol = req.get("x-forwarded-proto") || req.protocol;
+  const forwardedProto = req.get("x-forwarded-proto");
+  const protocol = forwardedProto === "http" || forwardedProto === "https" ? forwardedProto : req.protocol;
   return `${protocol}://${req.get("host")}`;
 }
 
@@ -94,17 +99,27 @@ async function resolveStripePriceId(lookupKey) {
 }
 
 app.get("/api/products", (req, res) => {
-  res.json({ products: loadProducts() });
+  try {
+    res.json({ products: loadProducts() });
+  } catch (error) {
+    console.error("Failed to load products:", error);
+    res.status(500).json({ error: "Unable to load products" });
+  }
 });
 
 app.get("/api/products/:productId", (req, res) => {
-  const product = findProduct(req.params.productId);
-  if (!product) {
-    res.status(404).json({ error: "Product not found" });
-    return;
-  }
+  try {
+    const product = findProduct(req.params.productId);
+    if (!product) {
+      res.status(404).json({ error: "Product not found" });
+      return;
+    }
 
-  res.json(product);
+    res.json(product);
+  } catch (error) {
+    console.error("Failed to load product:", error);
+    res.status(500).json({ error: "Unable to load product" });
+  }
 });
 
 app.post("/api/checkout-session", async (req, res) => {
@@ -124,6 +139,10 @@ app.post("/api/checkout-session", async (req, res) => {
     }
 
     if (!stripe) {
+      if (!fs.existsSync(checkoutUrlsPath)) {
+        res.status(500).json({ error: "Checkout is temporarily unavailable. Please try again later." });
+        return;
+      }
       const checkoutUrls = readJson(checkoutUrlsPath);
       const fallbackUrl = checkoutUrls[selectedPrice.lookup_key];
       if (!fallbackUrl) {
