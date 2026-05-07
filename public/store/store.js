@@ -1,7 +1,7 @@
 const script = document.currentScript;
 const page = script?.dataset.page || "home";
 const statusEl = document.getElementById("store-status");
-const ACTIVATION_REDIRECT_DELAY_MS = 1200;
+const ACTIVATION_REDIRECT_DELAY = 1200;
 
 const currency = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -89,6 +89,7 @@ async function handleCheckout(productId, lookupKey, button) {
 function renderProduct(product) {
   const detail = document.getElementById("product-detail");
   if (!detail) return;
+  const isActivated = Boolean(getQueryValue("activated"));
 
   const prices = Array.isArray(product.prices) ? product.prices : [];
   const rows = prices.length
@@ -105,7 +106,7 @@ function renderProduct(product) {
         .join("")
     : '<p class="status">No prices are currently available for this product.</p>';
 
-  const activationNotice = getQueryValue("activated")
+  const activationNotice = isActivated
     ? '<p class="note">Purchase complete. Entering your Activation Ritual now...</p>'
     : "";
 
@@ -119,10 +120,10 @@ function renderProduct(product) {
     </section>
   `;
 
-  if (getQueryValue("activated") && typeof product.activationRitualUrl === "string" && product.activationRitualUrl.trim()) {
+  if (isActivated && typeof product.activationRitualUrl === "string" && product.activationRitualUrl.trim()) {
     window.setTimeout(() => {
       window.location.href = product.activationRitualUrl;
-    }, ACTIVATION_REDIRECT_DELAY_MS);
+    }, ACTIVATION_REDIRECT_DELAY);
   }
 
   detail.querySelectorAll("button[data-lookup-key]").forEach((button) => {
