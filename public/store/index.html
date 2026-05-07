@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex Labs Store</title>
+  <link rel="stylesheet" href="./store.css">
+</head>
+<body>
+  <main class="store-shell">
+    <header class="store-header">
+      <a class="brand" href="/store/index.html">Codex Labs Store</a>
+      <a class="back-link" href="/products.html">Products</a>
+    </header>
+
+    <section class="hero">
+      <h1>Codex Labs Store</h1>
+      <p>Modern operating systems for decision clarity, rituals, and safety infrastructure.</p>
+    </section>
+
+    <section>
+      <h2>Available Products</h2>
+      <div id="store-status" class="status" aria-live="polite">Loading products...</div>
+      <div id="product-grid" class="product-grid"></div>
+    </section>
+  </main>
+
+  <script type="module" src="./store.js" data-page="home"></script>
+</body>
+</html>
