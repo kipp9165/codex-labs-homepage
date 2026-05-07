@@ -3,9 +3,17 @@ import { createHmac } from "crypto";
 export async function fulfillPurchase({ email, product, price, timestamp }) {
   try {
     const secret = process.env.FULFILLMENT_SECRET;
+    const baserowUrl = process.env.BASEROW_FULFILLMENT_URL;
+    const baserowApiKey = process.env.BASEROW_API_KEY;
 
     if (!secret) {
       throw new Error("FULFILLMENT_SECRET is not set");
+    }
+    if (!baserowUrl) {
+      throw new Error("BASEROW_FULFILLMENT_URL is not set");
+    }
+    if (!baserowApiKey) {
+      throw new Error("BASEROW_API_KEY is not set");
     }
 
     const license = createHmac("sha256", secret)
@@ -16,10 +24,10 @@ export async function fulfillPurchase({ email, product, price, timestamp }) {
     const timeout = setTimeout(() => controller.abort(), 10000);
 
     try {
-      const response = await fetch(process.env.BASEROW_FULFILLMENT_URL, {
+      const response = await fetch(baserowUrl, {
         method: "POST",
         headers: {
-          Authorization: `Token ${process.env.BASEROW_API_KEY}`,
+          Authorization: `Token ${baserowApiKey}`,
           "Content-Type": "application/json",
         },
         body: JSON.stringify({

@@ -30,7 +30,9 @@ app.post("/webhook", bodyParser.raw({ type: "application/json" }), (req, res) =>
         const timestamp = session.created ?? Math.floor(Date.now() / 1000);
 
         await fulfillPurchase({ email, product, price, timestamp });
-      })();
+      })().catch((err) => {
+        console.error("fulfillment_error", err);
+      });
       break;
     default:
       break;
