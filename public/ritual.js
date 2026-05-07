@@ -97,7 +97,7 @@ function unlockStep3() {
 }
 
 function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  return /^[^\s@]+@[^\s@.][^\s@]*\.[^\s@]{2,}$/.test(email);
 }
 
 async function fetchPortalState() {
@@ -132,6 +132,21 @@ function getPortalUrl(source) {
   return source.portalUrl || source.url || source.portal || "";
 }
 
+function getSafePortalUrl(url) {
+  if (!url) {
+    return "";
+  }
+  try {
+    const parsed = new URL(url, window.location.origin);
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+      return parsed.href;
+    }
+    return "";
+  } catch {
+    return "";
+  }
+}
+
 function isLicenseValid(result) {
   return Boolean(result && (result.valid === true || result.licenseValid === true));
 }
@@ -161,7 +176,7 @@ function renderReveal() {
   const valid = isLicenseValid(verifyResult);
   const verifyEntitlements = normalizeEntitlements(verifyResult);
   const entitlements = verifyEntitlements.length ? verifyEntitlements : normalizeEntitlements(portalState);
-  const portalUrl = getPortalUrl(portalState) || getPortalUrl(verifyResult);
+  const portalUrl = getSafePortalUrl(getPortalUrl(portalState) || getPortalUrl(verifyResult));
 
   const entitlementList = entitlements.length
     ? `<ul class="reveal-list">${entitlements.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
