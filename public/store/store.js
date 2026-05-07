@@ -76,7 +76,7 @@ async function handleCheckout(productId, lookupKey, button) {
       body: JSON.stringify({ productId, lookupKey })
     });
     if (!payload.url) {
-      throw new Error("Checkout URL was not returned.");
+      throw new Error("Unable to generate checkout URL. Please try again or contact support.");
     }
     window.location.href = payload.url;
   } catch (error) {
@@ -119,7 +119,7 @@ function renderProduct(product) {
     </section>
   `;
 
-  if (getQueryValue("activated") && product.activationRitualUrl) {
+  if (getQueryValue("activated") && typeof product.activationRitualUrl === "string" && product.activationRitualUrl.trim()) {
     window.setTimeout(() => {
       window.location.href = product.activationRitualUrl;
     }, ACTIVATION_REDIRECT_DELAY_MS);

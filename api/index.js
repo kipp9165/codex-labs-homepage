@@ -9,7 +9,7 @@ const rootDir = process.cwd();
 const publicDir = path.join(rootDir, "public");
 const surfacePath = path.join(rootDir, "config", "commercial-surface.json");
 const checkoutUrlsPath = path.join(rootDir, "config", "checkout-urls.json");
-const fallbackActivationRitual = "/daily-clarity-ritual.html";
+const fallbackActivationRitualUrl = "/daily-clarity-ritual.html";
 const stripeSecret = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeSecret ? new Stripe(stripeSecret) : null;
 const priceIdCache = new Map();
@@ -30,7 +30,7 @@ function loadProducts() {
     description: product.description,
     family: product.family,
     label: product.label,
-    activationRitualUrl: product.activationRitualUrl || fallbackActivationRitual,
+    activationRitualUrl: product.activationRitualUrl || fallbackActivationRitualUrl,
     prices: (product.prices || []).map((price) => ({
       lookup_key: price.lookup_key,
       amount: price.amount,
@@ -111,7 +111,7 @@ app.post("/api/checkout-session", async (req, res) => {
       const checkoutUrls = readJson(checkoutUrlsPath);
       const fallbackUrl = checkoutUrls[selectedPrice.lookup_key];
       if (!fallbackUrl) {
-        res.status(500).json({ error: "Stripe is not configured and no fallback checkout URL is available" });
+        res.status(500).json({ error: "Checkout is temporarily unavailable. Please try again later." });
         return;
       }
       res.json({ url: fallbackUrl });
