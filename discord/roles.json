@@ -1,0 +1,8 @@
+{
+  "access:codex-labs-os": "ROLE_CODEX_LABS_OS_ID",
+  "access:premium": "ROLE_PREMIUM_ID",
+  "access:basic": "ROLE_BASIC_ID",
+  "access:execution-stabilization-system": "ROLE_ESS_ID",
+  "access:operational-sovereignty": "ROLE_OPS_ID",
+  "access:structural-integrity": "ROLE_SI_ID"
+}
