@@ -15,7 +15,6 @@ let identifiedEmail = "";
 let selectedProduct = "";
 let verifyResult = null;
 let portalState = null;
-let verifyEndpoint = "/api/license/verify";
 
 function updateProgress(step) {
   progressEl.textContent = `Step ${step} of 3`;
@@ -133,8 +132,33 @@ function getPortalUrl(source) {
   return source.portalUrl || source.url || source.portal || "";
 }
 
+function isLicenseValid(result) {
+  return Boolean(result && (result.valid === true || result.licenseValid === true));
+}
+
+function showVerifyError(error) {
+  showAlert(error instanceof Error ? error.message : "Verification failed");
+}
+
+async function verifyLicense(payload) {
+  const endpoints = ["/api/license/verify", "/api/verify"];
+  let lastError = null;
+  for (const endpoint of endpoints) {
+    try {
+      return await fetchJSON(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+    } catch (error) {
+      lastError = error;
+    }
+  }
+  throw lastError || new Error("Verification failed");
+}
+
 function renderReveal() {
-  const valid = Boolean(verifyResult && (verifyResult.valid === true || verifyResult.licenseValid === true));
+  const valid = isLicenseValid(verifyResult);
   const entitlements = normalizeEntitlements(verifyResult).length
     ? normalizeEntitlements(verifyResult)
     : normalizeEntitlements(portalState);
@@ -196,31 +220,13 @@ verifyBtnEl.addEventListener("click", async () => {
   };
 
   try {
-    verifyResult = await fetchJSON(verifyEndpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
+    verifyResult = await verifyLicense(payload);
   } catch (error) {
-    if (verifyEndpoint === "/api/license/verify") {
-      try {
-        verifyEndpoint = "/api/verify";
-        verifyResult = await fetchJSON(verifyEndpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload)
-        });
-      } catch {
-        showAlert(error instanceof Error ? error.message : "Verification failed");
-        return;
-      }
-    } else {
-      showAlert(error instanceof Error ? error.message : "Verification failed");
-      return;
-    }
+    showVerifyError(error);
+    return;
   }
 
-  const valid = Boolean(verifyResult && (verifyResult.valid === true || verifyResult.licenseValid === true));
+  const valid = isLicenseValid(verifyResult);
   if (!valid) {
     showAlert("Invalid license");
     setStepState(step2El, { active: true, complete: false });
