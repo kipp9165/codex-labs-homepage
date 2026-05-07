@@ -43,10 +43,7 @@ export async function fulfillPurchase({ email, product, price, timestamp }) {
       });
 
       if (!response.ok) {
-        const body = await response.text().catch(() => "");
-        throw new Error(
-          `Baserow fulfillment write failed: ${response.status} ${response.statusText}${body ? ` - ${body}` : ""}`
-        );
+        throw new Error(`Baserow fulfillment write failed: ${response.status} ${response.statusText}`);
       }
     } finally {
       clearTimeout(timeout);

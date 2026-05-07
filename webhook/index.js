@@ -25,7 +25,7 @@ app.post("/webhook", bodyParser.raw({ type: "application/json" }), (req, res) =>
       (async () => {
         const session = event.data?.object ?? {};
         const email = session.customer_details?.email ?? session.customer_email ?? "";
-        const product = session.metadata?.product ?? session.client_reference_id ?? "unknown";
+        const product = session.metadata?.product ?? session.client_reference_id ?? session.id ?? "";
         const price = session.amount_total ?? 0;
         const timestamp = session.created ?? Math.floor(Date.now() / 1000);
 
