@@ -1,0 +1,54 @@
+[
+  {
+    "id": "enterprise_ritual_loop",
+    "stripe_price_lookup_key": "enterprise_ritual_loop",
+    "name": "Enterprise Ritual Loop",
+    "tier": "enterprise",
+    "entitlements": [
+      "artifact:enterprise_ritual_loop",
+      "access:command_layer",
+      "support:priority"
+    ]
+  },
+  {
+    "id": "strategic_command_layer",
+    "stripe_price_lookup_key": "strategic_command_layer",
+    "name": "Strategic Command Layer",
+    "tier": "strategic",
+    "entitlements": [
+      "artifact:strategic_command_layer",
+      "access:command_layer"
+    ]
+  },
+  {
+    "id": "temporal_alignment_system",
+    "stripe_price_lookup_key": "temporal_alignment_system",
+    "name": "Temporal Alignment System",
+    "tier": "professional",
+    "entitlements": [
+      "artifact:temporal_alignment_system",
+      "access:planning_suite"
+    ]
+  },
+  {
+    "id": "structural_integrity",
+    "stripe_price_lookup_key": "structural_integrity",
+    "name": "Structural Integrity",
+    "tier": "professional",
+    "entitlements": [
+      "artifact:structural_integrity",
+      "access:stability_protocols"
+    ]
+  },
+  {
+    "id": "operational_sovereignty",
+    "stripe_price_lookup_key": "operational_sovereignty",
+    "name": "Operational Sovereignty",
+    "tier": "premium",
+    "entitlements": [
+      "artifact:operational_sovereignty",
+      "access:autonomy_framework",
+      "support:guided"
+    ]
+  }
+]
