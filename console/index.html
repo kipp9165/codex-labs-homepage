@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Operator Console</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #0b0f1a;
+        color: #f3f5fa;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        min-height: 100vh;
+      }
+      .sidebar {
+        border-right: 1px solid #1f2a44;
+        padding: 16px;
+      }
+      .sidebar h1 {
+        margin: 0 0 16px;
+        font-size: 18px;
+      }
+      .nav-item {
+        width: 100%;
+        text-align: left;
+        margin-bottom: 8px;
+        background: #121a2d;
+        border: 1px solid #233254;
+        color: #f3f5fa;
+        border-radius: 6px;
+        padding: 10px 12px;
+        cursor: pointer;
+      }
+      .nav-item.active {
+        background: #1e2d4d;
+      }
+      .content {
+        padding: 24px;
+      }
+      .view {
+        display: none;
+      }
+      .view.active {
+        display: block;
+      }
+      .job-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border: 1px solid #233254;
+        border-radius: 6px;
+        padding: 10px 12px;
+        margin-bottom: 10px;
+        background: #121a2d;
+      }
+      button.run-job {
+        background: #2a63ff;
+        border: none;
+        color: #fff;
+        border-radius: 6px;
+        padding: 8px 12px;
+        cursor: pointer;
+      }
+      pre {
+        margin-top: 16px;
+        background: #0f1628;
+        border: 1px solid #233254;
+        border-radius: 6px;
+        padding: 12px;
+        overflow: auto;
+      }
+      .error {
+        color: #ff8f8f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="layout">
+      <aside class="sidebar">
+        <h1>Operator Console</h1>
+        <button class="nav-item active" data-view="ops">Ops / Automation</button>
+      </aside>
+      <main class="content">
+        <section class="view active" id="view-ops">
+          <h2>Ops / Automation</h2>
+          <div id="ops-error" class="error"></div>
+          <div id="ops-jobs"></div>
+          <pre id="ops-result"></pre>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
