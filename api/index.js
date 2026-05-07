@@ -12,6 +12,33 @@ const licenseVerifyWindowMs = 60_000;
 const licenseVerifyMaxRequestsPerWindow = 30;
 const licenseVerifyHits = new Map();
 
+function cleanupLicenseVerifyHits(now) {
+  for (const [key, value] of licenseVerifyHits.entries()) {
+    if (now - value.windowStart >= licenseVerifyWindowMs) {
+      licenseVerifyHits.delete(key);
+    }
+  }
+}
+
+function licenseVerifyRateLimiter(req, res, next) {
+  const ip = req.ip || req.socket?.remoteAddress || "unknown";
+  const now = Date.now();
+  cleanupLicenseVerifyHits(now);
+
+  const current = licenseVerifyHits.get(ip);
+  if (!current || now - current.windowStart >= licenseVerifyWindowMs) {
+    licenseVerifyHits.set(ip, { count: 1, windowStart: now });
+    return next();
+  }
+  if (current.count >= licenseVerifyMaxRequestsPerWindow) {
+    return res.status(429).json({ ok: false, error: "rate_limited" });
+  }
+
+  current.count += 1;
+  licenseVerifyHits.set(ip, current);
+  next();
+}
+
 app.get("/api/status", async (req, res) => {
   try {
     res.json({
@@ -50,20 +77,8 @@ app.get("/api/entitlements", async (req, res) => {
   }
 });
 
-app.post("/api/license/verify", async (req, res) => {
+app.post("/api/license/verify", licenseVerifyRateLimiter, async (req, res) => {
   try {
-    const ip = req.ip || req.socket?.remoteAddress || "unknown";
-    const now = Date.now();
-    const current = licenseVerifyHits.get(ip);
-    if (!current || now - current.windowStart >= licenseVerifyWindowMs) {
-      licenseVerifyHits.set(ip, { count: 1, windowStart: now });
-    } else if (current.count >= licenseVerifyMaxRequestsPerWindow) {
-      return res.status(429).json({ ok: false, error: "rate_limited" });
-    } else {
-      current.count += 1;
-      licenseVerifyHits.set(ip, current);
-    }
-
     const { email, product, license } = req.body || {};
     if (!email || !product || !license) {
       return res.status(400).json({ ok: false, error: "invalid_request" });
