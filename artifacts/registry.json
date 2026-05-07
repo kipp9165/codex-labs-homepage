@@ -1,0 +1,52 @@
+[
+  {
+    "id": "enterprise_ritual_loop_v1",
+    "productId": "enterprise_ritual_loop",
+    "title": "Enterprise Ritual Loop — v1",
+    "version": "1.0.0",
+    "fileUrl": "https://example-cdn.codexlabs.com/artifacts/enterprise_ritual_loop_v1.pdf",
+    "entitlementsRequired": ["artifact:enterprise_ritual_loop"],
+    "checksum": "sha256:a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2",
+    "sizeBytes": 204800
+  },
+  {
+    "id": "operational_cohesion_scroll_v1",
+    "productId": "operational_cohesion_scroll",
+    "title": "Operational Cohesion Scroll — v1",
+    "version": "1.0.0",
+    "fileUrl": "https://example-cdn.codexlabs.com/artifacts/operational_cohesion_scroll_v1.pdf",
+    "entitlementsRequired": ["artifact:operational_cohesion_scroll"],
+    "checksum": "sha256:b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3",
+    "sizeBytes": 153600
+  },
+  {
+    "id": "systems_integrity_scroll_v1",
+    "productId": "systems_integrity_scroll",
+    "title": "Systems Integrity Scroll — v1",
+    "version": "1.0.0",
+    "fileUrl": "https://example-cdn.codexlabs.com/artifacts/systems_integrity_scroll_v1.pdf",
+    "entitlementsRequired": ["artifact:systems_integrity_scroll"],
+    "checksum": "sha256:c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4",
+    "sizeBytes": 179200
+  },
+  {
+    "id": "execution_stabilization_system_v1",
+    "productId": "execution_stabilization_system",
+    "title": "Execution Stabilization System — v1",
+    "version": "1.0.0",
+    "fileUrl": "https://example-cdn.codexlabs.com/artifacts/execution_stabilization_system_v1.pdf",
+    "entitlementsRequired": ["artifact:execution_stabilization_system"],
+    "checksum": "sha256:d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5",
+    "sizeBytes": 307200
+  },
+  {
+    "id": "strategic_command_layer_v1",
+    "productId": "strategic_command_layer",
+    "title": "Strategic Command Layer — v1",
+    "version": "1.0.0",
+    "fileUrl": "https://example-cdn.codexlabs.com/artifacts/strategic_command_layer_v1.pdf",
+    "entitlementsRequired": ["artifact:strategic_command_layer"],
+    "checksum": "sha256:e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4e5f6",
+    "sizeBytes": 256000
+  }
+]
