@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activation Ritual · Codex Labs</title>
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./ritual.js"></script>
+</head>
+<body>
+  <main class="container activation-wrap">
+    <section class="panel activation-card">
+      <h1>Activation Ritual</h1>
+      <p class="progress" id="progress">Step 1 of 3</p>
+
+      <section class="step step-active" id="step-1" aria-labelledby="step-1-title">
+        <h2 id="step-1-title">1) Identify</h2>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="actions">
+          <button id="identify-btn" type="button">Continue</button>
+        </div>
+      </section>
+
+      <section class="step" id="step-2" aria-labelledby="step-2-title" hidden>
+        <h2 id="step-2-title">2) Verify</h2>
+        <div class="field">
+          <label for="product">Product</label>
+          <select id="product" disabled></select>
+        </div>
+        <div class="field">
+          <label for="license">License</label>
+          <input id="license" type="text" autocomplete="off" disabled>
+        </div>
+        <div class="actions">
+          <button id="verify-btn" type="button" disabled>Verify License</button>
+        </div>
+      </section>
+
+      <section class="step" id="step-3" aria-labelledby="step-3-title" hidden>
+        <h2 id="step-3-title">3) Reveal</h2>
+        <div id="reveal-panel" aria-live="polite"></div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
