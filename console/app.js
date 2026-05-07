@@ -217,17 +217,15 @@ function selectSection(section) {
 }
 
 function init() {
-  sections.forEach((section, index) => {
+  sections.forEach((section) => {
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = section.label;
     button.dataset.id = section.id;
     button.addEventListener("click", () => selectSection(section));
     nav.appendChild(button);
-    if (index === 0) {
-      selectSection(section);
-    }
   });
+  selectSection(sections[0]);
 }
 
 init();
