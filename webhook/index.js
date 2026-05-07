@@ -29,10 +29,7 @@ app.post("/webhook", bodyParser.raw({ type: "application/json" }), (req, res) =>
         const price = session.amount_total ?? 0;
         const timestamp = session.created ?? Math.floor(Date.now() / 1000);
 
-        const fulfillment = await fulfillPurchase({ email, product, price, timestamp });
-        if (!fulfillment.ok) {
-          console.error("fulfillment_error", fulfillment.error);
-        }
+        await fulfillPurchase({ email, product, price, timestamp });
       })().catch((err) => {
         console.error("fulfillment_error", err);
       });

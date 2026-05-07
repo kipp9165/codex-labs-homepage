@@ -23,7 +23,7 @@ export async function fulfillPurchase({ email, product, price, timestamp }) {
     if (typeof product !== "string" || !product) {
       throw new Error("Invalid fulfillment input: product is required");
     }
-    if (typeof timestamp !== "number" || Number.isNaN(timestamp)) {
+    if (typeof timestamp !== "number" || !Number.isFinite(timestamp) || timestamp < 0) {
       throw new Error("Invalid fulfillment input: timestamp must be a number");
     }
 
