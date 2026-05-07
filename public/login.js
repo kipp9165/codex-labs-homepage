@@ -33,12 +33,16 @@ async function requestMagicLink(email) {
   setStatus("Sending magic link...");
 
   try {
-    await fetch("/api/auth/request", {
+    const response = await fetch("/api/auth/request", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email })
     });
-    setStatus("Check your email");
+    if (response.ok) {
+      setStatus("Check your email");
+    } else {
+      setStatus("Unable to send magic link.");
+    }
   } catch {
     setStatus("Unable to send magic link.");
   }

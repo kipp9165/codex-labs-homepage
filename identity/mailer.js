@@ -16,11 +16,11 @@ export async function sendMagicLink(email, token) {
   try {
     const response = await fetch(url, {
       method: "POST",
-      headers: { "content-type": "application/json" },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email,
         token,
-        link: `${publicBaseUrl}/login.html?token=${token}`
+        link: `${publicBaseUrl}/login.html?token=${encodeURIComponent(token)}`
       }),
       signal: controller.signal
     });
