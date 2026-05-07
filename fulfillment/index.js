@@ -17,6 +17,15 @@ export async function fulfillPurchase({ email, product, price, timestamp }) {
     if (!baserowApiKey) {
       throw new Error("BASEROW_API_KEY is not set");
     }
+    if (typeof email !== "string" || !email) {
+      throw new Error("Invalid fulfillment input: email is required");
+    }
+    if (typeof product !== "string" || !product) {
+      throw new Error("Invalid fulfillment input: product is required");
+    }
+    if (typeof timestamp !== "number" || Number.isNaN(timestamp)) {
+      throw new Error("Invalid fulfillment input: timestamp must be a number");
+    }
 
     const license = createHmac("sha256", secret)
       .update(`${email}:${product}:${timestamp}`)
