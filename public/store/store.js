@@ -1,6 +1,7 @@
 const script = document.currentScript;
 const page = script?.dataset.page || "home";
 const statusEl = document.getElementById("store-status");
+const ACTIVATION_REDIRECT_DELAY_MS = 1200;
 
 const currency = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -121,7 +122,7 @@ function renderProduct(product) {
   if (getQueryValue("activated") && product.activationRitualUrl) {
     window.setTimeout(() => {
       window.location.href = product.activationRitualUrl;
-    }, 1200);
+    }, ACTIVATION_REDIRECT_DELAY_MS);
   }
 
   detail.querySelectorAll("button[data-lookup-key]").forEach((button) => {

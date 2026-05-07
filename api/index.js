@@ -30,7 +30,7 @@ function loadProducts() {
     description: product.description,
     family: product.family,
     label: product.label,
-    activationRitualUrl: fallbackActivationRitual,
+    activationRitualUrl: product.activationRitualUrl || fallbackActivationRitual,
     prices: (product.prices || []).map((price) => ({
       lookup_key: price.lookup_key,
       amount: price.amount,
