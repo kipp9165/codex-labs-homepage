@@ -6,7 +6,7 @@ import {
   generateDownloadToken,
   verifyDownloadToken,
 } from "../artifacts/index.js";
-import artifactsRegistry from "../artifacts/registry.json" assert { type: "json" };
+import artifactsRegistry from "../artifacts/registry.json" with { type: "json" };
 
 const app = express();
 app.use(express.json());
@@ -14,6 +14,13 @@ app.use(express.json());
 const downloadRateLimit = new Map();
 const RATE_WINDOW_MS = 60_000;
 const RATE_MAX = 30;
+
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, entry] of downloadRateLimit) {
+    if (now - entry.windowStart > RATE_WINDOW_MS) downloadRateLimit.delete(ip);
+  }
+}, RATE_WINDOW_MS).unref();
 
 function checkRateLimit(ip) {
   const now = Date.now();
