@@ -13,17 +13,29 @@ const fallbackActivationRitualUrl = "/daily-clarity-ritual.html";
 const stripeSecret = process.env.STRIPE_SECRET_KEY;
 const stripe = stripeSecret ? new Stripe(stripeSecret) : null;
 const priceIdCache = new Map();
+let cachedSurface = null;
+let cachedSurfaceMtimeMs = 0;
 
 app.set("trust proxy", 1);
 app.use(express.json());
 app.use(express.static(publicDir));
 
 function readJson(filePath) {
-  return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch (error) {
+    throw new Error(`Failed to read JSON file: ${filePath}`, { cause: error });
+  }
 }
 
 function loadProducts() {
-  const surface = readJson(surfacePath);
+  const surfaceStat = fs.statSync(surfacePath);
+  if (!cachedSurface || cachedSurfaceMtimeMs !== surfaceStat.mtimeMs) {
+    cachedSurface = readJson(surfacePath);
+    cachedSurfaceMtimeMs = surfaceStat.mtimeMs;
+  }
+
+  const surface = cachedSurface;
   return (surface.products || []).map((product) => ({
     id: product.id,
     name: product.name,
@@ -58,6 +70,10 @@ function getBaseUrl(req) {
 }
 
 async function resolveStripePriceId(lookupKey) {
+  if (!stripe) {
+    return null;
+  }
+
   if (priceIdCache.has(lookupKey)) {
     return priceIdCache.get(lookupKey);
   }

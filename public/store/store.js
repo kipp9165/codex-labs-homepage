@@ -25,6 +25,33 @@ function setStatus(text, className = "") {
   statusEl.className = `status ${className}`.trim();
 }
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("\"", "&quot;")
+    .replaceAll("'", "&#39;");
+}
+
+function isSafeRedirectUrl(url) {
+  if (typeof url !== "string" || !url.trim()) {
+    return false;
+  }
+
+  if (url.startsWith("/") && !url.startsWith("//")) {
+    return true;
+  }
+
+  try {
+    const parsed = new URL(url, window.location.origin);
+    const isHttp = parsed.protocol === "http:" || parsed.protocol === "https:";
+    return isHttp && parsed.origin === window.location.origin;
+  } catch {
+    return false;
+  }
+}
+
 async function fetchJson(url, options) {
   const response = await fetch(url, options);
   if (!response.ok) {
@@ -39,19 +66,20 @@ function renderHome(products) {
   if (!grid) return;
 
   const cards = products.flatMap((product) => {
-    const prices = Array.isArray(product.prices) && product.prices.length ? product.prices : [{}];
+    const prices = Array.isArray(product.prices) && product.prices.length ? product.prices : [null];
     return prices.map((price) => {
-      const tier = price.tier || "default";
+      const tier = price?.tier || "No active tier";
+      const encodedProductId = encodeURIComponent(product.id);
       return `
         <article class="card">
-          <h3>${product.name}</h3>
-          <p>${product.description || ""}</p>
+          <h3>${escapeHtml(product.name)}</h3>
+          <p>${escapeHtml(product.description || "")}</p>
           <div class="meta-row">
-            <span class="chip">${tier}</span>
-            <span class="chip">${product.family || "product"}</span>
+            <span class="chip">${escapeHtml(tier)}</span>
+            <span class="chip">${escapeHtml(product.family || "product")}</span>
           </div>
-          <strong class="price">${formatAmount(price.amount, price.currency)}</strong>
-          <a class="view-link" href="/store/product.html?product=${encodeURIComponent(product.id)}">View Product</a>
+          <strong class="price">${escapeHtml(price ? formatAmount(price.amount, price.currency) : "No current pricing")}</strong>
+          <a class="view-link" href="/store/product.html?product=${escapeHtml(encodedProductId)}">View Product</a>
         </article>
       `;
     });
@@ -97,9 +125,9 @@ function renderProduct(product) {
         .map(
           (price) => `
             <div class="price-row">
-              <strong>${price.tier || "default"}</strong>
-              <span>${formatAmount(price.amount, price.currency)}</span>
-              <button class="btn" data-lookup-key="${price.lookup_key}">Buy</button>
+              <strong>${escapeHtml(price.tier || "default")}</strong>
+              <span>${escapeHtml(formatAmount(price.amount, price.currency))}</span>
+              <button class="btn" data-lookup-key="${escapeHtml(price.lookup_key)}">Buy</button>
             </div>
           `
         )
@@ -111,8 +139,8 @@ function renderProduct(product) {
     : "";
 
   detail.innerHTML = `
-    <h1>${product.name}</h1>
-    <p class="product-description">${product.description || ""}</p>
+    <h1>${escapeHtml(product.name)}</h1>
+    <p class="product-description">${escapeHtml(product.description || "")}</p>
     ${activationNotice}
     <section class="price-grid">
       <h3>Select Tier</h3>
@@ -120,7 +148,7 @@ function renderProduct(product) {
     </section>
   `;
 
-  if (isActivated && typeof product.activationRitualUrl === "string" && product.activationRitualUrl.trim()) {
+  if (isActivated && isSafeRedirectUrl(product.activationRitualUrl)) {
     window.setTimeout(() => {
       window.location.href = product.activationRitualUrl;
     }, ACTIVATION_REDIRECT_DELAY);
