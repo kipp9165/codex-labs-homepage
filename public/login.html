@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codex Labs Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: #f7f7f8;
+      }
+
+      main {
+        width: min(420px, 92vw);
+        background: #fff;
+        border: 1px solid #d7d7db;
+        border-radius: 10px;
+        padding: 24px;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 24px;
+      }
+
+      form {
+        display: grid;
+        gap: 12px;
+      }
+
+      input,
+      button {
+        font-size: 16px;
+        padding: 10px 12px;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      #status {
+        margin-top: 12px;
+        min-height: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Login</h1>
+      <form id="login-form">
+        <input id="email" type="email" name="email" required placeholder="Email" autocomplete="email" />
+        <button type="submit">Send Magic Link</button>
+      </form>
+      <p id="status" role="status" aria-live="polite"></p>
+    </main>
+    <script type="module" src="/public/login.js"></script>
+  </body>
+</html>
