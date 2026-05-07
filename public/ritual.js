@@ -159,9 +159,8 @@ async function verifyLicense(payload) {
 
 function renderReveal() {
   const valid = isLicenseValid(verifyResult);
-  const entitlements = normalizeEntitlements(verifyResult).length
-    ? normalizeEntitlements(verifyResult)
-    : normalizeEntitlements(portalState);
+  const verifyEntitlements = normalizeEntitlements(verifyResult);
+  const entitlements = verifyEntitlements.length ? verifyEntitlements : normalizeEntitlements(portalState);
   const portalUrl = getPortalUrl(portalState) || getPortalUrl(verifyResult);
 
   const entitlementList = entitlements.length
@@ -179,6 +178,13 @@ function renderReveal() {
     <div class="reveal-row"><strong>Entitlements:</strong> ${entitlementList}</div>
     <div class="reveal-row"><strong>Portal URL:</strong> ${portalMarkup}</div>
   `;
+}
+
+async function completeVerification() {
+  await fetchPortalState();
+  unlockStep3();
+  renderReveal();
+  setStepState(step3El, { active: false, complete: true });
 }
 
 identifyBtnEl.addEventListener("click", async () => {
@@ -236,10 +242,7 @@ verifyBtnEl.addEventListener("click", async () => {
     return;
   }
 
-  await fetchPortalState();
-  unlockStep3();
-  renderReveal();
-  setStepState(step3El, { active: false, complete: true });
+  await completeVerification();
 });
 
 loadProducts();
