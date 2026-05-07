@@ -5,6 +5,24 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const app = express();
 
+async function handleCheckoutSessionCompleted(session) {
+  const email = session.customer_details?.email ?? session.customer_email ?? null;
+  const product = session.metadata?.product ?? null;
+  const price = (session.amount_total ?? 0) / 100;
+  const timestamp = new Date(session.created * 1000).toISOString();
+
+  console.log(JSON.stringify({ event: "checkout.session.completed", email, product, price, timestamp }));
+
+  await fetch(`${process.env.BASEROW_API_URL}`, {
+    method: "POST",
+    headers: {
+      Authorization: `Token ${process.env.BASEROW_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ email, product, price, timestamp }),
+  });
+}
+
 app.post("/webhook", bodyParser.raw({ type: "application/json" }), (req, res) => {
   const signature = req.headers["stripe-signature"];
   let event;
@@ -18,13 +36,15 @@ app.post("/webhook", bodyParser.raw({ type: "application/json" }), (req, res) =>
 
   res.status(200).send("OK");
 
-  switch (event.type) {
-    case "checkout.session.completed":
-      console.log("checkout.session.completed");
-      break;
-    default:
-      break;
-  }
+  (async () => {
+    try {
+      if (event.type === "checkout.session.completed") {
+        await handleCheckoutSessionCompleted(event.data.object);
+      }
+    } catch (err) {
+      console.error(JSON.stringify({ event: "webhook_processing_error", type: event.type, error: err.message }));
+    }
+  })();
 });
 
 const port = process.env.PORT || 3000;
