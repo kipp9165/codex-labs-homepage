@@ -24,7 +24,7 @@ export async function fulfillPurchase({ email, product, price, timestamp }) {
       throw new Error("Invalid fulfillment input: product is required");
     }
     if (typeof timestamp !== "number" || !Number.isFinite(timestamp) || timestamp < 0) {
-      throw new Error("Invalid fulfillment input: timestamp must be a number");
+      throw new Error("Invalid fulfillment input: timestamp must be a finite non-negative number");
     }
 
     const license = createHmac("sha256", secret)
