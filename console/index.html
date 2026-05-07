@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codex Labs Operator Console</title>
+    <link rel="stylesheet" href="/console/style.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <div class="sidebar-header">Codex Labs</div>
+      <nav class="nav" id="nav"></nav>
+    </aside>
+    <main class="main">
+      <header class="main-header">
+        <h1 id="section-title">Operator Console</h1>
+      </header>
+      <section class="main-content" id="main-content"></section>
+    </main>
+    <script>
+      window.__CONFIG__ = {
+        BASEROW_PURCHASES_URL: "<%= BASEROW_PURCHASES_URL %>",
+        BASEROW_FULFILLMENT_URL: "<%= BASEROW_FULFILLMENT_URL %>",
+        BASEROW_API_KEY: "<%= BASEROW_API_KEY %>"
+      };
+    </script>
+    <script src="/console/app.js"></script>
+  </body>
+</html>
