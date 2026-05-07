@@ -1,5 +1,7 @@
 import { createHmac } from "crypto";
 
+const BASEROW_FETCH_TIMEOUT_MS = 10000;
+
 export async function fulfillPurchase({ email, product, price, timestamp }) {
   try {
     const secret = process.env.FULFILLMENT_SECRET;
@@ -21,7 +23,7 @@ export async function fulfillPurchase({ email, product, price, timestamp }) {
       .digest("hex");
 
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 10000);
+    const timeout = setTimeout(() => controller.abort(), BASEROW_FETCH_TIMEOUT_MS);
 
     try {
       const response = await fetch(baserowUrl, {
