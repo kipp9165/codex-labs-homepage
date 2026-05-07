@@ -10,5 +10,5 @@ app.use("/console", express.static(path.resolve("console")));
 const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-  console.log("api_listening");
+  console.log(`Console server listening on port ${port}`);
 });

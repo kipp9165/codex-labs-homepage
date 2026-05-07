@@ -51,7 +51,7 @@ async function apiPost(path, body) {
 
 async function fetchBaserow(url) {
   if (!url || !config.BASEROW_API_KEY) {
-    return { error: "Missing BASEROW_PURCHASES_URL/BASEROW_FULFILLMENT_URL or BASEROW_API_KEY in window.__CONFIG__." };
+    return { error: "Missing BASEROW_PURCHASES_URL, BASEROW_FULFILLMENT_URL, or BASEROW_API_KEY in window.__CONFIG__." };
   }
   const response = await fetch(url, {
     headers: {
