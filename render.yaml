@@ -1,13 +1,6 @@
 services:
   - type: web
-    name: codex-labs-webhook
-    env: node
-    plan: starter
-    buildCommand: "npm install"
-    startCommand: "node webhook/index.js"
-    envVars:
-      - key: STRIPE_SECRET_KEY
-        sync: false
-      - key: STRIPE_WEBHOOK_SECRET
-        sync: false
+    name: codex-labs-homepage
+    env: static
+    staticPublishPath: public
     autoDeploy: true
