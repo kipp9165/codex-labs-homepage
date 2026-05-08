@@ -1,7 +1,6 @@
 services:
-  - type: web
+  - type: static
     name: codex-labs-homepage
-    env: static
     staticPublishPath: ./public
     buildCommand: ""
     autoDeploy: true
