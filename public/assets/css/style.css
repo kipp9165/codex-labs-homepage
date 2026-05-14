@@ -187,12 +187,18 @@ section > h2 {
 
 .product-card:hover,
 .card:hover {
-  border-color: var(--accent-primary);
+  border-color: var(--accent-secondary);
   box-shadow:
-    0 0 0 1px var(--accent-secondary),
-    0 0 18px rgba(255, 111, 216, 0.55),
-    0 0 32px rgba(123, 92, 255, 0.45);
-  transition: border-color 0.18s ease-out, box-shadow 0.18s ease-out;
+    0 0 0 2px var(--accent-secondary),
+    0 0 22px rgba(255, 111, 216, 0.85),
+    0 0 42px rgba(255, 111, 216, 0.75),
+    0 0 60px rgba(123, 92, 255, 0.70),
+    0 0 90px rgba(123, 92, 255, 0.55);
+  transform: translateY(-2px);
+  transition:
+    border-color 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    transform 0.15s ease-out;
 }
 
 .product-tagline {
