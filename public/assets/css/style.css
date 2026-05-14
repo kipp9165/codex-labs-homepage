@@ -187,7 +187,7 @@ section > h2 {
 
 .product-card:hover,
 .card:hover {
-  border-color: #ff4fa3;
+  border-color: #ff4fa3; /* metallic magenta */
   box-shadow:
     0 0 0 1.5px #ff4fa3,
     0 0 14px rgba(255, 79, 163, 0.40),
