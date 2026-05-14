@@ -1,13 +1,4 @@
 :root {
-  --primary: #7B5CFF;
-  --secondary: #FF6FD8;
-  --accent-gold: #F4D06F;
-  --lucky-green: #4CD964;
-  --lucky-blue: #5AC8FA;
-  --lucky-red: #FF3B30;
-  --charcoal: #0F0F14;
-  --surface: #F7F7FB;
-
   --bg-main: #050509;
   --bg-elevated: #0b0b12;
   --bg-card: #10101a;
@@ -16,6 +7,7 @@
   --text-muted: #a0a3b1;
   --accent-primary: #7b5cff;
   --accent-secondary: #3ce4ff;
+  --accent-gold: #f6c453;
 }
 
 * {
@@ -30,15 +22,12 @@ body {
 
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
+  background: #050509;
+  color: #f5f5f7;
   margin: 0;
   padding: 0;
-  color: var(--text-main);
-  background:
-    radial-gradient(circle at top left, rgba(123, 92, 255, 0.18), transparent 45%),
-    radial-gradient(circle at top right, rgba(60, 228, 255, 0.08), transparent 40%),
-    var(--bg-main);
+  line-height: 1.6;
+  font-size: 16px;
 }
 
 a {
@@ -76,7 +65,6 @@ h3 {
 }
 
 section {
-  margin: 0;
   margin-bottom: 48px;
 }
 
@@ -96,29 +84,32 @@ section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
 }
 
 .nav-logo {
-  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 800;
+  font-size: 13px;
   color: var(--accent-gold);
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 12px;
   flex-wrap: wrap;
 }
 
 .nav-links a {
+  margin-left: 18px;
   font-size: 14px;
   color: var(--text-muted);
   text-decoration: none;
   transition: color 0.18s ease;
+}
+
+.nav-links a:first-child {
+  margin-left: 0;
 }
 
 .nav-links a:hover,
@@ -146,7 +137,7 @@ section {
   font-size: 36px;
   line-height: 1.1;
   margin: 0 0 14px;
-  color: var(--primary);
+  color: var(--text-main);
 }
 
 .hero-subtitle {
@@ -195,8 +186,8 @@ section > h2 {
 .product-card:hover,
 .card:hover {
   transform: translateY(-2px);
-  border-color: var(--secondary);
-  box-shadow: 0 18px 40px rgba(255, 111, 216, 0.35);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.62);
 }
 
 .product-tagline {
@@ -234,10 +225,8 @@ section > h2 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: fit-content;
-  margin-top: auto;
   padding: 9px 18px;
-  border: 1px solid transparent;
+  border: none;
   border-radius: 999px;
   text-decoration: none;
   font-size: 13px;
@@ -247,6 +236,8 @@ section > h2 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   cursor: pointer;
   transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, filter 0.12s ease-out;
+  width: fit-content;
+  margin-top: auto;
 }
 
 .btn-primary:hover,
@@ -287,19 +278,19 @@ section > h2 {
 }
 
 .accent-pink {
-  color: var(--secondary);
+  color: var(--accent-primary);
 }
 
 .accent-blue {
-  color: var(--lucky-blue);
+  color: var(--accent-secondary);
 }
 
 .accent-green {
-  color: var(--lucky-green);
+  color: var(--accent-gold);
 }
 
 .text-charcoal {
-  color: var(--charcoal);
+  color: var(--text-main);
 }
 
 .hero-section,
