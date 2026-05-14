@@ -172,6 +172,35 @@ section > h2 {
   gap: 20px;
 }
 
+/* Center the Products & Pricing card grid */
+.pricing-grid,
+.pricing-section,
+.pricing-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+}
+
+.pricing-card,
+.product-card {
+  margin: 0 auto;
+}
+
+.section,
+.content-wrapper {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 24px;
+}
+
 .product-card,
 .card {
   background: var(--bg-card);
