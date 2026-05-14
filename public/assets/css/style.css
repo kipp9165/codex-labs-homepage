@@ -8,9 +8,14 @@
   --charcoal: #0F0F14;
   --surface: #F7F7FB;
 
-  --text-primary: var(--charcoal);
-  --text-secondary: rgba(15, 15, 20, 0.72);
-  --surface-elevated: #ffffff;
+  --bg-main: #050509;
+  --bg-elevated: #0b0b12;
+  --bg-card: #10101a;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --text-main: #f5f5f7;
+  --text-muted: #a0a3b1;
+  --accent-primary: #7b5cff;
+  --accent-secondary: #3ce4ff;
 }
 
 * {
@@ -24,14 +29,16 @@ body {
 }
 
 body {
-  font-family: "Manrope", "Segoe UI", "SF Pro Text", sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
   font-size: 16px;
-  line-height: 1.55;
-  color: var(--text-primary);
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: var(--text-main);
   background:
-    radial-gradient(circle at 8% -6%, rgba(90, 200, 250, 0.18), transparent 32%),
-    radial-gradient(circle at 90% 2%, rgba(255, 111, 216, 0.14), transparent 36%),
-    linear-gradient(180deg, #ffffff 0%, var(--surface) 100%);
+    radial-gradient(circle at top left, rgba(123, 92, 255, 0.18), transparent 45%),
+    radial-gradient(circle at top right, rgba(60, 228, 255, 0.08), transparent 40%),
+    var(--bg-main);
 }
 
 a {
@@ -43,48 +50,47 @@ h2,
 h3 {
   margin-top: 0;
   line-height: 1.16;
-  color: var(--text-primary);
+  color: var(--text-main);
   letter-spacing: -0.018em;
 }
 
 h1 {
-  font-size: clamp(40px, 5vw, 52px);
+  font-size: clamp(36px, 4vw, 52px);
   font-weight: 800;
 }
 
 h2 {
-  font-size: clamp(26px, 2.5vw, 30px);
+  font-size: clamp(22px, 2.2vw, 30px);
   font-weight: 750;
 }
 
 h3 {
-  font-size: clamp(18px, 2vw, 22px);
+  font-size: clamp(18px, 1.8vw, 20px);
   font-weight: 700;
 }
 
 .page {
-  width: min(1120px, 100%);
+  max-width: 1120px;
   margin: 0 auto;
   padding: 40px 20px 80px;
 }
 
 section {
   margin: 0;
-  padding-top: 48px;
-  padding-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .site-header {
   position: sticky;
   top: 0;
   z-index: 20;
-  border-bottom: 1px solid rgba(123, 92, 255, 0.16);
-  background: linear-gradient(110deg, #0f0f14 0%, #171723 100%);
-  box-shadow: 0 10px 20px rgba(15, 15, 20, 0.2);
+  border-bottom: 1px solid var(--border-subtle);
+  background: radial-gradient(circle at top left, rgba(123, 92, 255, 0.18), transparent 55%), var(--bg-main);
+  backdrop-filter: blur(16px);
 }
 
 .nav-inner {
-  width: min(1120px, 100%);
+  max-width: 1120px;
   margin: 0 auto;
   padding: 14px 20px;
   display: flex;
@@ -110,107 +116,116 @@ section {
 
 .nav-links a {
   font-size: 14px;
-  font-weight: 600;
+  color: var(--text-muted);
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.86);
-  padding: 3px 0;
-  border-bottom: 1px solid transparent;
-  transition: color 0.18s ease, border-color 0.18s ease;
+  transition: color 0.18s ease;
 }
 
 .nav-links a:hover,
 .nav-links a:focus-visible {
-  color: #ffffff;
-  border-color: var(--secondary);
+  color: var(--accent-secondary);
 }
 
 .hero,
 .hero-section,
 .section-hero,
 .hero-container {
-  padding-top: 42px;
+  padding: 40px 0 32px;
 }
 
 .hero-kicker {
-  margin: 0 0 12px;
-  font-size: 13px;
+  margin: 0 0 10px;
+  font-size: 11px;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  font-weight: 800;
-  color: var(--secondary);
+  letter-spacing: 0.16em;
+  color: var(--accent-secondary);
+  font-weight: 700;
 }
 
 .hero-title {
+  font-size: 36px;
+  line-height: 1.1;
   margin: 0 0 14px;
-  max-width: 920px;
   color: var(--primary);
 }
 
 .hero-subtitle {
-  max-width: 760px;
+  max-width: 640px;
   margin: 0;
-  font-size: 17px;
-  color: var(--text-secondary);
+  font-size: 15px;
+  color: var(--text-muted);
 }
 
 .section-heading,
 section > h2 {
-  margin: 0 0 20px;
-  color: var(--charcoal);
+  margin: 0 0 18px;
+  color: var(--text-main);
 }
 
 .product-grid {
   display: grid;
-  gap: 22px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 
 .product-card,
 .card {
-  background: var(--surface-elevated);
-  border: 1px solid var(--primary);
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(123, 92, 255, 0.25);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 18px 18px 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
   display: flex;
   flex-direction: column;
-  min-height: 260px;
+  position: relative;
+  overflow: hidden;
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card::after,
+.card::after {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at top right, rgba(246, 196, 83, 0.12), transparent 60%);
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 .product-card:hover,
 .card:hover {
   transform: translateY(-2px);
   border-color: var(--secondary);
-  box-shadow: 0 6px 16px rgba(255, 111, 216, 0.35);
+  box-shadow: 0 18px 40px rgba(255, 111, 216, 0.35);
 }
 
 .product-tagline {
-  margin: 0 0 10px;
+  margin: 0 0 8px;
   text-transform: uppercase;
   font-size: 12px;
-  letter-spacing: 0.13em;
-  font-weight: 800;
-  color: var(--secondary);
+  letter-spacing: 0.16em;
+  color: var(--accent-secondary);
+  font-weight: 700;
 }
 
 .product-card h2,
 .product-card h3 {
-  margin: 0 0 10px;
+  margin: 0 0 6px;
+  font-size: 18px;
 }
 
 .product-card p {
-  margin: 0 0 14px;
-  color: var(--text-secondary);
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: var(--text-muted);
   flex-grow: 1;
 }
 
 .product-price {
-  margin-bottom: 10px;
-  font-size: 14px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 600;
   color: var(--accent-gold);
-  letter-spacing: 0.01em;
+  margin-bottom: 10px;
 }
 
 .btn-primary,
@@ -221,27 +236,25 @@ section > h2 {
   justify-content: center;
   width: fit-content;
   margin-top: auto;
-  padding: 11px 22px;
+  padding: 9px 18px;
   border: 1px solid transparent;
-  border-radius: 6px;
+  border-radius: 999px;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-  color: #ffffff;
-  background: var(--primary);
-  box-shadow: 0 4px 12px rgba(123, 92, 255, 0.35);
+  font-size: 13px;
+  font-weight: 600;
+  color: #050509;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
   cursor: pointer;
-  transition: transform 0.15s ease-out, filter 0.15s ease-out, background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, filter 0.12s ease-out;
 }
 
 .btn-primary:hover,
 .buy-button:hover,
 .cta:hover {
-  background: var(--secondary);
-  transform: translateY(-2px);
-  filter: brightness(1.08);
-  box-shadow: 0 8px 18px rgba(255, 111, 216, 0.35);
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
 }
 
 .buy-button + .product-price {
@@ -253,11 +266,11 @@ section > h2 {
 }
 
 .site-footer {
-  border-top: 1px solid rgba(123, 92, 255, 0.16);
-  background: #ffffff;
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-main);
   padding: 18px 0 26px;
-  color: var(--text-secondary);
-  font-size: 14px;
+  color: var(--text-muted);
+  font-size: 12px;
 }
 
 .footer-inner {
@@ -289,7 +302,6 @@ section > h2 {
   color: var(--charcoal);
 }
 
-/* Required spacing compression: hero -> systems */
 .hero-section,
 .section-hero,
 .hero,
@@ -318,11 +330,6 @@ section > h2 {
 
   .hero-subtitle {
     font-size: 16px;
-  }
-
-  section {
-    padding-top: 38px;
-    padding-bottom: 24px;
   }
 
   .product-grid {
