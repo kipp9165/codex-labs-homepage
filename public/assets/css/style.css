@@ -138,6 +138,8 @@ section {
   line-height: 1.1;
   margin: 0 0 14px;
   color: var(--text-main);
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .hero-subtitle {
