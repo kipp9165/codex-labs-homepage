@@ -193,14 +193,6 @@ section > h2 {
   margin: 0 auto;
 }
 
-.section,
-.content-wrapper {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 24px;
-}
-
 .product-card,
 .card {
   background: var(--bg-card);
@@ -227,11 +219,11 @@ section > h2 {
 
 .product-card:hover,
 .card:hover {
-  border-color: #ff4fa3; /* metallic magenta */
+  border-color: #ff7fcf;
   box-shadow:
-    0 0 0 1.5px #ff4fa3,
-    0 0 14px rgba(255, 79, 163, 0.40),
-    0 0 26px rgba(255, 79, 163, 0.28);
+    0 0 0 1.5px #ff7fcf,
+    0 0 14px rgba(255, 127, 207, 0.40),
+    0 0 26px rgba(255, 127, 207, 0.28);
   transform: translateY(-1px);
   transition:
     border-color 0.15s ease-out,
@@ -239,13 +231,14 @@ section > h2 {
     transform 0.15s ease-out;
 }
 
-.os-bloom-hover:hover {
-  border-color: #ff4fa3;
+.product-card.os-bloom-hover:hover,
+.card.os-bloom-hover:hover {
+  border-color: #ff7fcf;
   box-shadow:
-    0 0 0 2px #ff4fa3,
-    0 0 24px rgba(255, 79, 163, 0.65),
-    0 0 48px rgba(255, 79, 163, 0.50),
-    0 0 72px rgba(255, 79, 163, 0.40);
+    0 0 0 2px #ff7fcf,
+    0 0 24px rgba(255, 127, 207, 0.65),
+    0 0 48px rgba(255, 127, 207, 0.50),
+    0 0 72px rgba(255, 127, 207, 0.40);
   transform: translateY(-2px);
   transition:
     border-color 0.15s ease-out,
