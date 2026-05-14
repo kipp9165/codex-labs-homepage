@@ -49,7 +49,7 @@
   function wireCheckoutButtons(checkoutUrls) {
     document.querySelectorAll("a[data-product-id]").forEach(function (anchor) {
       var productId = anchor.dataset.productId;
-      if (!productId) {
+      if (!productId || productId.indexOf("prod_") !== 0) {
         return;
       }
 
@@ -75,6 +75,33 @@
     });
   }
 
+  function attachPlausibleTracking() {
+    document.querySelectorAll(".buy-button").forEach(function (button) {
+      if (button.dataset.plausibleBound === "1") {
+        return;
+      }
+
+      button.dataset.plausibleBound = "1";
+      button.addEventListener("click", function () {
+        try {
+          if (typeof window.plausible !== "function") {
+            return;
+          }
+
+          window.plausible("cta_click", {
+            props: {
+              product_id: button.getAttribute("data-product-id") || "",
+              price_id: button.getAttribute("data-price-id") || "",
+              page: window.location.pathname || "",
+            },
+          });
+        } catch (_error) {
+          return;
+        }
+      });
+    });
+  }
+
   function fetchCheckoutUrls(url) {
     return fetch(url).then(function (response) {
       if (!response.ok) {
@@ -85,7 +112,20 @@
   }
 
   function loadCheckoutUrls() {
-    var paths = window.location.protocol === "file:" ? ["./checkout-urls.json", "../checkout-urls.json"] : ["/checkout-urls.json"];
+    var paths = ["/checkout-urls.json"];
+
+    if (window.location.protocol === "file:") {
+      var segments = window.location.pathname.split("/").filter(Boolean);
+      var publicIndex = segments.lastIndexOf("public");
+      var directoriesBelowPublic = 0;
+
+      if (publicIndex >= 0) {
+        directoriesBelowPublic = Math.max(0, segments.length - publicIndex - 2);
+      }
+
+      var prefix = directoriesBelowPublic ? new Array(directoriesBelowPublic + 1).join("../") : "./";
+      paths = [prefix + "checkout-urls.json"];
+    }
 
     var attempts = paths.map(function (path) {
       return function () {
@@ -101,6 +141,8 @@
   }
 
   document.addEventListener("DOMContentLoaded", function () {
+    attachPlausibleTracking();
+
     loadCheckoutUrls()
       .then(function (checkoutUrls) {
         wireCheckoutButtons(checkoutUrls);
