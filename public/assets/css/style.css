@@ -190,6 +190,8 @@ section > h2 {
   border-color: var(--secondary);
   box-shadow:
     0 0 0 1.5px var(--secondary);
+    0 0 12px rgba(255, 111, 216, 0.35),
+    0 0 22px rgba(255, 111, 216, 0.25);
   transform: translateY(-1px);
   transition:
     border-color 0.15s ease-out,
