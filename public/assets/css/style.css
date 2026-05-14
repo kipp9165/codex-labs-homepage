@@ -1,7 +1,18 @@
 :root {
+  /* Lucky Charms Codex Palette */
+  --primary: #7B5CFF;
+  --secondary: #FF6FD8;
+  --accent-gold: #F4D06F;
+  --lucky-green: #4CD964;
+  --lucky-blue: #5AC8FA;
+  --lucky-red: #FF3B30;
+  --charcoal: #0F0F14;
+  --surface: #F7F7FB;
+  
+  /* Legacy color mappings for component compatibility */
   --color-primary: #7b5cff;
   --color-secondary: #0f0f14;
-  --color-accent: #e8d18a;
+  --color-accent: #F4D06F;
   --color-surface: #f7f7fb;
   --color-surface-elevated: #ffffff;
   --color-text-primary: #0a0a0d;
@@ -54,7 +65,7 @@ section > h2 {
 }
 
 .site-header {
-  border-bottom: 1px solid rgba(232, 209, 138, 0.24);
+  border-bottom: 1px solid rgba(244, 208, 111, 0.24);
   background: linear-gradient(90deg, #0f0f14 0%, #191925 100%);
   position: sticky;
   top: 0;
@@ -150,9 +161,9 @@ section > h2 {
 }
 
 .product-card:hover {
-  border-color: rgba(123, 92, 255, 0.4);
+  border-color: rgba(255, 111, 216, 0.4);
   transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(15, 15, 20, 0.12);
+  box-shadow: 0 16px 36px rgba(255, 111, 216, 0.12);
 }
 
 .product-card h2,
@@ -178,7 +189,7 @@ section > h2 {
   line-height: 1.45;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #6a570f;
+  color: #F4D06F;
   letter-spacing: 0.01em;
 }
 
@@ -218,7 +229,7 @@ section > h2 {
 .cta:hover {
   transform: translateY(-2px);
   filter: brightness(1.08);
-  box-shadow: rgba(123, 92, 255, 0.45) 0 8px 18px;
+  box-shadow: rgba(255, 111, 216, 0.45) 0 8px 18px;
 }
 
 .buy-button + .product-price {
@@ -305,4 +316,66 @@ ul {
     padding-top: 40px;
     padding-bottom: 28px;
   }
+}
+
+/* Lucky Charms Codex Palette — Global Tokens & Application */
+:root {
+  --primary-violet: #7B5CFF;
+  --secondary-pink: #FF6FD8;
+  --accent-gold: #F4D06F;
+  --lucky-green: #4CD964;
+  --lucky-blue: #5AC8FA;
+  --lucky-red: #FF3B30;
+  --charcoal: #0F0F14;
+  --soft-surface: #F7F7FB;
+}
+
+/* Palette application helpers */
+.accent-gold {
+  color: var(--accent-gold);
+}
+
+.accent-pink {
+  color: var(--secondary-pink);
+}
+
+.accent-blue {
+  color: var(--lucky-blue);
+}
+
+.accent-green {
+  color: var(--lucky-green);
+}
+
+.text-charcoal {
+  color: var(--charcoal);
+}
+
+/* Enhanced card styling with Lucky Charms palette */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--primary);
+  box-shadow: 0 4px 12px rgba(123, 92, 255, 0.25);
+}
+
+.card:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 6px 16px rgba(255, 111, 216, 0.35);
+}
+
+/* Final hero → Core Systems spacing override */
+.hero-section,
+.section-hero,
+.hero,
+.hero-container {
+  padding-bottom: 8px !important;
+  margin-bottom: 0 !important;
+}
+
+.core-systems,
+.core-systems-section,
+.systems,
+.section-systems {
+  margin-top: 0 !important;
+  padding-top: 8px !important;
 }
