@@ -187,11 +187,11 @@ section > h2 {
 
 .product-card:hover,
 .card:hover {
-  border-color: var(--secondary);
+  border-color: #ff2b5c;
   box-shadow:
-    0 0 0 1.5px var(--secondary);
-    0 0 12px rgba(255, 111, 216, 0.35),
-    0 0 22px rgba(255, 111, 216, 0.25);
+    0 0 0 1.5px #ff2b5c,
+    0 0 12px rgba(255, 43, 92, 0.35),
+    0 0 22px rgba(255, 43, 92, 0.25);
   transform: translateY(-1px);
   transition:
     border-color 0.15s ease-out,
