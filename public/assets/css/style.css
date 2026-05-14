@@ -187,9 +187,9 @@ section > h2 {
 
 .product-card:hover,
 .card:hover {
-  border-color: var(--accent-secondary);
+  border-color: var(--secondary);
   box-shadow:
-    0 0 0 1.5px var(--accent-secondary);
+    0 0 0 1.5px var(--secondary);
   transform: translateY(-1px);
   transition:
     border-color 0.15s ease-out,
