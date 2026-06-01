@@ -7,6 +7,7 @@ export const SYSTEM_CATALOG = Object.freeze([
   { id: "plant_sentinel", layer: "sentinel" },
   { id: "appliance_sentinel", layer: "sentinel" },
   { id: "lawn_property_sentinel", layer: "sentinel" },
+  { id: "presence_ledger", layer: "core" },
   { id: "freezeguard", layer: "guardian" },
   { id: "homeguardian", layer: "guardian" },
   { id: "emergency_mesh", layer: "mesh" },
