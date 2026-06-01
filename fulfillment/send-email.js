@@ -1,6 +1,10 @@
 export async function sendEmail({ to, subject, body }) {
-  console.log("Email stub:");
-  console.log("To:", to);
-  console.log("Subject:", subject);
-  console.log("Body:", body);
+  const payload = {
+    body: body || "",
+    subject: subject || "",
+    to: to || "",
+  };
+
+  console.log(JSON.stringify({ level: "info", message: "email_stub_send", payload }));
+  return { accepted: true, messageId: null };
 }
