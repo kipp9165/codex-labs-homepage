@@ -1,5 +1,6 @@
 
 (function () {
+  // The browser checkout surface reads from public/checkout-urls.json so one file owns the live payment link mapping.
   function resolveCheckoutUrl(product, desiredPriceId) {
     if (!product || typeof product !== "object") {
       return { error: "invalid-product" };
@@ -76,6 +77,7 @@
   }
 
   function attachPlausibleTracking() {
+    // Plausible only tracks clicks on the existing CTA anchors; no extra analytics wiring lives in the HTML.
     document.querySelectorAll(".buy-button").forEach(function (button) {
       if (button.dataset.plausibleBound === "1") {
         return;

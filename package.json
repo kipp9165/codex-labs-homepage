@@ -4,6 +4,8 @@
   "description": "",
   "main": "checkout-url-generator.js",
   "scripts": {
+    "start": "node scripts/static-server.js",
+    "dev": "node scripts/static-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
