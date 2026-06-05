@@ -1,0 +1,53 @@
+name: Stripe to Baserow Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run both potential UTC offsets and gate to 3:00 AM America/New_York in-job.
+    - cron: "0 7,8 * * *"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Determine if it is 3:00 AM Eastern
+        id: et_gate
+        run: |
+          ET_HOUR=$(TZ=America/New_York date +%H)
+          ET_MIN=$(TZ=America/New_York date +%M)
+          if [ "$ET_HOUR" = "03" ] && [ "$ET_MIN" = "00" ]; then
+            echo "run_sync=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_sync=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.et_gate.outputs.run_sync == 'true' || github.event_name == 'workflow_dispatch'
+        run: npm ci
+
+      - name: Run Stripe to Baserow sync
+        if: steps.et_gate.outputs.run_sync == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          BASEROW_API_TOKEN: ${{ secrets.BASEROW_API_TOKEN }}
+          BASEROW_TABLE_ID: ${{ secrets.BASEROW_TABLE_ID }}
+        run: node scripts/stripe_to_baserow_sync.js
+
+      - name: Skip run outside 3:00 AM Eastern
+        if: steps.et_gate.outputs.run_sync != 'true' && github.event_name != 'workflow_dispatch'
+        run: echo "Scheduled run skipped because current America/New_York time is not 03:00."
+
+      - name: Failure notification
+        if: failure()
+        run: |
+          echo "Stripe to Baserow sync failed."
+          echo "GitHub Actions sends failure email notifications to watchers/users with notifications enabled."
