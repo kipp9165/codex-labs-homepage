@@ -6,6 +6,152 @@
     "currency": "usd",
     "payment_link_url": "https://pay.codexlitigation.org/b/8x26oHfJ5eax34Q83SfbD3O"
   },
+  "prod_UdJYepRHuEKA1D": {
+    "prices": [
+      {
+        "price_id": "price_1Te2vXHb9mVEJOcYfjrHpQHQ",
+        "amount": 29.99,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdJYepRHuEKA1D"
+      }
+    ]
+  },
+  "prod_UdJzT7y2gaZ02J": {
+    "prices": [
+      {
+        "price_id": "price_1Te3L9Hb9mVEJOcYx4FE4oGW",
+        "amount": 149,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdJzT7y2gaZ02J"
+      }
+    ]
+  },
+  "prod_UdKWxZGBuXGZb1": {
+    "prices": [
+      {
+        "price_id": "price_1Te3rlHb9mVEJOcYoELQqIHu",
+        "amount": 499,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdKWxZGBuXGZb1_primary"
+      },
+      {
+        "price_id": "price_1Te3rlHb9mVEJOcYCaKyfA7t",
+        "amount": 999,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdKWxZGBuXGZb1_secondary"
+      }
+    ]
+  },
+  "prod_UdKjIww5vuCh6q": {
+    "prices": [
+      {
+        "price_id": "price_1Te43eHb9mVEJOcYoUxyqR43",
+        "amount": 79,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdKjIww5vuCh6q"
+      }
+    ]
+  },
+  "prod_UdL3Wl5ITthHtx": {
+    "prices": [
+      {
+        "price_id": "price_1Te4NPHb9mVEJOcYCpjctiPL",
+        "amount": 49,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdL3Wl5ITthHtx"
+      }
+    ]
+  },
+  "prod_UdLCK1iiDrDcx1": {
+    "prices": [
+      {
+        "price_id": "price_1Te4WRHb9mVEJOcYdvFyWkBR",
+        "amount": 99,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdLCK1iiDrDcx1"
+      }
+    ]
+  },
+  "prod_UdLMMS46nZ658n": {
+    "prices": [
+      {
+        "price_id": "price_1Te4fmHb9mVEJOcY6q3Za0Zw",
+        "amount": 9.99,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdLMMS46nZ658n"
+      }
+    ]
+  },
+  "prod_UdLdfTiBHl4H3A": {
+    "prices": [
+      {
+        "price_id": "price_1Te4w3Hb9mVEJOcYszmfbf58",
+        "amount": 9.99,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdLdfTiBHl4H3A"
+      }
+    ]
+  },
+  "prod_UdLl3dxUEFpe8P": {
+    "prices": [
+      {
+        "price_id": "price_1Te53uHb9mVEJOcYfMUMGPiU",
+        "amount": 4.99,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdLl3dxUEFpe8P"
+      }
+    ]
+  },
+  "prod_UdLwpnAO3foz2V": {
+    "prices": [
+      {
+        "price_id": "price_1Te5EaHb9mVEJOcYuF6fgUBx",
+        "amount": 4.99,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdLwpnAO3foz2V"
+      }
+    ]
+  },
+  "prod_UdM4XyG6qe5pB3": {
+    "prices": [
+      {
+        "price_id": "price_1Te5MXHb9mVEJOcYBQ17saXQ",
+        "amount": 14.99,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdM4XyG6qe5pB3"
+      }
+    ]
+  },
+  "prod_UdMC3o3w3tnCrM": {
+    "prices": [
+      {
+        "price_id": "price_1Te5U9Hb9mVEJOcYAQCg998Y",
+        "amount": 4.99,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdMC3o3w3tnCrM"
+      }
+    ]
+  },
+  "prod_UdMOJV4B8TL1UL": {
+    "prices": [
+      {
+        "price_id": "price_1Te5fGHb9mVEJOcYQhYTp8kA",
+        "amount": 49,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdMOJV4B8TL1UL"
+      }
+    ]
+  },
+  "prod_UdMe5fv74nNaoh": {
+    "prices": [
+      {
+        "price_id": "price_1Te5vTHb9mVEJOcYH1fgJLzI",
+        "amount": 149,
+        "currency": "usd",
+        "payment_link_url": "https://pay.stripe.com/REPLACE_WITH_REAL_PAYMENT_LINK_prod_UdMe5fv74nNaoh"
+      }
+    ]
+  },
   "prod_Smhu557mhkdUAP": {
     "name": "Signal Tier 02 – Sovereign Glyph Seeding",
     "price_id": "price_1Rr8UgHb9mVEJOcY2tVIlQla",
