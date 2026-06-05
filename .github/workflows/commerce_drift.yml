@@ -1,0 +1,59 @@
+name: Commerce Drift Detection
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run both possible UTC offsets and gate to 3:30 AM America/New_York in-job.
+    - cron: "30 7,8 * * *"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Determine if it is 3:30 AM Eastern
+        id: et_gate
+        run: |
+          ET_HOUR=$(TZ=America/New_York date +%H)
+          ET_MIN=$(TZ=America/New_York date +%M)
+          if [ "$ET_HOUR" = "03" ] && [ "$ET_MIN" = "30" ]; then
+            echo "run_drift=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_drift=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.et_gate.outputs.run_drift == 'true' || github.event_name == 'workflow_dispatch'
+        run: npm ci
+
+      - name: Run commerce drift detection
+        if: steps.et_gate.outputs.run_drift == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          BASEROW_API_TOKEN: ${{ secrets.BASEROW_API_TOKEN }}
+          BASEROW_TABLE_ID: ${{ secrets.BASEROW_TABLE_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ secrets.GITHUB_REPO }}
+        run: node scripts/commerce_drift_check.js
+
+      - name: Skip run outside 3:30 AM Eastern
+        if: steps.et_gate.outputs.run_drift != 'true' && github.event_name != 'workflow_dispatch'
+        run: echo "Scheduled run skipped because current America/New_York time is not 03:30."
+
+      - name: Failure notification
+        if: failure()
+        run: |
+          echo "Commerce drift detection failed."
+          echo "GitHub Actions notifications can deliver email alerts for workflow failures when enabled on the repository or account."
