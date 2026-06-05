@@ -1,327 +1,226 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { requireEnv, normalizeString } from "./_shared/api_helpers.js";
+import { fetchStripeCollection } from "./_shared/stripe_helpers.js";
+import { fetchAllBaserowRows, buildBaserowSkuMap } from "./_shared/baserow_helpers.js";
+import { fetchOpenIssueTitles, createIssueWithDedupe } from "./_shared/github_issues.js";
+import { timestampIso } from "./_shared/time_utils.js";
+import { createLogger } from "./_shared/logging.js";
 
-const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
-const BASEROW_API_TOKEN = process.env.BASEROW_API_TOKEN;
-const BASEROW_TABLE_ID = process.env.BASEROW_TABLE_ID;
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_REPO = process.env.GITHUB_REPO;
-const BASEROW_API_BASE = process.env.BASEROW_API_BASE || "https://api.baserow.io";
+const logger = createLogger("commerce_drift_check");
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const checkoutUrlsPath = path.join(repoRoot, "public", "checkout-urls.json");
 
-function requireEnv(name, value) {
-  if (!value || !String(value).trim()) {
-    throw new Error(`Missing required environment variable: ${name}`);
+async function loadCheckoutUrls() {
+  const raw = await readFile(checkoutUrlsPath, "utf8");
+  const parsed = JSON.parse(raw);
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+    throw new Error("checkout-urls.json must be an object keyed by product_id");
   }
+  return parsed;
 }
 
-function centsToDollars(value) {
-  if (typeof value !== "number") {
-    return null;
-  }
-  return Number((value / 100).toFixed(2));
-}
+function normalizeCheckoutRows(checkoutMap) {
+  const rows = [];
+  for (const [rawProductId, entry] of Object.entries(checkoutMap)) {
+    const productId = normalizeString(rawProductId);
+    const prices = Array.isArray(entry.prices)
+      ? entry.prices
+      : [{
+        price_id: entry.price_id,
+        amount: entry.amount,
+        currency: entry.currency,
+        payment_link_url: entry.payment_link_url,
+      }];
 
-function normalizeAmount(value) {
-  if (typeof value !== "number") {
-    return null;
-  }
-  return Number(value.toFixed(2));
-}
-
-function normalizeString(value) {
-  return typeof value === "string" ? value.trim() : "";
-}
-
-function normalizeStripePrice(price, product) {
-  return {
-    "use strict";
-
-    const STRIPE_SECRET_KEY = process.env.STRIPE_SECRET_KEY;
-    const BASEROW_API_TOKEN = process.env.BASEROW_API_TOKEN;
-    const BASEROW_TABLE_ID = process.env.BASEROW_TABLE_ID;
-    const BASEROW_API_BASE = process.env.BASEROW_API_BASE || "https://api.baserow.io";
-
-    function requireEnv(name, value) {
-      if (!value || !String(value).trim()) {
-        throw new Error(`Missing required environment variable: ${name}`);
+    for (const price of prices) {
+      const priceId = normalizeString(price && price.price_id);
+      if (!productId || !priceId) {
+        continue;
       }
-    }
-
-    function toUnixSeconds(value) {
-      return typeof value === "number" ? value : null;
-    }
-
-    function normalizePriceAmount(unitAmount) {
-      if (typeof unitAmount !== "number") {
-        return null;
-      }
-      return unitAmount / 100;
-    }
-
-    function normalizeRow(product, price) {
-      return {
-        product_id: product.id,
-        product_name: product.name || "",
-        price_id: price.id,
-        amount: normalizePriceAmount(price.unit_amount),
-        currency: (price.currency || "").toLowerCase(),
-        active: Boolean(product.active) && Boolean(price.active),
-        livemode: Boolean(price.livemode),
-        created: toUnixSeconds(price.created),
-        updated: toUnixSeconds(price.created),
-      };
-    }
-
-    async function fetchJson(url, options) {
-      const response = await fetch(url, options);
-      const text = await response.text();
-
-      let data;
-      try {
-        data = text ? JSON.parse(text) : {};
-      } catch (_error) {
-        data = { raw: text };
-      }
-
-      if (!response.ok) {
-        const message = data && data.error && data.error.message
-          ? data.error.message
-          : `Request failed (${response.status})`;
-        throw new Error(`${message} :: ${url}`);
-      }
-
-      return data;
-    }
-
-    async function fetchStripeCollection(resourcePath) {
-      const items = [];
-      let hasMore = true;
-      let startingAfter = null;
-
-      while (hasMore) {
-        const params = new URLSearchParams({ limit: "100" });
-        if (startingAfter) {
-          params.set("starting_after", startingAfter);
-        }
-
-        const url = `https://api.stripe.com/v1/${resourcePath}?${params.toString()}`;
-        const payload = await fetchJson(url, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${STRIPE_SECRET_KEY}`,
-          },
-        });
-
-        const pageItems = Array.isArray(payload.data) ? payload.data : [];
-        items.push(...pageItems);
-
-        hasMore = Boolean(payload.has_more);
-        startingAfter = hasMore && pageItems.length ? pageItems[pageItems.length - 1].id : null;
-      }
-
-      return items;
-    }
-
-    function buildNormalizedRows(products, prices) {
-      const productsById = new Map(products.map((product) => [product.id, product]));
-      const rows = [];
-
-      for (const price of prices) {
-        const productId = typeof price.product === "string" ? price.product : null;
-        if (!productId) {
-          continue;
-        }
-
-        const product = productsById.get(productId);
-        if (!product) {
-          continue;
-        }
-
-        rows.push(normalizeRow(product, price));
-      }
-
-      return rows;
-    }
-
-    async function fetchAllBaserowRows() {
-      const rows = [];
-      let next = `${BASEROW_API_BASE}/api/database/rows/table/${BASEROW_TABLE_ID}/?user_field_names=true&size=200&page=1`;
-
-      while (next) {
-        const payload = await fetchJson(next, {
-          method: "GET",
-          headers: {
-            Authorization: `Token ${BASEROW_API_TOKEN}`,
-          },
-        });
-
-        rows.push(...(Array.isArray(payload.results) ? payload.results : []));
-        next = payload.next || null;
-      }
-
-      return rows;
-    }
-
-    function buildExistingRowLookup(rows) {
-      const lookup = new Map();
-
-      for (const row of rows) {
-        const productId = row.product_id;
-        const priceId = row.price_id;
-        const rowId = row.id;
-
-        if (!productId || !priceId || typeof rowId !== "number") {
-          continue;
-        }
-
-        lookup.set(`${productId}::${priceId}`, rowId);
-      }
-
-      return lookup;
-    }
-
-    async function upsertBaserowRow(normalizedRow, existingRowId) {
-      const baseUrl = `${BASEROW_API_BASE}/api/database/rows/table/${BASEROW_TABLE_ID}`;
-
-      if (existingRowId) {
-        const updateUrl = `${baseUrl}/${existingRowId}/?user_field_names=true`;
-        await fetchJson(updateUrl, {
-          method: "PATCH",
-          headers: {
-            Authorization: `Token ${BASEROW_API_TOKEN}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(normalizedRow),
-        });
-        return "updated";
-      }
-
-      const createUrl = `${baseUrl}/?user_field_names=true`;
-      await fetchJson(createUrl, {
-        method: "POST",
-        headers: {
-          Authorization: `Token ${BASEROW_API_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(normalizedRow),
+      rows.push({
+        product_id: productId,
+        price_id: priceId,
+        amount: typeof price.amount === "number" ? price.amount : null,
+        currency: normalizeString(price.currency).toLowerCase(),
+        payment_link_url: normalizeString(price.payment_link_url),
       });
-      return "created";
     }
+  }
+  return rows;
+}
 
-    async function main() {
-      requireEnv("STRIPE_SECRET_KEY", STRIPE_SECRET_KEY);
-      requireEnv("BASEROW_API_TOKEN", BASEROW_API_TOKEN);
-      requireEnv("BASEROW_TABLE_ID", BASEROW_TABLE_ID);
+function keyOf(row) {
+  return `${row.product_id}::${row.price_id}`;
+}
 
-      const products = await fetchStripeCollection("products");
-      const prices = await fetchStripeCollection("prices");
-      const normalizedRows = buildNormalizedRows(products, prices);
+function issueTitle(category) {
+  return `Commerce Drift: ${category}`;
+}
 
-      const existingRows = await fetchAllBaserowRows();
-      const existingLookup = buildExistingRowLookup(existingRows);
+function issueBody(category, findings) {
+  return [
+    `Category: ${category}`,
+    "",
+    "```json",
+    JSON.stringify(findings, null, 2),
+    "```",
+  ].join("\n");
+}
 
-      let syncedCount = 0;
-      let updatedCount = 0;
-      let errorsCount = 0;
+async function main() {
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  const baserowApiToken = process.env.BASEROW_API_TOKEN;
+  const baserowTableId = process.env.BASEROW_TABLE_ID;
+  const baserowApiBase = process.env.BASEROW_API_BASE || "https://api.baserow.io";
+  const githubToken = process.env.GITHUB_TOKEN;
+  const githubRepo = process.env.GITHUB_REPO;
 
-      for (const row of normalizedRows) {
-        const key = `${row.product_id}::${row.price_id}`;
-        const existingRowId = existingLookup.get(key);
+  requireEnv("STRIPE_SECRET_KEY", stripeSecretKey);
+  requireEnv("BASEROW_API_TOKEN", baserowApiToken);
+  requireEnv("BASEROW_TABLE_ID", baserowTableId);
 
-        try {
-          const mode = await upsertBaserowRow(row, existingRowId);
-          syncedCount += 1;
-          if (mode === "updated") {
-            updatedCount += 1;
-          }
-        } catch (error) {
-          errorsCount += 1;
-          console.error(`Failed to sync ${key}:`, error.message);
-        }
-      }
+  const [checkoutMap, stripePrices, stripeProducts, baserowRows] = await Promise.all([
+    loadCheckoutUrls(),
+    fetchStripeCollection(stripeSecretKey, "prices"),
+    fetchStripeCollection(stripeSecretKey, "products"),
+    fetchAllBaserowRows({ apiToken: baserowApiToken, tableId: baserowTableId, apiBase: baserowApiBase }),
+  ]);
 
-      console.log(
-        JSON.stringify(
-          {
-            synced_count: syncedCount,
-            updated_count: updatedCount,
-            errors_count: errorsCount,
-          },
-          null,
-          2
-        )
-      );
+  const checkoutRows = normalizeCheckoutRows(checkoutMap);
+  const checkoutKeys = new Set(checkoutRows.map(keyOf));
 
-      if (errorsCount > 0) {
-        process.exitCode = 1;
-      }
+  const productById = new Map(stripeProducts.map((item) => [item.id, item]));
+  const stripeRows = [];
+  for (const price of stripePrices) {
+    if (typeof price.product !== "string") {
+      continue;
     }
-
-    main().catch((error) => {
-      console.error("Stripe to Baserow sync failed:", error.message);
-      process.exit(1);
+    const product = productById.get(price.product);
+    if (!product) {
+      continue;
+    }
+    stripeRows.push({
+      product_id: normalizeString(product.id),
+      price_id: normalizeString(price.id),
+      amount: typeof price.unit_amount === "number" ? Number((price.unit_amount / 100).toFixed(2)) : null,
+      currency: normalizeString(price.currency).toLowerCase(),
     });
-        for (const anomaly of report.anomalies) {
-          const key = `${anomaly.metric}::${anomaly.scope}`;
-          if (!groupedAnomalies.has(key)) {
-            groupedAnomalies.set(key, []);
-          }
-          groupedAnomalies.get(key).push(anomaly);
-        }
+  }
 
-        for (const [key, anomalies] of groupedAnomalies.entries()) {
-          const [metric] = key.split("::");
-          const title = makeIssueTitle(metric, anomalies.some((item) => item.product_id) ? anomalies[0].product_id : "");
+  const stripeByKey = new Map(stripeRows.map((row) => [keyOf(row), row]));
+  const baserowByKey = buildBaserowSkuMap(baserowRows);
 
-          if (existingTitles.has(title)) {
-            continue;
-          }
+  const report = {
+    generated_at: timestampIso(),
+    checkout_missing_in_stripe: [],
+    stripe_missing_in_checkout: [],
+    checkout_missing_in_baserow: [],
+    baserow_missing_in_checkout: [],
+    field_mismatches: [],
+  };
 
-          const body = [
-            `Metric: ${metric}`,
-            "",
-            "```json",
-            JSON.stringify({ anomalies, report_snapshot: report.totals, baseline_7d: report.baseline_7d }, null, 2),
-            "```",
-            "",
-            "Suggested fixes:",
-            ...anomalies.map((anomaly) => `- ${anomaly.suggested_fix}`),
-          ].join("\n");
+  for (const row of checkoutRows) {
+    const key = keyOf(row);
+    const stripe = stripeByKey.get(key);
+    const baserow = baserowByKey.get(key);
 
-          await fetchJson(`https://api.github.com/repos/${GITHUB_REPO}/issues`, {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${GITHUB_TOKEN}`,
-              Accept: "application/vnd.github+json",
-              "Content-Type": "application/json",
-              "X-GitHub-Api-Version": "2022-11-28",
-            },
-            body: JSON.stringify({ title, body }),
-          });
-
-          issuesCreatedCount += 1;
-          existingTitles.add(title);
-        }
-      }
-
-      console.log(
-        JSON.stringify(
-          {
-            drift_found_count: report.anomalies.length,
-            issues_created_count: issuesCreatedCount,
-            report,
-          },
-          null,
-          2
-        )
-      );
+    if (!stripe) {
+      report.checkout_missing_in_stripe.push(row);
+      continue;
     }
 
-    main().catch((error) => {
-      console.error("Commerce drift check failed:", error.message);
-      process.exit(1);
-    });
+    if (!baserow) {
+      report.checkout_missing_in_baserow.push(row);
+    }
+
+    const mismatches = [];
+    if (typeof row.amount === "number" && typeof stripe.amount === "number" && row.amount !== stripe.amount) {
+      mismatches.push({ field: "amount", checkout: row.amount, stripe: stripe.amount });
+    }
+    if (row.currency && stripe.currency && row.currency !== stripe.currency) {
+      mismatches.push({ field: "currency", checkout: row.currency, stripe: stripe.currency });
+    }
+
+    if (mismatches.length) {
+      report.field_mismatches.push({
+        product_id: row.product_id,
+        price_id: row.price_id,
+        mismatches,
+      });
+    }
+  }
+
+  for (const row of stripeRows) {
+    const key = keyOf(row);
+    if (!checkoutKeys.has(key)) {
+      report.stripe_missing_in_checkout.push(row);
+    }
+  }
+
+  for (const [key, row] of baserowByKey.entries()) {
+    if (!checkoutKeys.has(key)) {
+      report.baserow_missing_in_checkout.push({
+        product_id: normalizeString(row.product_id),
+        price_id: normalizeString(row.price_id),
+      });
+    }
+  }
+
+  let issuesCreatedCount = 0;
+  if (githubToken && githubRepo) {
+    const openTitles = await fetchOpenIssueTitles({ token: githubToken, repo: githubRepo });
+    const categories = [
+      ["checkout_missing_in_stripe", report.checkout_missing_in_stripe],
+      ["stripe_missing_in_checkout", report.stripe_missing_in_checkout],
+      ["checkout_missing_in_baserow", report.checkout_missing_in_baserow],
+      ["baserow_missing_in_checkout", report.baserow_missing_in_checkout],
+      ["field_mismatches", report.field_mismatches],
+    ];
+
+    for (const [category, findings] of categories) {
+      if (!findings.length) {
+        continue;
+      }
+      const created = await createIssueWithDedupe({
+        token: githubToken,
+        repo: githubRepo,
+        title: issueTitle(category),
+        body: issueBody(category, findings.slice(0, 100)),
+        labels: ["automation", "commerce", "drift"],
+        openTitles,
+      });
+      if (created) {
+        issuesCreatedCount += 1;
+      }
+    }
+  }
+
+  logger.summary({
+    job: "commerce_drift_check",
+    issues_created_count: issuesCreatedCount,
+    checkout_missing_in_stripe_count: report.checkout_missing_in_stripe.length,
+    stripe_missing_in_checkout_count: report.stripe_missing_in_checkout.length,
+    checkout_missing_in_baserow_count: report.checkout_missing_in_baserow.length,
+    baserow_missing_in_checkout_count: report.baserow_missing_in_checkout.length,
+    field_mismatches_count: report.field_mismatches.length,
+    report,
+  });
+
+  if (
+    report.checkout_missing_in_stripe.length ||
+    report.stripe_missing_in_checkout.length ||
+    report.checkout_missing_in_baserow.length ||
+    report.baserow_missing_in_checkout.length ||
+    report.field_mismatches.length
+  ) {
+    process.exitCode = 1;
+  }
+}
+
+main().catch((error) => {
+  logger.error("fatal", { error: error.message });
+  process.exit(1);
+});

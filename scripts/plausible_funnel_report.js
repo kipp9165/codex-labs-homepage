@@ -1,37 +1,20 @@
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { requireEnv, normalizeString, safeNumber } from "./_shared/api_helpers.js";
+import { queryPlausible } from "./_shared/plausible_helpers.js";
+import { fetchOpenIssueTitles, createIssueWithDedupe } from "./_shared/github_issues.js";
+import { fileTimestamp, timestampIso } from "./_shared/time_utils.js";
+import { createLogger } from "./_shared/logging.js";
 
-const PLAUSIBLE_API_KEY = process.env.PLAUSIBLE_API_KEY;
-const PLAUSIBLE_SITE_ID = process.env.PLAUSIBLE_SITE_ID;
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_REPO = process.env.GITHUB_REPO;
+const logger = createLogger("plausible_funnel_report");
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const analyticsDir = path.join(repoRoot, "analytics");
-const historyDir = path.join(analyticsDir, "funnel_history");
-const latestPath = path.join(analyticsDir, "funnel_latest.json");
+const funnelDir = path.join(repoRoot, "analytics", "funnel");
+const historyDir = path.join(funnelDir, "funnel_history");
+const latestPath = path.join(funnelDir, "funnel_latest.json");
 
-const EVENT_SCHEMA = ["page_view", "cta_click", "checkout_redirect", "checkout_success"];
 const TRACKED_GOALS = ["cta_click", "checkout_redirect", "checkout_success"];
-const ALERT_THRESHOLDS = {
-  countDropRatio: 0.7,
-  rateDropRatio: 0.75,
-};
-
-function requireEnv(name, value) {
-  if (!value || !String(value).trim()) {
-    throw new Error(`Missing required environment variable: ${name}`);
-  }
-}
-
-function normalizeString(value) {
-  return typeof value === "string" ? value.trim() : "";
-}
-
-function safeNumber(value) {
-  return typeof value === "number" && Number.isFinite(value) ? value : 0;
-}
 
 function ratio(numerator, denominator) {
   if (!denominator) {
@@ -40,301 +23,169 @@ function ratio(numerator, denominator) {
   return Number((numerator / denominator).toFixed(4));
 }
 
-async function fetchJson(url, options) {
-  const response = await fetch(url, options);
-  const text = await response.text();
-
-  let data;
-  try {
-    data = text ? JSON.parse(text) : {};
-  } catch (_error) {
-    data = { raw: text };
-  }
-
-  if (!response.ok) {
-    const message = data && data.error && data.error.message ? data.error.message : `Request failed (${response.status})`;
-    throw new Error(`${message} :: ${url}`);
-  }
-
-  return data;
-}
-
-async function fetchPlausibleQuery(query) {
-  return fetchJson("https://plausible.io/api/v2/query", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${PLAUSIBLE_API_KEY}`,
-      "Content-Type": "application/json",
-      Accept: "application/json",
+async function fetchMetric(apiKey, siteId, dateRange, metric) {
+  const payload = await queryPlausible({
+    apiKey,
+    siteId,
+    query: {
+      date_range: dateRange,
+      metrics: [metric],
     },
-    body: JSON.stringify({
-      site_id: PLAUSIBLE_SITE_ID,
-      ...query,
-    }),
-  });
-}
-
-async function fetchMetric(dateRange, metric) {
-  const payload = await fetchPlausibleQuery({
-    date_range: dateRange,
-    metrics: [metric],
   });
 
   const row = Array.isArray(payload.results) && payload.results[0] ? payload.results[0] : null;
   return row ? safeNumber(row.metrics && row.metrics[0]) : 0;
 }
 
-async function fetchGoalEvents(dateRange) {
-  const payload = await fetchPlausibleQuery({
-    date_range: dateRange,
-    metrics: ["events"],
-    dimensions: ["event:goal", "event:props:product_id", "event:props:price_id"],
-    filters: [["is", "event:goal", TRACKED_GOALS]],
+async function fetchGoals(apiKey, siteId, dateRange) {
+  const payload = await queryPlausible({
+    apiKey,
+    siteId,
+    query: {
+      date_range: dateRange,
+      metrics: ["events"],
+      dimensions: ["event:goal", "event:props:product_id", "event:props:price_id"],
+      filters: [["is", "event:goal", TRACKED_GOALS]],
+    },
   });
 
   return Array.isArray(payload.results) ? payload.results : [];
 }
 
-function buildGoalTotals(rows) {
-  const totals = Object.fromEntries(TRACKED_GOALS.map((goal) => [goal, 0]));
-
+function goalsTotals(rows) {
+  const totals = { cta_click: 0, checkout_redirect: 0, checkout_success: 0 };
   for (const row of rows) {
     const goal = normalizeString(row.dimensions && row.dimensions[0]);
     if (!TRACKED_GOALS.includes(goal)) {
       continue;
     }
-
     totals[goal] += safeNumber(row.metrics && row.metrics[0]);
   }
-
   return totals;
 }
 
-function buildSkuBreakdown(rows) {
-  const breakdown = new Map();
-
+function skuBreakdown(rows) {
+  const map = new Map();
   for (const row of rows) {
     const goal = normalizeString(row.dimensions && row.dimensions[0]);
     const productId = normalizeString(row.dimensions && row.dimensions[1]);
     const priceId = normalizeString(row.dimensions && row.dimensions[2]);
-    if (!goal || !productId || !priceId) {
+    if (!goal || !productId || !priceId || !TRACKED_GOALS.includes(goal)) {
       continue;
     }
 
     const key = `${productId}::${priceId}`;
-    if (!breakdown.has(key)) {
-      breakdown.set(key, {
+    if (!map.has(key)) {
+      map.set(key, {
         product_id: productId,
         price_id: priceId,
-        product_name: "",
-        goals: {
-          cta_click: 0,
-          checkout_redirect: 0,
-          checkout_success: 0,
-        },
+        cta_clicks: 0,
+        checkout_redirects: 0,
+        checkout_successes: 0,
       });
     }
 
-    breakdown.get(key).goals[goal] += safeNumber(row.metrics && row.metrics[0]);
+    const entry = map.get(key);
+    const value = safeNumber(row.metrics && row.metrics[0]);
+    if (goal === "cta_click") {
+      entry.cta_clicks += value;
+    }
+    if (goal === "checkout_redirect") {
+      entry.checkout_redirects += value;
+    }
+    if (goal === "checkout_success") {
+      entry.checkout_successes += value;
+    }
   }
 
-  return Array.from(breakdown.values())
-    .map((entry) => {
-      const ctaClicks = entry.goals.cta_click;
-      const redirects = entry.goals.checkout_redirect;
-      const successes = entry.goals.checkout_success;
+  return Array.from(map.values()).map((entry) => ({
+    ...entry,
+    redirect_rate: ratio(entry.checkout_redirects, entry.cta_clicks),
+    success_rate: ratio(entry.checkout_successes, entry.checkout_redirects),
+  }));
+}
 
-      return {
-        product_id: entry.product_id,
-        price_id: entry.price_id,
-        product_name: entry.product_name,
-        cta_clicks: ctaClicks,
-        checkout_redirects: redirects,
-        checkout_successes: successes,
-        redirect_rate: ratio(redirects, ctaClicks),
-        success_rate: ratio(successes, redirects),
-      };
-    })
-    .sort((a, b) => {
-      if (a.product_id === b.product_id) {
-        return a.price_id.localeCompare(b.price_id);
-      }
-      return a.product_id.localeCompare(b.product_id);
+function detectAnomalies(report) {
+  const anomalies = [];
+
+  const baseline = report.baseline_7d;
+  if (baseline.cta_clicks > 0 && report.cta_clicks < baseline.cta_clicks / 7 * 0.7) {
+    anomalies.push({
+      type: "cta_drop",
+      scope: "site",
+      expected: Number((baseline.cta_clicks / 7).toFixed(2)),
+      actual: report.cta_clicks,
+      suggested_fix: "Check buy-button click tracking and page-level CTA visibility.",
     });
-}
-
-function buildSkuMap(entries) {
-  const map = new Map();
-  for (const entry of entries) {
-    map.set(`${entry.product_id}::${entry.price_id}`, entry);
   }
-  return map;
-}
 
-function dropPercentage(latest, baseline) {
-  if (!baseline) {
-    return null;
+  if (baseline.redirect_rate > 0 && (report.redirect_rate ?? 0) < baseline.redirect_rate * 0.75) {
+    anomalies.push({
+      type: "redirect_rate_drop",
+      scope: "site",
+      expected: baseline.redirect_rate,
+      actual: report.redirect_rate,
+      suggested_fix: "Check checkout redirect event firing and outbound navigation behavior.",
+    });
   }
-  return Number(((1 - latest / baseline) * 100).toFixed(2));
-}
 
-function createAnomaly(metric, scope, expected, actual, last7DayAverage, productId = null, priceId = null, suggestedFix = "") {
-  return {
-    metric,
-    scope,
-    product_id: productId,
-    price_id: priceId,
-    expected,
-    actual,
-    last_7_day_average: last7DayAverage,
-    drop_percentage: baselineDropSafe(actual, last7DayAverage),
-    suggested_fix: suggestedFix,
-  };
-}
-
-function baselineDropSafe(actual, baseline) {
-  if (!baseline) {
-    return null;
+  if (baseline.success_rate > 0 && (report.success_rate ?? 0) < baseline.success_rate * 0.75) {
+    anomalies.push({
+      type: "success_rate_drop",
+      scope: "site",
+      expected: baseline.success_rate,
+      actual: report.success_rate,
+      suggested_fix: "Check webhook-driven checkout_success event emission.",
+    });
   }
-  return Number(((1 - actual / baseline) * 100).toFixed(2));
-}
 
-function anomalyBelowThreshold(latest, baseline, isRate = false) {
-  if (!baseline) {
-    return false;
-  }
-  const threshold = isRate ? ALERT_THRESHOLDS.rateDropRatio : ALERT_THRESHOLDS.countDropRatio;
-  return latest < baseline * threshold;
+  return anomalies;
 }
 
 function issueTitle(anomaly) {
-  const suffix = anomaly.product_id ? ` — ${anomaly.product_id}` : "";
-  return `Funnel Anomaly: ${anomaly.metric} dropped${suffix}`;
+  return `Funnel Anomaly: ${anomaly.type}`;
 }
 
-function issueBody(anomaly, report) {
+function issueBody(anomaly) {
   return [
-    `Metric: ${anomaly.metric}`,
-    `Scope: ${anomaly.scope}`,
-    `Product ID: ${anomaly.product_id || "site-wide"}`,
-    `Price ID: ${anomaly.price_id || "n/a"}`,
+    "Plausible funnel anomaly detected.",
     "",
     "```json",
-    JSON.stringify(
-      {
-        expected: anomaly.expected,
-        actual: anomaly.actual,
-        last_7_day_average: anomaly.last_7_day_average,
-        drop_percentage: anomaly.drop_percentage,
-        funnel_snapshot: {
-          page_views: report.page_views,
-          cta_clicks: report.cta_clicks,
-          checkout_redirects: report.checkout_redirects,
-          checkout_successes: report.checkout_successes,
-          cta_rate: report.cta_rate,
-          redirect_rate: report.redirect_rate,
-          success_rate: report.success_rate,
-        },
-        suggested_fix: anomaly.suggested_fix,
-      },
-      null,
-      2
-    ),
+    JSON.stringify(anomaly, null, 2),
     "```",
   ].join("\n");
 }
 
-async function fetchExistingIssueTitles() {
-  if (!GITHUB_TOKEN || !GITHUB_REPO) {
-    return new Set();
-  }
-
-  const titles = new Set();
-  for (let page = 1; page <= 10; page += 1) {
-    const issues = await fetchJson(`https://api.github.com/repos/${GITHUB_REPO}/issues?state=open&per_page=100&page=${page}`, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${GITHUB_TOKEN}`,
-        Accept: "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    });
-
-    if (!Array.isArray(issues) || issues.length === 0) {
-      break;
-    }
-
-    for (const issue of issues) {
-      if (issue && typeof issue.title === "string") {
-        titles.add(issue.title);
-      }
-    }
-  }
-
-  return titles;
-}
-
-async function createGitHubIssue(anomaly, report, existingTitles) {
-  if (!GITHUB_TOKEN || !GITHUB_REPO) {
-    return false;
-  }
-
-  const title = issueTitle(anomaly);
-  if (existingTitles.has(title)) {
-    return false;
-  }
-
-  await fetchJson(`https://api.github.com/repos/${GITHUB_REPO}/issues`, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-      "Content-Type": "application/json",
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
-    body: JSON.stringify({
-      title,
-      body: issueBody(anomaly, report),
-    }),
-  });
-
-  existingTitles.add(title);
-  return true;
-}
-
-async function writeReports(report) {
+async function writeReport(report) {
   await mkdir(historyDir, { recursive: true });
-
-  const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
   const serialized = `${JSON.stringify(report, null, 2)}\n`;
-
   await writeFile(latestPath, serialized, "utf8");
-  await writeFile(path.join(historyDir, `${timestamp}.json`), serialized, "utf8");
+  await writeFile(path.join(historyDir, `${fileTimestamp()}.json`), serialized, "utf8");
 }
 
 async function main() {
-  requireEnv("PLAUSIBLE_API_KEY", PLAUSIBLE_API_KEY);
-  requireEnv("PLAUSIBLE_SITE_ID", PLAUSIBLE_SITE_ID);
+  const plausibleApiKey = process.env.PLAUSIBLE_API_KEY;
+  const plausibleSiteId = process.env.PLAUSIBLE_SITE_ID;
+  const githubToken = process.env.GITHUB_TOKEN;
+  const githubRepo = process.env.GITHUB_REPO;
 
-  const [pageViews24h, pageViews7d, goalRows24h, goalRows7d, skuRows24h, skuRows7d] = await Promise.all([
-    fetchMetric("24h", "pageviews"),
-    fetchMetric("7d", "pageviews"),
-    fetchGoalEvents("24h"),
-    fetchGoalEvents("7d"),
-    fetchGoalEvents("24h"),
-    fetchGoalEvents("7d"),
+  requireEnv("PLAUSIBLE_API_KEY", plausibleApiKey);
+  requireEnv("PLAUSIBLE_SITE_ID", plausibleSiteId);
+
+  logger.info("report_start");
+
+  const [pageViews24h, pageViews7d, goals24h, goals7d] = await Promise.all([
+    fetchMetric(plausibleApiKey, plausibleSiteId, "24h", "pageviews"),
+    fetchMetric(plausibleApiKey, plausibleSiteId, "7d", "pageviews"),
+    fetchGoals(plausibleApiKey, plausibleSiteId, "24h"),
+    fetchGoals(plausibleApiKey, plausibleSiteId, "7d"),
   ]);
 
-  const totals24h = buildGoalTotals(goalRows24h);
-  const totals7d = buildGoalTotals(goalRows7d);
-  const sku24h = buildSkuBreakdown(skuRows24h);
-  const sku7d = buildSkuBreakdown(skuRows7d);
-  const sku7dMap = buildSkuMap(sku7d);
+  const totals24h = goalsTotals(goals24h);
+  const totals7d = goalsTotals(goals7d);
 
   const report = {
-    generated_at: new Date().toISOString(),
-    event_schema: EVENT_SCHEMA,
-    window: "24h",
+    generated_at: timestampIso(),
     page_views: pageViews24h,
     cta_clicks: totals24h.cta_click,
     checkout_redirects: totals24h.checkout_redirect,
@@ -351,134 +202,43 @@ async function main() {
       redirect_rate: ratio(totals7d.checkout_redirect, totals7d.cta_click),
       success_rate: ratio(totals7d.checkout_success, totals7d.checkout_redirect),
     },
-    sku_breakdown: sku24h,
+    sku_breakdown: skuBreakdown(goals24h),
     anomalies: [],
   };
 
-  const anomalies = [];
+  report.anomalies = detectAnomalies(report);
 
-  const ctaBaseline = totals7d.cta_click / 7;
-  const redirectBaseline = totals7d.checkout_redirect / 7;
-  const successBaseline = totals7d.checkout_success / 7;
-
-  if (anomalyBelowThreshold(report.cta_clicks, ctaBaseline)) {
-    anomalies.push({
-      metric: "cta_clicks",
-      scope: "site-wide",
-      expected: Number(ctaBaseline.toFixed(2)),
-      actual: report.cta_clicks,
-      last_7_day_average: Number(ctaBaseline.toFixed(2)),
-      drop_percentage: dropPercentage(report.cta_clicks, ctaBaseline),
-      suggested_fix: "Check .buy-button tracking and confirm cta_click goals still fire in Plausible.",
-    });
-  }
-
-  if (anomalyBelowThreshold(report.redirect_rate ?? 0, report.baseline_7d.redirect_rate ?? 0, true)) {
-    anomalies.push({
-      metric: "redirect_rate",
-      scope: "site-wide",
-      expected: report.baseline_7d.redirect_rate,
-      actual: report.redirect_rate,
-      last_7_day_average: report.baseline_7d.redirect_rate,
-      drop_percentage: dropPercentage(report.redirect_rate ?? 0, report.baseline_7d.redirect_rate ?? 0),
-      suggested_fix: "Check that checkout_redirect events still fire when users leave for Stripe Payment Links.",
-    });
-  }
-
-  if (anomalyBelowThreshold(report.success_rate ?? 0, report.baseline_7d.success_rate ?? 0, true)) {
-    anomalies.push({
-      metric: "checkout_success",
-      scope: "site-wide",
-      expected: report.baseline_7d.success_rate,
-      actual: report.success_rate,
-      last_7_day_average: report.baseline_7d.success_rate,
-      drop_percentage: dropPercentage(report.success_rate ?? 0, report.baseline_7d.success_rate ?? 0),
-      suggested_fix: "Confirm the Stripe webhook path still emits checkout_success after successful payment.",
-    });
-  }
-
-  for (const sku of report.sku_breakdown) {
-    const baselineSku = sku7dMap.get(`${sku.product_id}::${sku.price_id}`);
-    if (!baselineSku) {
-      continue;
-    }
-
-    const ctaAvg = baselineSku.cta_clicks / 7;
-    const redirectAvg = baselineSku.checkout_redirects / 7;
-    const successAvg = baselineSku.checkout_successes / 7;
-
-    if (anomalyBelowThreshold(sku.cta_clicks, ctaAvg)) {
-      anomalies.push({
-        metric: "cta_clicks",
-        scope: "sku",
-        product_id: sku.product_id,
-        price_id: sku.price_id,
-        expected: Number(ctaAvg.toFixed(2)),
-        actual: sku.cta_clicks,
-        last_7_day_average: Number(ctaAvg.toFixed(2)),
-        drop_percentage: dropPercentage(sku.cta_clicks, ctaAvg),
-        suggested_fix: "Check whether the SKU button lost its data-product-id/data-price-id or stopped tracking.",
-      });
-    }
-
-    if (anomalyBelowThreshold(sku.redirect_rate ?? 0, baselineSku.redirect_rate ?? 0, true)) {
-      anomalies.push({
-        metric: "redirect_rate",
-        scope: "sku",
-        product_id: sku.product_id,
-        price_id: sku.price_id,
-        expected: baselineSku.redirect_rate,
-        actual: sku.redirect_rate,
-        last_7_day_average: baselineSku.redirect_rate,
-        drop_percentage: dropPercentage(sku.redirect_rate ?? 0, baselineSku.redirect_rate ?? 0),
-        suggested_fix: "Check the SKU's Payment Link and confirm checkout_redirect events still fire.",
-      });
-    }
-
-    if (anomalyBelowThreshold(sku.success_rate ?? 0, baselineSku.success_rate ?? 0, true)) {
-      anomalies.push({
-        metric: "checkout_success",
-        scope: "sku",
-        product_id: sku.product_id,
-        price_id: sku.price_id,
-        expected: baselineSku.success_rate,
-        actual: sku.success_rate,
-        last_7_day_average: baselineSku.success_rate,
-        drop_percentage: dropPercentage(sku.success_rate ?? 0, baselineSku.success_rate ?? 0),
-        suggested_fix: "Confirm the SKU's Stripe checkout completion events are still emitted by the webhook path.",
-      });
-    }
-  }
-
-  report.anomalies = anomalies;
-  await writeReports(report);
+  await writeReport(report);
 
   let issuesCreatedCount = 0;
-  if (anomalies.length > 0) {
-    const existingTitles = await fetchExistingIssueTitles();
-
-    for (const anomaly of anomalies) {
-      const created = await createGitHubIssue(anomaly, report, existingTitles);
+  if (githubToken && githubRepo && report.anomalies.length) {
+    const openTitles = await fetchOpenIssueTitles({ token: githubToken, repo: githubRepo });
+    for (const anomaly of report.anomalies) {
+      const created = await createIssueWithDedupe({
+        token: githubToken,
+        repo: githubRepo,
+        title: issueTitle(anomaly),
+        body: issueBody(anomaly),
+        labels: ["automation", "analytics", "funnel"],
+        openTitles,
+      });
       if (created) {
         issuesCreatedCount += 1;
       }
     }
   }
 
-  console.log(
-    JSON.stringify(
-      {
-        drift_found_count: anomalies.length,
-        issues_created_count: issuesCreatedCount,
-        report,
-      },
-      null,
-      2
-    )
-  );
+  logger.summary({
+    job: "plausible_funnel_report",
+    issues_created_count: issuesCreatedCount,
+    anomaly_count: report.anomalies.length,
+    cta_clicks: report.cta_clicks,
+    checkout_redirects: report.checkout_redirects,
+    checkout_successes: report.checkout_successes,
+  });
 }
 
 main().catch((error) => {
-  console.error("Plausible funnel report failed:", error.message);
+  logger.error("fatal", { error: error.message });
   process.exit(1);
 });

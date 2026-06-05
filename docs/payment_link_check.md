@@ -1,88 +1,40 @@
-# Payment Link Completeness Checker
+# Payment Link Check
 
-This checker validates that checkout data is complete and that each Payment Link uses Stripe's expected format.
+## Purpose
 
-## What It Validates
+Validate Payment Link completeness and Stripe link format integrity in checkout metadata.
 
-The script reads `public/checkout-urls.json` and validates:
+## Script
 
-1. each product entry has a valid `product_id` key
-2. each product has at least one price entry
-3. each price entry has:
-   - `price_id`
-   - `amount`
-   - `currency`
-   - `payment_link_url`
-4. each `payment_link_url` is non-empty
-5. placeholders are flagged (for example values containing `TODO` or `REPLACE`)
-6. each `payment_link_url` matches Stripe format: `https://pay.stripe.com/*`
-
-Optional cross-check:
-
-1. if `BASEROW_API_TOKEN` and `BASEROW_TABLE_ID` are provided, the script compares checkout rows with Baserow rows
-2. mismatches are included in `baserow_mismatches`
-
-The script emits a report with these arrays:
-
-1. `missing_links`
-2. `placeholder_links`
-3. `malformed_links`
-4. `orphaned_prices`
-5. `baserow_mismatches`
-
-## Manual Run
-
-From repository root:
-
-```bash
 node scripts/payment_link_check.js
-```
 
-Environment variables:
+## Optional Environment
 
-1. `GITHUB_TOKEN` (required to open issues)
-2. `GITHUB_REPO` (required to open issues, format: owner/repo)
-3. `BASEROW_API_TOKEN` (optional)
-4. `BASEROW_TABLE_ID` (optional)
+1. BASEROW_API_TOKEN
+2. BASEROW_TABLE_ID
+3. GITHUB_TOKEN
+4. GITHUB_REPO
 
-No secrets are hardcoded in the script.
+## Validations
 
-## How GitHub Issues Are Generated
+1. product_id exists
+2. prices array exists and includes entries
+3. each entry has price_id
+4. each entry has amount and currency
+5. payment_link_url is non-empty
+6. payment_link_url is not placeholder text
+7. payment_link_url matches https://pay.stripe.com/*
 
-When `GITHUB_TOKEN` and `GITHUB_REPO` are set, the script:
+## Report Arrays
 
-1. fetches open issues
-2. dedupes by issue title
-3. creates issues for:
-   - missing payment links
-   - placeholder payment links
-   - malformed payment links
-   - orphaned price entries
+1. missing_links
+2. placeholder_links
+3. malformed_links
+4. orphaned_prices
+5. baserow_mismatches
 
-API used:
+## Workflow
 
-`POST https://api.github.com/repos/{GITHUB_REPO}/issues`
+.github/workflows/payment_link_check.yml
 
-Auth header used:
-
-`Authorization: token {GITHUB_TOKEN}`
-
-## How To Fix Missing or Invalid Payment Links
-
-1. open `public/checkout-urls.json`
-2. locate the product and price entry from the reported `product_id` and `price_id`
-3. replace placeholder or malformed value with the real Stripe Payment Link URL
-4. verify the URL starts with `https://pay.stripe.com/`
-5. run `node scripts/payment_link_check.js` again
-
-## Nightly Schedule
-
-Workflow file: `.github/workflows/payment_link_check.yml`
-
-The workflow runs nightly at 4:30 AM Eastern Time using UTC cron plus an in-job timezone gate.
-
-To adjust or disable:
-
-1. edit cron values in `.github/workflows/payment_link_check.yml`
-2. update the `America/New_York` gate condition if you change local execution time
-3. remove the `schedule` block to disable nightly runs entirely
+Runs nightly at 4:30 AM America/New_York (UTC cron + ET gate).

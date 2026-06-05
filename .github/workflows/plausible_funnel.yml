@@ -3,11 +3,10 @@ name: Plausible Funnel Report
 on:
   workflow_dispatch:
   schedule:
-    # Run both possible UTC offsets and gate to 4:00 AM America/New_York in-job.
     - cron: "0 8,9 * * *"
 
 jobs:
-  funnel:
+  plausible-funnel:
     runs-on: ubuntu-latest
 
     steps:
@@ -19,23 +18,23 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Determine if it is 4:00 AM Eastern
+      - name: ET gate 4:00 AM
         id: et_gate
         run: |
           ET_HOUR=$(TZ=America/New_York date +%H)
           ET_MIN=$(TZ=America/New_York date +%M)
           if [ "$ET_HOUR" = "04" ] && [ "$ET_MIN" = "00" ]; then
-            echo "run_funnel=true" >> "$GITHUB_OUTPUT"
+            echo "run_job=true" >> "$GITHUB_OUTPUT"
           else
-            echo "run_funnel=false" >> "$GITHUB_OUTPUT"
+            echo "run_job=false" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Install dependencies
-        if: steps.et_gate.outputs.run_funnel == 'true' || github.event_name == 'workflow_dispatch'
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
         run: npm ci
 
-      - name: Run Plausible funnel report
-        if: steps.et_gate.outputs.run_funnel == 'true' || github.event_name == 'workflow_dispatch'
+      - name: Run plausible funnel report
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
         env:
           PLAUSIBLE_API_KEY: ${{ secrets.PLAUSIBLE_API_KEY }}
           PLAUSIBLE_SITE_ID: ${{ secrets.PLAUSIBLE_SITE_ID }}
@@ -43,20 +42,18 @@ jobs:
           GITHUB_REPO: ${{ secrets.GITHUB_REPO }}
         run: node scripts/plausible_funnel_report.js
 
-      - name: Skip run outside 4:00 AM Eastern
-        if: steps.et_gate.outputs.run_funnel != 'true' && github.event_name != 'workflow_dispatch'
-        run: echo "Scheduled run skipped because current America/New_York time is not 04:00."
-
       - name: Upload latest funnel report
-        if: steps.et_gate.outputs.run_funnel == 'true' || github.event_name == 'workflow_dispatch'
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/upload-artifact@v4
         with:
           name: funnel-latest
-          path: analytics/funnel_latest.json
+          path: analytics/funnel/funnel_latest.json
           if-no-files-found: error
+
+      - name: Skip outside ET window
+        if: steps.et_gate.outputs.run_job != 'true' && github.event_name != 'workflow_dispatch'
+        run: echo "Skipped: not 04:00 America/New_York."
 
       - name: Failure notification
         if: failure()
-        run: |
-          echo "Plausible funnel report failed."
-          echo "GitHub Actions notifications can deliver email alerts for workflow failures when enabled on the repository or account."
+        run: echo "plausible_funnel workflow failed."

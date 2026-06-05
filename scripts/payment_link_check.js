@@ -1,22 +1,18 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { normalizeString } from "./_shared/api_helpers.js";
+import { fetchAllBaserowRows, buildBaserowSkuMap } from "./_shared/baserow_helpers.js";
+import { fetchOpenIssueTitles, createIssueWithDedupe } from "./_shared/github_issues.js";
+import { createLogger } from "./_shared/logging.js";
 
-const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
-const GITHUB_REPO = process.env.GITHUB_REPO;
-const BASEROW_API_TOKEN = process.env.BASEROW_API_TOKEN;
-const BASEROW_TABLE_ID = process.env.BASEROW_TABLE_ID;
-const BASEROW_API_BASE = process.env.BASEROW_API_BASE || "https://api.baserow.io";
+const logger = createLogger("payment_link_check");
 
 const STRIPE_PAYMENT_LINK_RE = /^https:\/\/pay\.stripe\.com\/.+/i;
 const PLACEHOLDER_RE = /(TODO|REPLACE|PLACEHOLDER|TBD|INSERT|CHANGEME)/i;
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const checkoutUrlsPath = path.join(repoRoot, "public", "checkout-urls.json");
-
-function normalizeString(value) {
-  return typeof value === "string" ? value.trim() : "";
-}
 
 function isPresent(value) {
   if (typeof value === "number") {
@@ -25,44 +21,14 @@ function isPresent(value) {
   return value !== null && value !== undefined && normalizeString(value) !== "";
 }
 
-function pushFinding(list, item) {
+function pushFinding(list, payload) {
   list.push({
-    product_id: item.product_id || "",
-    price_id: item.price_id || "",
-    issue: item.issue,
-    payment_link_url: item.payment_link_url || "",
-    details: item.details || "",
+    product_id: payload.product_id || "",
+    price_id: payload.price_id || "",
+    issue: payload.issue,
+    payment_link_url: payload.payment_link_url || "",
+    details: payload.details || "",
   });
-}
-
-async function fetchJson(url, options = {}) {
-  const response = await fetch(url, options);
-  const text = await response.text();
-
-  let data;
-  try {
-    data = text ? JSON.parse(text) : {};
-  } catch (_error) {
-    data = { raw: text };
-  }
-
-  if (!response.ok) {
-    const message = data && data.message ? data.message : `Request failed (${response.status})`;
-    throw new Error(`${message} :: ${url}`);
-  }
-
-  return data;
-}
-
-async function loadCheckoutUrls() {
-  const raw = await readFile(checkoutUrlsPath, "utf8");
-  const parsed = JSON.parse(raw);
-
-  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
-    throw new Error("checkout-urls.json must be an object keyed by product_id");
-  }
-
-  return parsed;
 }
 
 function normalizePrices(entry) {
@@ -70,21 +36,28 @@ function normalizePrices(entry) {
     return entry.prices;
   }
 
-  if (isPresent(entry.price_id) || isPresent(entry.amount) || isPresent(entry.currency) || isPresent(entry.payment_link_url)) {
-    return [
-      {
-        price_id: entry.price_id,
-        amount: entry.amount,
-        currency: entry.currency,
-        payment_link_url: entry.payment_link_url,
-      },
-    ];
+  if (isPresent(entry.price_id) || isPresent(entry.payment_link_url) || isPresent(entry.amount) || isPresent(entry.currency)) {
+    return [{
+      price_id: entry.price_id,
+      amount: entry.amount,
+      currency: entry.currency,
+      payment_link_url: entry.payment_link_url,
+    }];
   }
 
   return [];
 }
 
-function validateCheckoutUrls(checkoutMap) {
+async function loadCheckoutUrls() {
+  const raw = await readFile(checkoutUrlsPath, "utf8");
+  const parsed = JSON.parse(raw);
+  if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+    throw new Error("checkout-urls.json must be an object keyed by product_id");
+  }
+  return parsed;
+}
+
+function validateCheckoutMap(checkoutMap) {
   const report = {
     missing_links: [],
     placeholder_links: [],
@@ -95,40 +68,34 @@ function validateCheckoutUrls(checkoutMap) {
 
   const checkoutKeys = new Set();
 
-  for (const [rawProductId, entry] of Object.entries(checkoutMap)) {
+  for (const [rawProductId, productEntry] of Object.entries(checkoutMap)) {
     const productId = normalizeString(rawProductId);
 
     if (!productId) {
-      pushFinding(report.orphaned_prices, {
-        issue: "missing_product_id",
-        details: "Empty product_id key",
-      });
+      pushFinding(report.orphaned_prices, { issue: "missing_product_id" });
       continue;
     }
 
-    if (!entry || typeof entry !== "object" || Array.isArray(entry)) {
+    if (!productEntry || typeof productEntry !== "object" || Array.isArray(productEntry)) {
       pushFinding(report.orphaned_prices, {
         product_id: productId,
         issue: "invalid_product_entry",
-        details: "Product entry is not an object",
       });
       continue;
     }
 
-    if (!Array.isArray(entry.prices)) {
+    if (!Array.isArray(productEntry.prices)) {
       pushFinding(report.orphaned_prices, {
         product_id: productId,
         issue: "missing_prices_array",
-        details: "Product entry is missing prices array",
       });
     }
 
-    const prices = normalizePrices(entry);
+    const prices = normalizePrices(productEntry);
     if (!prices.length) {
       pushFinding(report.orphaned_prices, {
         product_id: productId,
         issue: "no_price_entries",
-        details: "Product has no price entries",
       });
       continue;
     }
@@ -136,8 +103,6 @@ function validateCheckoutUrls(checkoutMap) {
     for (let index = 0; index < prices.length; index += 1) {
       const price = prices[index] || {};
       const priceId = normalizeString(price.price_id);
-      const amount = price.amount;
-      const currency = normalizeString(price.currency);
       const paymentLinkUrl = normalizeString(price.payment_link_url);
 
       if (!priceId) {
@@ -148,12 +113,11 @@ function validateCheckoutUrls(checkoutMap) {
         });
       }
 
-      if (!isPresent(amount) || !currency) {
+      if (!isPresent(price.amount) || !normalizeString(price.currency)) {
         pushFinding(report.orphaned_prices, {
           product_id: productId,
           price_id: priceId,
           issue: "missing_amount_or_currency",
-          details: `amount_present=${isPresent(amount)} currency_present=${Boolean(currency)}`,
         });
       }
 
@@ -178,7 +142,6 @@ function validateCheckoutUrls(checkoutMap) {
           price_id: priceId,
           issue: "malformed_payment_link_url",
           payment_link_url: paymentLinkUrl,
-          details: "Expected https://pay.stripe.com/*",
         });
       }
 
@@ -191,68 +154,31 @@ function validateCheckoutUrls(checkoutMap) {
   return { report, checkoutKeys };
 }
 
-async function loadBaserowRowsIfConfigured() {
-  if (!BASEROW_API_TOKEN || !BASEROW_TABLE_ID) {
-    return [];
-  }
-
-  const rows = [];
-  let next = `${BASEROW_API_BASE}/api/database/rows/table/${BASEROW_TABLE_ID}/?user_field_names=true&size=200&page=1`;
-
-  while (next) {
-    const payload = await fetchJson(next, {
-      method: "GET",
-      headers: {
-        Authorization: `Token ${BASEROW_API_TOKEN}`,
-      },
-    });
-
-    rows.push(...(Array.isArray(payload.results) ? payload.results : []));
-    next = payload.next || null;
-  }
-
-  return rows;
-}
-
-function applyBaserowCrossCheck(report, checkoutKeys, baserowRows) {
-  if (!Array.isArray(baserowRows) || baserowRows.length === 0) {
+function appendBaserowMismatches(report, checkoutKeys, baserowRows) {
+  if (!baserowRows.length) {
     return;
   }
 
-  const baserowKeys = new Set();
-
-  for (const row of baserowRows) {
-    const productId = normalizeString(row.product_id);
-    const priceId = normalizeString(row.price_id);
-
-    if (!productId || !priceId) {
-      pushFinding(report.baserow_mismatches, {
-        product_id: productId,
-        price_id: priceId,
-        issue: "baserow_row_missing_product_or_price",
-      });
-      continue;
-    }
-
-    const key = `${productId}::${priceId}`;
-    baserowKeys.add(key);
-
-    if (!checkoutKeys.has(key)) {
-      pushFinding(report.baserow_mismatches, {
-        product_id: productId,
-        price_id: priceId,
-        issue: "baserow_not_in_checkout_urls",
-      });
-    }
-  }
+  const baserowMap = buildBaserowSkuMap(baserowRows);
 
   for (const key of checkoutKeys) {
-    if (!baserowKeys.has(key)) {
+    if (!baserowMap.has(key)) {
       const [productId, priceId] = key.split("::");
       pushFinding(report.baserow_mismatches, {
         product_id: productId,
         price_id: priceId,
         issue: "checkout_urls_not_in_baserow",
+      });
+    }
+  }
+
+  for (const key of baserowMap.keys()) {
+    if (!checkoutKeys.has(key)) {
+      const [productId, priceId] = key.split("::");
+      pushFinding(report.baserow_mismatches, {
+        product_id: productId,
+        price_id: priceId,
+        issue: "baserow_not_in_checkout_urls",
       });
     }
   }
@@ -276,118 +202,73 @@ function issueTitle(type, finding) {
 
 function issueBody(type, finding) {
   return [
-    "Payment Link completeness checker found an issue.",
-    "",
     `Type: ${type}`,
-    `Product ID: ${finding.product_id || "n/a"}`,
-    `Price ID: ${finding.price_id || "n/a"}`,
-    `Issue: ${finding.issue || "n/a"}`,
-    `Payment Link URL: ${finding.payment_link_url || "n/a"}`,
-    `Details: ${finding.details || "n/a"}`,
     "",
-    "Fix guidance:",
-    "1. Ensure each product has a prices array.",
+    "```json",
+    JSON.stringify(finding, null, 2),
+    "```",
+    "",
+    "Fix:",
+    "1. Ensure product has prices array.",
     "2. Ensure each price has price_id, amount, currency, payment_link_url.",
     "3. Ensure payment_link_url uses https://pay.stripe.com/*.",
   ].join("\n");
 }
 
-async function fetchOpenIssueTitles() {
-  if (!GITHUB_TOKEN || !GITHUB_REPO) {
-    return new Set();
-  }
-
-  const titles = new Set();
-
-  for (let page = 1; page <= 10; page += 1) {
-    const issues = await fetchJson(`https://api.github.com/repos/${GITHUB_REPO}/issues?state=open&per_page=100&page=${page}`, {
-      method: "GET",
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-        Accept: "application/vnd.github+json",
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
-    });
-
-    if (!Array.isArray(issues) || issues.length === 0) {
-      break;
-    }
-
-    for (const issue of issues) {
-      if (issue && typeof issue.title === "string") {
-        titles.add(issue.title);
-      }
-    }
-  }
-
-  return titles;
-}
-
-async function createIssue(title, body) {
-  await fetchJson(`https://api.github.com/repos/${GITHUB_REPO}/issues`, {
-    method: "POST",
-    headers: {
-      Authorization: `token ${GITHUB_TOKEN}`,
-      Accept: "application/vnd.github+json",
-      "Content-Type": "application/json",
-      "X-GitHub-Api-Version": "2022-11-28",
-    },
-    body: JSON.stringify({ title, body }),
-  });
-}
-
-async function openIssuesForFindings(report) {
-  if (!GITHUB_TOKEN || !GITHUB_REPO) {
-    return 0;
-  }
-
-  const existingTitles = await fetchOpenIssueTitles();
-  let issuesCreatedCount = 0;
-
-  const issueTypes = ["missing_links", "placeholder_links", "malformed_links", "orphaned_prices"];
-
-  for (const type of issueTypes) {
-    const findings = Array.isArray(report[type]) ? report[type] : [];
-
-    for (const finding of findings) {
-      const title = issueTitle(type, finding);
-      if (existingTitles.has(title)) {
-        continue;
-      }
-
-      await createIssue(title, issueBody(type, finding));
-      existingTitles.add(title);
-      issuesCreatedCount += 1;
-    }
-  }
-
-  return issuesCreatedCount;
-}
-
 async function main() {
+  const baserowApiToken = process.env.BASEROW_API_TOKEN;
+  const baserowTableId = process.env.BASEROW_TABLE_ID;
+  const baserowApiBase = process.env.BASEROW_API_BASE || "https://api.baserow.io";
+  const githubToken = process.env.GITHUB_TOKEN;
+  const githubRepo = process.env.GITHUB_REPO;
+
+  logger.info("check_start");
+
   const checkoutMap = await loadCheckoutUrls();
-  const { report, checkoutKeys } = validateCheckoutUrls(checkoutMap);
+  const { report, checkoutKeys } = validateCheckoutMap(checkoutMap);
 
-  const baserowRows = await loadBaserowRowsIfConfigured();
-  applyBaserowCrossCheck(report, checkoutKeys, baserowRows);
+  if (baserowApiToken && baserowTableId) {
+    const baserowRows = await fetchAllBaserowRows({ apiToken: baserowApiToken, tableId: baserowTableId, apiBase: baserowApiBase });
+    appendBaserowMismatches(report, checkoutKeys, baserowRows);
+  }
 
-  const issuesCreatedCount = await openIssuesForFindings(report);
+  let issuesCreatedCount = 0;
+  if (githubToken && githubRepo) {
+    const openTitles = await fetchOpenIssueTitles({ token: githubToken, repo: githubRepo });
+    for (const type of ["missing_links", "placeholder_links", "malformed_links", "orphaned_prices"]) {
+      for (const finding of report[type]) {
+        const created = await createIssueWithDedupe({
+          token: githubToken,
+          repo: githubRepo,
+          title: issueTitle(type, finding),
+          body: issueBody(type, finding),
+          labels: ["automation", "payment-links"],
+          openTitles,
+        });
+        if (created) {
+          issuesCreatedCount += 1;
+        }
+      }
+    }
+  }
 
-  console.log(
-    JSON.stringify(
-      {
-        issues_created_count: issuesCreatedCount,
-        missing_links_count: report.missing_links.length,
-        malformed_links_count: report.malformed_links.length,
-        report,
-      },
-      null,
-      2
-    )
-  );
+  logger.summary({
+    job: "payment_link_check",
+    issues_created_count: issuesCreatedCount,
+    missing_links_count: report.missing_links.length,
+    malformed_links_count: report.malformed_links.length,
+    placeholder_links_count: report.placeholder_links.length,
+    orphaned_prices_count: report.orphaned_prices.length,
+    baserow_mismatches_count: report.baserow_mismatches.length,
+    report,
+  });
+
+  if (report.missing_links.length || report.placeholder_links.length || report.malformed_links.length || report.orphaned_prices.length) {
+    process.exitCode = 1;
+  }
 }
 
 main().catch((error) => {
-  console.error("Payment Link completeness checker failed:", error.message);
+  logger.error("fatal", { error: error.message });
   process.exit(1);
 });
