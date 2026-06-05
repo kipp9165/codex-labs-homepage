@@ -1,0 +1,54 @@
+name: Payment Link Completeness Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Run both possible UTC offsets and gate to 4:30 AM America/New_York in-job.
+    - cron: "30 8,9 * * *"
+
+jobs:
+  payment-link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Determine if it is 4:30 AM Eastern
+        id: et_gate
+        run: |
+          ET_HOUR=$(TZ=America/New_York date +%H)
+          ET_MIN=$(TZ=America/New_York date +%M)
+          if [ "$ET_HOUR" = "04" ] && [ "$ET_MIN" = "30" ]; then
+            echo "run_check=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_check=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.et_gate.outputs.run_check == 'true' || github.event_name == 'workflow_dispatch'
+        run: npm ci
+
+      - name: Run payment link completeness checker
+        if: steps.et_gate.outputs.run_check == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ secrets.GITHUB_REPO }}
+          BASEROW_API_TOKEN: ${{ secrets.BASEROW_API_TOKEN }}
+          BASEROW_TABLE_ID: ${{ secrets.BASEROW_TABLE_ID }}
+        run: node scripts/payment_link_check.js
+
+      - name: Skip run outside 4:30 AM Eastern
+        if: steps.et_gate.outputs.run_check != 'true' && github.event_name != 'workflow_dispatch'
+        run: echo "Scheduled run skipped because current America/New_York time is not 04:30."
+
+      - name: Failure notification
+        if: failure()
+        run: |
+          echo "Payment Link completeness check failed."
+          echo "Enable GitHub Actions notifications for workflow failure alerts."
