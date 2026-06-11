@@ -299,12 +299,23 @@ section > h2 {
 
 .site-search input[type="search"] {
   width: 100%;
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 999px;
-  border: 1px solid var(--border-subtle);
-  background: var(--bg-elevated);
+  border: 1px solid rgba(123, 92, 255, 0.45);
+  background: #16162a;
   color: var(--text-main);
   font-size: 13px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.site-search input[type="search"]:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(123, 92, 255, 0.25);
+}
+
+.site-search input[type="search"]::placeholder {
+  color: rgba(160, 163, 177, 0.7);
 }
 
 .site-search-results {
