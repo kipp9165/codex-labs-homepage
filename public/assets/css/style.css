@@ -311,11 +311,11 @@ section > h2 {
 
 .site-search input[type="search"]:focus {
   border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(123, 92, 255, 0.25);
+  box-shadow: 0 0 0 1px var(--accent-primary), 0 0 0 4px rgba(123, 92, 255, 0.24), 0 0 16px rgba(123, 92, 255, 0.24);
 }
 
 .site-search input[type="search"]::placeholder {
-  color: rgba(160, 163, 177, 0.7);
+  color: #8a8aa5;
 }
 
 .site-search-results {

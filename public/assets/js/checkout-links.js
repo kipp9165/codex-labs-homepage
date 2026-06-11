@@ -245,6 +245,13 @@
   function wireCheckoutButtons(checkoutUrls) {
     document.querySelectorAll("a[data-product-id]").forEach(function (anchor) {
       var productId = anchor.dataset.productId;
+      var existingHref = (anchor.getAttribute("href") || "").trim();
+
+      // Keep deterministic static links intact when HTML already provides a concrete checkout URL.
+      if (existingHref && existingHref !== "#" && existingHref !== "/pricing.html") {
+        return;
+      }
+
       if (!productId || productId.indexOf("prod_") !== 0) {
         return;
       }
