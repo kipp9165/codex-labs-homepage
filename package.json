@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node scripts/static-server.js",
     "dev": "node scripts/static-server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node scripts/generate-checkout-urls-from-csv.cjs",
+    "generate": "node scripts/generate-checkout-urls-from-csv.cjs",
+    "verify": "node tools/verify_codex_csv.js",
+    "test": "node tools/verify_codex_csv.js"
   },
   "repository": {
     "type": "git",
