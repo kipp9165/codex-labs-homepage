@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified SKU Pricing Matrix (Internal) · Codex Labs</title>
+  <meta name="description" content="Internal operational view of active SKUs across Codex Labs systems. Not customer-facing.">
+  <meta property="og:title" content="Unified SKU Pricing Matrix (Internal) · Codex Labs">
+  <meta property="og:description" content="Internal operational view of active SKUs across Codex Labs systems. Not customer-facing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codex-labs-homepage-4.onrender.com/internal/sku-matrix.html">
+  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
+  <meta property="og:image:alt" content="Codex Labs internal SKU matrix">
+  <link rel="canonical" href="https://codex-labs-homepage-4.onrender.com/internal/sku-matrix.html">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .sku-matrix-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+      overflow-x: auto;
+    }
+
+    .sku-table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    .sku-table th,
+    .sku-table td {
+      padding: 14px 16px;
+      text-align: left;
+      vertical-align: middle;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sku-table th {
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-secondary);
+      font-weight: 700;
+    }
+
+    .sku-table td {
+      font-size: 14px;
+      color: var(--text-main);
+    }
+
+    .sku-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .sku-price,
+    .sku-billing {
+      white-space: nowrap;
+    }
+
+    .sku-name {
+      font-weight: 600;
+    }
+
+    .sku-status {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .sku-status-unavailable {
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .sku-placeholder {
+      display: inline-block;
+      margin-left: 8px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+    }
+
+    .sku-matrix-note,
+    .internal-footer-note {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .internal-footer-note {
+      margin-top: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .sku-matrix-panel {
+        padding: 14px;
+      }
+
+      .sku-table th,
+      .sku-table td {
+        padding: 12px;
+      }
+    }
+  </style>
+  <script
+    defer
+    data-domain="codex-labs-homepage-4.onrender.com"
+    src="https://plausible.io/js/script.js"
+  ></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="nav-logo">Codex Labs</div>
+    <nav class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/os-overview.html">OS Overview</a>
+      <a href="/invention-radar.html">Invention Radar</a>
+      <a href="/scroll-canon.html">Scroll Canon</a>
+      <a href="/pricing.html">Products</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/scrolls/index.html">Scrolls</a>
+      <a href="/console/index.html">Console</a>
+      <a href="/verticals.html">DeerSafe</a>
+      <a href="/store/index.html">Store</a>
+      <a href="/affiliate.html">Affiliates</a>
+    </nav>
+    <div class="site-search">
+      <input type="search" id="site-search" placeholder="Search Codex Labs OS..." aria-label="Search Codex Labs OS">
+      <div id="site-search-results" class="site-search-results"></div>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-kicker">Internal Operations</div>
+    <h1 class="hero-title">Unified SKU Pricing Matrix (Internal)</h1>
+    <p class="hero-subtitle">Internal operational view of active SKUs across Codex Labs systems. Not customer-facing.</p>
+    <p class="section-intro">This internal-only surface mirrors the existing Pricing page design language while restoring the unified SKU matrix for operations, checkout verification, and access review.</p>
+  </section>
+
+  <section>
+    <h2 class="section-heading">Unified SKU Pricing Table</h2>
+    <p class="section-intro">Active public checkout buttons reuse existing Stripe payment links. Internal, experimental, and unavailable SKUs remain visible here for operational tracking only.</p>
+    <div class="sku-matrix-panel">
+      <table class="sku-table" aria-label="Unified SKU Pricing Matrix">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Billing Type</th>
+            <th scope="col">Checkout</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="sku-name">LifeCheck Personal</td>
+            <td class="sku-price">$29/mo</td>
+            <td class="sku-billing">Monthly</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">LifeCheck Professional</td>
+            <td class="sku-price">$149/mo</td>
+            <td class="sku-billing">Monthly</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">LifeCheck Enterprise</td>
+            <td class="sku-price">$499–$999/mo</td>
+            <td class="sku-billing">Monthly</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">LifeCheck Family Bundle</td>
+            <td class="sku-price">$79/mo</td>
+            <td class="sku-billing">Monthly</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Safety OS + LifeCheck Bundle</td>
+            <td class="sku-price">$49/mo</td>
+            <td class="sku-billing">Monthly</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">HomeGuardian Bundle</td>
+            <td class="sku-price">$99/mo</td>
+            <td class="sku-billing">Monthly</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">DeerSafe</td>
+            <td class="sku-price">$1,499.00</td>
+            <td class="sku-billing">One-time</td>
+            <td><a class="buy-button" data-checkout-key="deersafe-individual" href="https://pay.codexlitigation.org/b/4gMcN52WjaYl48Uac0fbA1r">Buy</a></td>
+          </tr>
+          <tr>
+            <td class="sku-name">StoveSafe Timer</td>
+            <td class="sku-price">$9.99</td>
+            <td class="sku-billing">One-time</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Mikey Ghost</td>
+            <td class="sku-price">$4.99</td>
+            <td class="sku-billing">One-time</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Mikey Weather</td>
+            <td class="sku-price">$4.99</td>
+            <td class="sku-billing">One-time</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Codex VoiceCheck</td>
+            <td class="sku-price">$14.99</td>
+            <td class="sku-billing">One-time</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Codex VoiceCheck Monitoring</td>
+            <td class="sku-price">$4.99/mo</td>
+            <td class="sku-billing">Monthly</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Invention Radar Premium</td>
+            <td class="sku-price">$49/mo</td>
+            <td class="sku-billing">Monthly</td>
+            <td><a class="access-button" data-checkout-key="invention-radar-premium" href="https://pay.codexlitigation.org/b/dRmeVddAX5E1fRCbg4fbC1b">Get Access</a></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Codex Litigation Toolkit</td>
+            <td class="sku-price">$99.95</td>
+            <td class="sku-billing">One-time</td>
+            <td><a class="buy-button" data-checkout-key="codex-litigation-toolkit" href="https://pay.codexlitigation.org/b/14AcN5dAXc2pgVG3NCfbC2y">Buy</a></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Checklists Pack</td>
+            <td class="sku-price">$199.00</td>
+            <td class="sku-billing">One-time</td>
+            <td><a class="buy-button" data-checkout-key="checklists-pack" href="https://pay.codexlitigation.org/b/3cI6oHgN9feBcFqdocfbA3x">Buy</a></td>
+          </tr>
+          <tr>
+            <td class="sku-name">PDF Templates Pack</td>
+            <td class="sku-price">$4,999.00</td>
+            <td class="sku-billing">One-time</td>
+            <td><a class="buy-button" data-checkout-key="pdf-templates-pack" href="https://pay.codexlitigation.org/b/eVq9AT54r3vT7l6gAofbA1w">Buy</a></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Home Safety Pack</td>
+            <td class="sku-price">$600,000.00 <span class="sku-placeholder">Placeholder</span></td>
+            <td class="sku-billing">One-time</td>
+            <td><span class="sku-status sku-status-unavailable">Unavailable</span></td>
+          </tr>
+          <tr>
+            <td class="sku-name">Founder's Micro-Tools Pack</td>
+            <td class="sku-price">$1,199.00</td>
+            <td class="sku-billing">One-time</td>
+            <td><a class="buy-button" data-checkout-key="founders-micro-tools-pack" href="https://pay.codexlitigation.org/b/7sY4gzeF1c2pbBmesgfbA1y">Buy</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="sku-matrix-note">Internal checkout state: wired rows intentionally surface only public/premium Stripe-backed products; all other SKUs remain non-clickable by design.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page footer-inner">
+    <div class="footer-left">© 2026 Codex Labs · Lakeville, CT</div>
+    <div class="footer-right">Sovereign infrastructure for the age of intelligence.</div>
+  </div>
+  <div class="page internal-footer-note">Internal SKU Matrix · © 2026 Codex Labs · Lakeville, CT · Not customer-facing.</div>
+</footer>
+
+<script src="../assets/js/checkout-links.js"></script>
+<script src="../assets/js/search.js"></script>
+</body>
+</html>

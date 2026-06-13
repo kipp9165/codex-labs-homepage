@@ -177,6 +177,39 @@
     });
   }
 
+  var CHECKOUT_KEY_MAP = {
+    "checklists-pack": {
+      url: "https://pay.codexlitigation.org/b/3cI6oHgN9feBcFqdocfbA3x",
+      amount: 199,
+      currency: "usd",
+    },
+    "codex-litigation-toolkit": {
+      url: "https://pay.codexlitigation.org/b/14AcN5dAXc2pgVG3NCfbC2y",
+      amount: 99.95,
+      currency: "usd",
+    },
+    "deersafe-individual": {
+      url: "https://pay.codexlitigation.org/b/4gMcN52WjaYl48Uac0fbA1r",
+      amount: 1499,
+      currency: "usd",
+    },
+    "founders-micro-tools-pack": {
+      url: "https://pay.codexlitigation.org/b/7sY4gzeF1c2pbBmesgfbA1y",
+      amount: 1199,
+      currency: "usd",
+    },
+    "invention-radar-premium": {
+      url: "https://pay.codexlitigation.org/b/dRmeVddAX5E1fRCbg4fbC1b",
+      amount: 49.99,
+      currency: "usd",
+    },
+    "pdf-templates-pack": {
+      url: "https://pay.codexlitigation.org/b/eVq9AT54r3vT7l6gAofbA1w",
+      amount: 4999,
+      currency: "usd",
+    },
+  };
+
   function applyAffiliateRefToInternalLinks() {
     var ref = getActiveAffiliateRef();
     if (!ref) {
@@ -337,6 +370,32 @@
     });
   }
 
+  function wireCheckoutKeyButtons() {
+    document.querySelectorAll("a[data-checkout-key]").forEach(function (anchor) {
+      var checkoutKey = (anchor.dataset.checkoutKey || "").trim();
+
+      if (!checkoutKey) {
+        return;
+      }
+
+      var checkoutRecord = CHECKOUT_KEY_MAP[checkoutKey];
+      if (!checkoutRecord) {
+        console.error("Missing checkout key:", checkoutKey);
+        disableBrokenCheckoutAnchor(anchor, "missing-checkout-key:" + checkoutKey);
+        return;
+      }
+
+      if (!isValidCheckoutUrl(checkoutRecord.url)) {
+        console.error("Invalid checkout URL for checkout key:", checkoutKey, checkoutRecord.url);
+        disableBrokenCheckoutAnchor(anchor, "invalid-checkout-key-url:" + checkoutKey);
+        return;
+      }
+
+      anchor.href = checkoutRecord.url;
+      updatePriceDisplay(anchor, checkoutRecord.amount, checkoutRecord.currency);
+    });
+  }
+
   function attachPlausibleTracking() {
     // Plausible only tracks clicks on the existing CTA anchors; no extra analytics wiring lives in the HTML.
     document.querySelectorAll(".buy-button, .access-button").forEach(function (button) {
@@ -412,6 +471,7 @@
     normalizeDomainReferences();
     wireAffiliateSignupCta();
     applyAffiliateRefToInternalLinks();
+    wireCheckoutKeyButtons();
     attachAffiliateLogging();
     attachPlausibleTracking();
 
