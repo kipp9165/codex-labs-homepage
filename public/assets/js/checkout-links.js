@@ -146,6 +146,37 @@
     return currentText;
   }
 
+  function isValidCheckoutUrl(url) {
+    if (!url || typeof url !== "string") {
+      return false;
+    }
+
+    var parsed = safeUrl(url);
+    if (!parsed) {
+      return false;
+    }
+
+    return parsed.protocol === "https:" || parsed.protocol === "http:";
+  }
+
+  function disableBrokenCheckoutAnchor(anchor, reason) {
+    if (!anchor) {
+      return;
+    }
+
+    if (anchor.dataset.checkoutDisabled === "1") {
+      return;
+    }
+
+    anchor.dataset.checkoutDisabled = "1";
+    anchor.setAttribute("aria-disabled", "true");
+    anchor.removeAttribute("href");
+    anchor.addEventListener("click", function (event) {
+      event.preventDefault();
+      console.error("Checkout anchor disabled:", reason);
+    });
+  }
+
   function applyAffiliateRefToInternalLinks() {
     var ref = getActiveAffiliateRef();
     if (!ref) {
@@ -266,113 +297,6 @@
     }
   }
 
-  function normalizeNameKey(value) {
-    return String(value || "")
-      .toLowerCase()
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-  function buildNameIndex(checkoutUrls) {
-    var index = {};
-
-    Object.keys(checkoutUrls || {}).forEach(function (productId) {
-      var product = checkoutUrls[productId];
-      if (!product || typeof product !== "object") {
-        return;
-      }
-
-      var productName = product.product_name || product.name || "";
-      if (!productName) {
-        return;
-      }
-
-      var key = normalizeNameKey(productName);
-      if (!key || index[key]) {
-        return;
-      }
-
-      if (Array.isArray(product.prices) && product.prices.length) {
-        var chosen = product.prices
-          .filter(function (price) {
-            return price && typeof price.amount === "number" && typeof price.payment_link_url === "string" && price.payment_link_url.trim();
-          })
-          .sort(function (a, b) {
-            return a.amount - b.amount;
-          })[0] || product.prices[0];
-
-        if (!chosen || !chosen.payment_link_url) {
-          return;
-        }
-
-        index[key] = {
-          productId: productId,
-          priceId: chosen.price_id || "",
-          amount: chosen.amount,
-          currency: chosen.currency,
-          url: chosen.payment_link_url,
-        };
-        return;
-      }
-
-      if (!product.payment_link_url) {
-        return;
-      }
-
-      index[key] = {
-        productId: productId,
-        priceId: product.price_id || "",
-        amount: product.amount,
-        currency: product.currency,
-        url: product.payment_link_url,
-      };
-    });
-
-    return index;
-  }
-
-  function wirePricingRowsByName(checkoutUrls) {
-    var nameIndex = buildNameIndex(checkoutUrls);
-    if (!Object.keys(nameIndex).length) {
-      return;
-    }
-
-    document.querySelectorAll("tbody tr").forEach(function (row) {
-      var anchor = row.querySelector("a");
-      if (!anchor || anchor.getAttribute("data-product-id")) {
-        return;
-      }
-
-      var nameCell = row.cells && row.cells.length ? row.cells[0] : null;
-      if (!nameCell) {
-        return;
-      }
-
-      var normalizedName = normalizeNameKey(nameCell.textContent);
-      if (!normalizedName) {
-        return;
-      }
-
-      var match = nameIndex[normalizedName];
-      if (!match) {
-        console.warn("Missing checkout row match for product name:", nameCell.textContent.trim());
-        return;
-      }
-
-      anchor.setAttribute("href", match.url);
-      anchor.setAttribute("data-product-id", match.productId);
-      if (match.priceId) {
-        anchor.setAttribute("data-price-id", match.priceId);
-      }
-      anchor.classList.add("buy-button");
-      if ((anchor.textContent || "").trim().toLowerCase() === "unavailable") {
-        anchor.textContent = "Buy";
-      }
-
-      updatePriceDisplay(anchor, match.amount, match.currency);
-    });
-  }
-
   function wireCheckoutButtons(checkoutUrls) {
     document.querySelectorAll("a[data-product-id]").forEach(function (anchor) {
       var productId = anchor.dataset.productId;
@@ -383,24 +307,33 @@
 
       var product = checkoutUrls[productId];
       if (!product) {
-        console.warn("Missing checkout product for product_id:", productId);
+        console.error("Missing checkout product for product_id:", productId);
+        disableBrokenCheckoutAnchor(anchor, "missing-product-id:" + productId);
         return;
       }
 
       var resolution = resolveCheckoutUrl(product, anchor.dataset.priceId);
       if (resolution.url) {
+        if (!isValidCheckoutUrl(resolution.url)) {
+          console.error("Invalid checkout URL for product_id:", productId, resolution.url);
+          disableBrokenCheckoutAnchor(anchor, "invalid-url:" + productId);
+          return;
+        }
+
         anchor.href = resolution.url;
         updatePriceDisplay(anchor, resolution.amount, resolution.currency);
         return;
       }
 
       if (resolution.error === "missing-price-id") {
-        console.warn("Missing checkout price for product_id/price_id:", productId, anchor.dataset.priceId || "(none)");
+        console.error("Missing checkout price for product_id/price_id:", productId, anchor.dataset.priceId || "(none)");
       } else if (resolution.error === "missing-payment-link") {
-        console.warn("Missing payment link for product_id:", productId);
+        console.error("Missing payment link for product_id:", productId);
       } else {
-        console.warn("Invalid checkout product record for product_id:", productId);
+        console.error("Invalid checkout product record for product_id:", productId);
       }
+
+      disableBrokenCheckoutAnchor(anchor, "unresolved-checkout:" + productId);
     });
   }
 
@@ -485,7 +418,6 @@
     loadCheckoutUrls()
       .then(function (checkoutUrls) {
         wireCheckoutButtons(checkoutUrls);
-        wirePricingRowsByName(checkoutUrls);
         applyAffiliateRefToInternalLinks();
       })
       .catch(function (error) {
