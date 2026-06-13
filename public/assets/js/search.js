@@ -95,7 +95,40 @@
     });
   }
 
+  function ensureCheckoutWiring() {
+    if (!document.querySelector("a[data-product-id^='prod_']")) {
+      return;
+    }
+
+    if (typeof window.__codexInitCheckoutWiring === "function") {
+      window.__codexInitCheckoutWiring();
+      return;
+    }
+
+    if (window.__codexCheckoutScriptLoading || window.__codexCheckoutScriptLoaded) {
+      return;
+    }
+
+    window.__codexCheckoutScriptLoading = true;
+
+    var script = document.createElement("script");
+    script.src = "./assets/js/checkout-links.js";
+    script.onload = function () {
+      window.__codexCheckoutScriptLoading = false;
+      if (typeof window.__codexInitCheckoutWiring === "function") {
+        window.__codexInitCheckoutWiring();
+      }
+    };
+    script.onerror = function () {
+      window.__codexCheckoutScriptLoading = false;
+      console.warn("Failed to load checkout-links.js for dynamic checkout wiring.");
+    };
+    document.head.appendChild(script);
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
+    ensureCheckoutWiring();
+
     var input = document.getElementById("site-search");
     if (!input) {
       return;

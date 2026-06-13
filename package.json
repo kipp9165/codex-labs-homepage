@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node scripts/static-server.js",
     "dev": "node scripts/static-server.js",
-    "build": "node scripts/generate-checkout-urls-from-csv.cjs",
     "generate": "node scripts/generate-checkout-urls-from-csv.cjs",
-    "verify": "node tools/verify_codex_csv.js",
-    "test": "node tools/verify_codex_csv.js"
+    "build": "npm run generate",
+    "verify": "node verify_codex_csv.js",
+    "test": "npm run verify"
   },
   "repository": {
     "type": "git",

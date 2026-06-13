@@ -16,10 +16,20 @@ export function startServer() {
     stripe,
   });
 
-  app.listen(config.port, () => {
+  const server = app.listen(config.port, () => {
     logger.info("webhook_listening", {
       port: config.port,
       registered_systems: runtime.healthSummary().registered_systems,
     });
   });
+
+  server.on("error", (err) => {
+    logger.error("webhook_server_error", {
+      code: err.code || "unknown",
+      message: err.message,
+    });
+    process.exit(1);
+  });
+
+  return server;
 }

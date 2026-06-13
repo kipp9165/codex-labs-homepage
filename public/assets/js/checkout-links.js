@@ -3,6 +3,33 @@
   var SITE_DOMAIN = "https://codex-labs-homepage-4.onrender.com";
   var AFFILIATE_STORAGE_KEY = "codex_affiliate_ref";
 
+  // Affiliate signup URL. Can be overridden by the Render environment via a
+  // build-injected global: set window.__AFFILIATE_SIGNUP_URL before this script
+  // loads, or configure AFFILIATE_SIGNUP_URL in the site config and inject it
+  // at build time. Falls back to the mailto: link in the HTML.
+  var AFFILIATE_SIGNUP_URL = (typeof window !== "undefined" && window.__AFFILIATE_SIGNUP_URL)
+    ? String(window.__AFFILIATE_SIGNUP_URL).trim()
+    : "";
+
+  if (window.__codexCheckoutScriptLoaded) {
+    return;
+  }
+  window.__codexCheckoutScriptLoaded = true;
+
+  // Wire the affiliate signup CTA if a signup URL has been configured.
+  function wireAffiliateSignupCta() {
+    if (!AFFILIATE_SIGNUP_URL) {
+      return;
+    }
+
+    document.querySelectorAll("a[href][class*='access-button']").forEach(function (anchor) {
+      var text = (anchor.textContent || "").trim().toLowerCase();
+      if (text === "email to request an affiliate id" || text === "request affiliate id" || text === "join the affiliate program") {
+        anchor.setAttribute("href", AFFILIATE_SIGNUP_URL);
+      }
+    });
+  }
+
   function safeUrl(input, base) {
     try {
       return new URL(input, base || window.location.origin);
@@ -94,59 +121,29 @@
     });
   }
 
-  function ensureNavLinks() {
-    document.querySelectorAll(".nav-links").forEach(function (nav) {
-      if (!nav.querySelector('a[href="/invention-radar.html"]')) {
-        var inventionLink = document.createElement("a");
-        inventionLink.href = "/invention-radar.html";
-        inventionLink.textContent = "Invention Radar";
-        nav.appendChild(inventionLink);
-      }
+  function formatUsd(amount) {
+    var numeric = typeof amount === "number" ? amount : Number(amount);
+    if (!Number.isFinite(numeric)) {
+      return null;
+    }
 
-      if (!nav.querySelector('a[href="/affiliate.html"]')) {
-        var affiliateLink = document.createElement("a");
-        affiliateLink.href = "/affiliate.html";
-        affiliateLink.textContent = "Affiliates";
-        nav.appendChild(affiliateLink);
-      }
+    return "$" + numeric.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     });
   }
 
-  function normalizeCtaButtons() {
-    document.querySelectorAll("a.buy-button, a.access-button").forEach(function (anchor) {
-      var text = (anchor.textContent || "").trim();
-      var lowerText = text.toLowerCase();
-      var productId = anchor.getAttribute("data-product-id") || "";
-      var isCheckoutButton = productId.indexOf("prod_") === 0;
-      var href = (anchor.getAttribute("href") || "").trim();
+  function replacePriceInText(currentText, formattedUsd) {
+    if (!currentText || !formattedUsd) {
+      return currentText;
+    }
 
-      if (isCheckoutButton) {
-        anchor.classList.add("buy-button");
-        anchor.classList.remove("access-button");
-        if (lowerText === "get access" || lowerText === "get access now" || lowerText === "access os") {
-          anchor.textContent = "Buy";
-        }
-        if (href === "" || href === "#") {
-          anchor.href = "/pricing.html";
-        }
-        return;
-      }
+    var pricePattern = /\$\s?\d[\d,]*(?:\.\d+)?(?:\s?-\s?\$?\d[\d,]*(?:\.\d+)?)?/;
+    if (pricePattern.test(currentText)) {
+      return currentText.replace(pricePattern, formattedUsd);
+    }
 
-      if (lowerText.indexOf("get access") >= 0 || lowerText.indexOf("access os") >= 0 || lowerText.indexOf("explore codex labs os") >= 0) {
-        anchor.classList.add("access-button");
-        anchor.classList.remove("buy-button");
-      }
-
-      if ((href === "" || href === "#") && !isCheckoutButton) {
-        anchor.href = "/pricing.html";
-      }
-    });
-  }
-
-  function normalizeFooterCtas() {
-    document.querySelectorAll(".site-footer .footer-right").forEach(function (container) {
-      container.innerHTML = 'Sovereign infrastructure for the age of intelligence. <a class="access-button" href="/os-overview.html">Explore Codex Labs OS</a> <a class="buy-button" href="/pricing.html">View Pricing</a>';
-    });
+    return currentText;
   }
 
   function applyAffiliateRefToInternalLinks() {
@@ -228,7 +225,7 @@
         return { error: "missing-payment-link" };
       }
 
-      return { url: chosen.payment_link_url };
+      return { url: chosen.payment_link_url, amount: chosen.amount, currency: chosen.currency };
     }
 
     if (desiredPriceId && product.price_id && product.price_id !== desiredPriceId) {
@@ -239,18 +236,146 @@
       return { error: "missing-payment-link" };
     }
 
-    return { url: product.payment_link_url };
+    return { url: product.payment_link_url, amount: product.amount, currency: product.currency };
+  }
+
+  function updatePriceDisplay(anchor, amount, currency) {
+    if (String(currency || "").toLowerCase() !== "usd") {
+      return;
+    }
+
+    var formattedUsd = formatUsd(amount);
+    if (!formattedUsd) {
+      return;
+    }
+
+    var previousPrice = anchor.previousElementSibling;
+    if (previousPrice && previousPrice.classList && previousPrice.classList.contains("product-price")) {
+      previousPrice.textContent = replacePriceInText(previousPrice.textContent, formattedUsd);
+    }
+
+    var row = anchor.closest("tr");
+    if (row && row.cells && row.cells.length >= 2) {
+      row.cells[1].textContent = replacePriceInText(row.cells[1].textContent, formattedUsd) || formattedUsd;
+    }
+
+    var anchorText = (anchor.textContent || "").trim();
+    var nextAnchorText = replacePriceInText(anchorText, formattedUsd);
+    if (nextAnchorText !== anchorText) {
+      anchor.textContent = nextAnchorText;
+    }
+  }
+
+  function normalizeNameKey(value) {
+    return String(value || "")
+      .toLowerCase()
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  function buildNameIndex(checkoutUrls) {
+    var index = {};
+
+    Object.keys(checkoutUrls || {}).forEach(function (productId) {
+      var product = checkoutUrls[productId];
+      if (!product || typeof product !== "object") {
+        return;
+      }
+
+      var productName = product.product_name || product.name || "";
+      if (!productName) {
+        return;
+      }
+
+      var key = normalizeNameKey(productName);
+      if (!key || index[key]) {
+        return;
+      }
+
+      if (Array.isArray(product.prices) && product.prices.length) {
+        var chosen = product.prices
+          .filter(function (price) {
+            return price && typeof price.amount === "number" && typeof price.payment_link_url === "string" && price.payment_link_url.trim();
+          })
+          .sort(function (a, b) {
+            return a.amount - b.amount;
+          })[0] || product.prices[0];
+
+        if (!chosen || !chosen.payment_link_url) {
+          return;
+        }
+
+        index[key] = {
+          productId: productId,
+          priceId: chosen.price_id || "",
+          amount: chosen.amount,
+          currency: chosen.currency,
+          url: chosen.payment_link_url,
+        };
+        return;
+      }
+
+      if (!product.payment_link_url) {
+        return;
+      }
+
+      index[key] = {
+        productId: productId,
+        priceId: product.price_id || "",
+        amount: product.amount,
+        currency: product.currency,
+        url: product.payment_link_url,
+      };
+    });
+
+    return index;
+  }
+
+  function wirePricingRowsByName(checkoutUrls) {
+    var nameIndex = buildNameIndex(checkoutUrls);
+    if (!Object.keys(nameIndex).length) {
+      return;
+    }
+
+    document.querySelectorAll("tbody tr").forEach(function (row) {
+      var anchor = row.querySelector("a");
+      if (!anchor || anchor.getAttribute("data-product-id")) {
+        return;
+      }
+
+      var nameCell = row.cells && row.cells.length ? row.cells[0] : null;
+      if (!nameCell) {
+        return;
+      }
+
+      var normalizedName = normalizeNameKey(nameCell.textContent);
+      if (!normalizedName) {
+        return;
+      }
+
+      var match = nameIndex[normalizedName];
+      if (!match) {
+        console.warn("Missing checkout row match for product name:", nameCell.textContent.trim());
+        return;
+      }
+
+      anchor.setAttribute("href", match.url);
+      anchor.setAttribute("data-product-id", match.productId);
+      if (match.priceId) {
+        anchor.setAttribute("data-price-id", match.priceId);
+      }
+      anchor.classList.add("buy-button");
+      if ((anchor.textContent || "").trim().toLowerCase() === "unavailable") {
+        anchor.textContent = "Buy";
+      }
+
+      updatePriceDisplay(anchor, match.amount, match.currency);
+    });
   }
 
   function wireCheckoutButtons(checkoutUrls) {
     document.querySelectorAll("a[data-product-id]").forEach(function (anchor) {
       var productId = anchor.dataset.productId;
-      var existingHref = (anchor.getAttribute("href") || "").trim();
-
-      // Keep deterministic static links intact when HTML already provides a concrete checkout URL.
-      if (existingHref && existingHref !== "#" && existingHref !== "/pricing.html") {
-        return;
-      }
 
       if (!productId || productId.indexOf("prod_") !== 0) {
         return;
@@ -258,22 +383,23 @@
 
       var product = checkoutUrls[productId];
       if (!product) {
-        console.error("Missing checkout product for product_id:", productId);
+        console.warn("Missing checkout product for product_id:", productId);
         return;
       }
 
       var resolution = resolveCheckoutUrl(product, anchor.dataset.priceId);
       if (resolution.url) {
         anchor.href = resolution.url;
+        updatePriceDisplay(anchor, resolution.amount, resolution.currency);
         return;
       }
 
       if (resolution.error === "missing-price-id") {
-        console.error("Missing checkout price for product_id/price_id:", productId, anchor.dataset.priceId || "(none)");
+        console.warn("Missing checkout price for product_id/price_id:", productId, anchor.dataset.priceId || "(none)");
       } else if (resolution.error === "missing-payment-link") {
-        console.error("Missing payment link for product_id:", productId);
+        console.warn("Missing payment link for product_id:", productId);
       } else {
-        console.error("Invalid checkout product record for product_id:", productId);
+        console.warn("Invalid checkout product record for product_id:", productId);
       }
     });
   }
@@ -344,11 +470,14 @@
     }, Promise.reject(new Error("Checkout URL load not attempted")));
   }
 
-  document.addEventListener("DOMContentLoaded", function () {
+  function initCheckoutWiring() {
+    if (window.__codexCheckoutInitialized) {
+      return;
+    }
+    window.__codexCheckoutInitialized = true;
+
     normalizeDomainReferences();
-    ensureNavLinks();
-    normalizeCtaButtons();
-    normalizeFooterCtas();
+    wireAffiliateSignupCta();
     applyAffiliateRefToInternalLinks();
     attachAffiliateLogging();
     attachPlausibleTracking();
@@ -356,10 +485,17 @@
     loadCheckoutUrls()
       .then(function (checkoutUrls) {
         wireCheckoutButtons(checkoutUrls);
+        wirePricingRowsByName(checkoutUrls);
         applyAffiliateRefToInternalLinks();
       })
       .catch(function (error) {
         console.error(error);
       });
+  }
+
+  window.__codexInitCheckoutWiring = initCheckoutWiring;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initCheckoutWiring();
   });
 })();

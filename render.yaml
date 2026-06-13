@@ -3,7 +3,7 @@ services:
     name: codex-labs-site
     env: static
     publishDir: public
-    buildCommand: node scripts/generate-checkout-urls-from-csv.cjs
+    buildCommand: "node scripts/generate-checkout-urls-from-csv.cjs"
 
   - type: web
     name: codex-labs-webhook
