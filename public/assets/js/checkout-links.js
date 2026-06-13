@@ -392,7 +392,6 @@
       }
 
       anchor.href = checkoutRecord.url;
-      updatePriceDisplay(anchor, checkoutRecord.amount, checkoutRecord.currency);
     });
   }
 
