@@ -1,0 +1,20 @@
+name = "codex-intake-worker"
+main = "index.js"
+compatibility_date = "2024-01-01"
+
+# Route: Render site forwards /api/intake to this worker
+# Update account_id below before deploying
+# account_id = "YOUR_CLOUDFLARE_ACCOUNT_ID"
+
+routes = [
+  { pattern = "codex-labs-homepage-4.onrender.com/api/intake", zone_name = "onrender.com" }
+]
+
+[vars]
+# Non-secret vars can go here; secrets must be set via `wrangler secret put`
+# BASEROW_TABLE_ID = "12345"
+# FOUNDER_EMAIL = "kipp@codex-labs.io"
+
+# Set these secrets via CLI:
+#   wrangler secret put BASEROW_API_TOKEN
+#   wrangler secret put RESEND_API_KEY
