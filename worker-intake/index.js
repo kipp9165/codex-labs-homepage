@@ -124,8 +124,9 @@ export default {
       console.error("Resend error:", errText);
     }
 
-    // Redirect browser to success page
-    return Response.redirect("/intake-success.html", 302);
+    // Redirect browser to success page (absolute URL derived from request origin)
+    const origin = new URL(request.url).origin;
+    return Response.redirect(`${origin}/intake-success.html`, 302);
   },
 };
 
