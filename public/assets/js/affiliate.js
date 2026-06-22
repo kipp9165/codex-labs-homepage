@@ -67,7 +67,7 @@
 
     return {
       ref: ref,
-      path: window.location.pathname || window.location.href || "",
+      path: window.location.pathname || "/",
       ts: new Date().toISOString(),
     };
   }
@@ -76,8 +76,10 @@
     var ref = getActiveReferralCode();
     renderReferralCode(ref);
 
-    // Expose a minimal payload builder for later backend or analytics wiring.
-    // This keeps the event shape deterministic without sending data anywhere yet.
+    // Expose a minimal payload builder for future integrations.
+    // Consumers can call window.__codexBuildAffiliateReferralEvent() before a
+    // fetch beacon or privacy-friendly analytics event to reuse the same shape
+    // without mutating page state or sending data automatically from this file.
     window.__codexBuildAffiliateReferralEvent = function () {
       return buildReferralEventPayload(ref);
     };
