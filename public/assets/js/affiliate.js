@@ -15,7 +15,7 @@
     try {
       var params = new URLSearchParams(window.location.search || "");
       return sanitizeReferralCode(params.get("ref"));
-    } catch (_error) {
+    } catch {
       return "";
     }
   }
@@ -23,7 +23,7 @@
   function getStoredReferralCode() {
     try {
       return sanitizeReferralCode(window.localStorage.getItem(AFFILIATE_STORAGE_KEY) || "");
-    } catch (_error) {
+    } catch {
       return "";
     }
   }
@@ -35,7 +35,7 @@
 
     try {
       window.localStorage.setItem(AFFILIATE_STORAGE_KEY, ref);
-    } catch (_error) {
+    } catch {
       return;
     }
   }
@@ -67,7 +67,7 @@
 
     return {
       ref: ref,
-      path: window.location.pathname || "/affiliate.html",
+      path: window.location.pathname || window.location.href || "",
       ts: new Date().toISOString(),
     };
   }
