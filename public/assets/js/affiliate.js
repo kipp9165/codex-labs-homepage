@@ -60,7 +60,7 @@
     display.hidden = false;
   }
 
-  function buildReferralEventPayload(ref) {
+  function buildAffiliateReferralEvent(ref) {
     if (!ref) {
       return null;
     }
@@ -81,7 +81,7 @@
     // fetch beacon or privacy-friendly analytics event to reuse the same shape
     // without mutating page state or sending data automatically from this file.
     window.__codexBuildAffiliateReferralEvent = function () {
-      return buildReferralEventPayload(ref);
+      return buildAffiliateReferralEvent(ref);
     };
   }
 
