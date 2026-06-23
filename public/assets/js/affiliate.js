@@ -1,6 +1,6 @@
 (function () {
   var AFFILIATE_STORAGE_KEY = "codex_affiliate_ref";
-  var REF_PATTERN = /^[a-zA-Z0-9_-]{2,64}$/;
+  var REF_PATTERN = /^[a-zA-Z0-9_\-]{2,64}$/;
 
   function sanitizeReferralCode(value) {
     if (!value) {
@@ -15,7 +15,7 @@
     try {
       var params = new URLSearchParams(window.location.search || "");
       return sanitizeReferralCode(params.get("ref"));
-    } catch { // Ignore malformed query strings and fall back to stored state.
+    } catch (_error) { // Ignore malformed query strings and fall back to stored state.
       return "";
     }
   }
@@ -23,7 +23,7 @@
   function getStoredReferralCode() {
     try {
       return sanitizeReferralCode(window.localStorage.getItem(AFFILIATE_STORAGE_KEY) || "");
-    } catch { // Ignore storage access errors so the page remains functional.
+    } catch (_error) { // Ignore storage access errors so the page remains functional.
       return "";
     }
   }
@@ -35,7 +35,7 @@
 
     try {
       window.localStorage.setItem(AFFILIATE_STORAGE_KEY, ref);
-    } catch { // Ignore storage access errors so referral display stays non-blocking.
+    } catch (_error) { // Ignore storage access errors so referral display stays non-blocking.
     }
   }
 
