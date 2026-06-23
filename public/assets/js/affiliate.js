@@ -15,8 +15,7 @@
     try {
       var params = new URLSearchParams(window.location.search || "");
       return sanitizeReferralCode(params.get("ref"));
-    } catch {
-      // Ignore malformed query strings and fall back to stored state.
+    } catch { // Ignore malformed query strings and fall back to stored state.
       return "";
     }
   }
@@ -24,8 +23,7 @@
   function getStoredReferralCode() {
     try {
       return sanitizeReferralCode(window.localStorage.getItem(AFFILIATE_STORAGE_KEY) || "");
-    } catch {
-      // Ignore storage access errors so the page remains functional.
+    } catch { // Ignore storage access errors so the page remains functional.
       return "";
     }
   }
@@ -37,9 +35,7 @@
 
     try {
       window.localStorage.setItem(AFFILIATE_STORAGE_KEY, ref);
-    } catch {
-      // Ignore storage access errors so referral display stays non-blocking.
-      return;
+    } catch { // Ignore storage access errors so referral display stays non-blocking.
     }
   }
 
@@ -61,7 +57,6 @@
 
     display.textContent = "Your referral code: " + ref;
     display.style.display = "";
-    display.setAttribute("aria-hidden", "false");
   }
 
   function buildAffiliateReferralEvent(ref) {
