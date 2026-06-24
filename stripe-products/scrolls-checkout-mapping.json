@@ -1,0 +1,77 @@
+[
+  {
+    "scroll": "Commission Blueprint",
+    "filename": "commission-blueprint.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Founders Anti Chaos Handbook",
+    "filename": "founders-anti-chaos-handbook.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Founders Structural Decision Manual",
+    "filename": "founders-structural-decision-manual.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Modern SEO Playbook",
+    "filename": "modern-seo-playbook.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Multi Surface Distribution Manual",
+    "filename": "multi-surface-distribution-manual.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Noise to Signal Diagnostic Pack",
+    "filename": "noise-to-signal-diagnostic-pack.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Operational Spine Scroll",
+    "filename": "operational-spine-scroll.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Product Lattice Manual",
+    "filename": "product-lattice-manual.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Ritual Loop Handbook",
+    "filename": "ritual-loop-handbook.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Scroll Class Infrastructure Primer",
+    "filename": "scroll-class-infrastructure-primer.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Scroll Minting Protocol",
+    "filename": "scroll-minting-protocol.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Semantic Cluster Playbook",
+    "filename": "semantic-cluster-playbook.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Substrate Architecture Guide",
+    "filename": "substrate-architecture-guide.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Systems Integrity Scroll",
+    "filename": "systems-integrity-scroll.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  },
+  {
+    "scroll": "Zombie Systems Diagnostic Scroll",
+    "filename": "zombie-systems-diagnostic-scroll.html",
+    "checkout_url": "https://checkout.stripe.com/pay/PLACEHOLDER"
+  }
+]
