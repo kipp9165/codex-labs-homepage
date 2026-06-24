@@ -1,0 +1,60 @@
+name: Revenue Dashboard
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 9,10 * * *"
+
+jobs:
+  revenue-dashboard:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: ET gate 5:00 AM
+        id: et_gate
+        run: |
+          ET_HOUR=$(TZ=America/New_York date +%H)
+          ET_MIN=$(TZ=America/New_York date +%M)
+          if [ "$ET_HOUR" = "05" ] && [ "$ET_MIN" = "00" ]; then
+            echo "run_job=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_job=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
+        run: npm ci
+
+      - name: Run revenue dashboard
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          BASEROW_API_TOKEN: ${{ secrets.BASEROW_API_TOKEN }}
+          BASEROW_TABLE_ID: ${{ secrets.BASEROW_TABLE_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ secrets.GITHUB_REPO }}
+        run: node scripts/revenue_dashboard.js
+
+      - name: Upload latest revenue report
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: revenue-latest
+          path: analytics/revenue/revenue_latest.json
+          if-no-files-found: error
+
+      - name: Skip outside ET window
+        if: steps.et_gate.outputs.run_job != 'true' && github.event_name != 'workflow_dispatch'
+        run: echo "Skipped: not 05:00 America/New_York."
+
+      - name: Failure notification
+        if: failure()
+        run: echo "revenue_dashboard workflow failed."

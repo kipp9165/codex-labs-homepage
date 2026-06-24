@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scroll Detail · Codex Labs</title>
+  <meta name="description" content="Codex Labs systems scroll detail and route mapping.">
+  <meta property="og:title" content="Scroll Detail · Codex Labs">
+  <meta property="og:description" content="Codex Labs systems scroll detail and route mapping.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/img/social-default.png">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <script
+    defer
+    data-domain="codex-labs-homepage-static.onrender.com"
+    src="https://plausible.io/js/script.js"
+  ></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="nav-logo">Codex Labs</div>
+    <nav class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/os-overview.html">OS Overview</a>
+      <a href="/scroll-canon.html">Scroll Canon</a>
+      <a href="/pricing.html">Products</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/scrolls/index.html">Scrolls</a>
+      <a href="/console/index.html">Console</a>
+      <a href="/verticals.html">DeerSafe</a>
+      <a href="/store/index.html">Store</a>
+    </nav>
+  </div>
+</header>
+<main class="page">
+<section class="hero">
+  <div class="hero-kicker">Scroll Detail</div>
+  <h1 class="hero-title" id="scroll-title">Codex Scroll</h1>
+  <p class="hero-subtitle" id="scroll-description">Access the canonical production route for this systems scroll.</p>
+</section>
+
+<section class="core-systems">
+  <h2 class="section-heading">Deployment Route</h2>
+  <div class="product-grid">
+  <article class="product-card">
+    <div class="product-tagline">Route</div>
+    <h3 id="scroll-route-label">Open System Page</h3>
+    <p id="scroll-route-copy">Use the canonical route to access this scroll in production.</p>
+    <a class="buy-button" data-product-id="nav_scroll_detail" data-price-id="nav" id="scroll-route-link" href="../index.html">Open</a>
+  </article>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="page footer-inner">
+    <div class="footer-left">© 2026 Codex Labs · Lakeville, CT</div>
+    <div class="footer-right">Sovereign infrastructure for the age of intelligence.</div>
+  </div>
+</footer>
+<script>
+  (function () {
+    var catalog = {
+      "high-clarity-decision-protocol": {
+        title: "High-Clarity Decision Protocol",
+        description: "Deterministic decision architecture for pressure environments.",
+        href: "../high-clarity-decision-protocol.html"
+      },
+      "execution-stabilization-system": {
+        title: "Execution Stabilization System",
+        description: "Stabilize action loops and eliminate operational drift.",
+        href: "../execution-stabilization-system.html"
+      },
+      "temporal-alignment-system": {
+        title: "Temporal Alignment System",
+        description: "Synchronize cadence and reduce system-level drift.",
+        href: "../temporal-alignment-system.html"
+      },
+      "safety-os": {
+        title: "Safety OS",
+        description: "Unified safety operating substrate for real-world continuity.",
+        href: "../index.html#safety-tools"
+      },
+      "lifecheck": {
+        title: "LifeCheck",
+        description: "Daily life-safety verification protocol for operators and families.",
+        href: "../store/index.html"
+      },
+      "environmental-sentinel": {
+        title: "Environmental Sentinel",
+        description: "Condition-aware sentinel logic for safer routines and response timing.",
+        href: "../store/index.html"
+      },
+      "presence-ledger": {
+        title: "Presence Ledger",
+        description: "Presence and continuity tracking for deterministic safety operations.",
+        href: "./index.html"
+      },
+      "freezeguard": {
+        title: "FreezeGuard",
+        description: "Freeze-risk readiness and continuity protocol layer.",
+        href: "./index.html"
+      },
+      "homeguardian": {
+        title: "HomeGuardian",
+        description: "Household safety orchestration across critical domestic vectors.",
+        href: "../store/index.html"
+      },
+      "identity-os": {
+        title: "Identity OS",
+        description: "Identity-aware systems integration for trusted safety context.",
+        href: "./index.html"
+      },
+      "sovereign-os": {
+        title: "Sovereign OS",
+        description: "Sovereign envelope integration for resilient orchestration.",
+        href: "./index.html"
+      },
+      "emergency-mesh": {
+        title: "Emergency Mesh",
+        description: "Premium emergency coordination layer for escalated response windows.",
+        href: "./index.html"
+      }
+    };
+
+    var slug = new URLSearchParams(window.location.search).get("slug") || "";
+    var item = catalog[slug] || null;
+
+    if (!item) {
+      return;
+    }
+
+    document.getElementById("scroll-title").textContent = item.title;
+    document.getElementById("scroll-description").textContent = item.description;
+    document.getElementById("scroll-route-link").href = item.href;
+    document.getElementById("scroll-route-link").setAttribute("data-product-id", "nav_" + slug.replace(/-/g, "_"));
+  })();
+</script>
+<script src="../assets/js/checkout-links.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+name: Payment Link Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 8,9 * * *"
+
+jobs:
+  payment-link-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: ET gate 4:30 AM
+        id: et_gate
+        run: |
+          ET_HOUR=$(TZ=America/New_York date +%H)
+          ET_MIN=$(TZ=America/New_York date +%M)
+          if [ "$ET_HOUR" = "04" ] && [ "$ET_MIN" = "30" ]; then
+            echo "run_job=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_job=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
+        run: npm ci
+
+      - name: Run payment link check
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          BASEROW_API_TOKEN: ${{ secrets.BASEROW_API_TOKEN }}
+          BASEROW_TABLE_ID: ${{ secrets.BASEROW_TABLE_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ secrets.GITHUB_REPO }}
+        run: node scripts/payment_link_check.js
+
+      - name: Skip outside ET window
+        if: steps.et_gate.outputs.run_job != 'true' && github.event_name != 'workflow_dispatch'
+        run: echo "Skipped: not 04:30 America/New_York."
+
+      - name: Failure notification
+        if: failure()
+        run: echo "payment_link_check workflow failed."

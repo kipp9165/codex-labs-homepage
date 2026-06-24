@@ -1,0 +1,31 @@
+{
+  "name": "codex-labs-homepage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "checkout-url-generator.js",
+  "scripts": {
+    "start": "node scripts/static-server.js",
+    "dev": "node scripts/static-server.js",
+    "generate": "node scripts/generate-checkout-urls-from-csv.cjs",
+    "build": "npm run generate",
+    "verify": "node verify_codex_csv.js",
+    "test": "npm run verify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kipp9165/codex-labs-homepage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/kipp9165/codex-labs-homepage/issues"
+  },
+  "homepage": "https://github.com/kipp9165/codex-labs-homepage#readme",
+  "dependencies": {
+    "body-parser": "^2.2.2",
+    "express": "^5.2.1",
+    "stripe": "^22.1.0"
+  }
+}

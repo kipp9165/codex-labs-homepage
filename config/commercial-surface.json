@@ -1,0 +1,88 @@
+{
+  "products": [
+    {
+      "id": "high-clarity-decision-protocol",
+      "name": "High-Clarity Decision Protocol",
+      "description": "A deterministic decision-making system engineered for operators under pressure.",
+      "family": "scroll",
+      "label": "Scroll: High-Clarity Decision Protocol",
+      "prices": [
+        {
+          "lookup_key": "hcdp_individual",
+          "amount": 149900,
+          "currency": "usd",
+          "tier": "individual"
+        },
+        {
+          "lookup_key": "hcdp_team",
+          "amount": 479700,
+          "currency": "usd",
+          "tier": "team"
+        },
+        {
+          "lookup_key": "hcdp_org",
+          "amount": 1274200,
+          "currency": "usd",
+          "tier": "org"
+        }
+      ]
+    },
+    {
+      "id": "codex-rituals-pack",
+      "name": "Codex Rituals Pack",
+      "description": "Daily, weekly, and monthly operational rituals for clarity and alignment.",
+      "family": "ritual",
+      "label": "Ritual Pack",
+      "prices": [
+        {
+          "lookup_key": "rituals_pack",
+          "amount": 119900,
+          "currency": "usd",
+          "tier": "individual"
+        }
+      ]
+    },
+    {
+      "id": "deersafe",
+      "name": "DeerSafe",
+      "description": "Codex Labs' vertical safety and operational integrity system.",
+      "family": "vertical",
+      "label": "DeerSafe Vertical Edition",
+      "prices": [
+        {
+          "lookup_key": "deersafe_individual",
+          "amount": 149900,
+          "currency": "usd",
+          "tier": "individual"
+        },
+        {
+          "lookup_key": "deersafe_team",
+          "amount": 479700,
+          "currency": "usd",
+          "tier": "team"
+        },
+        {
+          "lookup_key": "deersafe_org",
+          "amount": 1274200,
+          "currency": "usd",
+          "tier": "org"
+        }
+      ]
+    },
+    {
+      "id": "premium-pass",
+      "name": "Codex Premium Pass",
+      "description": "Full-stack access to Codex Labs OS, including scrolls, systems, rituals, and vertical updates.",
+      "family": "pass",
+      "label": "Premium Pass",
+      "prices": [
+        {
+          "lookup_key": "premium_pass",
+          "amount": 374900,
+          "currency": "usd",
+          "tier": "individual"
+        }
+      ]
+    }
+  ]
+}

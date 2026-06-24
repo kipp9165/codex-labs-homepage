@@ -1,0 +1,59 @@
+name: Plausible Funnel Report
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8,9 * * *"
+
+jobs:
+  plausible-funnel:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: ET gate 4:00 AM
+        id: et_gate
+        run: |
+          ET_HOUR=$(TZ=America/New_York date +%H)
+          ET_MIN=$(TZ=America/New_York date +%M)
+          if [ "$ET_HOUR" = "04" ] && [ "$ET_MIN" = "00" ]; then
+            echo "run_job=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run_job=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
+        run: npm ci
+
+      - name: Run plausible funnel report
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          PLAUSIBLE_API_KEY: ${{ secrets.PLAUSIBLE_API_KEY }}
+          PLAUSIBLE_SITE_ID: ${{ secrets.PLAUSIBLE_SITE_ID }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPO: ${{ secrets.GITHUB_REPO }}
+        run: node scripts/plausible_funnel_report.js
+
+      - name: Upload latest funnel report
+        if: steps.et_gate.outputs.run_job == 'true' || github.event_name == 'workflow_dispatch'
+        uses: actions/upload-artifact@v4
+        with:
+          name: funnel-latest
+          path: analytics/funnel/funnel_latest.json
+          if-no-files-found: error
+
+      - name: Skip outside ET window
+        if: steps.et_gate.outputs.run_job != 'true' && github.event_name != 'workflow_dispatch'
+        run: echo "Skipped: not 04:00 America/New_York."
+
+      - name: Failure notification
+        if: failure()
+        run: echo "plausible_funnel workflow failed."

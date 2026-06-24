@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codex Labs Intake</title>
+  <meta name="description" content="Begin the Codex Labs intake to get a consulting container recommendation.">
+  <meta property="og:title" content="Codex Labs Intake">
+  <meta property="og:description" content="Begin the Codex Labs intake to get a consulting container recommendation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/intake.html">
+  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
+  <meta property="og:image:alt" content="Codex Labs Intake">
+  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/intake.html">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script
+    defer
+    data-domain="codex-labs-homepage-static.onrender.com"
+    src="https://plausible.io/js/script.js"
+  ></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="nav-logo">Codex Labs</div>
+    <nav class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/pricing.html">Pricing</a>
+      <a href="/consulting.html">Consulting OS</a>
+      <a href="/intake.html">Intake</a>
+      <a href="/client-portal.html">Client Portal</a>
+      <a href="/founder.html">Founder</a>
+    </nav>
+    <div class="site-search">
+      <input type="search" id="site-search" placeholder="Search Codex Labs OS..." aria-label="Search Codex Labs OS">
+      <div id="site-search-results" class="site-search-results"></div>
+    </div>
+  </div>
+</header>
+<main class="page">
+<section class="hero">
+  <div class="hero-kicker">Codex Labs</div>
+  <h1 class="hero-title">Codex Labs Intake</h1>
+  <p class="hero-subtitle">This intake helps me understand your current state, desired state, constraints, and timeline so I can recommend the correct consulting container.</p>
+</section>
+
+<section>
+  <!-- Intake form — posts to backend endpoint placeholder. Backend implementation is separate. -->
+  <form action="/api/intake" method="POST">
+    <div>
+      <label for="full-name">Full Name</label>
+      <input type="text" id="full-name" name="full_name" required>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="organization">Organization (optional)</label>
+      <input type="text" id="organization" name="organization">
+    </div>
+    <div>
+      <label for="current-state">Current State</label>
+      <textarea id="current-state" name="current_state" required></textarea>
+    </div>
+    <div>
+      <label for="desired-state">Desired State</label>
+      <textarea id="desired-state" name="desired_state" required></textarea>
+    </div>
+    <div>
+      <label for="constraints">Constraints</label>
+      <textarea id="constraints" name="constraints" required></textarea>
+    </div>
+    <div>
+      <label for="timeline">Timeline</label>
+      <textarea id="timeline" name="timeline" required></textarea>
+    </div>
+    <div>
+      <label for="additional-notes">Additional Notes (optional)</label>
+      <textarea id="additional-notes" name="additional_notes"></textarea>
+    </div>
+    <div>
+      <button class="buy-button" type="submit">Submit Intake</button>
+    </div>
+  </form>
+</section>
+
+<section>
+  <h2>After You Submit</h2>
+  <p>I review your intake and send a written response with next steps, container recommendation, and Stripe billing details.</p>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="page footer-inner">
+    <div class="footer-left">© 2026 Codex Labs · Lakeville, CT</div>
+    <div class="footer-right"><a href="/index.html">Home</a> · <a href="/pricing.html">Pricing</a> · <a href="/consulting.html">Consulting OS</a> · <a href="/intake.html">Intake</a> · <a href="/client-portal.html">Client Portal</a> · <a href="/founder.html">Founder</a> · <a href="/store/index.html">Store</a> · <a href="/affiliate.html">Affiliates</a></div>
+  </div>
+</footer>
+<script src="./assets/js/checkout-links.js"></script>
+<script src="./assets/js/search.js"></script>
+</body>
+</html>
