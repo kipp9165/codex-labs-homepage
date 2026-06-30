@@ -1,209 +1,142 @@
 [
   {
-    "name": "Modern SEO Playbook",
-    "description_file": "stripe-descriptions/modern-seo-playbook.md",
-    "price": 14900,
+    "name": "Independence Momentum Scroll v1",
+    "description_file": "stripe-descriptions/independence-momentum-scroll-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
+    "featured": true,
     "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
     }
   },
   {
-    "name": "Founders Structural Decision Manual",
-    "description_file": "stripe-descriptions/founders-structural-decision-manual.md",
-    "price": 14900,
+    "name": "Independence Alignment Protocol v1",
+    "description_file": "stripe-descriptions/independence-alignment-protocol-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
+    "featured": true,
     "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
     }
   },
   {
-    "name": "Operational Spine Scroll",
-    "description_file": "stripe-descriptions/operational-spine-scroll.md",
-    "price": 14900,
+    "name": "Structural Liberation Scroll v1",
+    "description_file": "stripe-descriptions/structural-liberation-scroll-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
+    "featured": true,
     "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
     }
   },
   {
-    "name": "Ritual Loop Handbook",
-    "description_file": "stripe-descriptions/ritual-loop-handbook.md",
-    "price": 14900,
+    "name": "Cognitive Stabilization Scroll v1",
+    "description_file": "stripe-descriptions/cognitive-stabilization-scroll-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
     "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
     }
   },
   {
-    "name": "Substrate Architecture Guide",
-    "description_file": "stripe-descriptions/substrate-architecture-guide.md",
-    "price": 14900,
+    "name": "High Clarity Decision Protocol v1",
+    "description_file": "stripe-descriptions/high-clarity-decision-protocol-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
     "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
     }
   },
   {
-    "name": "Noise to Signal Diagnostic Pack",
-    "description_file": "stripe-descriptions/noise-to-signal-diagnostic-pack.md",
-    "price": 14900,
+    "name": "Execution Stabilization Scroll v1",
+    "description_file": "stripe-descriptions/execution-stabilization-scroll-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
     "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
     }
   },
   {
-    "name": "Multi Surface Distribution Manual",
-    "description_file": "stripe-descriptions/multi-surface-distribution-manual.md",
-    "price": 14900,
+    "name": "Systems Integrity Scroll v1",
+    "description_file": "stripe-descriptions/systems-integrity-scroll-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
     "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
     }
   },
   {
-    "name": "Scroll Minting Protocol",
-    "description_file": "stripe-descriptions/scroll-minting-protocol.md",
-    "price": 14900,
+    "name": "Structural Synchronization Scroll v1",
+    "description_file": "stripe-descriptions/structural-synchronization-scroll-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
     "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
     }
   },
   {
-    "name": "Systems Integrity Scroll",
-    "description_file": "stripe-descriptions/systems-integrity-scroll.md",
-    "price": 14900,
+    "name": "Temporal Alignment Scroll v1",
+    "description_file": "stripe-descriptions/temporal-alignment-scroll-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
     "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
     }
   },
   {
-    "name": "Founders Anti Chaos Handbook",
-    "description_file": "stripe-descriptions/founders-anti-chaos-handbook.md",
-    "price": 14900,
+    "name": "Harmonic Systems Scroll v1",
+    "description_file": "stripe-descriptions/harmonic-systems-scroll-v1.md",
+    "price": 14999,
     "currency": "usd",
     "type": "service",
     "active": true,
     "metadata": {
-      "category": "Codex Scroll",
-      "codex_version": "1.0",
-      "format": "digital",
-      "delivery": "instant"
-    }
-  },
-  {
-    "name": "Semantic Cluster Playbook",
-    "description_file": "stripe-descriptions/semantic-cluster-playbook.md",
-    "price": 14900,
-    "currency": "usd",
-    "type": "service",
-    "active": true,
-    "metadata": {
-      "category": "Codex Scroll",
-      "codex_version": "1.0",
-      "format": "digital",
-      "delivery": "instant"
-    }
-  },
-  {
-    "name": "Product Lattice Manual",
-    "description_file": "stripe-descriptions/product-lattice-manual.md",
-    "price": 14900,
-    "currency": "usd",
-    "type": "service",
-    "active": true,
-    "metadata": {
-      "category": "Codex Scroll",
-      "codex_version": "1.0",
-      "format": "digital",
-      "delivery": "instant"
-    }
-  },
-  {
-    "name": "Commission Blueprint",
-    "description_file": "stripe-descriptions/commission-blueprint.md",
-    "price": 14900,
-    "currency": "usd",
-    "type": "service",
-    "active": true,
-    "metadata": {
-      "category": "Codex Scroll",
-      "codex_version": "1.0",
-      "format": "digital",
-      "delivery": "instant"
-    }
-  },
-  {
-    "name": "Scroll Class Infrastructure Primer",
-    "description_file": "stripe-descriptions/scroll-class-infrastructure-primer.md",
-    "price": 14900,
-    "currency": "usd",
-    "type": "service",
-    "active": true,
-    "metadata": {
-      "category": "Codex Scroll",
-      "codex_version": "1.0",
-      "format": "digital",
-      "delivery": "instant"
-    }
-  },
-  {
-    "name": "Zombie Systems Diagnostic Scroll",
-    "description_file": "stripe-descriptions/zombie-systems-diagnostic-scroll.md",
-    "price": 14900,
-    "currency": "usd",
-    "type": "service",
-    "active": true,
-    "metadata": {
-      "category": "Codex Scroll",
+      "category": "Software as a service (SaaS) - business use",
       "codex_version": "1.0",
       "format": "digital",
       "delivery": "instant"
