@@ -1,0 +1,514 @@
+diff --git a/public/index.html b/public/index.html
+index 233c4ad..3850d59 100644
+--- a/public/index.html
++++ b/public/index.html
+@@ -209,6 +209,51 @@
+         <p class="tier-outcome">A visual artifact pack spanning architecture, execution, risk, and vendor alignment.</p>
+         <a href="/enterprise-architecture-map-pack.html" class="tier-cta">ΓåÆ View EAMP</a>
+       </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Transformation Spine</div>
++          <div class="tier-tagline">Umbrella transformation system</div>
++        </div>
++        <p class="tier-outcome">An umbrella system that connects the full commercial surface into one spine.</p>
++        <a href="/enterprise-transformation-spine.html" class="tier-cta">ΓåÆ View ETS</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Clarity Accelerator</div>
++          <div class="tier-tagline">30-day clarity sprint</div>
++        </div>
++        <p class="tier-outcome">A compressed leadership sprint for clarity, alignment, and action.</p>
++        <a href="/enterprise-clarity-accelerator.html" class="tier-cta">ΓåÆ View ECA</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Architecture Deep Dive</div>
++          <div class="tier-tagline">Three-session architecture analysis</div>
++        </div>
++        <p class="tier-outcome">A deeper architecture analysis product for complex enterprise surfaces.</p>
++        <a href="/enterprise-architecture-deep-dive.html" class="tier-cta">ΓåÆ View EADD</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Governance Audit</div>
++          <div class="tier-tagline">Governance scoring and remediation</div>
++        </div>
++        <p class="tier-outcome">A governance audit that turns structural findings into remediation.</p>
++        <a href="/enterprise-governance-audit.html" class="tier-cta">ΓåÆ View EGA</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Operating Rhythm</div>
++          <div class="tier-tagline">Cadence system for enterprise execution</div>
++        </div>
++        <p class="tier-outcome">A recurring operating rhythm for clarity, governance, and execution loops.</p>
++        <a href="/enterprise-operating-rhythm.html" class="tier-cta">ΓåÆ View EOR</a>
++      </article>
+     </section>
+ 
+     <footer>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</footer>
+diff --git a/public/products.html b/public/products.html
+index b3b3bfc..f5c0a55 100644
+--- a/public/products.html
++++ b/public/products.html
+@@ -190,6 +190,61 @@
+     <a href="/enterprise-architecture-map-pack.html" class="tier-cta">ΓåÆ View EAMP details</a>
+   </section>
+ 
++  <section class="product-tier" id="ets-tier">
++    <h2>Enterprise Transformation Spine</h2>
++    <p class="tier-desc">Umbrella transformation system connecting the full commercial surface.</p>
++    <ul class="product-list">
++      <li>Price: $4,999</li>
++      <li>Transformation orchestration spine</li>
++      <li>Connects all enterprise engine surfaces</li>
++    </ul>
++    <a href="/enterprise-transformation-spine.html" class="tier-cta">ΓåÆ View ETS details</a>
++  </section>
++
++  <section class="product-tier" id="eca-tier">
++    <h2>Enterprise Clarity Accelerator</h2>
++    <p class="tier-desc">30-day clarity sprint for leadership teams.</p>
++    <ul class="product-list">
++      <li>Price: $3,499</li>
++      <li>Compressed clarity and alignment sprint</li>
++      <li>Leadership team cadence</li>
++    </ul>
++    <a href="/enterprise-clarity-accelerator.html" class="tier-cta">ΓåÆ View ECA details</a>
++  </section>
++
++  <section class="product-tier" id="eadd-tier">
++    <h2>Enterprise Architecture Deep Dive</h2>
++    <p class="tier-desc">Three-session architecture analysis for complex enterprise surfaces.</p>
++    <ul class="product-list">
++      <li>Price: $5,999</li>
++      <li>Three-session analysis</li>
++      <li>Deeper architecture review and recommendations</li>
++    </ul>
++    <a href="/enterprise-architecture-deep-dive.html" class="tier-cta">ΓåÆ View EADD details</a>
++  </section>
++
++  <section class="product-tier" id="ega-tier">
++    <h2>Enterprise Governance Audit</h2>
++    <p class="tier-desc">Governance scoring and remediation artifact.</p>
++    <ul class="product-list">
++      <li>Price: $3,999</li>
++      <li>Governance scoring</li>
++      <li>Remediation artifact</li>
++    </ul>
++    <a href="/enterprise-governance-audit.html" class="tier-cta">ΓåÆ View EGA details</a>
++  </section>
++
++  <section class="product-tier" id="eor-tier">
++    <h2>Enterprise Operating Rhythm</h2>
++    <p class="tier-desc">Cadence system for execution, governance, and clarity loops.</p>
++    <ul class="product-list">
++      <li>Price: $2,999</li>
++      <li>Operating rhythm and cadence system</li>
++      <li>Execution and clarity loop support</li>
++    </ul>
++    <a href="/enterprise-operating-rhythm.html" class="tier-cta">ΓåÆ View EOR details</a>
++  </section>
++
+   <section class="affiliate-note">
+     <h2>Affiliate Links</h2>
+     <p>If you are an approved Codex Labs affiliate, you can share product links with your referral code appended, for example:</p>
+diff --git a/public/pricing.html b/public/pricing.html
+index 7f887c8..f62092f 100644
+--- a/public/pricing.html
++++ b/public/pricing.html
+@@ -220,6 +220,66 @@
+     <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-secondary">View EAMP</a>
+   </section>
+ 
++  <section class="pricing-tier" id="ets-pricing">
++    <h2>Enterprise Transformation Spine (ETS)</h2>
++    <p class="pricing-desc">Umbrella transformation system connecting the full commercial surface.</p>
++    <ul class="pricing-list">
++      <li>Price: $4,999</li>
++      <li>Transformation orchestration spine</li>
++      <li>Connects all enterprise engine surfaces</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-transformation-spine.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-transformation-spine.html" class="cta-button cta-secondary">View ETS</a>
++  </section>
++
++  <section class="pricing-tier" id="eca-pricing">
++    <h2>Enterprise Clarity Accelerator (ECA)</h2>
++    <p class="pricing-desc">A 30-day clarity sprint for leadership teams.</p>
++    <ul class="pricing-list">
++      <li>Price: $3,499</li>
++      <li>Compressed clarity and alignment sprint</li>
++      <li>Leadership team cadence</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-clarity-accelerator.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-clarity-accelerator.html" class="cta-button cta-secondary">View ECA</a>
++  </section>
++
++  <section class="pricing-tier" id="eadd-pricing">
++    <h2>Enterprise Architecture Deep Dive (EADD)</h2>
++    <p class="pricing-desc">Three-session architecture analysis for complex enterprise surfaces.</p>
++    <ul class="pricing-list">
++      <li>Price: $5,999</li>
++      <li>Three-session analysis</li>
++      <li>Deeper architecture review and recommendations</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-architecture-deep-dive.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-architecture-deep-dive.html" class="cta-button cta-secondary">View EADD</a>
++  </section>
++
++  <section class="pricing-tier" id="ega-pricing">
++    <h2>Enterprise Governance Audit (EGA)</h2>
++    <p class="pricing-desc">Governance scoring and remediation artifact.</p>
++    <ul class="pricing-list">
++      <li>Price: $3,999</li>
++      <li>Governance scoring</li>
++      <li>Remediation artifact</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-governance-audit.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-governance-audit.html" class="cta-button cta-secondary">View EGA</a>
++  </section>
++
++  <section class="pricing-tier" id="eor-pricing">
++    <h2>Enterprise Operating Rhythm (EOR)</h2>
++    <p class="pricing-desc">Cadence system for execution, governance, and clarity loops.</p>
++    <ul class="pricing-list">
++      <li>Price: $2,999</li>
++      <li>Operating rhythm and cadence system</li>
++      <li>Execution and clarity loop support</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-operating-rhythm.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-operating-rhythm.html" class="cta-button cta-secondary">View EOR</a>
++  </section>
++
+   <footer class="global-footer">
+     <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
+     <ul class="footer-links">
+diff --git a/public/affiliates.html b/public/affiliates.html
+index 02477a3..5b1701f 100644
+--- a/public/affiliates.html
++++ b/public/affiliates.html
+@@ -211,6 +211,61 @@
+     <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-secondary">View EAMP</a>
+   </section>
+ 
++  <section class="affiliate-featured-ets">
++    <h2>Transformation Product: Enterprise Transformation Spine</h2>
++    <p>The ETS is ideal for affiliates targeting enterprise transformation leaders and operating partners.</p>
++    <ul class="affiliate-list">
++      <li>Price: $4,999</li>
++      <li>Umbrella transformation system</li>
++      <li>Referral-friendly: <code>/enterprise-transformation-spine.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-transformation-spine.html" class="cta-button cta-secondary">View ETS</a>
++  </section>
++
++  <section class="affiliate-featured-eca">
++    <h2>Clarity Sprint Product: Enterprise Clarity Accelerator</h2>
++    <p>The ECA is ideal for affiliates targeting leadership teams needing fast alignment.</p>
++    <ul class="affiliate-list">
++      <li>Price: $3,499</li>
++      <li>30-day clarity sprint</li>
++      <li>Referral-friendly: <code>/enterprise-clarity-accelerator.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-clarity-accelerator.html" class="cta-button cta-secondary">View ECA</a>
++  </section>
++
++  <section class="affiliate-featured-eadd">
++    <h2>Deep Analysis Product: Enterprise Architecture Deep Dive</h2>
++    <p>The EADD is ideal for affiliates targeting enterprise architects and senior operators.</p>
++    <ul class="affiliate-list">
++      <li>Price: $5,999</li>
++      <li>Three-session architecture analysis</li>
++      <li>Referral-friendly: <code>/enterprise-architecture-deep-dive.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-architecture-deep-dive.html" class="cta-button cta-secondary">View EADD</a>
++  </section>
++
++  <section class="affiliate-featured-ega">
++    <h2>Audit Product: Enterprise Governance Audit</h2>
++    <p>The EGA is ideal for affiliates targeting governance leaders and transformation offices.</p>
++    <ul class="affiliate-list">
++      <li>Price: $3,999</li>
++      <li>Governance scoring and remediation artifact</li>
++      <li>Referral-friendly: <code>/enterprise-governance-audit.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-governance-audit.html" class="cta-button cta-secondary">View EGA</a>
++  </section>
++
++  <section class="affiliate-featured-eor">
++    <h2>Rhythm Product: Enterprise Operating Rhythm</h2>
++    <p>The EOR is ideal for affiliates targeting operators responsible for cadence and coordination.</p>
++    <ul class="affiliate-list">
++      <li>Price: $2,999</li>
++      <li>Cadence system for execution and governance</li>
++      <li>Referral-friendly: <code>/enterprise-operating-rhythm.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-operating-rhythm.html" class="cta-button cta-secondary">View EOR</a>
++  </section>
++
+   <section class="affiliate-cta">
+     <h2>Become an Affiliate</h2>
+     <p>Start earning by promoting Codex Labs OS to founders and operators who need structural clarity and deterministic execution.</p>
+diff --git a/public/modules.html b/public/modules.html
+index 3209681..671c3f6 100644
+--- a/public/modules.html
++++ b/public/modules.html
+@@ -140,6 +140,36 @@
+     <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a>
+   </section>
+ 
++  <section class="modules-ets">
++    <h2>Enterprise Transformation Spine</h2>
++    <p>The ETS connects all modules into a coordinated transformation system.</p>
++    <a href="/enterprise-transformation-spine.html" class="cta-button cta-primary">View ETS</a>
++  </section>
++
++  <section class="modules-eca">
++    <h2>Enterprise Clarity Accelerator</h2>
++    <p>The ECA provides a 30-day clarity sprint that sharpens module-level priorities and alignment.</p>
++    <a href="/enterprise-clarity-accelerator.html" class="cta-button cta-primary">View ECA</a>
++  </section>
++
++  <section class="modules-eadd">
++    <h2>Enterprise Architecture Deep Dive</h2>
++    <p>The EADD extends module exploration into a three-session architecture analysis.</p>
++    <a href="/enterprise-architecture-deep-dive.html" class="cta-button cta-primary">View EADD</a>
++  </section>
++
++  <section class="modules-ega">
++    <h2>Enterprise Governance Audit</h2>
++    <p>The EGA ties module behavior to governance scoring and remediation workflows.</p>
++    <a href="/enterprise-governance-audit.html" class="cta-button cta-primary">View EGA</a>
++  </section>
++
++  <section class="modules-eor">
++    <h2>Enterprise Operating Rhythm</h2>
++    <p>The EOR gives modules a recurring cadence for execution, governance, and clarity loops.</p>
++    <a href="/enterprise-operating-rhythm.html" class="cta-button cta-primary">View EOR</a>
++  </section>
++
+   <footer class="global-footer">
+     <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
+     <ul class="footer-links">
+
+
+
+
+
+
+
+
+
+
+
+diff --git a/public/enterprise-transformation-spine.html b/public/enterprise-transformation-spine.html
+new file mode 100644
+index 0000000..7698299
+--- /dev/null
++++ b/public/enterprise-transformation-spine.html
+@@ -0,0 +1,37 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Transformation Spine ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Transformation Spine for connecting all engines into one transformation system.">
++  <meta property="og:title" content="Enterprise Transformation Spine (ETS)">
++  <meta property="og:description" content="Umbrella system connecting all engines into one transformation spine.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-transformation-spine.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Transformation Spine">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-transformation-spine.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script defer data-domain="codex-labs-homepage-static.onrender.com" src="https://plausible.io/js/script.js"></script>
++</head>
++<body>
++  <nav class="global-nav"><ul class="nav-list"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></nav>
++  <main class="ets">
++    <section class="ets-hero"><h1>Enterprise Transformation Spine (ETS)</h1><p class="ets-subtitle">An umbrella system connecting all engines into one transformation spine.</p></section>
++    <section class="ets-overview"><h2>Overview</h2><p>The ETS connects architecture, governance, execution, risk, and clarity artifacts into one coordinated transformation path.</p></section>
++    <section class="ets-pricing"><h2>Pricing</h2><p>The Enterprise Transformation Spine is priced at $4,999.</p><p>Delivered digitally after purchase.</p></section>
++    <section class="ets-affiliate"><h2>Affiliate Ready</h2><p>Affiliates can promote ETS using referral links, for example:</p><p><code>/enterprise-transformation-spine.html?ref=YOURCODE</code></p></section>
++    <section class="ets-cta"><h2>Request ETS</h2><p>To request the Enterprise Transformation Spine, contact Codex Labs.</p><a href="/contact.html" class="cta-button cta-primary">Request ETS</a></section>
++    <section class="ets-eap-upgrade"><h2>Architecture Companion: EAP</h2><p>The Enterprise Architecture Playbook supplies the architectural baseline for ETS.</p><a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a></section>
++    <section class="ets-egf-upgrade"><h2>Governance Companion: EGF</h2><p>The Enterprise Governance Framework anchors ETS decision rights and accountability.</p><a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a></section>
++    <section class="ets-eom-upgrade"><h2>Operating Companion: EOM</h2><p>The Enterprise Operating Model ties ETS to enterprise execution cadence.</p><a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a></section>
++    <section class="ets-erf-upgrade"><h2>Risk Companion: ERF</h2><p>The Enterprise Risk Framework informs ETS risk mapping and mitigation strategy.</p><a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a></section>
++    <section class="ets-ecl-upgrade"><h2>Clarity Companion: ECL</h2><p>The Enterprise Clarity Loop sustains ETS through recurring alignment rituals.</p><a href="/enterprise-clarity-loop.html" class="cta-button cta-primary">View ECL</a></section>
++    <section class="ets-evas-upgrade"><h2>Vendor Companion: EVAS</h2><p>The Enterprise Vendor Alignment System connects ETS to vendor coherence.</p><a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a></section>
++    <section class="ets-ees-upgrade"><h2>Execution Companion: EES</h2><p>The Enterprise Execution Stabilizer keeps ETS execution stable and low-drift.</p><a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a></section>
++    <section class="ets-eamp-upgrade"><h2>Map Companion: EAMP</h2><p>The Enterprise Architecture Map Pack visualizes ETS across the enterprise surface.</p><a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a></section>
++  </main>
++  <footer class="global-footer"><p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p><ul class="footer-links"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></footer>
++</body>
++</html>
+diff --git a/public/enterprise-clarity-accelerator.html b/public/enterprise-clarity-accelerator.html
+new file mode 100644
+index 0000000..56d9f4c
+--- /dev/null
++++ b/public/enterprise-clarity-accelerator.html
+@@ -0,0 +1,34 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Clarity Accelerator ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Clarity Accelerator for a 30-day clarity sprint for leadership teams.">
++  <meta property="og:title" content="Enterprise Clarity Accelerator (ECA)">
++  <meta property="og:description" content="A 30-day clarity sprint for leadership teams.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-clarity-accelerator.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Clarity Accelerator">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-clarity-accelerator.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script defer data-domain="codex-labs-homepage-static.onrender.com" src="https://plausible.io/js/script.js"></script>
++</head>
++<body>
++  <nav class="global-nav"><ul class="nav-list"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></nav>
++  <main class="eca">
++    <section class="eca-hero"><h1>Enterprise Clarity Accelerator (ECA)</h1><p class="eca-subtitle">A 30-day clarity sprint for leadership teams.</p></section>
++    <section class="eca-overview"><h2>Overview</h2><p>The ECA accelerates decision clarity, leadership alignment, and execution focus inside a compressed delivery window.</p></section>
++    <section class="eca-pricing"><h2>Pricing</h2><p>The Enterprise Clarity Accelerator is priced at $3,499.</p><p>Delivered digitally after purchase.</p></section>
++    <section class="eca-affiliate"><h2>Affiliate Ready</h2><p>Affiliates can promote ECA using referral links, for example:</p><p><code>/enterprise-clarity-accelerator.html?ref=YOURCODE</code></p></section>
++    <section class="eca-cta"><h2>Request ECA</h2><p>To request the Enterprise Clarity Accelerator, contact Codex Labs.</p><a href="/contact.html" class="cta-button cta-primary">Request ECA</a></section>
++    <section class="eca-ecd-upgrade"><h2>Diagnostic Companion: ECD</h2><p>The Enterprise Clarity Diagnostic gives the baseline that ECA accelerates.</p><a href="/enterprise-diagnostic.html" class="cta-button cta-primary">View ECD</a></section>
++    <section class="eca-eap-upgrade"><h2>Architecture Companion: EAP</h2><p>The Enterprise Architecture Playbook structures the clarity sprint output.</p><a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a></section>
++    <section class="eca-egf-upgrade"><h2>Governance Companion: EGF</h2><p>The Enterprise Governance Framework anchors ECA decisions in governance design.</p><a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a></section>
++    <section class="eca-eom-upgrade"><h2>Operating Companion: EOM</h2><p>The Enterprise Operating Model converts the sprint into operating cadence.</p><a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a></section>
++    <section class="eca-retainer-upgrade"><h2>Advisory Companion: Retainer</h2><p>The Enterprise Retainer supports sustained execution after the sprint.</p><a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a></section>
++  </main>
++  <footer class="global-footer"><p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p><ul class="footer-links"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></footer>
++</body>
++</html>
+diff --git a/public/enterprise-architecture-deep-dive.html b/public/enterprise-architecture-deep-dive.html
+new file mode 100644
+index 0000000..9eebc7e
+--- /dev/null
++++ b/public/enterprise-architecture-deep-dive.html
+@@ -0,0 +1,34 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Architecture Deep Dive ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Architecture Deep Dive for a three-session architecture analysis product.">
++  <meta property="og:title" content="Enterprise Architecture Deep Dive (EADD)">
++  <meta property="og:description" content="A three-session architecture analysis product.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-architecture-deep-dive.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Architecture Deep Dive">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-architecture-deep-dive.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script defer data-domain="codex-labs-homepage-static.onrender.com" src="https://plausible.io/js/script.js"></script>
++</head>
++<body>
++  <nav class="global-nav"><ul class="nav-list"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></nav>
++  <main class="eadd">
++    <section class="eadd-hero"><h1>Enterprise Architecture Deep Dive (EADD)</h1><p class="eadd-subtitle">A three-session architecture analysis product.</p></section>
++    <section class="eadd-overview"><h2>Overview</h2><p>The EADD provides a multi-session architecture analysis across systems, governance, execution, and cross-team dependencies.</p></section>
++    <section class="eadd-pricing"><h2>Pricing</h2><p>The Enterprise Architecture Deep Dive is priced at $5,999.</p><p>Delivered digitally after purchase.</p></section>
++    <section class="eadd-affiliate"><h2>Affiliate Ready</h2><p>Affiliates can promote EADD using referral links, for example:</p><p><code>/enterprise-architecture-deep-dive.html?ref=YOURCODE</code></p></section>
++    <section class="eadd-cta"><h2>Request EADD</h2><p>To request the Enterprise Architecture Deep Dive, contact Codex Labs.</p><a href="/contact.html" class="cta-button cta-primary">Request EADD</a></section>
++    <section class="eadd-eap-upgrade"><h2>Architecture Companion: EAP</h2><p>The Enterprise Architecture Playbook provides the structure for EADD findings.</p><a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a></section>
++    <section class="eadd-egf-upgrade"><h2>Governance Companion: EGF</h2><p>The Enterprise Governance Framework extends architecture insights into decision rights.</p><a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a></section>
++    <section class="eadd-eom-upgrade"><h2>Operating Companion: EOM</h2><p>The Enterprise Operating Model turns deep-dive outputs into operating cadence.</p><a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a></section>
++    <section class="eadd-erf-upgrade"><h2>Risk Companion: ERF</h2><p>The Enterprise Risk Framework helps surface and mitigate architecture risks.</p><a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a></section>
++    <section class="eadd-evas-upgrade"><h2>Vendor Companion: EVAS</h2><p>The Enterprise Vendor Alignment System aligns external dependencies with architecture findings.</p><a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a></section>
++  </main>
++  <footer class="global-footer"><p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p><ul class="footer-links"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></footer>
++</body>
++</html>
+diff --git a/public/enterprise-governance-audit.html b/public/enterprise-governance-audit.html
+new file mode 100644
+index 0000000..cd7a230
+--- /dev/null
++++ b/public/enterprise-governance-audit.html
+@@ -0,0 +1,34 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Governance Audit ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Governance Audit for governance scoring and remediation artifacts.">
++  <meta property="og:title" content="Enterprise Governance Audit (EGA)">
++  <meta property="og:description" content="Governance scoring and remediation artifact for enterprise systems.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-governance-audit.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Governance Audit">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-governance-audit.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script defer data-domain="codex-labs-homepage-static.onrender.com" src="https://plausible.io/js/script.js"></script>
++</head>
++<body>
++  <nav class="global-nav"><ul class="nav-list"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></nav>
++  <main class="ega">
++    <section class="ega-hero"><h1>Enterprise Governance Audit (EGA)</h1><p class="ega-subtitle">Governance scoring and remediation artifact for enterprise systems.</p></section>
++    <section class="ega-overview"><h2>Overview</h2><p>The EGA audits governance design, exposes gaps in decision rights, and produces a remediation-oriented artifact.</p></section>
++    <section class="ega-pricing"><h2>Pricing</h2><p>The Enterprise Governance Audit is priced at $3,999.</p><p>Delivered digitally after purchase.</p></section>
++    <section class="ega-affiliate"><h2>Affiliate Ready</h2><p>Affiliates can promote EGA using referral links, for example:</p><p><code>/enterprise-governance-audit.html?ref=YOURCODE</code></p></section>
++    <section class="ega-cta"><h2>Request EGA</h2><p>To request the Enterprise Governance Audit, contact Codex Labs.</p><a href="/contact.html" class="cta-button cta-primary">Request EGA</a></section>
++    <section class="ega-egf-upgrade"><h2>Governance Companion: EGF</h2><p>The Enterprise Governance Framework provides the operating structure behind EGA remediation.</p><a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a></section>
++    <section class="ega-eap-upgrade"><h2>Architecture Companion: EAP</h2><p>The Enterprise Architecture Playbook provides the architecture context for the audit.</p><a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a></section>
++    <section class="ega-eom-upgrade"><h2>Operating Companion: EOM</h2><p>The Enterprise Operating Model turns audit outputs into operating changes.</p><a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a></section>
++    <section class="ega-erf-upgrade"><h2>Risk Companion: ERF</h2><p>The Enterprise Risk Framework strengthens governance audit remediation planning.</p><a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a></section>
++    <section class="ega-retainer-upgrade"><h2>Advisory Companion: Retainer</h2><p>The Enterprise Retainer supports continued governance follow-through.</p><a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a></section>
++  </main>
++  <footer class="global-footer"><p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p><ul class="footer-links"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></footer>
++</body>
++</html>
+diff --git a/public/enterprise-operating-rhythm.html b/public/enterprise-operating-rhythm.html
+new file mode 100644
+index 0000000..6900b18
+--- /dev/null
++++ b/public/enterprise-operating-rhythm.html
+@@ -0,0 +1,34 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Operating Rhythm ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Operating Rhythm for cadence across execution, governance, and clarity loops.">
++  <meta property="og:title" content="Enterprise Operating Rhythm (EOR)">
++  <meta property="og:description" content="Cadence system for execution, governance, and clarity loops.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-operating-rhythm.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Operating Rhythm">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-operating-rhythm.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script defer data-domain="codex-labs-homepage-static.onrender.com" src="https://plausible.io/js/script.js"></script>
++</head>
++<body>
++  <nav class="global-nav"><ul class="nav-list"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></nav>
++  <main class="eor">
++    <section class="eor-hero"><h1>Enterprise Operating Rhythm (EOR)</h1><p class="eor-subtitle">A cadence system for execution, governance, and clarity loops.</p></section>
++    <section class="eor-overview"><h2>Overview</h2><p>The EOR defines the recurring operating rhythm that keeps enterprise work aligned, governed, and executable.</p></section>
++    <section class="eor-pricing"><h2>Pricing</h2><p>The Enterprise Operating Rhythm is priced at $2,999.</p><p>Delivered digitally after purchase.</p></section>
++    <section class="eor-affiliate"><h2>Affiliate Ready</h2><p>Affiliates can promote EOR using referral links, for example:</p><p><code>/enterprise-operating-rhythm.html?ref=YOURCODE</code></p></section>
++    <section class="eor-cta"><h2>Request EOR</h2><p>To request the Enterprise Operating Rhythm, contact Codex Labs.</p><a href="/contact.html" class="cta-button cta-primary">Request EOR</a></section>
++    <section class="eor-eom-upgrade"><h2>Operating Companion: EOM</h2><p>The Enterprise Operating Model provides the broader operating structure for EOR.</p><a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a></section>
++    <section class="eor-egf-upgrade"><h2>Governance Companion: EGF</h2><p>The Enterprise Governance Framework anchors cadence in decision rights and escalation.</p><a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a></section>
++    <section class="eor-ecl-upgrade"><h2>Clarity Companion: ECL</h2><p>The Enterprise Clarity Loop keeps operating rhythm synchronized with recurring alignment.</p><a href="/enterprise-clarity-loop.html" class="cta-button cta-primary">View ECL</a></section>
++    <section class="eor-ees-upgrade"><h2>Execution Companion: EES</h2><p>The Enterprise Execution Stabilizer turns cadence into reliable execution.</p><a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a></section>
++    <section class="eor-retainer-upgrade"><h2>Advisory Companion: Retainer</h2><p>The Enterprise Retainer supports ongoing rhythm facilitation and operational continuity.</p><a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a></section>
++  </main>
++  <footer class="global-footer"><p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p><ul class="footer-links"><li><a href="/index.html">Home</a></li><li><a href="/products.html">Products</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/modules.html">Modules</a></li><li><a href="/affiliates.html">Affiliates</a></li></ul></footer>
++</body>
++</html>
