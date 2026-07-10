@@ -1,0 +1,221 @@
+diff --git a/public/affiliates.html b/public/affiliates.html
+index 7e1d8e0..3d60a5b 100644
+--- a/public/affiliates.html
++++ b/public/affiliates.html
+@@ -123,6 +123,17 @@
+     <a href="/enterprise-retainer.html" class="cta-button cta-secondary">View Retainer</a>
+   </section>
+ 
++  <section class="affiliate-featured-eap">
++    <h2>High-Value Artifact: Enterprise Architecture Playbook</h2>
++    <p>The EAP is ideal for affiliates targeting enterprise architecture teams and transformation leaders.</p>
++    <ul class="affiliate-list">
++      <li>Price: $2,999</li>
++      <li>High-margin digital artifact</li>
++      <li>Referral-friendly: <code>/enterprise-architecture-playbook.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-architecture-playbook.html" class="cta-button cta-secondary">View EAP</a>
++  </section>
++
+   <section class="affiliate-cta">
+     <h2>Become an Affiliate</h2>
+     <p>Start earning by promoting Codex Labs OS to founders and operators who need structural clarity and deterministic execution.</p>
+diff --git a/public/creator-pack.html b/public/creator-pack.html
+index fd1692b..f43ecf1 100644
+--- a/public/creator-pack.html
++++ b/public/creator-pack.html
+@@ -83,6 +83,12 @@
+       <p>For organizations of 500+ employees, the Enterprise Retainer provides continuous advisory support beyond the Creator Pack.</p>
+       <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
+     </section>
++
++    <section class="creator-eap">
++      <h2>Enterprise Architecture Playbook</h2>
++      <p>The EAP provides enterprise-grade architecture clarity beyond the Creator Pack.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
+   </main>
+ 
+   <footer class="global-footer">
+diff --git a/public/enterprise-diagnostic.html b/public/enterprise-diagnostic.html
+index 4eb227e..9daa85b 100644
+--- a/public/enterprise-diagnostic.html
++++ b/public/enterprise-diagnostic.html
+@@ -84,6 +84,12 @@
+       <p>After completing the Enterprise Clarity Diagnostic, organizations often continue with the Enterprise Retainer for ongoing structural clarity and governance.</p>
+       <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
+     </section>
++
++    <section class="ecd-eap-upgrade">
++      <h2>Architecture Upgrade: EAP</h2>
++      <p>The EAP provides a structured architecture manual that complements the Enterprise Clarity Diagnostic.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
+   </main>
+ 
+   <footer class="global-footer">
+diff --git a/public/enterprise-retainer.html b/public/enterprise-retainer.html
+index c6f9d35..779768d 100644
+--- a/public/enterprise-retainer.html
++++ b/public/enterprise-retainer.html
+@@ -83,6 +83,12 @@
+       <p>To initiate an Enterprise Retainer, contact Codex Labs.</p>
+       <a href="/contact.html" class="cta-button cta-primary">Request Retainer</a>
+     </section>
++
++    <section class="retainer-eap">
++      <h2>Architecture Artifact: EAP</h2>
++      <p>The Enterprise Architecture Playbook supports retainer clients with a structured architecture reference.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
+   </main>
+ 
+   <footer class="global-footer">
+diff --git a/public/modules.html b/public/modules.html
+index 654de0d..6f9f089 100644
+--- a/public/modules.html
++++ b/public/modules.html
+@@ -92,6 +92,12 @@
+     <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
+   </section>
+ 
++  <section class="modules-eap">
++    <h2>Enterprise Architecture Playbook</h2>
++    <p>The EAP provides structured architecture guidance across modules and systems.</p>
++    <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++  </section>
++
+   <footer class="global-footer">
+     <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
+     <ul class="footer-links">
+diff --git a/public/pricing.html b/public/pricing.html
+index 04a7799..527c694 100644
+--- a/public/pricing.html
++++ b/public/pricing.html
+@@ -123,6 +123,18 @@
+     <a href="/enterprise-retainer.html" class="cta-button cta-secondary">View Retainer</a>
+   </section>
+ 
++  <section class="pricing-tier" id="eap-pricing">
++    <h2>Enterprise Architecture Playbook (EAP)</h2>
++    <p class="pricing-desc">A premium architecture manual for enterprise organizations.</p>
++    <ul class="pricing-list">
++      <li>Price: $2,999</li>
++      <li>Digital delivery</li>
++      <li>Architecture foundations, coherence, governance, execution</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-architecture-playbook.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-architecture-playbook.html" class="cta-button cta-secondary">View EAP</a>
++  </section>
++
+   <footer class="global-footer">
+     <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
+     <ul class="footer-links">
+diff --git a/public/products.html b/public/products.html
+index f4c9034..ecdada9 100644
+--- a/public/products.html
++++ b/public/products.html
+@@ -103,6 +103,16 @@
+     <a href="/enterprise-retainer.html" class="tier-cta">ΓåÆ View Retainer details</a>
+   </section>
+ 
++  <section class="product-tier" id="eap-tier">
++    <h2>Enterprise Architecture Playbook</h2>
++    <p class="tier-desc">Premium architecture manual for enterprise organizations.</p>
++    <ul class="product-list">
++      <li>Price: $2,999</li>
++      <li>Digital delivery</li>
++    </ul>
++    <a href="/enterprise-architecture-playbook.html" class="tier-cta">ΓåÆ View EAP details</a>
++  </section>
++
+   <section class="affiliate-note">
+     <h2>Affiliate Links</h2>
+     <p>If you are an approved Codex Labs affiliate, you can share product links with your referral code appended, for example:</p>
+diff --git a/public/enterprise-architecture-playbook.html b/public/enterprise-architecture-playbook.html
+new file mode 100644
+index 0000000..27ff9a4
+--- /dev/null
++++ b/public/enterprise-architecture-playbook.html
+@@ -0,0 +1,81 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Architecture Playbook - Codex Labs</title>
++  <meta name="description" content="Enterprise Architecture Playbook for substrate-level enterprise architecture clarity.">
++  <meta property="og:title" content="Enterprise Architecture Playbook (EAP)">
++  <meta property="og:description" content="A substrate-level architecture manual for enterprise organizations.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-architecture-playbook.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Architecture Playbook">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-architecture-playbook.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script
++    defer
++    data-domain="codex-labs-homepage-static.onrender.com"
++    src="https://plausible.io/js/script.js"
++  ></script>
++</head>
++<body>
++  <nav class="global-nav">
++    <ul class="nav-list">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </nav>
++
++  <main class="eap">
++    <section class="eap-hero">
++      <h1>Enterprise Architecture Playbook (EAP)</h1>
++      <p class="eap-subtitle">A substrate-level architecture manual for enterprise organizations.</p>
++    </section>
++
++    <section class="eap-overview">
++      <h2>What's Inside</h2>
++      <p>The EAP provides a structured architecture framework for clarity, governance, execution, and vendor alignment.</p>
++      <ul class="eap-list">
++        <li>Architecture Foundations</li>
++        <li>System Landscape Coherence</li>
++        <li>Transformation Architecture</li>
++        <li>Enterprise Operating Model</li>
++        <li>Architecture Maps</li>
++      </ul>
++    </section>
++
++    <section class="eap-pricing">
++      <h2>Pricing</h2>
++      <p>The Enterprise Architecture Playbook is priced at $2,999.</p>
++      <p>Delivered digitally after purchase.</p>
++    </section>
++
++    <section class="eap-affiliate">
++      <h2>Affiliate Ready</h2>
++      <p>Affiliates can promote EAP using referral links, for example:</p>
++      <p><code>/enterprise-architecture-playbook.html?ref=YOURCODE</code></p>
++    </section>
++
++    <section class="eap-cta">
++      <h2>Get the Playbook</h2>
++      <p>To purchase the Enterprise Architecture Playbook, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request EAP</a>
++    </section>
++  </main>
++
++  <footer class="global-footer">
++    <p>(c) 2026 Codex Labs - Substrate architecture for founders</p>
++    <ul class="footer-links">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </footer>
++</body>
++</html>

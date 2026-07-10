@@ -1,0 +1,1663 @@
+diff --git a/public/index.html b/public/index.html
+index 53beb37..233c4ad 100644
+--- a/public/index.html
++++ b/public/index.html
+@@ -110,6 +110,107 @@
+       </div>
+     </section>
+ 
++    <section class="tiers">
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Creator Pack</div>
++          <div class="tier-tagline">Premium bundle for creators and founders</div>
++        </div>
++        <p class="tier-outcome">A high-leverage digital package for clarity and execution.</p>
++        <a href="/creator-pack.html" class="tier-cta">ΓåÆ View Creator Pack</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Clarity Diagnostic</div>
++          <div class="tier-tagline">Structural scan across 5 axes</div>
++        </div>
++        <p class="tier-outcome">A founder-grade diagnostic for enterprise-level complexity.</p>
++        <a href="/enterprise-diagnostic.html" class="tier-cta">ΓåÆ View ECD</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Retainer</div>
++          <div class="tier-tagline">Ongoing substrate-level advisory</div>
++        </div>
++        <p class="tier-outcome">Continuous architecture and governance support for enterprise teams.</p>
++        <a href="/enterprise-retainer.html" class="tier-cta">ΓåÆ View Retainer</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Architecture Playbook</div>
++          <div class="tier-tagline">Architecture foundations and transformation maps</div>
++        </div>
++        <p class="tier-outcome">A structured architecture manual for enterprise organizations.</p>
++        <a href="/enterprise-architecture-playbook.html" class="tier-cta">ΓåÆ View EAP</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Governance Framework</div>
++          <div class="tier-tagline">Decision rights, loops, and accountability</div>
++        </div>
++        <p class="tier-outcome">A governance system for predictable enterprise execution.</p>
++        <a href="/enterprise-governance-framework.html" class="tier-cta">ΓåÆ View EGF</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Operating Model</div>
++          <div class="tier-tagline">Operating foundations and coordination architecture</div>
++        </div>
++        <p class="tier-outcome">A complete enterprise operating model for sustained execution quality.</p>
++        <a href="/enterprise-operating-model.html" class="tier-cta">ΓåÆ View EOM</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Risk Framework</div>
++          <div class="tier-tagline">Risk mapping and structural risk loops</div>
++        </div>
++        <p class="tier-outcome">A substrate-level framework for identifying and governing enterprise risk.</p>
++        <a href="/enterprise-risk-framework.html" class="tier-cta">ΓåÆ View ERF</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Clarity Loop</div>
++          <div class="tier-tagline">Recurring clarity rituals and alignment cadence</div>
++        </div>
++        <p class="tier-outcome">A repeatable cadence for structural alignment across teams and functions.</p>
++        <a href="/enterprise-clarity-loop.html" class="tier-cta">ΓåÆ View ECL</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Vendor Alignment System</div>
++          <div class="tier-tagline">Vendor alignment and coherence scoring</div>
++        </div>
++        <p class="tier-outcome">A system for aligning external vendors to your architecture and operating model.</p>
++        <a href="/enterprise-vendor-alignment-system.html" class="tier-cta">ΓåÆ View EVAS</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Execution Stabilizer</div>
++          <div class="tier-tagline">Execution stability and anti-firefighting loops</div>
++        </div>
++        <p class="tier-outcome">A stabilization layer for sustained execution and reduced operational drift.</p>
++        <a href="/enterprise-execution-stabilizer.html" class="tier-cta">ΓåÆ View EES</a>
++      </article>
++
++      <article class="tier">
++        <div class="tier-header">
++          <div class="tier-name">Enterprise Architecture Map Pack</div>
++          <div class="tier-tagline">Visual maps for architecture and governance</div>
++        </div>
++        <p class="tier-outcome">A visual artifact pack spanning architecture, execution, risk, and vendor alignment.</p>
++        <a href="/enterprise-architecture-map-pack.html" class="tier-cta">ΓåÆ View EAMP</a>
++      </article>
++    </section>
++
+     <footer>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</footer>
+   </div>
+ 
+diff --git a/public/products.html b/public/products.html
+index f4c9034..b3b3bfc 100644
+--- a/public/products.html
++++ b/public/products.html
+@@ -103,6 +103,93 @@
+     <a href="/enterprise-retainer.html" class="tier-cta">ΓåÆ View Retainer details</a>
+   </section>
+ 
++  <section class="product-tier" id="eap-tier">
++    <h2>Enterprise Architecture Playbook</h2>
++    <p class="tier-desc">Premium architecture manual for enterprise organizations.</p>
++    <ul class="product-list">
++      <li>Price: $2,999</li>
++      <li>Digital delivery</li>
++    </ul>
++    <a href="/enterprise-architecture-playbook.html" class="tier-cta">ΓåÆ View EAP details</a>
++  </section>
++
++  <section class="product-tier" id="egf-tier">
++    <h2>Enterprise Governance Framework</h2>
++    <p class="tier-desc">Governance system for decision rights, escalation, and accountability.</p>
++    <ul class="product-list">
++      <li>Price: $3,499</li>
++      <li>Decision rights and governance loops</li>
++      <li>Escalation architecture and accountability map</li>
++    </ul>
++    <a href="/enterprise-governance-framework.html" class="tier-cta">ΓåÆ View EGF details</a>
++  </section>
++
++  <section class="product-tier" id="eom-tier">
++    <h2>Enterprise Operating Model</h2>
++    <p class="tier-desc">Enterprise operating model for cross-functional coordination and execution.</p>
++    <ul class="product-list">
++      <li>Price: $3,999</li>
++      <li>Operating, coordination, and execution models</li>
++      <li>Governance model and operating maps</li>
++    </ul>
++    <a href="/enterprise-operating-model.html" class="tier-cta">ΓåÆ View EOM details</a>
++  </section>
++
++  <section class="product-tier" id="erf-tier">
++    <h2>Enterprise Risk Framework</h2>
++    <p class="tier-desc">Substrate-level risk framework for enterprise mapping and decision impact.</p>
++    <ul class="product-list">
++      <li>Price: $3,499</li>
++      <li>Risk mapping and structural risk loops</li>
++      <li>Decision impact guidance</li>
++    </ul>
++    <a href="/enterprise-risk-framework.html" class="tier-cta">ΓåÆ View ERF details</a>
++  </section>
++
++  <section class="product-tier" id="ecl-tier">
++    <h2>Enterprise Clarity Loop</h2>
++    <p class="tier-desc">Recurring clarity rituals and structural alignment cadence.</p>
++    <ul class="product-list">
++      <li>Price: $2,499</li>
++      <li>Feedback loops and alignment rituals</li>
++      <li>Clarity cadence playbook</li>
++    </ul>
++    <a href="/enterprise-clarity-loop.html" class="tier-cta">ΓåÆ View ECL details</a>
++  </section>
++
++  <section class="product-tier" id="evas-tier">
++    <h2>Enterprise Vendor Alignment System</h2>
++    <p class="tier-desc">Vendor alignment framework for initiative and contract coherence.</p>
++    <ul class="product-list">
++      <li>Price: $2,999</li>
++      <li>Vendor mapping and alignment scoring</li>
++      <li>Contract and initiative coherence guidance</li>
++    </ul>
++    <a href="/enterprise-vendor-alignment-system.html" class="tier-cta">ΓåÆ View EVAS details</a>
++  </section>
++
++  <section class="product-tier" id="ees-tier">
++    <h2>Enterprise Execution Stabilizer</h2>
++    <p class="tier-desc">Execution stability architecture for anti-firefighting operations.</p>
++    <ul class="product-list">
++      <li>Price: $2,999</li>
++      <li>Execution stability loops</li>
++      <li>Drift immunity structures</li>
++    </ul>
++    <a href="/enterprise-execution-stabilizer.html" class="tier-cta">ΓåÆ View EES details</a>
++  </section>
++
++  <section class="product-tier" id="eamp-tier">
++    <h2>Enterprise Architecture Map Pack</h2>
++    <p class="tier-desc">Visual map pack for architecture, governance, execution, and risk.</p>
++    <ul class="product-list">
++      <li>Price: $1,999</li>
++      <li>Cross-domain enterprise visual maps</li>
++      <li>Architecture, governance, execution, risk, vendor alignment views</li>
++    </ul>
++    <a href="/enterprise-architecture-map-pack.html" class="tier-cta">ΓåÆ View EAMP details</a>
++  </section>
++
+   <section class="affiliate-note">
+     <h2>Affiliate Links</h2>
+     <p>If you are an approved Codex Labs affiliate, you can share product links with your referral code appended, for example:</p>
+diff --git a/public/pricing.html b/public/pricing.html
+index 04a7799..7f887c8 100644
+--- a/public/pricing.html
++++ b/public/pricing.html
+@@ -84,6 +84,7 @@
+       <li>Digital delivery after purchase</li>
+     </ul>
+     <p>Affiliates can reference this pricing when presenting the Creator Pack and use referral links such as: <code>/creator-pack.html?ref=YOURCODE</code></p>
++    <a href="/creator-pack.html" class="cta-button cta-secondary">View Creator Pack</a>
+   </section>
+ 
+   <section class="pricing-tier" id="ecd-pricing">
+@@ -123,6 +124,102 @@
+     <a href="/enterprise-retainer.html" class="cta-button cta-secondary">View Retainer</a>
+   </section>
+ 
++  <section class="pricing-tier" id="eap-pricing">
++    <h2>Enterprise Architecture Playbook (EAP)</h2>
++    <p class="pricing-desc">A premium architecture manual for enterprise organizations.</p>
++    <ul class="pricing-list">
++      <li>Price: $2,999</li>
++      <li>Digital delivery</li>
++      <li>Architecture foundations, coherence, governance, execution</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-architecture-playbook.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-architecture-playbook.html" class="cta-button cta-secondary">View EAP</a>
++  </section>
++
++  <section class="pricing-tier" id="egf-pricing">
++    <h2>Enterprise Governance Framework (EGF)</h2>
++    <p class="pricing-desc">A governance system for enterprise decision rights and escalation clarity.</p>
++    <ul class="pricing-list">
++      <li>Price: $3,499</li>
++      <li>Decision rights and governance loops</li>
++      <li>Escalation architecture and accountability templates</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-governance-framework.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-governance-framework.html" class="cta-button cta-secondary">View EGF</a>
++  </section>
++
++  <section class="pricing-tier" id="eom-pricing">
++    <h2>Enterprise Operating Model (EOM)</h2>
++    <p class="pricing-desc">A complete operating model for enterprise coordination and execution.</p>
++    <ul class="pricing-list">
++      <li>Price: $3,999</li>
++      <li>Operating, coordination, and execution model architecture</li>
++      <li>Governance model and operating maps</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-operating-model.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-operating-model.html" class="cta-button cta-secondary">View EOM</a>
++  </section>
++
++  <section class="pricing-tier" id="erf-pricing">
++    <h2>Enterprise Risk Framework (ERF)</h2>
++    <p class="pricing-desc">A substrate-level framework for risk mapping and structural decision impact.</p>
++    <ul class="pricing-list">
++      <li>Price: $3,499</li>
++      <li>Risk mapping and structural risk loops</li>
++      <li>Decision impact modeling guidance</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-risk-framework.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-risk-framework.html" class="cta-button cta-secondary">View ERF</a>
++  </section>
++
++  <section class="pricing-tier" id="ecl-pricing">
++    <h2>Enterprise Clarity Loop (ECL)</h2>
++    <p class="pricing-desc">A recurring clarity cadence for structural alignment across enterprise teams.</p>
++    <ul class="pricing-list">
++      <li>Price: $2,499</li>
++      <li>Clarity rituals and feedback loops</li>
++      <li>Alignment cadence and decision rhythm</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-clarity-loop.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-clarity-loop.html" class="cta-button cta-secondary">View ECL</a>
++  </section>
++
++  <section class="pricing-tier" id="evas-pricing">
++    <h2>Enterprise Vendor Alignment System (EVAS)</h2>
++    <p class="pricing-desc">A system for vendor mapping, alignment scoring, and initiative coherence.</p>
++    <ul class="pricing-list">
++      <li>Price: $2,999</li>
++      <li>Vendor alignment and scoring architecture</li>
++      <li>Contract and initiative coherence framework</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-vendor-alignment-system.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-secondary">View EVAS</a>
++  </section>
++
++  <section class="pricing-tier" id="ees-pricing">
++    <h2>Enterprise Execution Stabilizer (EES)</h2>
++    <p class="pricing-desc">Execution stability architecture to reduce firefighting and preserve momentum.</p>
++    <ul class="pricing-list">
++      <li>Price: $2,999</li>
++      <li>Execution stability loops and anti-firefighting structures</li>
++      <li>Drift immunity and reliability improvements</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-execution-stabilizer.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-secondary">View EES</a>
++  </section>
++
++  <section class="pricing-tier" id="eamp-pricing">
++    <h2>Enterprise Architecture Map Pack (EAMP)</h2>
++    <p class="pricing-desc">A visual map pack across architecture, governance, execution, risk, and vendor alignment.</p>
++    <ul class="pricing-list">
++      <li>Price: $1,999</li>
++      <li>Cross-domain enterprise map pack</li>
++      <li>Supports architecture and transformation communication</li>
++    </ul>
++    <p>Referral-friendly: <code>/enterprise-architecture-map-pack.html?ref=YOURCODE</code></p>
++    <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-secondary">View EAMP</a>
++  </section>
++
+   <footer class="global-footer">
+     <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
+     <ul class="footer-links">
+diff --git a/public/affiliates.html b/public/affiliates.html
+index 7e1d8e0..02477a3 100644
+--- a/public/affiliates.html
++++ b/public/affiliates.html
+@@ -123,6 +123,94 @@
+     <a href="/enterprise-retainer.html" class="cta-button cta-secondary">View Retainer</a>
+   </section>
+ 
++  <section class="affiliate-featured-eap">
++    <h2>High-Value Artifact: Enterprise Architecture Playbook</h2>
++    <p>The EAP is ideal for affiliates targeting enterprise architecture teams and transformation leaders.</p>
++    <ul class="affiliate-list">
++      <li>Price: $2,999</li>
++      <li>High-margin digital artifact</li>
++      <li>Referral-friendly: <code>/enterprise-architecture-playbook.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-architecture-playbook.html" class="cta-button cta-secondary">View EAP</a>
++  </section>
++
++  <section class="affiliate-featured-egf">
++    <h2>Governance Product: Enterprise Governance Framework</h2>
++    <p>The EGF is ideal for affiliates targeting COOs, transformation offices, and enterprise governance leads.</p>
++    <ul class="affiliate-list">
++      <li>Price: $3,499</li>
++      <li>Decision rights, escalation, and accountability framework</li>
++      <li>Referral-friendly: <code>/enterprise-governance-framework.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-governance-framework.html" class="cta-button cta-secondary">View EGF</a>
++  </section>
++
++  <section class="affiliate-featured-eom">
++    <h2>Operating Design Product: Enterprise Operating Model</h2>
++    <p>The EOM is ideal for affiliates targeting operating leaders who need enterprise-wide execution alignment.</p>
++    <ul class="affiliate-list">
++      <li>Price: $3,999</li>
++      <li>Operating, coordination, execution, and governance model</li>
++      <li>Referral-friendly: <code>/enterprise-operating-model.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-operating-model.html" class="cta-button cta-secondary">View EOM</a>
++  </section>
++
++  <section class="affiliate-featured-erf">
++    <h2>Risk Product: Enterprise Risk Framework</h2>
++    <p>The ERF is ideal for affiliates targeting risk leaders, PMOs, and enterprise transformation teams.</p>
++    <ul class="affiliate-list">
++      <li>Price: $3,499</li>
++      <li>Risk mapping and decision impact framework</li>
++      <li>Referral-friendly: <code>/enterprise-risk-framework.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-risk-framework.html" class="cta-button cta-secondary">View ERF</a>
++  </section>
++
++  <section class="affiliate-featured-ecl">
++    <h2>Cadence Product: Enterprise Clarity Loop</h2>
++    <p>The ECL is ideal for affiliates targeting executive teams improving alignment and operating cadence.</p>
++    <ul class="affiliate-list">
++      <li>Price: $2,499</li>
++      <li>Recurring clarity rituals and feedback loops</li>
++      <li>Referral-friendly: <code>/enterprise-clarity-loop.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-clarity-loop.html" class="cta-button cta-secondary">View ECL</a>
++  </section>
++
++  <section class="affiliate-featured-evas">
++    <h2>Alignment Product: Enterprise Vendor Alignment System</h2>
++    <p>The EVAS is ideal for affiliates targeting procurement, operations, and vendor-governance stakeholders.</p>
++    <ul class="affiliate-list">
++      <li>Price: $2,999</li>
++      <li>Vendor alignment and coherence scoring</li>
++      <li>Referral-friendly: <code>/enterprise-vendor-alignment-system.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-secondary">View EVAS</a>
++  </section>
++
++  <section class="affiliate-featured-ees">
++    <h2>Execution Product: Enterprise Execution Stabilizer</h2>
++    <p>The EES is ideal for affiliates targeting operators responsible for execution consistency.</p>
++    <ul class="affiliate-list">
++      <li>Price: $2,999</li>
++      <li>Execution stabilization and drift immunity</li>
++      <li>Referral-friendly: <code>/enterprise-execution-stabilizer.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-secondary">View EES</a>
++  </section>
++
++  <section class="affiliate-featured-eamp">
++    <h2>Visual Artifact Product: Enterprise Architecture Map Pack</h2>
++    <p>The EAMP is ideal for affiliates targeting architecture teams and enterprise communicators.</p>
++    <ul class="affiliate-list">
++      <li>Price: $1,999</li>
++      <li>Visual maps for architecture, governance, and execution</li>
++      <li>Referral-friendly: <code>/enterprise-architecture-map-pack.html?ref=YOURCODE</code></li>
++    </ul>
++    <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-secondary">View EAMP</a>
++  </section>
++
+   <section class="affiliate-cta">
+     <h2>Become an Affiliate</h2>
+     <p>Start earning by promoting Codex Labs OS to founders and operators who need structural clarity and deterministic execution.</p>
+diff --git a/public/modules.html b/public/modules.html
+index 654de0d..3209681 100644
+--- a/public/modules.html
++++ b/public/modules.html
+@@ -92,6 +92,54 @@
+     <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
+   </section>
+ 
++  <section class="modules-eap">
++    <h2>Enterprise Architecture Playbook</h2>
++    <p>The EAP provides structured architecture guidance across modules and systems.</p>
++    <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++  </section>
++
++  <section class="modules-egf">
++    <h2>Enterprise Governance Framework</h2>
++    <p>The EGF defines governance loops, decision rights, and escalation architecture across systems.</p>
++    <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++  </section>
++
++  <section class="modules-eom">
++    <h2>Enterprise Operating Model</h2>
++    <p>The EOM aligns module-level execution through operating, coordination, and governance models.</p>
++    <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++  </section>
++
++  <section class="modules-erf">
++    <h2>Enterprise Risk Framework</h2>
++    <p>The ERF maps structural risks across systems and ties risk response to operating decisions.</p>
++    <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++  </section>
++
++  <section class="modules-ecl">
++    <h2>Enterprise Clarity Loop</h2>
++    <p>The ECL introduces recurring clarity loops to keep modules aligned with enterprise priorities.</p>
++    <a href="/enterprise-clarity-loop.html" class="cta-button cta-primary">View ECL</a>
++  </section>
++
++  <section class="modules-evas">
++    <h2>Enterprise Vendor Alignment System</h2>
++    <p>The EVAS connects vendor operations to module architecture and execution coherence.</p>
++    <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a>
++  </section>
++
++  <section class="modules-ees">
++    <h2>Enterprise Execution Stabilizer</h2>
++    <p>The EES stabilizes module-level execution through anti-firefighting structures and drift controls.</p>
++    <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a>
++  </section>
++
++  <section class="modules-eamp">
++    <h2>Enterprise Architecture Map Pack</h2>
++    <p>The EAMP provides visual maps that connect module architecture, governance, risk, and vendor alignment.</p>
++    <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a>
++  </section>
++
+   <footer class="global-footer">
+     <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
+     <ul class="footer-links">
+diff --git a/public/creator-pack.html b/public/creator-pack.html
+index fd1692b..fcce5df 100644
+--- a/public/creator-pack.html
++++ b/public/creator-pack.html
+@@ -3,7 +3,7 @@
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-  <title>Creator Pack ┬╖ Codex Labs</title>
++  <title>Creator Pack - Codex Labs</title>
+   <meta name="description" content="Premium Codex Labs OS Creator Pack for founders, creators, and operators.">
+   <meta property="og:title" content="Codex Labs OS ΓÇö Creator Pack">
+   <meta property="og:description" content="A premium digital bundle for founders, creators, and operators who need substrate-level clarity.">
+@@ -32,12 +32,12 @@
+ 
+   <main class="creator-pack">
+     <section class="creator-hero">
+-      <h1>Codex Labs OS ΓÇö Creator Pack</h1>
++      <h1>Creator Pack</h1>
+       <p class="creator-subtitle">A premium digital bundle for founders, creators, and operators who need substrate-level clarity.</p>
+     </section>
+ 
+     <section class="creator-overview">
+-      <h2>WhatΓÇÖs Inside</h2>
++      <h2>Overview</h2>
+       <p>The Creator Pack bundles core Codex Labs OS artifacts into a single, high-leverage digital product.</p>
+       <ul class="creator-list">
+         <li>Structural Doctrine Scroll</li>
+@@ -67,9 +67,9 @@
+     </section>
+ 
+     <section class="creator-cta">
+-      <h2>Get the Creator Pack</h2>
+-      <p>If you want the full Codex Labs OS Creator Pack, purchase via the official Codex Labs checkout.</p>
+-      <a href="/contact.html" class="cta-button cta-primary">Request Creator Pack Access</a>
++      <h2>Request Access</h2>
++      <p>If you want the full Codex Labs OS Creator Pack, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request Creator Pack</a>
+     </section>
+ 
+     <section class="creator-ecd">
+@@ -83,6 +83,54 @@
+       <p>For organizations of 500+ employees, the Enterprise Retainer provides continuous advisory support beyond the Creator Pack.</p>
+       <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
+     </section>
++
++    <section class="creator-eap">
++      <h2>Enterprise Architecture Playbook</h2>
++      <p>The EAP provides enterprise-grade architecture clarity beyond the Creator Pack.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="creator-egf">
++      <h2>Enterprise Upgrade: EGF</h2>
++      <p>The Enterprise Governance Framework extends Creator Pack clarity into enterprise governance design.</p>
++      <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++    </section>
++
++    <section class="creator-eom">
++      <h2>Enterprise Upgrade: EOM</h2>
++      <p>The Enterprise Operating Model supports enterprise-scale execution beyond the Creator Pack foundation.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="creator-erf">
++      <h2>Enterprise Upgrade: ERF</h2>
++      <p>The Enterprise Risk Framework extends Creator Pack insights into risk mapping and structural resilience.</p>
++      <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++    </section>
++
++    <section class="creator-ecl">
++      <h2>Enterprise Upgrade: ECL</h2>
++      <p>The Enterprise Clarity Loop creates recurring cadence to sustain decisions introduced by the Creator Pack.</p>
++      <a href="/enterprise-clarity-loop.html" class="cta-button cta-primary">View ECL</a>
++    </section>
++
++    <section class="creator-evas">
++      <h2>Enterprise Upgrade: EVAS</h2>
++      <p>The Enterprise Vendor Alignment System helps scale Creator Pack clarity across vendor-dependent operations.</p>
++      <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a>
++    </section>
++
++    <section class="creator-ees">
++      <h2>Enterprise Upgrade: EES</h2>
++      <p>The Enterprise Execution Stabilizer extends Creator Pack operating discipline into enterprise execution loops.</p>
++      <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a>
++    </section>
++
++    <section class="creator-eamp">
++      <h2>Enterprise Upgrade: EAMP</h2>
++      <p>The Enterprise Architecture Map Pack adds visual architecture and execution maps beyond the Creator Pack.</p>
++      <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a>
++    </section>
+   </main>
+ 
+   <footer class="global-footer">
+diff --git a/public/enterprise-diagnostic.html b/public/enterprise-diagnostic.html
+index 4eb227e..6bb7b7d 100644
+--- a/public/enterprise-diagnostic.html
++++ b/public/enterprise-diagnostic.html
+@@ -37,7 +37,7 @@
+     </section>
+ 
+     <section class="ecd-overview">
+-      <h2>What ECD Provides</h2>
++      <h2>Overview</h2>
+       <p>The ECD identifies structural misalignments across clarity, governance, architecture, execution, and vendor strategy.</p>
+       <ul class="ecd-list">
+         <li>Leadership & architecture intake</li>
+@@ -84,6 +84,54 @@
+       <p>After completing the Enterprise Clarity Diagnostic, organizations often continue with the Enterprise Retainer for ongoing structural clarity and governance.</p>
+       <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
+     </section>
++
++    <section class="ecd-eap-upgrade">
++      <h2>Architecture Upgrade: EAP</h2>
++      <p>The EAP provides a structured architecture manual that complements the Enterprise Clarity Diagnostic.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="ecd-egf-upgrade">
++      <h2>Governance Upgrade: EGF</h2>
++      <p>The Enterprise Governance Framework translates ECD governance findings into decision-rights architecture.</p>
++      <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++    </section>
++
++    <section class="ecd-eom-upgrade">
++      <h2>Operating Upgrade: EOM</h2>
++      <p>The Enterprise Operating Model transforms ECD insights into coordinated execution and operating cadence.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="ecd-erf-upgrade">
++      <h2>Risk Upgrade: ERF</h2>
++      <p>The Enterprise Risk Framework maps structural risk discovered during the ECD process.</p>
++      <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++    </section>
++
++    <section class="ecd-ecl-upgrade">
++      <h2>Cadence Upgrade: ECL</h2>
++      <p>The Enterprise Clarity Loop creates recurring rituals that sustain ECD insights over time.</p>
++      <a href="/enterprise-clarity-loop.html" class="cta-button cta-primary">View ECL</a>
++    </section>
++
++    <section class="ecd-evas-upgrade">
++      <h2>Alignment Upgrade: EVAS</h2>
++      <p>The Enterprise Vendor Alignment System addresses vendor coherence issues surfaced in the ECD.</p>
++      <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a>
++    </section>
++
++    <section class="ecd-ees-upgrade">
++      <h2>Execution Upgrade: EES</h2>
++      <p>The Enterprise Execution Stabilizer converts ECD insights into anti-firefighting execution structures.</p>
++      <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a>
++    </section>
++
++    <section class="ecd-eamp-upgrade">
++      <h2>Map Upgrade: EAMP</h2>
++      <p>The Enterprise Architecture Map Pack visualizes ECD findings across architecture, governance, and execution.</p>
++      <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a>
++    </section>
+   </main>
+ 
+   <footer class="global-footer">
+diff --git a/public/enterprise-retainer.html b/public/enterprise-retainer.html
+index c6f9d35..a2ef505 100644
+--- a/public/enterprise-retainer.html
++++ b/public/enterprise-retainer.html
+@@ -83,6 +83,48 @@
+       <p>To initiate an Enterprise Retainer, contact Codex Labs.</p>
+       <a href="/contact.html" class="cta-button cta-primary">Request Retainer</a>
+     </section>
++
++    <section class="retainer-eap">
++      <h2>Architecture Artifact: EAP</h2>
++      <p>The Enterprise Architecture Playbook supports retainer clients with a structured architecture reference.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="retainer-egf">
++      <h2>Governance Artifact: EGF</h2>
++      <p>The Enterprise Governance Framework supports retainer clients with decision-rights and escalation architecture.</p>
++      <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++    </section>
++
++    <section class="retainer-eom">
++      <h2>Operating Artifact: EOM</h2>
++      <p>The Enterprise Operating Model supports retainer clients with operating, coordination, and governance design.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="retainer-erf">
++      <h2>Risk Artifact: ERF</h2>
++      <p>The Enterprise Risk Framework supports retainer clients with structural risk mapping and mitigation loops.</p>
++      <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++    </section>
++
++    <section class="retainer-evas">
++      <h2>Vendor Artifact: EVAS</h2>
++      <p>The Enterprise Vendor Alignment System helps retainer clients align vendor systems with enterprise architecture.</p>
++      <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a>
++    </section>
++
++    <section class="retainer-ees">
++      <h2>Execution Artifact: EES</h2>
++      <p>The Enterprise Execution Stabilizer supports ongoing retainer execution reliability and drift immunity.</p>
++      <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a>
++    </section>
++
++    <section class="retainer-eamp">
++      <h2>Visual Artifact: EAMP</h2>
++      <p>The Enterprise Architecture Map Pack gives retainer teams shared visual maps for communication and alignment.</p>
++      <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a>
++    </section>
+   </main>
+ 
+   <footer class="global-footer">
+diff --git a/public/enterprise-architecture-playbook.html b/public/enterprise-architecture-playbook.html
+new file mode 100644
+index 0000000..5183d4f
+--- /dev/null
++++ b/public/enterprise-architecture-playbook.html
+@@ -0,0 +1,117 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Architecture Playbook - Codex Labs</title>
++  <meta name="description" content="Enterprise Architecture Playbook for substrate-level enterprise architecture clarity.">
++  <meta property="og:title" content="Enterprise Architecture Playbook (EAP)">
++  <meta property="og:description" content="A substrate-level architecture manual for enterprise organizations.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-architecture-playbook.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Architecture Playbook">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-architecture-playbook.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script
++    defer
++    data-domain="codex-labs-homepage-static.onrender.com"
++    src="https://plausible.io/js/script.js"
++  ></script>
++</head>
++<body>
++  <nav class="global-nav">
++    <ul class="nav-list">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </nav>
++
++  <main class="eap">
++    <section class="eap-hero">
++      <h1>Enterprise Architecture Playbook (EAP)</h1>
++      <p class="eap-subtitle">A substrate-level architecture manual for enterprise organizations.</p>
++    </section>
++
++    <section class="eap-overview">
++      <h2>Overview</h2>
++      <p>The EAP provides a structured architecture framework for clarity, governance, execution, and vendor alignment.</p>
++      <ul class="eap-list">
++        <li>Foundations</li>
++        <li>Coherence</li>
++        <li>Transformation</li>
++        <li>Operating Model</li>
++        <li>Maps</li>
++      </ul>
++    </section>
++
++    <section class="eap-pricing">
++      <h2>Pricing</h2>
++      <p>The Enterprise Architecture Playbook is priced at $2,999.</p>
++      <p>Delivered digitally after purchase.</p>
++    </section>
++
++    <section class="eap-affiliate">
++      <h2>Affiliate Ready</h2>
++      <p>Affiliates can promote EAP using referral links, for example:</p>
++      <p><code>/enterprise-architecture-playbook.html?ref=YOURCODE</code></p>
++    </section>
++
++    <section class="eap-cta">
++      <h2>Request EAP</h2>
++      <p>To request the Enterprise Architecture Playbook, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request EAP</a>
++    </section>
++
++    <section class="eap-egf-upgrade">
++      <h2>Governance Upgrade: EGF</h2>
++      <p>The Enterprise Governance Framework extends EAP architecture into governance loops and decision rights.</p>
++      <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++    </section>
++
++    <section class="eap-eom-upgrade">
++      <h2>Operating Upgrade: EOM</h2>
++      <p>The Enterprise Operating Model extends EAP architecture into enterprise operating cadence and execution flow.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="eap-erf-upgrade">
++      <h2>Risk Upgrade: ERF</h2>
++      <p>The Enterprise Risk Framework extends EAP architecture into structured risk mapping and control loops.</p>
++      <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++    </section>
++
++    <section class="eap-evas-upgrade">
++      <h2>Vendor Upgrade: EVAS</h2>
++      <p>The Enterprise Vendor Alignment System connects EAP architecture decisions to vendor execution coherence.</p>
++      <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a>
++    </section>
++
++    <section class="eap-ees-upgrade">
++      <h2>Execution Upgrade: EES</h2>
++      <p>The Enterprise Execution Stabilizer translates EAP architecture into reliable execution cadence.</p>
++      <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a>
++    </section>
++
++    <section class="eap-eamp-upgrade">
++      <h2>Map Upgrade: EAMP</h2>
++      <p>The Enterprise Architecture Map Pack provides visual artifacts for EAP communication and alignment.</p>
++      <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a>
++    </section>
++  </main>
++
++  <footer class="global-footer">
++    <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
++    <ul class="footer-links">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </footer>
++</body>
++</html>
+diff --git a/public/enterprise-governance-framework.html b/public/enterprise-governance-framework.html
+new file mode 100644
+index 0000000..7e0a33a
+--- /dev/null
++++ b/public/enterprise-governance-framework.html
+@@ -0,0 +1,129 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Governance Framework ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Governance Framework for decision rights, governance loops, and accountability.">
++  <meta property="og:title" content="Enterprise Governance Framework (EGF)">
++  <meta property="og:description" content="A governance system for predictable enterprise execution.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-governance-framework.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Governance Framework">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-governance-framework.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script
++    defer
++    data-domain="codex-labs-homepage-static.onrender.com"
++    src="https://plausible.io/js/script.js"
++  ></script>
++</head>
++<body>
++  <nav class="global-nav">
++    <ul class="nav-list">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </nav>
++
++  <main class="egf">
++    <section class="egf-hero">
++      <h1>Enterprise Governance Framework (EGF)</h1>
++      <p class="egf-subtitle">A governance system for predictable enterprise execution.</p>
++    </section>
++
++    <section class="egf-overview">
++      <h2>Overview</h2>
++      <p>The EGF provides a structured governance framework for decision rights, escalation, and accountability.</p>
++      <ul class="egf-list">
++        <li>Decision Rights</li>
++        <li>Governance Loops</li>
++        <li>Escalation Architecture</li>
++        <li>Accountability Map</li>
++        <li>Templates</li>
++      </ul>
++    </section>
++
++    <section class="egf-pricing">
++      <h2>Pricing</h2>
++      <p>The Enterprise Governance Framework is priced at $3,499.</p>
++      <p>Delivered digitally after purchase.</p>
++    </section>
++
++    <section class="egf-affiliate">
++      <h2>Affiliate Ready</h2>
++      <p>Affiliates can promote EGF using referral links, for example:</p>
++      <p><code>/enterprise-governance-framework.html?ref=YOURCODE</code></p>
++    </section>
++
++    <section class="egf-cta">
++      <h2>Request EGF</h2>
++      <p>To request the Enterprise Governance Framework, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request EGF</a>
++    </section>
++
++    <section class="egf-eap-upgrade">
++      <h2>Architecture Companion: EAP</h2>
++      <p>The Enterprise Architecture Playbook complements governance by defining the architecture backbone.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="egf-retainer-upgrade">
++      <h2>Advisory Companion: Retainer</h2>
++      <p>The Enterprise Retainer supports ongoing governance implementation and enterprise stabilization.</p>
++      <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
++    </section>
++
++    <section class="egf-eom-upgrade">
++      <h2>Operating Companion: EOM</h2>
++      <p>The Enterprise Operating Model aligns governance decisions with operating execution.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="egf-erf-upgrade">
++      <h2>Risk Companion: ERF</h2>
++      <p>The Enterprise Risk Framework extends governance into structural risk management and escalation control.</p>
++      <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++    </section>
++
++    <section class="egf-ecl-upgrade">
++      <h2>Cadence Companion: ECL</h2>
++      <p>The Enterprise Clarity Loop supports governance with recurring alignment and decision rituals.</p>
++      <a href="/enterprise-clarity-loop.html" class="cta-button cta-primary">View ECL</a>
++    </section>
++
++    <section class="egf-evas-upgrade">
++      <h2>Vendor Companion: EVAS</h2>
++      <p>The Enterprise Vendor Alignment System aligns governance policy with vendor execution and accountability.</p>
++      <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a>
++    </section>
++
++    <section class="egf-ees-upgrade">
++      <h2>Execution Companion: EES</h2>
++      <p>The Enterprise Execution Stabilizer helps governance teams reduce firefighting and sustain execution quality.</p>
++      <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a>
++    </section>
++
++    <section class="egf-eamp-upgrade">
++      <h2>Map Companion: EAMP</h2>
++      <p>The Enterprise Architecture Map Pack supports governance clarity through shared enterprise visual maps.</p>
++      <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a>
++    </section>
++  </main>
++
++  <footer class="global-footer">
++    <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
++    <ul class="footer-links">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </footer>
++</body>
++</html>
+\ No newline at end of file
+diff --git a/public/enterprise-operating-model.html b/public/enterprise-operating-model.html
+new file mode 100644
+index 0000000..94a1d6a
+--- /dev/null
++++ b/public/enterprise-operating-model.html
+@@ -0,0 +1,129 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Operating Model ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Operating Model for operating foundations, coordination, and governance at enterprise scale.">
++  <meta property="og:title" content="Enterprise Operating Model (EOM)">
++  <meta property="og:description" content="A complete operating model for enterprise coordination and execution.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-operating-model.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Operating Model">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-operating-model.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script
++    defer
++    data-domain="codex-labs-homepage-static.onrender.com"
++    src="https://plausible.io/js/script.js"
++  ></script>
++</head>
++<body>
++  <nav class="global-nav">
++    <ul class="nav-list">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </nav>
++
++  <main class="eom">
++    <section class="eom-hero">
++      <h1>Enterprise Operating Model (EOM)</h1>
++      <p class="eom-subtitle">A complete operating model for enterprise coordination and execution.</p>
++    </section>
++
++    <section class="eom-overview">
++      <h2>Overview</h2>
++      <p>The EOM defines how enterprise teams coordinate, execute, and govern operations at scale.</p>
++      <ul class="eom-list">
++        <li>Operating Foundations</li>
++        <li>Coordination Model</li>
++        <li>Execution Model</li>
++        <li>Governance Model</li>
++        <li>Operating Maps</li>
++      </ul>
++    </section>
++
++    <section class="eom-pricing">
++      <h2>Pricing</h2>
++      <p>The Enterprise Operating Model is priced at $3,999.</p>
++      <p>Delivered digitally after purchase.</p>
++    </section>
++
++    <section class="eom-affiliate">
++      <h2>Affiliate Ready</h2>
++      <p>Affiliates can promote EOM using referral links, for example:</p>
++      <p><code>/enterprise-operating-model.html?ref=YOURCODE</code></p>
++    </section>
++
++    <section class="eom-cta">
++      <h2>Request EOM</h2>
++      <p>To request the Enterprise Operating Model, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request EOM</a>
++    </section>
++
++    <section class="eom-eap-upgrade">
++      <h2>Architecture Companion: EAP</h2>
++      <p>The Enterprise Architecture Playbook provides architecture structure that supports the EOM.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="eom-egf-upgrade">
++      <h2>Governance Companion: EGF</h2>
++      <p>The Enterprise Governance Framework aligns decision rights and escalation paths with the operating model.</p>
++      <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++    </section>
++
++    <section class="eom-retainer-upgrade">
++      <h2>Advisory Companion: Retainer</h2>
++      <p>The Enterprise Retainer supports implementation, adaptation, and operational continuity.</p>
++      <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
++    </section>
++
++    <section class="eom-erf-upgrade">
++      <h2>Risk Companion: ERF</h2>
++      <p>The Enterprise Risk Framework supports EOM execution with structural risk mapping and mitigation loops.</p>
++      <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++    </section>
++
++    <section class="eom-ecl-upgrade">
++      <h2>Cadence Companion: ECL</h2>
++      <p>The Enterprise Clarity Loop introduces recurring alignment rhythm across operating model execution.</p>
++      <a href="/enterprise-clarity-loop.html" class="cta-button cta-primary">View ECL</a>
++    </section>
++
++    <section class="eom-evas-upgrade">
++      <h2>Vendor Companion: EVAS</h2>
++      <p>The Enterprise Vendor Alignment System aligns vendor initiatives to the enterprise operating model.</p>
++      <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a>
++    </section>
++
++    <section class="eom-ees-upgrade">
++      <h2>Execution Companion: EES</h2>
++      <p>The Enterprise Execution Stabilizer reinforces EOM execution consistency and anti-firefighting operations.</p>
++      <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a>
++    </section>
++
++    <section class="eom-eamp-upgrade">
++      <h2>Map Companion: EAMP</h2>
++      <p>The Enterprise Architecture Map Pack visualizes EOM structure across teams, systems, and workflows.</p>
++      <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a>
++    </section>
++  </main>
++
++  <footer class="global-footer">
++    <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
++    <ul class="footer-links">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </footer>
++</body>
++</html>
+\ No newline at end of file
+diff --git a/public/enterprise-risk-framework.html b/public/enterprise-risk-framework.html
+new file mode 100644
+index 0000000..4f3f43d
+--- /dev/null
++++ b/public/enterprise-risk-framework.html
+@@ -0,0 +1,116 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Risk Framework ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Risk Framework for substrate-level risk mapping and decision impact.">
++  <meta property="og:title" content="Enterprise Risk Framework (ERF)">
++  <meta property="og:description" content="Substrate-level risk mapping and structural risk loops for enterprise systems.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-risk-framework.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Risk Framework">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-risk-framework.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script
++    defer
++    data-domain="codex-labs-homepage-static.onrender.com"
++    src="https://plausible.io/js/script.js"
++  ></script>
++</head>
++<body>
++  <nav class="global-nav">
++    <ul class="nav-list">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </nav>
++
++  <main class="erf">
++    <section class="erf-hero">
++      <h1>Enterprise Risk Framework (ERF)</h1>
++      <p class="erf-subtitle">Substrate-level risk mapping for enterprise systems and decisions.</p>
++    </section>
++
++    <section class="erf-overview">
++      <h2>Overview</h2>
++      <p>The ERF maps structural risk, establishes risk loops, and clarifies decision impact across enterprise architecture.</p>
++    </section>
++
++    <section class="erf-pricing">
++      <h2>Pricing</h2>
++      <p>The Enterprise Risk Framework is priced at $3,499.</p>
++      <p>Delivered digitally after purchase.</p>
++    </section>
++
++    <section class="erf-affiliate">
++      <h2>Affiliate Ready</h2>
++      <p>Affiliates can promote ERF using referral links, for example:</p>
++      <p><code>/enterprise-risk-framework.html?ref=YOURCODE</code></p>
++    </section>
++
++    <section class="erf-cta">
++      <h2>Request ERF</h2>
++      <p>To request the Enterprise Risk Framework, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request ERF</a>
++    </section>
++
++    <section class="erf-egf-upgrade">
++      <h2>Governance Companion: EGF</h2>
++      <p>The Enterprise Governance Framework supports ERF findings with decision-rights architecture.</p>
++      <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++    </section>
++
++    <section class="erf-eom-upgrade">
++      <h2>Operating Companion: EOM</h2>
++      <p>The Enterprise Operating Model operationalizes risk controls across execution workflows.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="erf-eap-upgrade">
++      <h2>Architecture Companion: EAP</h2>
++      <p>The Enterprise Architecture Playbook anchors ERF risk mapping to architecture decisions.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="erf-retainer-upgrade">
++      <h2>Advisory Companion: Retainer</h2>
++      <p>The Enterprise Retainer provides ongoing support for risk governance and mitigation cadence.</p>
++      <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
++    </section>
++
++    <section class="erf-ees-upgrade">
++      <h2>Execution Companion: EES</h2>
++      <p>The Enterprise Execution Stabilizer translates risk findings into execution safeguards.</p>
++      <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a>
++    </section>
++
++    <section class="erf-evas-upgrade">
++      <h2>Vendor Companion: EVAS</h2>
++      <p>The Enterprise Vendor Alignment System addresses external-vendor risk alignment.</p>
++      <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a>
++    </section>
++
++    <section class="erf-eamp-upgrade">
++      <h2>Map Companion: EAMP</h2>
++      <p>The Enterprise Architecture Map Pack visualizes risk domains and mitigation pathways.</p>
++      <a href="/enterprise-architecture-map-pack.html" class="cta-button cta-primary">View EAMP</a>
++    </section>
++  </main>
++
++  <footer class="global-footer">
++    <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
++    <ul class="footer-links">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </footer>
++</body>
++</html>
+diff --git a/public/enterprise-clarity-loop.html b/public/enterprise-clarity-loop.html
+new file mode 100644
+index 0000000..4a8e90a
+--- /dev/null
++++ b/public/enterprise-clarity-loop.html
+@@ -0,0 +1,104 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Clarity Loop ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Clarity Loop for recurring rituals and structural alignment cadence.">
++  <meta property="og:title" content="Enterprise Clarity Loop (ECL)">
++  <meta property="og:description" content="Recurring clarity rituals and feedback loops for enterprise alignment.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-clarity-loop.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Clarity Loop">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-clarity-loop.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script
++    defer
++    data-domain="codex-labs-homepage-static.onrender.com"
++    src="https://plausible.io/js/script.js"
++  ></script>
++</head>
++<body>
++  <nav class="global-nav">
++    <ul class="nav-list">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </nav>
++
++  <main class="ecl">
++    <section class="ecl-hero">
++      <h1>Enterprise Clarity Loop (ECL)</h1>
++      <p class="ecl-subtitle">Recurring clarity rituals for sustained structural alignment.</p>
++    </section>
++
++    <section class="ecl-overview">
++      <h2>Overview</h2>
++      <p>The ECL establishes recurring feedback loops, ritualized reviews, and alignment cadence across enterprise teams.</p>
++    </section>
++
++    <section class="ecl-pricing">
++      <h2>Pricing</h2>
++      <p>The Enterprise Clarity Loop is priced at $2,499.</p>
++      <p>Delivered digitally after purchase.</p>
++    </section>
++
++    <section class="ecl-affiliate">
++      <h2>Affiliate Ready</h2>
++      <p>Affiliates can promote ECL using referral links, for example:</p>
++      <p><code>/enterprise-clarity-loop.html?ref=YOURCODE</code></p>
++    </section>
++
++    <section class="ecl-cta">
++      <h2>Request ECL</h2>
++      <p>To request the Enterprise Clarity Loop, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request ECL</a>
++    </section>
++
++    <section class="ecl-ecd-upgrade">
++      <h2>Diagnostic Companion: ECD</h2>
++      <p>The Enterprise Clarity Diagnostic gives baseline signals that the ECL can operationalize over time.</p>
++      <a href="/enterprise-diagnostic.html" class="cta-button cta-primary">View ECD</a>
++    </section>
++
++    <section class="ecl-eap-upgrade">
++      <h2>Architecture Companion: EAP</h2>
++      <p>The Enterprise Architecture Playbook provides structural guidance for ongoing clarity loops.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="ecl-egf-upgrade">
++      <h2>Governance Companion: EGF</h2>
++      <p>The Enterprise Governance Framework anchors recurring clarity with decision rights and accountability.</p>
++      <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++    </section>
++
++    <section class="ecl-eom-upgrade">
++      <h2>Operating Companion: EOM</h2>
++      <p>The Enterprise Operating Model carries clarity cadence into execution and coordination workflows.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="ecl-retainer-upgrade">
++      <h2>Advisory Companion: Retainer</h2>
++      <p>The Enterprise Retainer supports ongoing facilitation of clarity loops and executive alignment.</p>
++      <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
++    </section>
++  </main>
++
++  <footer class="global-footer">
++    <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
++    <ul class="footer-links">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </footer>
++</body>
++</html>
+diff --git a/public/enterprise-vendor-alignment-system.html b/public/enterprise-vendor-alignment-system.html
+new file mode 100644
+index 0000000..b2fd8c5
+--- /dev/null
++++ b/public/enterprise-vendor-alignment-system.html
+@@ -0,0 +1,104 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Vendor Alignment System ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Vendor Alignment System for mapping vendors and improving coherence.">
++  <meta property="og:title" content="Enterprise Vendor Alignment System (EVAS)">
++  <meta property="og:description" content="Vendor mapping, alignment scoring, and contract coherence for enterprise systems.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-vendor-alignment-system.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Vendor Alignment System">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-vendor-alignment-system.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script
++    defer
++    data-domain="codex-labs-homepage-static.onrender.com"
++    src="https://plausible.io/js/script.js"
++  ></script>
++</head>
++<body>
++  <nav class="global-nav">
++    <ul class="nav-list">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </nav>
++
++  <main class="evas">
++    <section class="evas-hero">
++      <h1>Enterprise Vendor Alignment System (EVAS)</h1>
++      <p class="evas-subtitle">Vendor mapping and alignment scoring for enterprise coherence.</p>
++    </section>
++
++    <section class="evas-overview">
++      <h2>Overview</h2>
++      <p>The EVAS maps vendors, scores alignment, and improves contract and initiative coherence with enterprise architecture.</p>
++    </section>
++
++    <section class="evas-pricing">
++      <h2>Pricing</h2>
++      <p>The Enterprise Vendor Alignment System is priced at $2,999.</p>
++      <p>Delivered digitally after purchase.</p>
++    </section>
++
++    <section class="evas-affiliate">
++      <h2>Affiliate Ready</h2>
++      <p>Affiliates can promote EVAS using referral links, for example:</p>
++      <p><code>/enterprise-vendor-alignment-system.html?ref=YOURCODE</code></p>
++    </section>
++
++    <section class="evas-cta">
++      <h2>Request EVAS</h2>
++      <p>To request the Enterprise Vendor Alignment System, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request EVAS</a>
++    </section>
++
++    <section class="evas-eap-upgrade">
++      <h2>Architecture Companion: EAP</h2>
++      <p>The Enterprise Architecture Playbook provides architecture standards for vendor alignment decisions.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="evas-egf-upgrade">
++      <h2>Governance Companion: EGF</h2>
++      <p>The Enterprise Governance Framework defines ownership and escalation for vendor alignment.</p>
++      <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++    </section>
++
++    <section class="evas-eom-upgrade">
++      <h2>Operating Companion: EOM</h2>
++      <p>The Enterprise Operating Model anchors vendor processes in enterprise execution cadence.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="evas-retainer-upgrade">
++      <h2>Advisory Companion: Retainer</h2>
++      <p>The Enterprise Retainer supports ongoing vendor governance and strategic adaptation.</p>
++      <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
++    </section>
++
++    <section class="evas-erf-upgrade">
++      <h2>Risk Companion: ERF</h2>
++      <p>The Enterprise Risk Framework maps vendor-associated risk exposure and mitigation pathways.</p>
++      <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++    </section>
++  </main>
++
++  <footer class="global-footer">
++    <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
++    <ul class="footer-links">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </footer>
++</body>
++</html>
+diff --git a/public/enterprise-execution-stabilizer.html b/public/enterprise-execution-stabilizer.html
+new file mode 100644
+index 0000000..76cd7a1
+--- /dev/null
++++ b/public/enterprise-execution-stabilizer.html
+@@ -0,0 +1,104 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Execution Stabilizer ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Execution Stabilizer for stability loops and anti-firefighting structures.">
++  <meta property="og:title" content="Enterprise Execution Stabilizer (EES)">
++  <meta property="og:description" content="Execution stability loops, anti-firefighting structures, and drift immunity.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-execution-stabilizer.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Execution Stabilizer">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-execution-stabilizer.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script
++    defer
++    data-domain="codex-labs-homepage-static.onrender.com"
++    src="https://plausible.io/js/script.js"
++  ></script>
++</head>
++<body>
++  <nav class="global-nav">
++    <ul class="nav-list">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </nav>
++
++  <main class="ees">
++    <section class="ees-hero">
++      <h1>Enterprise Execution Stabilizer (EES)</h1>
++      <p class="ees-subtitle">Execution stability loops for anti-firefighting enterprise operations.</p>
++    </section>
++
++    <section class="ees-overview">
++      <h2>Overview</h2>
++      <p>The EES introduces execution stability loops, anti-firefighting structures, and drift immunity patterns.</p>
++    </section>
++
++    <section class="ees-pricing">
++      <h2>Pricing</h2>
++      <p>The Enterprise Execution Stabilizer is priced at $2,999.</p>
++      <p>Delivered digitally after purchase.</p>
++    </section>
++
++    <section class="ees-affiliate">
++      <h2>Affiliate Ready</h2>
++      <p>Affiliates can promote EES using referral links, for example:</p>
++      <p><code>/enterprise-execution-stabilizer.html?ref=YOURCODE</code></p>
++    </section>
++
++    <section class="ees-cta">
++      <h2>Request EES</h2>
++      <p>To request the Enterprise Execution Stabilizer, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request EES</a>
++    </section>
++
++    <section class="ees-eap-upgrade">
++      <h2>Architecture Companion: EAP</h2>
++      <p>The Enterprise Architecture Playbook provides architecture grounding for stable execution design.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="ees-eom-upgrade">
++      <h2>Operating Companion: EOM</h2>
++      <p>The Enterprise Operating Model translates stabilization loops into enterprise operating rhythm.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="ees-retainer-upgrade">
++      <h2>Advisory Companion: Retainer</h2>
++      <p>The Enterprise Retainer supports ongoing stabilization and adaptive operational governance.</p>
++      <a href="/enterprise-retainer.html" class="cta-button cta-primary">View Retainer</a>
++    </section>
++
++    <section class="ees-erf-upgrade">
++      <h2>Risk Companion: ERF</h2>
++      <p>The Enterprise Risk Framework helps prioritize and mitigate execution risk in stabilization plans.</p>
++      <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++    </section>
++
++    <section class="ees-ecl-upgrade">
++      <h2>Cadence Companion: ECL</h2>
++      <p>The Enterprise Clarity Loop adds recurring review cadence to sustain execution stability.</p>
++      <a href="/enterprise-clarity-loop.html" class="cta-button cta-primary">View ECL</a>
++    </section>
++  </main>
++
++  <footer class="global-footer">
++    <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
++    <ul class="footer-links">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </footer>
++</body>
++</html>
+diff --git a/public/enterprise-architecture-map-pack.html b/public/enterprise-architecture-map-pack.html
+new file mode 100644
+index 0000000..af50c3c
+--- /dev/null
++++ b/public/enterprise-architecture-map-pack.html
+@@ -0,0 +1,110 @@
++<!DOCTYPE html>
++<html lang="en">
++<head>
++  <meta charset="UTF-8">
++  <meta name="viewport" content="width=device-width, initial-scale=1.0">
++  <title>Enterprise Architecture Map Pack ┬╖ Codex Labs</title>
++  <meta name="description" content="Enterprise Architecture Map Pack for visualizing architecture, governance, execution, risk, and vendor alignment.">
++  <meta property="og:title" content="Enterprise Architecture Map Pack (EAMP)">
++  <meta property="og:description" content="Visual maps for architecture, governance, execution, risk, and vendor alignment.">
++  <meta property="og:type" content="website">
++  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/enterprise-architecture-map-pack.html">
++  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
++  <meta property="og:image:alt" content="Enterprise Architecture Map Pack">
++  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/enterprise-architecture-map-pack.html">
++  <link rel="stylesheet" href="./assets/css/style.css">
++  <script
++    defer
++    data-domain="codex-labs-homepage-static.onrender.com"
++    src="https://plausible.io/js/script.js"
++  ></script>
++</head>
++<body>
++  <nav class="global-nav">
++    <ul class="nav-list">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </nav>
++
++  <main class="eamp">
++    <section class="eamp-hero">
++      <h1>Enterprise Architecture Map Pack (EAMP)</h1>
++      <p class="eamp-subtitle">Visual maps for architecture, governance, execution, risk, and vendor alignment.</p>
++    </section>
++
++    <section class="eamp-overview">
++      <h2>Overview</h2>
++      <p>The EAMP provides visual enterprise maps for architecture, governance, execution, risk, and vendor alignment communication.</p>
++    </section>
++
++    <section class="eamp-pricing">
++      <h2>Pricing</h2>
++      <p>The Enterprise Architecture Map Pack is priced at $1,999.</p>
++      <p>Delivered digitally after purchase.</p>
++    </section>
++
++    <section class="eamp-affiliate">
++      <h2>Affiliate Ready</h2>
++      <p>Affiliates can promote EAMP using referral links, for example:</p>
++      <p><code>/enterprise-architecture-map-pack.html?ref=YOURCODE</code></p>
++    </section>
++
++    <section class="eamp-cta">
++      <h2>Request EAMP</h2>
++      <p>To request the Enterprise Architecture Map Pack, contact Codex Labs.</p>
++      <a href="/contact.html" class="cta-button cta-primary">Request EAMP</a>
++    </section>
++
++    <section class="eamp-eap-upgrade">
++      <h2>Architecture Companion: EAP</h2>
++      <p>The Enterprise Architecture Playbook provides the strategic structure behind EAMP visual maps.</p>
++      <a href="/enterprise-architecture-playbook.html" class="cta-button cta-primary">View EAP</a>
++    </section>
++
++    <section class="eamp-egf-upgrade">
++      <h2>Governance Companion: EGF</h2>
++      <p>The Enterprise Governance Framework adds accountability and decision rights context to map artifacts.</p>
++      <a href="/enterprise-governance-framework.html" class="cta-button cta-primary">View EGF</a>
++    </section>
++
++    <section class="eamp-eom-upgrade">
++      <h2>Operating Companion: EOM</h2>
++      <p>The Enterprise Operating Model links map visuals to operating cadence and workflow execution.</p>
++      <a href="/enterprise-operating-model.html" class="cta-button cta-primary">View EOM</a>
++    </section>
++
++    <section class="eamp-erf-upgrade">
++      <h2>Risk Companion: ERF</h2>
++      <p>The Enterprise Risk Framework overlays risk context and mitigation pathways onto visual maps.</p>
++      <a href="/enterprise-risk-framework.html" class="cta-button cta-primary">View ERF</a>
++    </section>
++
++    <section class="eamp-evas-upgrade">
++      <h2>Vendor Companion: EVAS</h2>
++      <p>The Enterprise Vendor Alignment System adds vendor coherence signals to architecture map narratives.</p>
++      <a href="/enterprise-vendor-alignment-system.html" class="cta-button cta-primary">View EVAS</a>
++    </section>
++
++    <section class="eamp-ees-upgrade">
++      <h2>Execution Companion: EES</h2>
++      <p>The Enterprise Execution Stabilizer connects maps to execution stability and anti-firefighting workflows.</p>
++      <a href="/enterprise-execution-stabilizer.html" class="cta-button cta-primary">View EES</a>
++    </section>
++  </main>
++
++  <footer class="global-footer">
++    <p>┬⌐ 2026 Codex Labs ΓÇö Substrate architecture for founders</p>
++    <ul class="footer-links">
++      <li><a href="/index.html">Home</a></li>
++      <li><a href="/products.html">Products</a></li>
++      <li><a href="/pricing.html">Pricing</a></li>
++      <li><a href="/modules.html">Modules</a></li>
++      <li><a href="/affiliates.html">Affiliates</a></li>
++    </ul>
++  </footer>
++</body>
++</html>
