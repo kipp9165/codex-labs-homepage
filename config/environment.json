@@ -1,1 +1,8 @@
-{"name":"production","basePath":".","version":"1.0.0"}
+{
+	"name": "production",
+	"mode": "static",
+	"isProduction": true,
+	"isStatic": true,
+	"basePath": ".",
+	"version": "1.0.0"
+}

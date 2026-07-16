@@ -1,1 +1,28 @@
-{"routes":[{"path":"index.html","view":"home"},{"path":"modules.html","view":"modules"},{"path":"modules/{slug}.html","view":"module-detail"}]}
+{
+	"routes": [
+		{
+			"path": "index.html",
+			"view": "home"
+		},
+		{
+			"path": "modules.html",
+			"view": "modules"
+		},
+		{
+			"path": "modules/{slug}.html",
+			"view": "module-detail"
+		}
+	],
+	"moduleDetailPages": [
+		"modules/scroll-tier.html",
+		"modules/license-tier.html",
+		"modules/layer-tier.html",
+		"modules/pack-tier.html",
+		"modules/substrate-tier.html",
+		"modules/bundle-tier.html",
+		"modules/enterprise-tier.html",
+		"modules/meta-tier.html",
+		"modules/sovereign-tier.html",
+		"modules/totalization-tier.html"
+	]
+}
