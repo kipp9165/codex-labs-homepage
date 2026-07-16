@@ -1,0 +1,1 @@
+# Assets Placeholder`n`nThis directory intentionally contains placeholders only.

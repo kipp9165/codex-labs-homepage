@@ -1,0 +1,1 @@
+{"routes":[{"path":"index.html","view":"home"},{"path":"modules.html","view":"modules"},{"path":"modules/{slug}.html","view":"module-detail"}]}
