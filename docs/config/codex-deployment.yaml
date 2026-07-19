@@ -1,0 +1,95 @@
+codex_deployment:
+  version: "1.0"
+  mode: "governed-deployment"
+  substrate: "codex-agent-unified.yaml"
+  execution_config: "codex-agent-runtime.yaml"
+
+  authority_surface:
+    deploy_authority:
+      id: "HUMAN-PRIMARY"
+      version: "v12"
+      requires_signature: true
+      binds:
+        - "deployment_scope"
+        - "hash_execution_config"
+        - "hash_substrate"
+        - "authority_id"
+        - "authority_version"
+        - "decision_outcome"
+
+  deployment_scope:
+    allowed:
+      - "static-site-update"
+      - "artifact-publication"
+      - "registry-update"
+      - "scroll-canon-update"
+    prohibited:
+      - "runtime-activation"
+      - "agent-autonomy"
+      - "governance-mutation"
+      - "execution-without-A3"
+
+  invariants:
+    - "deployment_must_reference_execution_batch"
+    - "deployment_must_reference_substrate_batch"
+    - "deployment_must_produce_D0"
+    - "deployment_never_invokes_runtime"
+    - "deployment_never_mutates_governance"
+    - "deployment_never_bypasses_authority"
+
+  artifact_chain:
+    sequence:
+      - "D0_deployment_intent"
+      - "D1_deployment_clarity"
+      - "D2_deployment_governance"
+      - "D3_deployment_approval"
+      - "D4_deployment_action"
+      - "D5_deployment_diagnostic"
+    rules:
+      canonical_serialization: true
+      hash_prev_required: true
+      version_bound: true
+      chain_head_commitment: "D5"
+
+  refusal_paths:
+    invalid_authority:
+      terminate_before_action: true
+      require_receipt: true
+    prohibited_scope:
+      terminate_before_action: true
+      require_receipt: true
+    substrate_mismatch:
+      terminate_before_action: true
+      require_receipt: true
+    execution_config_mismatch:
+      terminate_before_action: true
+      require_receipt: true
+
+  deployment_action:
+    static_site_update:
+      requires:
+        - "D3_deployment_approval"
+        - "valid_scope"
+      produces: "D4_deployment_action"
+      invariants:
+        - "no_runtime_activation"
+        - "no_governance_mutation"
+        - "no_agent_execution"
+
+  diagnostics:
+    non_authoritative: true
+    rules:
+      - "diagnostics_observe_never_authorize"
+      - "deployment_diagnostics_must_log_receipts"
+      - "chain_head_commitment_must_anchor_D5"
+
+  ledger:
+    anchor_chain_head: true
+    chain_head_source: "D5"
+    public_registry_required: true
+    refusal_receipts_immutable: true
+
+  motto:
+    - "Integrity is not optional."
+    - "Coherence is not negotiable."
+    - "Governance is human."
