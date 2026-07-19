@@ -1,107 +1,92 @@
-# =========================================================
-# CODEX LABS OS - ONE TRUE FINAL EXECUTION BATCH (v1.0)
-# VS Code Agent Runtime Configuration (Non-Drifting, Governance-Bound)
-# =========================================================
-
-codex_agent_runtime:
+codex_agent:
   version: "1.0"
-  mode: "governed-execution"
-  substrate_config_path: "docs/config/codex-agent-unified.yaml"
+  substrate: "Codex Labs OS - Structural Layer"
+  invariants:
+    - "No bypass of governance layer"
+    - "No reinterpretation of authority"
+    - "No mutation without artifact chain"
+    - "No execution without human approval"
+    - "Diagnostics are non-authoritative"
+
+  artifact_chain:
+    sequence:
+      - A0: "Intent Artifact"
+      - A1: "Clarity Artifact"
+      - A2: "Governance Artifact"
+      - A3: "Human Approval Artifact"
+      - A4: "Execution Artifact"
+      - A5: "Diagnostic Artifact"
+    rules:
+      - "Each artifact must reference hash_prev"
+      - "Each artifact must be canonically serialized"
+      - "Each artifact must be version-bound"
+      - "Chain-head commitment required at A5"
 
   authority_surface:
     human_primary:
       id: "HUMAN-PRIMARY"
       version: "v12"
-      require_explicit_approval: true
-      bind_payload:
-        include:
-          - "hash_A2_governance"
-          - "approval_scope"
-          - "authority_id"
-          - "authority_version"
-          - "decision_outcome"
-      signature_required: true
+      admissibility:
+        - "Explicit approval required"
+        - "Scope must match governance"
+        - "Signature binds hash(A2)"
+        - "No expired or invalid signatures"
 
-  artifact_chain_enforcement:
-    enabled: true
-    sequence:
-      - "A0_intent"
-      - "A1_clarity"
-      - "A2_governance"
-      - "A3_human_approval"
-      - "A4_execution"
-      - "A5_diagnostic"
-    rules:
-      require_hash_prev: true
-      require_hash_self: true
-      require_chain_head_commitment: "A5"
-      schema_version: "v1"
-      canonical_serialization: true
-
-  refusal_handling:
-    enforce_negative_paths: true
+  refusal_paths:
     inadmissible_intent:
-      terminate_before_execution: true
-      require_refusal_receipt: true
-      require_diagnostic_observation: true
-    approval_scope_mismatch:
-      terminate_before_execution: true
-    invalid_signature:
-      terminate_before_execution: true
+      chain:
+        - "A0-Intent"
+        - "A1-Clarity"
+        - "A2-Refusal"
+        - "A3-Refusal-Receipt"
+        - "A4-Diagnostic-Refusal"
+      enforcement:
+        - "No bind"
+        - "No mutation"
+        - "No alternate route"
+        - "No retry inheriting denied standing"
 
-  execution_paths:
-    deterministic-path-17:
-      enabled: true
-      requires:
-        - "A3_human_approval"
-        - "approved_scope"
-      invariants:
-        - "budget_increase_applied_only_under_approved_scope"
-        - "no_mutation_outside_allowed_boundary"
-        - "execution_never_writes_governance"
-      produce_artifact: "A4_execution"
+  execution_layer:
+    deterministic_paths:
+      - id: "deterministic-path-17"
+        invariants:
+          - "budget_increase_applied only under approved scope"
+          - "no mutation outside allowed boundary"
+          - "execution never writes governance"
+        constraints:
+          - "execution must reference A3"
+          - "execution must preserve invariants"
+          - "execution must produce A4"
 
-  diagnostics_runtime:
-    enabled: true
+  diagnostics:
     non_authoritative: true
     rules:
-      - "diagnostics_observe_never_authorize"
-      - "coherence_check_cannot_be_used_as_approval_input"
-      - "drift_indicators_must_trigger_review_not_execution"
-      - "structural_receipts_must_be_persisted"
+      - "Diagnostics observe, never authorize"
+      - "coherence_check cannot influence A2 or A3"
+      - "drift_indicators must be logged"
+      - "structural_receipts must be preserved"
 
-  ledger_integration:
-    enabled: true
-    anchor_chain_head: true
-    chain_head_source: "A5_diagnostic"
-    public_registry_required: true
-    refusal_receipts_immutable: true
+  ledger:
+    integrity:
+      - "hash(A5) anchors chain"
+      - "tamper-evident continuity"
+      - "public registry entry required"
+      - "refusal receipts must be immutable"
 
-  founder_onboarding_hooks:
-    enabled: true
-    sequence:
-      - "F0_discovery"
-      - "F1_contact"
-      - "F2_structural_exchange"
-      - "F3_governance_evaluation"
-      - "F4_founder_approval"
-      - "F5_portfolio_entry"
-    refusal_sequence:
-      - "F3_refusal"
-      - "F4_refusal"
-      - "F5_refusal_diagnostic"
-
-  safety_guards:
-    prohibit_self_modifying_governance: true
-    prohibit_unlogged_mutations: true
-    prohibit_execution_without_artifact_chain: true
-    prohibit_bypass_representation_becoming_executable: true
+  founder_protocol:
+    onboarding:
+      - "F0: Discovery"
+      - "F1: Contact"
+      - "F2: Structural Exchange"
+      - "F3: Governance Evaluation"
+      - "F4: Founder Approval"
+      - "F5: Portfolio Entry"
+    refusal:
+      - "F3-Refusal"
+      - "F4-Refusal"
+      - "F5-Refusal-Diagnostic"
 
   motto:
     - "Integrity is not optional."
     - "Coherence is not negotiable."
     - "Governance is human."
-
-# =========================================================
-# END OF ONE TRUE FINAL EXECUTION BATCH
-# =========================================================
