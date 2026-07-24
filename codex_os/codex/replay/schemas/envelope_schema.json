@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "properties": {
+    "surface": { "type": "string" },
+    "operation_class": { "type": "string" },
+    "risk_class": { "type": "string" },
+    "irreversibility": { "type": "string" }
+  },
+  "required": ["surface", "operation_class", "risk_class", "irreversibility"]
+}

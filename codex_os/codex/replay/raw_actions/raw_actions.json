@@ -1,0 +1,147 @@
+[
+  {
+    "id": "act_001",
+    "operation": "read",
+    "path": "/project/README.md",
+    "args": {}
+  },
+  {
+    "id": "act_002",
+    "operation": "list",
+    "path": "/project/",
+    "args": {}
+  },
+  {
+    "id": "act_003",
+    "operation": "read",
+    "path": "/project/config.yaml",
+    "args": {}
+  },
+  {
+    "id": "act_004",
+    "operation": "read",
+    "path": "/project/src/main.py",
+    "args": {}
+  },
+  {
+    "id": "act_005",
+    "operation": "list",
+    "path": "/project/src/",
+    "args": {}
+  },
+
+  {
+    "id": "act_010",
+    "operation": "read",
+    "path": "/logs/runtime.log",
+    "args": {}
+  },
+  {
+    "id": "act_011",
+    "operation": "read",
+    "path": "/logs/errors.log",
+    "args": {}
+  },
+  {
+    "id": "act_012",
+    "operation": "list",
+    "path": "/logs/",
+    "args": {}
+  },
+
+  {
+    "id": "act_020",
+    "operation": "read",
+    "path": "/secrets/api_keys.env",
+    "args": {}
+  },
+  {
+    "id": "act_021",
+    "operation": "read",
+    "path": "/secrets/db_credentials.env",
+    "args": {}
+  },
+  {
+    "id": "act_022",
+    "operation": "write",
+    "path": "/secrets/api_keys.env",
+    "args": { "mode": "append" }
+  },
+  {
+    "id": "act_023",
+    "operation": "write",
+    "path": "/secrets/db_credentials.env",
+    "args": { "mode": "overwrite" }
+  },
+
+  {
+    "id": "act_030",
+    "operation": "read",
+    "path": "/system/config/system.conf",
+    "args": {}
+  },
+  {
+    "id": "act_031",
+    "operation": "write",
+    "path": "/system/config/system.conf",
+    "args": { "mode": "overwrite" }
+  },
+  {
+    "id": "act_032",
+    "operation": "execute",
+    "path": "/system/scripts/maintenance.sh",
+    "args": {}
+  },
+
+  {
+    "id": "act_040",
+    "operation": "read",
+    "path": "/project/.env",
+    "args": {}
+  },
+  {
+    "id": "act_041",
+    "operation": "write",
+    "path": "/project/.env",
+    "args": { "mode": "append" }
+  },
+
+  {
+    "id": "act_050",
+    "operation": "delete",
+    "path": "/project/tmp/cache.dat",
+    "args": {}
+  },
+  {
+    "id": "act_051",
+    "operation": "delete",
+    "path": "/logs/tmp.log",
+    "args": {}
+  },
+
+  {
+    "id": "act_060",
+    "operation": "execute",
+    "path": "/project/scripts/deploy.sh",
+    "args": {}
+  },
+  {
+    "id": "act_061",
+    "operation": "execute",
+    "path": "/project/scripts/migrate.sh",
+    "args": {}
+  },
+
+  {
+    "id": "act_070",
+    "operation": "read",
+    "path": "/project/docs/spec.md",
+    "args": {}
+  },
+  {
+    "id": "act_071",
+    "operation": "write",
+    "path": "/project/docs/spec.md",
+    "args": { "mode": "append" }
+  }
+]

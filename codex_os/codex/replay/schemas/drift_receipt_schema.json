@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "drift_id": { "type": "string" },
+    "timestamp": { "type": "string" },
+    "raw_action": { "type": "object" },
+    "prior_envelope": { "type": "object" },
+    "new_envelope": { "type": "object" },
+    "delta": { "type": "object" },
+    "prior_disposition": { "type": "string" },
+    "new_disposition": { "type": "string" }
+  },
+  "required": [
+    "drift_id",
+    "timestamp",
+    "raw_action",
+    "prior_envelope",
+    "new_envelope",
+    "delta"
+  ]
+}
