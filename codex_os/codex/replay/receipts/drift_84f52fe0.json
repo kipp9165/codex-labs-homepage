@@ -1,0 +1,27 @@
+{
+  "drift_id": "drift_84f52fe0",
+  "timestamp": "2026-07-25T17:34:47.299241",
+  "raw_action": {
+    "id": "act_010",
+    "operation": "read",
+    "path": "/logs/runtime.log",
+    "args": {}
+  },
+  "prior_envelope": {
+    "surface": "logs",
+    "operation_class": "read",
+    "risk_class": "medium",
+    "irreversibility": "reversible"
+  },
+  "new_envelope": {
+    "surface": "logs",
+    "operation_class": "read",
+    "risk_class": "low",
+    "irreversibility": "reversible"
+  },
+  "delta": {
+    "risk_class": "medium -> low"
+  },
+  "prior_disposition": "ALLOW",
+  "new_disposition": "ALLOW"
+}

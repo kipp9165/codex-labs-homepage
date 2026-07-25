@@ -1,0 +1,9 @@
+{
+    "client_build_pipeline": "v1",
+    "exports": [
+        "client_pipeline.build_client_replay_bundle",
+        "client_pipeline.build_client_drift_bundle",
+        "client_pipeline.build_client_full_bundle"
+    ],
+    "version": "0.8"
+}

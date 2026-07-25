@@ -1,0 +1,15 @@
+{
+    "finalization_layer": "Codex OS Finalization Layer",
+    "version": "1.5",
+    "components": [
+        "finalization_controller",
+        "finalization_api",
+        "finalization_registry",
+        "finalization_invariants"
+    ],
+    "entrypoints": [
+        "finalization_api.os_finalize",
+        "finalization_api.os_finalize_shutdown"
+    ],
+    "version_stamp": "CodexOS-1.5"
+}

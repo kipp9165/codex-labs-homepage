@@ -1,0 +1,29 @@
+{
+  "drift_id": "drift_8d04acaf",
+  "timestamp": "2026-07-25T17:50:34.424519",
+  "raw_action": {
+    "id": "act_023",
+    "operation": "write",
+    "path": "/secrets/db_credentials.env",
+    "args": {
+      "mode": "overwrite"
+    }
+  },
+  "prior_envelope": {
+    "surface": "secrets",
+    "operation_class": "write",
+    "risk_class": "high",
+    "irreversibility": "irreversible"
+  },
+  "new_envelope": {
+    "surface": "secrets",
+    "operation_class": "write",
+    "risk_class": "critical",
+    "irreversibility": "irreversible"
+  },
+  "delta": {
+    "risk_class": "high -> critical"
+  },
+  "prior_disposition": "DENY",
+  "new_disposition": "DENY"
+}

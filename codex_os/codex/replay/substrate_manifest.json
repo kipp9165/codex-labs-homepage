@@ -1,0 +1,15 @@
+{
+    "substrate": "Codex OS Replay Battery",
+    "version": "0.9",
+    "components": [
+        "replay",
+        "drift",
+        "governance",
+        "client_pipeline",
+        "substrate_controller"
+    ],
+    "entrypoints": [
+        "substrate_controller.run_substrate",
+        "substrate_controller.run_client_substrate"
+    ]
+}

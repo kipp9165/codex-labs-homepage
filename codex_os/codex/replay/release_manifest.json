@@ -1,0 +1,15 @@
+{
+    "release": "Codex OS Replay Battery RC1",
+    "version": "1.0",
+    "entrypoints": [
+        "release_api.release_boot",
+        "release_api.release_shutdown"
+    ],
+    "components": [
+        "lifecycle_manager",
+        "health_checks",
+        "diagnostics",
+        "release_api",
+        "release_registry"
+    ]
+}

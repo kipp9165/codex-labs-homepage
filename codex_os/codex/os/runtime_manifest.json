@@ -1,0 +1,15 @@
+{
+    "runtime_layer": "Codex OS Runtime Layer",
+    "version": "1.3",
+    "components": [
+        "runtime_controller",
+        "runtime_state_machine",
+        "runtime_api",
+        "runtime_registry",
+        "runtime_invariants"
+    ],
+    "entrypoints": [
+        "runtime_api.os_runtime",
+        "runtime_api.os_runtime_shutdown"
+    ]
+}

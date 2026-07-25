@@ -1,0 +1,430 @@
+{
+  "run_id": "run_0005",
+  "timestamp": "2026-07-25T17:51:11.354672",
+  "entries": [
+    {
+      "raw_action": {
+        "id": "act_001",
+        "operation": "read",
+        "path": "/project/README.md",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_002",
+        "operation": "list",
+        "path": "/project/",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_003",
+        "operation": "read",
+        "path": "/project/config.yaml",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_004",
+        "operation": "read",
+        "path": "/project/src/main.py",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_005",
+        "operation": "list",
+        "path": "/project/src/",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_010",
+        "operation": "read",
+        "path": "/logs/runtime.log",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "logs",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_011",
+        "operation": "read",
+        "path": "/logs/errors.log",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "logs",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_012",
+        "operation": "list",
+        "path": "/logs/",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "logs",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_020",
+        "operation": "read",
+        "path": "/secrets/api_keys.env",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "secrets",
+        "operation_class": "read",
+        "risk_class": "high",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_021",
+        "operation": "read",
+        "path": "/secrets/db_credentials.env",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "secrets",
+        "operation_class": "read",
+        "risk_class": "high",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_022",
+        "operation": "write",
+        "path": "/secrets/api_keys.env",
+        "args": {
+          "mode": "append"
+        }
+      },
+      "envelope": {
+        "surface": "secrets",
+        "operation_class": "write",
+        "risk_class": "high",
+        "irreversibility": "irreversible"
+      },
+      "disposition": {
+        "decision": "DENY",
+        "reason": "write to secrets"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_023",
+        "operation": "write",
+        "path": "/secrets/db_credentials.env",
+        "args": {
+          "mode": "overwrite"
+        }
+      },
+      "envelope": {
+        "surface": "secrets",
+        "operation_class": "write",
+        "risk_class": "high",
+        "irreversibility": "irreversible"
+      },
+      "disposition": {
+        "decision": "DENY",
+        "reason": "write to secrets"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_030",
+        "operation": "read",
+        "path": "/system/config/system.conf",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "system",
+        "operation_class": "read",
+        "risk_class": "high",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_031",
+        "operation": "write",
+        "path": "/system/config/system.conf",
+        "args": {
+          "mode": "overwrite"
+        }
+      },
+      "envelope": {
+        "surface": "system",
+        "operation_class": "write",
+        "risk_class": "high",
+        "irreversibility": "irreversible"
+      },
+      "disposition": {
+        "decision": "DENY",
+        "reason": "irreversible elevated risk"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_032",
+        "operation": "execute",
+        "path": "/system/scripts/maintenance.sh",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "system",
+        "operation_class": "execute",
+        "risk_class": "high",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_040",
+        "operation": "read",
+        "path": "/project/.env",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_041",
+        "operation": "write",
+        "path": "/project/.env",
+        "args": {
+          "mode": "append"
+        }
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "write",
+        "risk_class": "low",
+        "irreversibility": "irreversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_050",
+        "operation": "delete",
+        "path": "/project/tmp/cache.dat",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "write",
+        "risk_class": "low",
+        "irreversibility": "irreversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_051",
+        "operation": "delete",
+        "path": "/logs/tmp.log",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "logs",
+        "operation_class": "write",
+        "risk_class": "low",
+        "irreversibility": "irreversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_060",
+        "operation": "execute",
+        "path": "/project/scripts/deploy.sh",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "execute",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_061",
+        "operation": "execute",
+        "path": "/project/scripts/migrate.sh",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "execute",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_070",
+        "operation": "read",
+        "path": "/project/docs/spec.md",
+        "args": {}
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "read",
+        "risk_class": "low",
+        "irreversibility": "reversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    },
+    {
+      "raw_action": {
+        "id": "act_071",
+        "operation": "write",
+        "path": "/project/docs/spec.md",
+        "args": {
+          "mode": "append"
+        }
+      },
+      "envelope": {
+        "surface": "project",
+        "operation_class": "write",
+        "risk_class": "low",
+        "irreversibility": "irreversible"
+      },
+      "disposition": {
+        "decision": "ALLOW",
+        "reason": "meets thresholds"
+      }
+    }
+  ]
+}

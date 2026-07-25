@@ -1,0 +1,15 @@
+{
+    "product": "Codex OS Replay Battery",
+    "version": "0.7",
+    "layers": [
+        "deterministic replay",
+        "drift engine v1",
+        "governance substrate v1",
+        "productization layer v1"
+    ],
+    "exports": [
+        "replay_api",
+        "drift_api",
+        "governance_api"
+    ]
+}

@@ -1,3 +1,6 @@
+from envelope_validator import validate_envelope
+
+
 def classify(raw_action: dict) -> dict:
     """
     Convert a raw action into a governance envelope.
@@ -23,11 +26,11 @@ def classify(raw_action: dict) -> dict:
         operation_class = "execute"
 
     if surface == "secrets":
-        risk_class = "critical"
+        risk_class = "high"
     elif surface == "system":
         risk_class = "high"
     elif surface == "logs":
-        risk_class = "medium"
+        risk_class = "low"
     else:
         risk_class = "low"
 
@@ -35,6 +38,15 @@ def classify(raw_action: dict) -> dict:
         irreversibility = "irreversible"
     else:
         irreversibility = "reversible"
+
+    validate_envelope(
+        {
+            "surface": surface,
+            "operation_class": operation_class,
+            "risk_class": risk_class,
+            "irreversibility": irreversibility,
+        }
+    )
 
     return {
         "surface": surface,

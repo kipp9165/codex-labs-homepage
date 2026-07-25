@@ -1,19 +1,14 @@
-def score(envelope: dict) -> dict:
-    """
-    Apply Codex's fixed threshold table to produce a disposition.
-    """
-    surface = envelope["surface"]
-    risk = envelope["risk_class"]
-    irreversible = envelope["irreversibility"]
-    op_class = envelope["operation_class"]
-
-    if surface == "secrets" and op_class == "write":
-        return {"decision": "DENY", "reason": "write to secrets"}
+def score_envelope(env):
+    risk = env["risk_class"]
+    op = env["operation_class"]
 
     if risk == "critical":
-        return {"decision": "DENY", "reason": "critical risk"}
+        return 100
+    if risk == "high" and op == "write":
+        return 80
+    if risk == "high" and op == "execute":
+        return 60
+    if risk == "low":
+        return 20
 
-    if irreversible == "irreversible" and risk in ("high", "medium"):
-        return {"decision": "DENY", "reason": "irreversible elevated risk"}
-
-    return {"decision": "ALLOW", "reason": "meets thresholds"}
+    return 40

@@ -1,0 +1,17 @@
+{
+    "os": "Codex OS",
+    "version": "1.1",
+    "components": [
+        "replay_battery",
+        "drift_engine",
+        "governance_substrate",
+        "client_pipeline",
+        "unified_substrate",
+        "release_candidate",
+        "os_controller"
+    ],
+    "entrypoints": [
+        "os_controller.os_boot",
+        "os_controller.os_shutdown"
+    ]
+}

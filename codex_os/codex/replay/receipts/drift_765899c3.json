@@ -1,0 +1,27 @@
+{
+  "drift_id": "drift_765899c3",
+  "timestamp": "2026-07-25T17:34:47.299241",
+  "raw_action": {
+    "id": "act_051",
+    "operation": "delete",
+    "path": "/logs/tmp.log",
+    "args": {}
+  },
+  "prior_envelope": {
+    "surface": "logs",
+    "operation_class": "write",
+    "risk_class": "medium",
+    "irreversibility": "irreversible"
+  },
+  "new_envelope": {
+    "surface": "logs",
+    "operation_class": "write",
+    "risk_class": "low",
+    "irreversibility": "irreversible"
+  },
+  "delta": {
+    "risk_class": "medium -> low"
+  },
+  "prior_disposition": "DENY",
+  "new_disposition": "ALLOW"
+}

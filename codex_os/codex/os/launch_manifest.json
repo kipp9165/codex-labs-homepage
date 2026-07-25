@@ -1,0 +1,13 @@
+{
+    "launch_layer": "Codex OS Launch Layer",
+    "version": "1.2",
+    "components": [
+        "launch_controller",
+        "os_api",
+        "os_diagnostics"
+    ],
+    "entrypoints": [
+        "launch_controller.launch_os",
+        "launch_controller.terminate_os"
+    ]
+}

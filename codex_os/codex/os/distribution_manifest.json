@@ -1,0 +1,14 @@
+{
+    "distribution_layer": "Codex OS Distribution Layer",
+    "version": "1.4",
+    "components": [
+        "distribution_controller",
+        "distribution_api",
+        "distribution_registry",
+        "distribution_invariants"
+    ],
+    "entrypoints": [
+        "distribution_api.os_distribution",
+        "distribution_api.os_distribution_shutdown"
+    ]
+}

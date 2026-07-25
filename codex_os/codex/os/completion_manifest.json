@@ -1,0 +1,16 @@
+{
+    "completion_layer": "Codex OS Completion Layer",
+    "version": "2.0",
+    "components": [
+        "completion_controller",
+        "completion_api",
+        "completion_registry",
+        "completion_invariants"
+    ],
+    "entrypoints": [
+        "completion_api.os_complete",
+        "completion_api.os_complete_shutdown"
+    ],
+    "version_seal": "CodexOS-v2.0",
+    "integrity_envelope": "CodexOS-Integrity-v2.0"
+}
