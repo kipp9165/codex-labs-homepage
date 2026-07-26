@@ -1,4 +1,4 @@
-from health_checks import run_health_checks
+from codex_os.codex.replay.src.health_checks import run_health_checks
 
 def generate_diagnostics(substrate):
     health = run_health_checks(substrate)

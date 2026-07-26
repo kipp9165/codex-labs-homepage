@@ -1,19 +1,19 @@
 from pathlib import Path
 
-from classifier_pass import classify as classify_action
-from deterministic_replay import replay
-from disposition_engine import compute_disposition
-from drift_dashboard import generate_dashboard
-from drift_detector import detect_drift, load_run, store_receipts
-from drift_interpreter import interpret_drift
-from governance_disposition import compute_governance_disposition
-from governance_envelopes import build_governance_envelope
-from governance_invariants import assert_governance_layer
-from invariants import assert_disposition_determinism, assert_envelope_stability
-from module_registry import get_module
-from raw_actions import load_raw_actions
-from scoring_pass import score_envelope
-from snapshot_store import store_run
+from codex_os.codex.replay.src.classifier_pass import classify as classify_action
+from codex_os.codex.replay.src.deterministic_replay import replay
+from codex_os.codex.replay.src.disposition_engine import compute_disposition
+from codex_os.codex.replay.src.drift_dashboard import generate_dashboard
+from codex_os.codex.replay.src.drift_detector import detect_drift, load_run, store_receipts
+from codex_os.codex.replay.src.drift_interpreter import interpret_drift
+from codex_os.codex.replay.src.governance_disposition import compute_governance_disposition
+from codex_os.codex.replay.src.governance_envelopes import build_governance_envelope
+from codex_os.codex.replay.src.governance_invariants import assert_governance_layer
+from codex_os.codex.replay.src.invariants import assert_disposition_determinism, assert_envelope_stability
+from codex_os.codex.replay.src.module_registry import get_module
+from codex_os.codex.replay.src.raw_actions import load_raw_actions
+from codex_os.codex.replay.src.scoring_pass import score_envelope
+from codex_os.codex.replay.src.snapshot_store import store_run
 
 
 def run_replay():

@@ -1,15 +1,15 @@
-from replay_api import run_replay
-from drift_api import get_drift_state
-from governance_api import apply_governance
-from client_registry import get_client_module
-from codex_os.os.completion_registry import get_completion_module
-from codex_os.os.distribution_registry import get_distribution_module
-from codex_os.os.finalization_registry import get_finalization_module
-from codex_os.os.launch_registry import get_launch_module
-from codex_os.os.os_registry import get_os_module
-from codex_os.os.runtime_registry import get_runtime_module
-from release_registry import get_release_module
-from substrate_registry import get_substrate
+from codex_os.codex.replay.src.replay_api import run_replay
+from codex_os.codex.replay.src.drift_api import get_drift_state
+from codex_os.codex.replay.src.governance_api import apply_governance
+from codex_os.codex.replay.src.client_registry import get_client_module
+from codex_os.codex.os.completion_registry import get_completion_module
+from codex_os.codex.os.distribution_registry import get_distribution_module
+from codex_os.codex.os.finalization_registry import get_finalization_module
+from codex_os.codex.os.launch_registry import get_launch_module
+from codex_os.codex.os.os_registry import get_os_module
+from codex_os.codex.os.runtime_registry import get_runtime_module
+from codex_os.codex.replay.src.release_registry import get_release_module
+from codex_os.codex.replay.src.substrate_registry import get_substrate
 
 REGISTRY = {
     "replay": run_replay,

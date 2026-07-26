@@ -1,5 +1,5 @@
 from drift_summary import summarize_receipts
-from drift_dashboard import generate_dashboard
+from codex_os.codex.replay.src.drift_dashboard import generate_dashboard
 
 def run_drift_engine(receipts_dir):
     summary = summarize_receipts(receipts_dir)

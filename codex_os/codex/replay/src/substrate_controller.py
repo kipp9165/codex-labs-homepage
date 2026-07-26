@@ -1,5 +1,5 @@
-from module_registry import get_module
-from client_registry import get_client_module
+from codex_os.codex.replay.src.module_registry import get_module
+from codex_os.codex.replay.src.client_registry import get_client_module
 
 def run_substrate(raw_actions):
     replay = get_module("replay")

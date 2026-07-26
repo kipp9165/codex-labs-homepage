@@ -1,5 +1,5 @@
-from substrate_controller import run_substrate
-from substrate_invariants import assert_substrate_integrity
+from codex_os.codex.replay.src.substrate_controller import run_substrate
+from codex_os.codex.replay.src.substrate_invariants import assert_substrate_integrity
 
 def substrate_boot(raw_actions):
     substrate = run_substrate(raw_actions)

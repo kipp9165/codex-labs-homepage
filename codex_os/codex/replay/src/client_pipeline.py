@@ -1,6 +1,6 @@
-from replay_api import run_replay
-from drift_api import get_drift_state
-from governance_api import apply_governance
+from codex_os.codex.replay.src.replay_api import run_replay
+from codex_os.codex.replay.src.drift_api import get_drift_state
+from codex_os.codex.replay.src.governance_api import apply_governance
 
 def build_client_replay_bundle(raw_actions):
     envelopes = run_replay(raw_actions)
