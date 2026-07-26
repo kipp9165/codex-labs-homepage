@@ -7,7 +7,7 @@ services:
     plan: starter
     region: oregon
     pythonVersion: 3.12.3
-    startCommand: "python service/codex_os_service_launcher.py"
+    startCommand: "python -m service.codex_os_service_launcher"
     autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
