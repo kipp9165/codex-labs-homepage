@@ -1,0 +1,15 @@
+{
+    "service": "Codex OS Runtime Service v1",
+    "version": "1.0",
+    "components": [
+        "codex_os_service",
+        "codex_os_service_launcher"
+    ],
+    "entrypoints": [
+        "/os_boot",
+        "/os_runtime",
+        "/os_distribution",
+        "/os_finalize",
+        "/os_complete"
+    ]
+}

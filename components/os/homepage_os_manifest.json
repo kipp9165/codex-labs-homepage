@@ -1,0 +1,16 @@
+{
+    "homepage_integration": "Codex OS Homepage Integration v1",
+    "version": "1.0",
+    "components": [
+        "homepage_os_client",
+        "homepage_os_routes",
+        "homepage_os_server",
+        "homepage_os_panel"
+    ],
+    "public_surface": [
+        "status",
+        "diagnostics",
+        "version",
+        "integrity"
+    ]
+}

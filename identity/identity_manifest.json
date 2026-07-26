@@ -1,0 +1,16 @@
+{
+    "identity_layer": "Codex OS Identity Layer v1",
+    "version": "1.0",
+    "components": [
+        "identity_envelope",
+        "identity_signature",
+        "identity_registry",
+        "identity_controller"
+    ],
+    "features": [
+        "Identity envelope",
+        "Identity signature",
+        "Identity registry",
+        "Identity verification"
+    ]
+}

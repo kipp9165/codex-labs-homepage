@@ -1,0 +1,16 @@
+{
+    "governance": "Codex OS Governance Layer v1",
+    "version": "1.0",
+    "components": [
+        "governance_rules",
+        "governance_invariants",
+        "governance_controller",
+        "governance_registry"
+    ],
+    "features": [
+        "Governance rules",
+        "Governance invariants",
+        "Governance enforcement",
+        "Governance registry"
+    ]
+}

@@ -1,18 +1,14 @@
 services:
-  - type: static_site
-    name: codex-labs-site
-    env: static
-    publishDir: public
-    buildCommand: "node scripts/generate-checkout-urls-from-csv.cjs"
-
   - type: web
-    name: codex-labs-webhook
-    env: node
-    rootDir: webhook
-    buildCommand: npm install
-    startCommand: npm start
+    name: codex-os-runtime-service
+    env: python
+    plan: starter
+    region: oregon
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python service/codex_os_service_launcher.py"
+    autoDeploy: true
     envVars:
-      - key: STRIPE_SECRET_KEY
-        sync: false
-      - key: STRIPE_WEBHOOK_SECRET
-        sync: false
+      - key: PYTHON_VERSION
+        value: 3.11
+    healthCheckPath: "/os_boot"
+    runtime: python3

@@ -1,0 +1,17 @@
+{
+    "developer_console": "Codex OS Developer Console v1",
+    "version": "1.0",
+    "components": [
+        "developer_console.html",
+        "developer_console.js",
+        "developer_console_routes"
+    ],
+    "features": [
+        "OS status viewer",
+        "Diagnostics viewer",
+        "Version seal viewer",
+        "Integrity envelope viewer",
+        "Public API explorer",
+        "SDK examples"
+    ]
+}

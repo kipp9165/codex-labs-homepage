@@ -1,0 +1,17 @@
+{
+    "public_api": "Codex OS Public API v1",
+    "version": "1.0",
+    "components": [
+        "public_api_controller",
+        "public_api_schemas",
+        "public_api_routes",
+        "public_api_registry"
+    ],
+    "entrypoints": [
+        "/api/v1/boot",
+        "/api/v1/runtime",
+        "/api/v1/distribution",
+        "/api/v1/finalize",
+        "/api/v1/complete"
+    ]
+}

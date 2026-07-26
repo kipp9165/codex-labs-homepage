@@ -1,0 +1,38 @@
+<div id="codex-developer-console">
+    <h1>Codex OS Developer Console v1</h1>
+
+    <section>
+        <h2>OS Status</h2>
+        <pre id="console-status"></pre>
+    </section>
+
+    <section>
+        <h2>Diagnostics</h2>
+        <pre id="console-diagnostics"></pre>
+    </section>
+
+    <section>
+        <h2>Version Seal</h2>
+        <pre id="console-version"></pre>
+    </section>
+
+    <section>
+        <h2>Integrity Envelope</h2>
+        <pre id="console-integrity"></pre>
+    </section>
+
+    <section>
+        <h2>Public API Explorer</h2>
+        <div id="console-api-list"></div>
+        <pre id="console-api-response"></pre>
+    </section>
+
+    <section>
+        <h2>SDK Examples</h2>
+        <pre>
+from codex_os_sdk_client import CodexOSClient
+client = CodexOSClient("https://your-cloud-service-url")
+print(client.boot({"action": "start"}))
+        </pre>
+    </section>
+</div>

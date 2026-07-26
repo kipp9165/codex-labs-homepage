@@ -1,0 +1,16 @@
+{
+    "marketplace": "Codex OS Marketplace v1",
+    "version": "1.0",
+    "components": [
+        "marketplace_registry",
+        "marketplace_controller",
+        "marketplace_routes"
+    ],
+    "features": [
+        "Bundle registry",
+        "Collection registry",
+        "Tier registry",
+        "Marketplace overview endpoint",
+        "Bundle details endpoint with governance + identity"
+    ]
+}

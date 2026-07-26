@@ -1,0 +1,12 @@
+{
+"sdk": "Codex OS SDK v1",
+"version": "1.0",
+"components": [
+"codex_os_sdk_client",
+"codex_os_sdk_endpoints",
+"codex_os_sdk_utils"
+],
+"entrypoints": [
+"codex_os_sdk_client.CodexOSClient"
+]
+}
