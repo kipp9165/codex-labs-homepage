@@ -1,4 +1,4 @@
-from envelope_validator import validate_envelope
+from codex_os.codex.replay.src.envelope_validator import validate_envelope
 
 
 def classify(raw_action: dict) -> dict:
