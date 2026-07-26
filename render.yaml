@@ -7,7 +7,6 @@ services:
     plan: starter
     region: oregon
     pythonVersion: 3.12.3
-    buildCommand: "pip install -r requirements.txt"
     startCommand: "python service/codex_os_service_launcher.py"
     autoDeploy: true
     envVars:
