@@ -3,7 +3,7 @@ pythonVersion: 3.12.3
 services:
   - type: web
     name: codex-os-runtime-service
-    env: python
+    env: python3
     plan: starter
     region: oregon
     pythonVersion: 3.12.3
