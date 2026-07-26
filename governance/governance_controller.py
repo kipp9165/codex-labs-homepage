@@ -1,5 +1,6 @@
-from governance_rules import GOVERNANCE_RULES
-from governance_invariants import GOVERNANCE_INVARIANTS
+from governance.governance_rules import GOVERNANCE_RULES
+from governance.governance_invariants import GOVERNANCE_INVARIANTS
+from governance.governance_registry import list_rules, list_invariants
 
 def enforce_rules(os_bundle):
     violations = []
@@ -36,3 +37,19 @@ def enforce_invariants(os_bundle):
             violations.append("integrity_invariant")
 
     return violations
+
+
+def governance_invariants():
+    return list_invariants()
+
+
+def governance_rules():
+    return list_rules()
+
+
+def governance_audit():
+    return {
+        "rules": governance_rules(),
+        "invariants": governance_invariants(),
+        "status": "ok"
+    }

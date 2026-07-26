@@ -40,3 +40,15 @@ def public_complete(payload):
     result["governance_violations"] = violations
     result = apply_identity(result)
     return result
+
+
+def public_status():
+    return {"status": "ok", "service": "public_api"}
+
+
+def public_health():
+    return {"health": "ok", "service": "public_api"}
+
+
+def public_version():
+    return {"version": "v1"}

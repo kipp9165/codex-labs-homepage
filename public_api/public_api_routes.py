@@ -1,12 +1,6 @@
 from fastapi import APIRouter
-from public_api_schemas import PublicPayload, PublicResponse
-from public_api_controller import (
-    public_boot,
-    public_runtime,
-    public_distribution,
-    public_finalize,
-    public_complete
-)
+from public_api.public_api_schemas import PublicPayload, PublicResponse
+from public_api.public_api_controller import *
 
 router = APIRouter(prefix="/api/v1", tags=["Codex OS Public API"])
 
@@ -38,3 +32,18 @@ def complete_route(payload: PublicPayload):
         version=result["version_seal"],
         integrity=result["integrity_envelope"]
     )
+
+
+@router.get("/status")
+def status_route():
+    return public_status()
+
+
+@router.get("/health")
+def health_route():
+    return public_health()
+
+
+@router.get("/version")
+def version_route():
+    return public_version()

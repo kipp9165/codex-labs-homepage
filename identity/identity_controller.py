@@ -1,6 +1,6 @@
-from identity_envelope import generate_identity_envelope
-from identity_signature import generate_identity_signature
-from identity_registry import register_identity
+from identity.identity_envelope import generate_identity_envelope
+from identity.identity_signature import generate_identity_signature
+from identity.identity_registry import register_identity, get_identity
 
 def apply_identity(os_bundle):
     envelope = generate_identity_envelope(os_bundle)
@@ -13,3 +13,20 @@ def apply_identity(os_bundle):
     os_bundle["identity_signature"] = signature
 
     return os_bundle
+
+
+def identity_envelope():
+    seed_bundle = {
+        "version_stamp": "codex-os-identity",
+        "integrity_envelope": "identity-seed"
+    }
+    return {"envelope": generate_identity_envelope(seed_bundle)}
+
+
+def identity_profile(user_id):
+    profile = get_identity(user_id) or {}
+    return {"user_id": user_id, "profile": profile}
+
+
+def identity_permissions(user_id):
+    return {"user_id": user_id, "permissions": ["read", "execute"]}
