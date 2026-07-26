@@ -1,4 +1,4 @@
-from release_api import release_boot, release_shutdown
+from codex_os.codex.replay.src.release_api import release_boot, release_shutdown
 
 RELEASE_REGISTRY = {
     "release_boot": release_boot,

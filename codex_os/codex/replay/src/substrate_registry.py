@@ -1,4 +1,4 @@
-from substrate_api import substrate, client_substrate
+from codex_os.codex.replay.src.substrate_api import substrate, client_substrate
 
 SUBSTRATE_REGISTRY = {
     "substrate": substrate,

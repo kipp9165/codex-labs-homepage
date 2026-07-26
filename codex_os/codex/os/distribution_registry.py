@@ -1,4 +1,4 @@
-from distribution_api import os_distribution, os_distribution_shutdown
+from codex_os.codex.os.distribution_api import os_distribution, os_distribution_shutdown
 
 DISTRIBUTION_REGISTRY = {
     "os_distribution": os_distribution,

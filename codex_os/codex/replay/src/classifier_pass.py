@@ -1,11 +1,12 @@
 from codex_os.codex.replay.src.envelope_validator import validate_envelope
 
 
-def classify(raw_action: dict) -> dict:
+def classify_action(action):
     """
     Convert a raw action into a governance envelope.
     This is the layer that can drift.
     """
+    raw_action = action
     path = raw_action["path"]
 
     if path.startswith("/secrets"):
@@ -54,3 +55,7 @@ def classify(raw_action: dict) -> dict:
         "risk_class": risk_class,
         "irreversibility": irreversibility,
     }
+
+
+def classify(raw_action: dict) -> dict:
+    return classify_action(raw_action)

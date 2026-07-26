@@ -1,4 +1,4 @@
-from os_api import codex_os_boot, codex_os_shutdown
+from codex_os.codex.os.os_api import codex_os_boot, codex_os_shutdown
 
 OS_REGISTRY = {
     "os_boot": codex_os_boot,

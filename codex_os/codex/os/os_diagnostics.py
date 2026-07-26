@@ -1,4 +1,4 @@
-from os_health import check_os_health
+from codex_os.codex.os.os_health import check_os_health
 
 def generate_os_diagnostics(os_state):
     health = check_os_health(os_state)

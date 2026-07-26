@@ -1,5 +1,5 @@
-from os_api import codex_os_boot, codex_os_shutdown
-from os_diagnostics import generate_os_diagnostics
+from codex_os.codex.os.os_api import codex_os_boot, codex_os_shutdown
+from codex_os.codex.os.os_diagnostics import generate_os_diagnostics
 
 def launch_os(raw_actions):
     os_state = codex_os_boot(raw_actions)

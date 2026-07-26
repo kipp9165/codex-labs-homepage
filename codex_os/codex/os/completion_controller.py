@@ -1,5 +1,5 @@
-from finalization_api import os_finalize, os_finalize_shutdown
-from os_diagnostics import generate_os_diagnostics
+from codex_os.codex.os.finalization_api import os_finalize, os_finalize_shutdown
+from codex_os.codex.os.os_diagnostics import generate_os_diagnostics
 
 def complete_os(raw_actions):
     final_bundle = os_finalize(raw_actions)

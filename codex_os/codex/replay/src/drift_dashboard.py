@@ -1,4 +1,4 @@
-from drift_summary import summarize_receipts
+from codex_os.codex.replay.src.drift_summary import summarize_receipts
 
 def generate_dashboard(receipts_dir):
     summaries = summarize_receipts(receipts_dir)

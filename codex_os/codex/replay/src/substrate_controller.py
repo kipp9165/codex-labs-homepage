@@ -1,7 +1,7 @@
 from codex_os.codex.replay.src.module_registry import get_module
 from codex_os.codex.replay.src.client_registry import get_client_module
 
-def run_substrate(raw_actions):
+def run_substrate(raw_actions=None):
     replay = get_module("replay")
     drift = get_module("drift")
     governance = get_module("governance")

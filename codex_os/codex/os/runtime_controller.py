@@ -1,5 +1,5 @@
-from launch_api import os_launch, os_terminate
-from os_diagnostics import generate_os_diagnostics
+from codex_os.codex.os.launch_api import os_launch, os_terminate
+from codex_os.codex.os.os_diagnostics import generate_os_diagnostics
 
 def runtime_step(raw_actions):
     launch_state = os_launch(raw_actions)

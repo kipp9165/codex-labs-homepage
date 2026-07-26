@@ -1,4 +1,4 @@
-from finalization_api import os_finalize, os_finalize_shutdown
+from codex_os.codex.os.finalization_api import os_finalize, os_finalize_shutdown
 
 FINALIZATION_REGISTRY = {
     "os_finalize": os_finalize,

@@ -1,6 +1,6 @@
-from runtime_controller import runtime_step, runtime_shutdown
-from runtime_invariants import assert_runtime_integrity
-from runtime_state_machine import RuntimeStateMachine
+from codex_os.codex.os.runtime_controller import runtime_step, runtime_shutdown
+from codex_os.codex.os.runtime_invariants import assert_runtime_integrity
+from codex_os.codex.os.runtime_state_machine import RuntimeStateMachine
 
 def os_runtime(raw_actions):
     machine = RuntimeStateMachine()

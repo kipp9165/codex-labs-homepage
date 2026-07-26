@@ -1,6 +1,10 @@
+import sys
 from pathlib import Path
 
-from codex_os.codex.replay.src.classifier_pass import classify as classify_action
+if __package__ is None or __package__ == "":
+    sys.path.append(str(Path(__file__).resolve().parents[4]))
+
+from codex_os.codex.replay.src.classifier_pass import classify_action
 from codex_os.codex.replay.src.deterministic_replay import replay
 from codex_os.codex.replay.src.disposition_engine import compute_disposition
 from codex_os.codex.replay.src.drift_dashboard import generate_dashboard

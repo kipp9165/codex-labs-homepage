@@ -1,4 +1,4 @@
-from drift_engine import run_drift_engine
+from codex_os.codex.replay.src.drift_engine import run_drift_engine
 from pathlib import Path
 
 def get_drift_state():

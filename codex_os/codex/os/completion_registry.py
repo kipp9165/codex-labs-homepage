@@ -1,4 +1,4 @@
-from completion_api import os_complete, os_complete_shutdown
+from codex_os.codex.os.completion_api import os_complete, os_complete_shutdown
 
 COMPLETION_REGISTRY = {
     "os_complete": os_complete,

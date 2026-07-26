@@ -1,4 +1,4 @@
-from client_api import client_replay, client_drift, client_full
+from codex_os.codex.replay.src.client_api import client_replay, client_drift, client_full
 
 CLIENT_REGISTRY = {
     "client_replay": client_replay,

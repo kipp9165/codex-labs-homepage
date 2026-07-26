@@ -1,4 +1,4 @@
-from score_invariants import assert_score_stability
+from codex_os.codex.replay.src.score_invariants import assert_score_stability
 
 
 def assert_envelope_stability(prior, new):

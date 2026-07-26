@@ -1,5 +1,5 @@
-from launch_controller import launch_os, terminate_os
-from launch_invariants import assert_launch_integrity
+from codex_os.codex.os.launch_controller import launch_os, terminate_os
+from codex_os.codex.os.launch_invariants import assert_launch_integrity
 
 def os_launch(raw_actions):
     state = launch_os(raw_actions)

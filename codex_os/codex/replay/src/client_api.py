@@ -1,4 +1,4 @@
-from client_pipeline import (
+from codex_os.codex.replay.src.client_pipeline import (
     build_client_replay_bundle,
     build_client_drift_bundle,
     build_client_full_bundle

@@ -1,4 +1,4 @@
-from runtime_api import os_runtime, os_runtime_shutdown
+from codex_os.codex.os.runtime_api import os_runtime, os_runtime_shutdown
 
 RUNTIME_REGISTRY = {
     "os_runtime": os_runtime,

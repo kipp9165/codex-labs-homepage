@@ -1,4 +1,4 @@
-from launch_api import os_launch, os_terminate
+from codex_os.codex.os.launch_api import os_launch, os_terminate
 
 LAUNCH_REGISTRY = {
     "os_launch": os_launch,

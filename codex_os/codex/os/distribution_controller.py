@@ -1,5 +1,5 @@
-from runtime_api import os_runtime, os_runtime_shutdown
-from os_diagnostics import generate_os_diagnostics
+from codex_os.codex.os.runtime_api import os_runtime, os_runtime_shutdown
+from codex_os.codex.os.os_diagnostics import generate_os_diagnostics
 
 def build_distribution_bundle(raw_actions):
     runtime_state = os_runtime(raw_actions)

@@ -1,5 +1,5 @@
-from distribution_api import os_distribution, os_distribution_shutdown
-from os_diagnostics import generate_os_diagnostics
+from codex_os.codex.os.distribution_api import os_distribution, os_distribution_shutdown
+from codex_os.codex.os.os_diagnostics import generate_os_diagnostics
 
 def finalize_os(raw_actions):
     distribution_bundle = os_distribution(raw_actions)
