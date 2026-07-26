@@ -4,11 +4,12 @@ services:
     env: python
     plan: starter
     region: oregon
+    pythonVersion: 3.12.3
     buildCommand: "pip install -r requirements.txt"
     startCommand: "python service/codex_os_service_launcher.py"
     autoDeploy: true
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11
+        value: 3.12.3
     healthCheckPath: "/os_boot"
     runtime: python3
