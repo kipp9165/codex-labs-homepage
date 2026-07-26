@@ -1,4 +1,4 @@
-from os_controller import os_boot, os_shutdown
+from codex_os.codex.os.os_controller import os_boot, os_shutdown
 from os_diagnostics import generate_os_diagnostics
 
 def codex_os_boot(raw_actions):
