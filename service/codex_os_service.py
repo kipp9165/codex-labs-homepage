@@ -7,18 +7,23 @@ from codex_os.codex.os.distribution_api import os_distribution, os_distribution_
 from codex_os.codex.os.finalization_api import os_finalize, os_finalize_shutdown
 from codex_os.codex.os.completion_api import os_complete, os_complete_shutdown
 from marketplace.marketplace_routes import router as marketplace_router
+from identity.identity_routes import router as identity_router
+from governance.governance_routes import router as governance_router
 from public_api.public_api_routes import router as public_api_router
 
 app = FastAPI(title="Codex OS Runtime Service v1")
 app.include_router(public_api_router)
 app.include_router(marketplace_router)
+app.include_router(identity_router)
+app.include_router(governance_router)
 
 class Payload(BaseModel):
     data: dict | None = None
 
 @app.post("/os_boot")
-def os_boot_endpoint(payload: Payload):
-    return codex_os_boot(payload.data or {})
+def os_boot_endpoint(payload: Payload | None = None):
+    body = payload.data if payload else {}
+    return codex_os_boot(body or {})
 
 @app.post("/os_shutdown")
 def os_shutdown_endpoint():
