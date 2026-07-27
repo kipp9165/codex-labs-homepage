@@ -23,10 +23,10 @@ def identity_envelope():
     return {"envelope": generate_identity_envelope(seed_bundle)}
 
 
-def identity_profile(user_id):
+def identity_profile(user_id="anonymous"):
     profile = get_identity(user_id) or {}
     return {"user_id": user_id, "profile": profile}
 
 
-def identity_permissions(user_id):
+def identity_permissions(user_id="anonymous"):
     return {"user_id": user_id, "permissions": ["read", "execute"]}

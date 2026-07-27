@@ -1,19 +1,23 @@
 from fastapi import APIRouter
-from identity.identity_controller import *
+from identity.identity_controller import (
+    identity_envelope,
+    identity_profile,
+    identity_permissions,
+)
 
-router = APIRouter(prefix="/identity", tags=["Codex Identity"])
+router = APIRouter()
 
 
 @router.get("/envelope")
-def identity_envelope_route():
+def get_identity_envelope():
     return identity_envelope()
 
 
-@router.get("/profile/{user_id}")
-def identity_profile_route(user_id: str):
-    return identity_profile(user_id)
+@router.get("/profile")
+def get_identity_profile():
+    return identity_profile()
 
 
-@router.get("/permissions/{user_id}")
-def identity_permissions_route(user_id: str):
-    return identity_permissions(user_id)
+@router.get("/permissions")
+def get_identity_permissions():
+    return identity_permissions()

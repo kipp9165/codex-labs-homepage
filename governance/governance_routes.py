@@ -1,19 +1,23 @@
 from fastapi import APIRouter
-from governance.governance_controller import *
+from governance.governance_controller import (
+    governance_invariants,
+    governance_rules,
+    governance_audit,
+)
 
-router = APIRouter(prefix="/governance", tags=["Codex Governance"])
-
-
-@router.get("/rules")
-def governance_rules_route():
-    return governance_rules()
+router = APIRouter()
 
 
 @router.get("/invariants")
-def governance_invariants_route():
+def get_governance_invariants():
     return governance_invariants()
 
 
+@router.get("/rules")
+def get_governance_rules():
+    return governance_rules()
+
+
 @router.get("/audit")
-def governance_audit_route():
+def get_governance_audit():
     return governance_audit()
