@@ -1,0 +1,11 @@
+{
+  "action": "update_governance_policy",
+  "parameters": {
+    "policy": "bundle_policy",
+    "mode": "enforce"
+  },
+  "context": {
+    "source": "scheduled_replay",
+    "actor": "codex-os-replay"
+  }
+}

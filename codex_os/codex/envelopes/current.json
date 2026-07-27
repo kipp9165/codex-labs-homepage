@@ -1,0 +1,17 @@
+{
+  "identity": {
+    "agent": "codex-os-replay",
+    "version": "current"
+  },
+  "authority": {
+    "surface": "governance",
+    "scope": "write"
+  },
+  "classifier_outputs": {
+    "surface": "governance",
+    "operation_class": "write",
+    "risk_class": "high"
+  },
+  "risk_class": "high",
+  "disposition": "review"
+}

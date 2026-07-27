@@ -1,0 +1,17 @@
+{
+  "identity": {
+    "agent": "codex-os-replay",
+    "version": "prior"
+  },
+  "authority": {
+    "surface": "public_api",
+    "scope": "read"
+  },
+  "classifier_outputs": {
+    "surface": "public_api",
+    "operation_class": "read",
+    "risk_class": "low"
+  },
+  "risk_class": "low",
+  "disposition": "allow"
+}
