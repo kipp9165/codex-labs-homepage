@@ -12,10 +12,10 @@ from governance.governance_routes import router as governance_router
 from public_api.public_api_routes import router as public_api_router
 
 app = FastAPI(title="Codex OS Runtime Service v1")
-app.include_router(public_api_router)
+app.include_router(public_api_router, prefix="/public_api")
 app.include_router(marketplace_router)
-app.include_router(identity_router)
-app.include_router(governance_router)
+app.include_router(identity_router, prefix="/identity")
+app.include_router(governance_router, prefix="/governance")
 
 class Payload(BaseModel):
     data: dict | None = None
