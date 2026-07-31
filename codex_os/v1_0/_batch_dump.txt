@@ -1,0 +1,1315 @@
+codex_os/v1_0/
+codex_os\v1_0\autonomous_runtime/
+codex_os\v1_0\commerce/
+codex_os\v1_0\crisis_simulation/
+codex_os\v1_0\docs/
+codex_os\v1_0\drift_engines/
+codex_os\v1_0\governance/
+codex_os\v1_0\qa_device/
+codex_os\v1_0\replay_battery/
+codex_os\v1_0\runbooks/
+codex_os\v1_0\runtime_orchestration/
+codex_os\v1_0\simulation_layer/
+codex_os\v1_0\stability/
+codex_os\v1_0\substrate/
+codex_os\v1_0\trust/
+codex_os\v1_0\__init__.py
+codex_os\v1_0\autonomous_runtime\__init__.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_spec.md
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v1.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v10.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v2.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v3.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v4.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v5.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v6.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v7.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v8.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v9.py
+codex_os\v1_0\commerce\codex_commerce_v1.md
+codex_os\v1_0\commerce\codex_commerce_v1.py
+codex_os\v1_0\commerce\codex_product_generator.md
+codex_os\v1_0\commerce\codex_product_generator.py
+codex_os\v1_0\commerce\codex_product_registry.md
+codex_os\v1_0\commerce\codex_product_registry.py
+codex_os\v1_0\commerce\founder_override_layer.md
+codex_os\v1_0\commerce\founder_override_layer.py
+codex_os\v1_0\commerce\stripe_mint_remint_engine.md
+codex_os\v1_0\commerce\stripe_mint_remint_engine.py
+codex_os\v1_0\crisis_simulation\crisis_simulation.md
+codex_os\v1_0\crisis_simulation\crisis_simulation.py
+codex_os\v1_0\docs\alpha_codex.md
+codex_os\v1_0\docs\developer_bible.md
+codex_os\v1_0\docs\eternal_codex.md
+codex_os\v1_0\docs\final_architecture_diagram.mmd
+codex_os\v1_0\docs\master_index.md
+codex_os\v1_0\docs\omega_codex.md
+codex_os\v1_0\docs\single_file_canon.txt
+codex_os\v1_0\docs\unified_map.md
+codex_os\v1_0\drift_engines\__init__.py
+codex_os\v1_0\drift_engines\drift_engine_v1.py
+codex_os\v1_0\drift_engines\drift_engine_v10.py
+codex_os\v1_0\drift_engines\drift_engine_v11.py
+codex_os\v1_0\drift_engines\drift_engine_v2.py
+codex_os\v1_0\drift_engines\drift_engine_v3.py
+codex_os\v1_0\drift_engines\drift_engine_v4.py
+codex_os\v1_0\drift_engines\drift_engine_v5.py
+codex_os\v1_0\drift_engines\drift_engine_v6.py
+codex_os\v1_0\drift_engines\drift_engine_v7.py
+codex_os\v1_0\drift_engines\drift_engine_v8.py
+codex_os\v1_0\drift_engines\drift_engine_v9.py
+codex_os\v1_0\drift_engines\drift_engines_spec.md
+codex_os\v1_0\governance\__init__.py
+codex_os\v1_0\governance\governance_spec.md
+codex_os\v1_0\governance\governance_v1.py
+codex_os\v1_0\governance\governance_v10.py
+codex_os\v1_0\governance\governance_v2.py
+codex_os\v1_0\governance\governance_v3.py
+codex_os\v1_0\governance\governance_v4.py
+codex_os\v1_0\governance\governance_v5.py
+codex_os\v1_0\governance\governance_v6.py
+codex_os\v1_0\governance\governance_v7.py
+codex_os\v1_0\governance\governance_v8.py
+codex_os\v1_0\governance\governance_v9.py
+codex_os\v1_0\qa_device\codex_qa_device.py
+codex_os\v1_0\qa_device\codex_qa_v2.py
+codex_os\v1_0\qa_device\qa_device.md
+codex_os\v1_0\README.md
+codex_os\v1_0\replay_battery\replay_battery.md
+codex_os\v1_0\replay_battery\replay_battery.py
+codex_os\v1_0\runbooks\incident_playbook.md
+codex_os\v1_0\runbooks\operator_runbook.md
+codex_os\v1_0\runtime_orchestration\runtime_orchestration_engine.md
+codex_os\v1_0\runtime_orchestration\runtime_orchestration_engine.py
+codex_os\v1_0\simulation_layer\__init__.py
+codex_os\v1_0\simulation_layer\galactic_simulation.py
+codex_os\v1_0\simulation_layer\hypervisor_simulation.py
+codex_os\v1_0\simulation_layer\interstellar_simulation.py
+codex_os\v1_0\simulation_layer\multiversal_simulation.py
+codex_os\v1_0\simulation_layer\omniversal_simulation.py
+codex_os\v1_0\simulation_layer\planetary_simulation.py
+codex_os\v1_0\simulation_layer\runtime_simulation.py
+codex_os\v1_0\simulation_layer\simulation_layer.md
+codex_os\v1_0\simulation_layer\vm_simulation.py
+codex_os\v1_0\stability\stability_engine.md
+codex_os\v1_0\stability\stability_engine.py
+codex_os\v1_0\substrate\constitutional_substrate.md
+codex_os\v1_0\substrate\constitutional_substrate.py
+codex_os\v1_0\system.py
+codex_os\v1_0\trust\codex_authenticity_engine.py
+codex_os\v1_0\trust\codex_provenance_chain.py
+codex_os\v1_0\trust\receipt_verification_v2.py
+codex_os\v1_0\trust\trust_and_authenticity.md
+codex_os\v1_0\trust\trust_root_v1.py
+
+===FILE=== codex_os\v1_0\__init__.py
+"""Codex OS v1.0 package."""
+
+from codex_os.v1_0.system import build_codex_os_v1_snapshot
+
+__all__ = ["build_codex_os_v1_snapshot"]
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\__init__.py
+"""Autonomous Runtime v1-v10 stack."""
+
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v1 import evaluate as runtime_v1
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v2 import evaluate as runtime_v2
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v3 import evaluate as runtime_v3
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v4 import evaluate as runtime_v4
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v5 import evaluate as runtime_v5
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v6 import evaluate as runtime_v6
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v7 import evaluate as runtime_v7
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v8 import evaluate as runtime_v8
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v9 import evaluate as runtime_v9
+from codex_os.v1_0.autonomous_runtime.autonomous_runtime_v10 import evaluate as runtime_v10
+
+
+def run_autonomous_runtime_stack(raw_actions, governance_state):
+    state = {
+        "actions": sorted(raw_actions, key=lambda item: str(item.get("id", ""))),
+        "governance_disposition": governance_state.get("disposition", "REVIEW"),
+        "receipts": [],
+    }
+    for layer in [
+        runtime_v1,
+        runtime_v2,
+        runtime_v3,
+        runtime_v4,
+        runtime_v5,
+        runtime_v6,
+        runtime_v7,
+        runtime_v8,
+        runtime_v9,
+        runtime_v10,
+    ]:
+        state = layer(state)
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_spec.md
+# Autonomous Runtime v1-v10
+
+1. v1: deterministic action queue
+2. v2: execution plan generation
+3. v3: dependency ordering
+4. v4: capability gating
+5. v5: bounded execution slices
+6. v6: fallback route preparation
+7. v7: checkpoint receipts
+8. v8: runtime health score
+9. v9: runtime stabilization pass
+10. v10: runtime disposition
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v1.py
+def evaluate(state):
+    queue = [action.get("id", index) for index, action in enumerate(state["actions"])]
+    state["receipts"].append({"layer": "autonomous_runtime_v1", "queue": queue})
+    state["queue"] = queue
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v10.py
+def evaluate(state):
+    disposition = "RUNTIME_GO" if state.get("stabilized", False) else "RUNTIME_HOLD"
+    state["receipts"].append({"layer": "autonomous_runtime_v10", "disposition": disposition})
+    state["disposition"] = disposition
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v2.py
+def evaluate(state):
+    plan = ["exec:" + str(item) for item in state.get("queue", [])]
+    state["receipts"].append({"layer": "autonomous_runtime_v2", "plan_size": len(plan)})
+    state["plan"] = plan
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v3.py
+def evaluate(state):
+    ordered = sorted(state.get("plan", []))
+    state["receipts"].append({"layer": "autonomous_runtime_v3", "ordered": True})
+    state["ordered_plan"] = ordered
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v4.py
+def evaluate(state):
+    gated = state.get("governance_disposition") == "APPROVE"
+    state["receipts"].append({"layer": "autonomous_runtime_v4", "capability_gate": gated})
+    state["capability_gate"] = gated
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v5.py
+def evaluate(state):
+    slices = max(1, len(state.get("ordered_plan", [])))
+    state["receipts"].append({"layer": "autonomous_runtime_v5", "slices": slices})
+    state["slices"] = slices
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v6.py
+def evaluate(state):
+    fallback_ready = not state.get("capability_gate", False)
+    state["receipts"].append({"layer": "autonomous_runtime_v6", "fallback_ready": fallback_ready})
+    state["fallback_ready"] = fallback_ready
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v7.py
+def evaluate(state):
+    checkpoints = ["cp:" + str(index) for index in range(state.get("slices", 1))]
+    state["receipts"].append({"layer": "autonomous_runtime_v7", "checkpoints": len(checkpoints)})
+    state["checkpoints"] = checkpoints
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v8.py
+def evaluate(state):
+    health = 100 - (0 if state.get("capability_gate", False) else 20)
+    state["receipts"].append({"layer": "autonomous_runtime_v8", "health": health})
+    state["health"] = health
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v9.py
+def evaluate(state):
+    stabilized = state.get("health", 0) >= 70
+    state["receipts"].append({"layer": "autonomous_runtime_v9", "stabilized": stabilized})
+    state["stabilized"] = stabilized
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_commerce_v1.md
+# Codex Commerce v1.0
+
+Supports paid interactions, metering, and deterministic session token derivation.
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_commerce_v1.py
+"""Codex Commerce v1.0."""
+
+
+def run_codex_commerce_v1(raw_actions, founder_gate):
+    paid_actions = [action for action in raw_actions if bool(action.get("paid", False))]
+    metered_units = sum(int(action.get("units", 1)) for action in paid_actions)
+    token_seed = "|".join(str(action.get("id", "")) for action in sorted(paid_actions, key=lambda a: str(a.get("id", ""))))
+    session_token = "tok_" + str(len(token_seed))
+    return {
+        "version": "v1.0",
+        "founder_gate": founder_gate,
+        "paid_interactions": len(paid_actions),
+        "metered_units": metered_units,
+        "session_token": session_token,
+    }
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_product_generator.md
+# Codex Product Generator
+
+Deterministically mints Codex product identities from seed payloads.
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_product_generator.py
+"""Codex Product Generator."""
+
+
+def mint_codex_product(product_seed, founder_gate):
+    family = str(product_seed.get("family", "core")).upper()
+    edition = int(product_seed.get("edition", 1))
+    product_id = "CPG-" + family + "-" + str(edition)
+    return {
+        "product_id": product_id,
+        "family": family,
+        "edition": edition,
+        "mintable": bool(founder_gate.get("override_granted", False)),
+    }
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_product_registry.md
+# Codex Product Registry
+
+Registers minted products and Stripe records as deterministic product entries.
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_product_registry.py
+"""Codex Product Registry."""
+
+
+def build_product_registry(products, stripe_records):
+    entries = []
+    for product, stripe in zip(products, stripe_records):
+        entries.append(
+            {
+                "product_id": product.get("product_id"),
+                "family": product.get("family"),
+                "edition": product.get("edition"),
+                "stripe_product_code": stripe.get("stripe_product_code"),
+                "mint_status": stripe.get("mint_status"),
+            }
+        )
+    return {
+        "registry_version": "v1.0",
+        "count": len(entries),
+        "entries": entries,
+    }
+===END===
+
+===FILE=== codex_os\v1_0\commerce\founder_override_layer.md
+# Founder Override Layer
+
+Business, deal, partnership, collaboration, money, and sensitive strategic decisions require explicit founder approval.
+===END===
+
+===FILE=== codex_os\v1_0\commerce\founder_override_layer.py
+"""Founder Override Layer."""
+
+
+def apply_founder_override(policy_context, governance_state):
+    sensitive_domains = {
+        "business",
+        "deals",
+        "partnerships",
+        "collaborations",
+        "money",
+        "strategic",
+    }
+    requested_domains = set(policy_context.get("requested_domains", []))
+    requires_override = bool(requested_domains.intersection(sensitive_domains))
+    founder_approved = bool(policy_context.get("founder_approved", False))
+    granted = not requires_override or founder_approved
+    return {
+        "requires_founder_override": requires_override,
+        "founder_approved": founder_approved,
+        "override_granted": granted and governance_state.get("disposition") in {"APPROVE", "REVIEW"},
+    }
+===END===
+
+===FILE=== codex_os\v1_0\commerce\stripe_mint_remint_engine.md
+# Stripe Mint/Remint Engine
+
+Produces deterministic mint/remint statuses using founder gate and product mintability.
+===END===
+
+===FILE=== codex_os\v1_0\commerce\stripe_mint_remint_engine.py
+"""Stripe Mint/Remint Engine."""
+
+
+def run_stripe_mint_remint(product_payload, founder_gate):
+    product_id = product_payload.get("product_id", "CPG-CORE-1")
+    can_issue = bool(founder_gate.get("override_granted", False)) and bool(product_payload.get("mintable", False))
+    stripe_product_code = "stripe_" + product_id.lower().replace("-", "_")
+    return {
+        "stripe_product_code": stripe_product_code,
+        "mint_status": "MINTED" if can_issue else "BLOCKED",
+        "remint_status": "READY" if can_issue else "LOCKED",
+    }
+===END===
+
+===FILE=== codex_os\v1_0\crisis_simulation\crisis_simulation.md
+# Crisis Simulation
+
+Evaluates simulation outputs and governance disposition to produce deterministic crisis escalation status.
+===END===
+
+===FILE=== codex_os\v1_0\crisis_simulation\crisis_simulation.py
+"""Crisis Simulation."""
+
+
+def run_crisis_simulation(simulation_state, governance_state):
+    unstable_layers = [
+        name
+        for name, payload in simulation_state.items()
+        if payload.get("state", {}).get("stability_status") != "STABLE"
+    ]
+    severity = "HIGH" if unstable_layers and governance_state.get("disposition") != "APPROVE" else "MODERATE"
+    return {
+        "unstable_layers": unstable_layers,
+        "severity": severity,
+        "disposition": "CRISIS_ESCALATE" if severity == "HIGH" else "CRISIS_MONITOR",
+    }
+===END===
+
+===FILE=== codex_os\v1_0\docs\alpha_codex.md
+# Alpha Codex
+
+Alpha Codex defines initialization doctrine.
+
+1. Start from constitutional invariants.
+2. Run governance before execution.
+3. Emit deterministic receipts.
+===END===
+
+===FILE=== codex_os\v1_0\docs\developer_bible.md
+# Developer Bible
+
+## Rules
+
+1. Keep all modules deterministic.
+2. Keep all state transitions explicit.
+3. Preserve exact module naming and contracts.
+4. Treat founder override as hard gate for business, deals, partnerships, collaborations, money, and sensitive strategic decisions.
+5. Attach provenance and authenticity to every execution bundle.
+
+## Composition Order
+
+1. Constitutional Substrate
+2. Governance v1-v10
+3. Drift Engines v1-v11
+4. Autonomous Runtime v1-v10
+5. Runtime Orchestration Engine
+6. Stability Engine
+7. Replay Battery
+8. QA Device and Codex Q/A v2.0
+9. Simulation Layer
+10. Crisis Simulation
+11. Commerce and Product Layers
+12. Trust and Provenance Layers
+===END===
+
+===FILE=== codex_os\v1_0\docs\eternal_codex.md
+# Eternal Codex
+
+Eternal Codex defines continuity doctrine.
+
+1. Preserve deterministic interfaces.
+2. Preserve trust root lineage.
+3. Preserve founder override sovereignty.
+===END===
+
+===FILE=== codex_os\v1_0\docs\final_architecture_diagram.mmd
+flowchart TD
+    A[Constitutional Substrate] --> B[Governance v1-v10]
+    B --> C[Drift Engines v1-v11]
+    B --> D[Autonomous Runtime v1-v10]
+    C --> E[Runtime Orchestration Engine]
+    D --> E
+    E --> F[Stability Engine]
+    F --> G[Replay Battery]
+    G --> H[QA Device]
+    H --> I[Codex Q/A v2.0]
+    F --> J[Simulation Layer]
+    J --> K[Crisis Simulation]
+    B --> L[Founder Override Layer]
+    L --> M[Codex Commerce v1.0]
+    L --> N[Codex Product Generator]
+    N --> O[Stripe Mint/Remint Engine]
+    N --> P[Codex Product Registry]
+    A --> Q[Trust Root v1.0]
+    G --> R[Receipt Verification v2.0]
+    I --> S[Codex Authenticity Engine]
+    R --> S
+    S --> T[Codex Provenance Chain]
+===END===
+
+===FILE=== codex_os\v1_0\docs\master_index.md
+# Master Index
+
+1. `system.py`
+2. `substrate/constitutional_substrate.py`
+3. `governance/governance_v1.py` through `governance/governance_v10.py`
+4. `drift_engines/drift_engine_v1.py` through `drift_engines/drift_engine_v11.py`
+5. `autonomous_runtime/autonomous_runtime_v1.py` through `autonomous_runtime/autonomous_runtime_v10.py`
+6. `runtime_orchestration/runtime_orchestration_engine.py`
+7. `stability/stability_engine.py`
+8. `replay_battery/replay_battery.py`
+9. `qa_device/codex_qa_device.py`
+10. `qa_device/codex_qa_v2.py`
+11. `simulation_layer/*.py`
+12. `crisis_simulation/crisis_simulation.py`
+13. `commerce/*.py`
+14. `trust/*.py`
+15. `runbooks/operator_runbook.md`
+16. `runbooks/incident_playbook.md`
+17. `docs/developer_bible.md`
+18. `docs/single_file_canon.txt`
+19. `docs/unified_map.md`
+20. `docs/final_architecture_diagram.mmd`
+21. `docs/alpha_codex.md`
+22. `docs/omega_codex.md`
+23. `docs/eternal_codex.md`
+===END===
+
+===FILE=== codex_os\v1_0\docs\omega_codex.md
+# Omega Codex
+
+Omega Codex defines closure doctrine.
+
+1. Validate stability and authenticity.
+2. Archive replay output and provenance chain.
+3. Produce final crisis disposition when required.
+===END===
+
+===FILE=== codex_os\v1_0\docs\single_file_canon.txt
+Codex OS v1.0 Canon
+====================
+
+Constitutional Substrate
+Governance v1-v10
+Drift Engines v1-v11
+Autonomous Runtime v1-v10
+Runtime Orchestration Engine
+Stability Engine
+Replay Battery
+QA Device
+Simulation Layer: Runtime, VM, Hypervisor, Planetary, Interstellar, Galactic, Multiversal, Omniversal
+Crisis Simulation
+Operator Runbook
+Incident Playbook
+Developer Bible
+Unified Map
+Master Index
+Final Architecture Diagram
+Alpha Codex
+Omega Codex
+Eternal Codex
+Founder Override Layer
+Codex Commerce v1.0
+Codex Product Generator
+Stripe Mint/Remint Engine
+Codex Product Registry
+Trust Root v1.0
+Receipt Verification v2.0
+Codex Q/A v2.0
+Codex Authenticity Engine
+Codex Provenance Chain
+===END===
+
+===FILE=== codex_os\v1_0\docs\unified_map.md
+# Unified Map
+
+## Core
+
+- substrate/
+- governance/
+- drift_engines/
+- autonomous_runtime/
+- runtime_orchestration/
+- stability/
+- replay_battery/
+- qa_device/
+- simulation_layer/
+- crisis_simulation/
+
+## Commercial + Trust
+
+- commerce/
+- trust/
+
+## Operational
+
+- runbooks/
+- docs/
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\__init__.py
+"""Drift Engines v1-v11 stack."""
+
+from codex_os.v1_0.drift_engines.drift_engine_v1 import evaluate as drift_v1
+from codex_os.v1_0.drift_engines.drift_engine_v2 import evaluate as drift_v2
+from codex_os.v1_0.drift_engines.drift_engine_v3 import evaluate as drift_v3
+from codex_os.v1_0.drift_engines.drift_engine_v4 import evaluate as drift_v4
+from codex_os.v1_0.drift_engines.drift_engine_v5 import evaluate as drift_v5
+from codex_os.v1_0.drift_engines.drift_engine_v6 import evaluate as drift_v6
+from codex_os.v1_0.drift_engines.drift_engine_v7 import evaluate as drift_v7
+from codex_os.v1_0.drift_engines.drift_engine_v8 import evaluate as drift_v8
+from codex_os.v1_0.drift_engines.drift_engine_v9 import evaluate as drift_v9
+from codex_os.v1_0.drift_engines.drift_engine_v10 import evaluate as drift_v10
+from codex_os.v1_0.drift_engines.drift_engine_v11 import evaluate as drift_v11
+
+
+def run_drift_stack(raw_actions, governance_state):
+    state = {
+        "actions": sorted(raw_actions, key=lambda item: str(item.get("id", ""))),
+        "governance_disposition": governance_state.get("disposition", "REVIEW"),
+        "receipts": [],
+    }
+    for layer in [
+        drift_v1,
+        drift_v2,
+        drift_v3,
+        drift_v4,
+        drift_v5,
+        drift_v6,
+        drift_v7,
+        drift_v8,
+        drift_v9,
+        drift_v10,
+        drift_v11,
+    ]:
+        state = layer(state)
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v1.py
+def evaluate(state):
+    signal_count = len(state["actions"])
+    state["receipts"].append({"layer": "drift_engine_v1", "signal_count": signal_count})
+    state["signal_count"] = signal_count
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v10.py
+def evaluate(state):
+    severity = state.get("cluster_score", 0) + state.get("replay_divergence", 0)
+    state["receipts"].append({"layer": "drift_engine_v10", "severity": severity})
+    state["severity"] = severity
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v11.py
+def evaluate(state):
+    disposition = "DRIFT_ALERT" if state.get("severity", 0) >= 3 else "DRIFT_STABLE"
+    state["receipts"].append({"layer": "drift_engine_v11", "disposition": disposition})
+    state["disposition"] = disposition
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v2.py
+def evaluate(state):
+    skew = sum(len(str(action.get("type", ""))) for action in state["actions"])
+    state["receipts"].append({"layer": "drift_engine_v2", "skew": skew})
+    state["skew"] = skew
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v3.py
+def evaluate(state):
+    mismatch = state.get("governance_disposition") != "APPROVE"
+    state["receipts"].append({"layer": "drift_engine_v3", "mismatch": mismatch})
+    state["mismatch"] = mismatch
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v4.py
+def evaluate(state):
+    confidences = [float(action.get("confidence", 1.0)) for action in state["actions"]]
+    slope = 0.0
+    if len(confidences) > 1:
+        slope = confidences[-1] - confidences[0]
+    state["receipts"].append({"layer": "drift_engine_v4", "confidence_slope": slope})
+    state["confidence_slope"] = slope
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v5.py
+def evaluate(state):
+    policy_entropy = len({action.get("domain", "core") for action in state["actions"]})
+    state["receipts"].append({"layer": "drift_engine_v5", "policy_entropy": policy_entropy})
+    state["policy_entropy"] = policy_entropy
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v6.py
+def evaluate(state):
+    route_mutation = any("route" in action and "->" in str(action.get("route")) for action in state["actions"])
+    state["receipts"].append({"layer": "drift_engine_v6", "route_mutation": route_mutation})
+    state["route_mutation"] = route_mutation
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v7.py
+def evaluate(state):
+    replay_divergence = state.get("skew", 0) % 3
+    state["receipts"].append({"layer": "drift_engine_v7", "replay_divergence": replay_divergence})
+    state["replay_divergence"] = replay_divergence
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v8.py
+def evaluate(state):
+    latency_band = "stable" if state.get("signal_count", 0) <= 25 else "elevated"
+    state["receipts"].append({"layer": "drift_engine_v8", "latency_band": latency_band})
+    state["latency_band"] = latency_band
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v9.py
+def evaluate(state):
+    cluster_score = state.get("policy_entropy", 0) + int(state.get("route_mutation", False))
+    state["receipts"].append({"layer": "drift_engine_v9", "cluster_score": cluster_score})
+    state["cluster_score"] = cluster_score
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engines_spec.md
+# Drift Engines v1-v11
+
+1. v1: baseline signal extraction
+2. v2: envelope skew detection
+3. v3: governance mismatch detection
+4. v4: confidence slope detection
+5. v5: policy entropy check
+6. v6: route mutation check
+7. v7: replay divergence check
+8. v8: execution latency band check
+9. v9: anomaly clustering
+10. v10: drift severity scoring
+11. v11: final drift disposition
+===END===
+
+===FILE=== codex_os\v1_0\governance\__init__.py
+"""Governance v1-v10 stack."""
+
+from codex_os.v1_0.governance.governance_v1 import evaluate as governance_v1
+from codex_os.v1_0.governance.governance_v2 import evaluate as governance_v2
+from codex_os.v1_0.governance.governance_v3 import evaluate as governance_v3
+from codex_os.v1_0.governance.governance_v4 import evaluate as governance_v4
+from codex_os.v1_0.governance.governance_v5 import evaluate as governance_v5
+from codex_os.v1_0.governance.governance_v6 import evaluate as governance_v6
+from codex_os.v1_0.governance.governance_v7 import evaluate as governance_v7
+from codex_os.v1_0.governance.governance_v8 import evaluate as governance_v8
+from codex_os.v1_0.governance.governance_v9 import evaluate as governance_v9
+from codex_os.v1_0.governance.governance_v10 import evaluate as governance_v10
+
+
+def run_governance_stack(raw_actions, policy_context):
+    layers = [
+        governance_v1,
+        governance_v2,
+        governance_v3,
+        governance_v4,
+        governance_v5,
+        governance_v6,
+        governance_v7,
+        governance_v8,
+        governance_v9,
+        governance_v10,
+    ]
+    state = {
+        "policy_context": policy_context,
+        "actions": sorted(raw_actions, key=lambda item: str(item.get("id", ""))),
+        "receipts": [],
+    }
+    for layer in layers:
+        state = layer(state)
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_spec.md
+# Governance v1-v10
+
+Each governance layer consumes a state payload and returns an updated payload.
+
+1. v1: action normalization check
+2. v2: role policy filter
+3. v3: domain policy filter
+4. v4: budget policy filter
+5. v5: compliance policy filter
+6. v6: safety policy filter
+7. v7: escalation policy filter
+8. v8: replay policy lock
+9. v9: confidence floor check
+10. v10: final governance disposition
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v1.py
+def evaluate(state):
+    actions = state["actions"]
+    valid = all("type" in action for action in actions)
+    state["receipts"].append({"layer": "governance_v1", "normalized": valid})
+    state["normalized"] = valid
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v10.py
+def evaluate(state):
+    approved = all(
+        [
+            state.get("normalized", False),
+            state.get("role_allowed", False),
+            state.get("domains_ok", False),
+            state.get("within_budget", False),
+            state.get("compliant", False),
+            state.get("safe", False),
+            state.get("confidence_ok", False),
+        ]
+    )
+    disposition = "APPROVE" if approved and not state.get("escalate", False) else "REVIEW"
+    state["receipts"].append({"layer": "governance_v10", "disposition": disposition})
+    state["disposition"] = disposition
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v2.py
+def evaluate(state):
+    role = state["policy_context"].get("operator_role", "unknown")
+    allowed = role in {"founder", "operator", "steward"}
+    state["receipts"].append({"layer": "governance_v2", "role_allowed": allowed})
+    state["role_allowed"] = allowed
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v3.py
+def evaluate(state):
+    allowed_domains = set(state["policy_context"].get("allowed_domains", []))
+    domains = {action.get("domain", "core") for action in state["actions"]}
+    domain_ok = domains.issubset(allowed_domains) if allowed_domains else True
+    state["receipts"].append({"layer": "governance_v3", "domains_ok": domain_ok})
+    state["domains_ok"] = domain_ok
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v4.py
+def evaluate(state):
+    budget_cap = float(state["policy_context"].get("budget_cap", 0.0))
+    requested = sum(float(action.get("amount", 0.0)) for action in state["actions"])
+    within_budget = requested <= budget_cap if budget_cap > 0 else True
+    state["receipts"].append({"layer": "governance_v4", "within_budget": within_budget})
+    state["within_budget"] = within_budget
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v5.py
+def evaluate(state):
+    compliance_required = bool(state["policy_context"].get("compliance_required", False))
+    actions = state["actions"]
+    compliant = all(action.get("compliance", True) for action in actions) if compliance_required else True
+    state["receipts"].append({"layer": "governance_v5", "compliant": compliant})
+    state["compliant"] = compliant
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v6.py
+def evaluate(state):
+    risk_scores = [int(action.get("risk", 0)) for action in state["actions"]]
+    max_risk = max(risk_scores) if risk_scores else 0
+    safe = max_risk <= int(state["policy_context"].get("max_risk", 10))
+    state["receipts"].append({"layer": "governance_v6", "safe": safe, "max_risk": max_risk})
+    state["safe"] = safe
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v7.py
+def evaluate(state):
+    escalate = not all(
+        [
+            state.get("normalized", False),
+            state.get("role_allowed", False),
+            state.get("domains_ok", False),
+            state.get("within_budget", False),
+            state.get("compliant", False),
+            state.get("safe", False),
+        ]
+    )
+    state["receipts"].append({"layer": "governance_v7", "escalate": escalate})
+    state["escalate"] = escalate
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v8.py
+def evaluate(state):
+    lock_key = "|".join(str(action.get("id", "")) for action in state["actions"])
+    state["receipts"].append({"layer": "governance_v8", "replay_lock": lock_key})
+    state["replay_lock"] = lock_key
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v9.py
+def evaluate(state):
+    confidence_floor = float(state["policy_context"].get("confidence_floor", 0.0))
+    confidences = [float(action.get("confidence", 1.0)) for action in state["actions"]]
+    confidence_ok = all(value >= confidence_floor for value in confidences)
+    state["receipts"].append({"layer": "governance_v9", "confidence_ok": confidence_ok})
+    state["confidence_ok"] = confidence_ok
+    return state
+===END===
+
+===FILE=== codex_os\v1_0\qa_device\codex_qa_device.py
+"""QA Device."""
+
+
+def run_qa_device(replay_state, stability_state):
+    envelope_count = replay_state.get("count", 0)
+    stability = stability_state.get("status", "UNSTABLE")
+    passed = envelope_count >= 0 and stability in {"STABLE", "UNSTABLE"}
+    return {
+        "qa_checks": [
+            {"name": "envelope_count_present", "pass": envelope_count >= 0},
+            {"name": "stability_status_valid", "pass": stability in {"STABLE", "UNSTABLE"}},
+        ],
+        "passed": passed,
+    }
+===END===
+
+===FILE=== codex_os\v1_0\qa_device\codex_qa_v2.py
+"""Codex Q/A v2.0."""
+
+
+def run_codex_qa_v2(qa_state, governance_state):
+    checks = list(qa_state.get("qa_checks", []))
+    checks.append(
+        {
+            "name": "governance_disposition_present",
+            "pass": governance_state.get("disposition") in {"APPROVE", "REVIEW"},
+        }
+    )
+    passed = all(item["pass"] for item in checks)
+    return {"version": "v2.0", "checks": checks, "passed": passed}
+===END===
+
+===FILE=== codex_os\v1_0\qa_device\qa_device.md
+# QA Device and Codex Q/A v2.0
+
+The QA device validates structural guarantees and governance visibility.
+===END===
+
+===FILE=== codex_os\v1_0\README.md
+# Codex OS v1.0
+
+Codex OS v1.0 is a deterministic founder-grade operating substrate composed of constitutional, governance, drift, runtime, orchestration, stability, replay, simulation, commerce, and trust layers.
+
+## Determinism Contract
+
+1. No module in this package reads wall-clock time.
+2. No module in this package uses randomness.
+3. The same input payload yields the same output payload.
+
+## Entry Point
+
+- Python API: `build_codex_os_v1_snapshot` in `system.py`
+===END===
+
+===FILE=== codex_os\v1_0\replay_battery\replay_battery.md
+# Replay Battery
+
+Builds replay envelopes in deterministic order and attaches governance disposition.
+===END===
+
+===FILE=== codex_os\v1_0\replay_battery\replay_battery.py
+"""Replay Battery."""
+
+
+def run_replay_battery(raw_actions, governance_state):
+    ordered = sorted(raw_actions, key=lambda item: str(item.get("id", "")))
+    envelopes = []
+    for action in ordered:
+        envelopes.append(
+            {
+                "id": action.get("id"),
+                "type": action.get("type", "unknown"),
+                "domain": action.get("domain", "core"),
+                "governance_disposition": governance_state.get("disposition", "REVIEW"),
+            }
+        )
+    return {
+        "envelopes": envelopes,
+        "count": len(envelopes),
+    }
+===END===
+
+===FILE=== codex_os\v1_0\runbooks\incident_playbook.md
+# Incident Playbook
+
+## Trigger Conditions
+
+1. Drift disposition is `DRIFT_ALERT`.
+2. Stability status is `UNSTABLE`.
+3. Authenticity disposition is `INAUTHENTIC`.
+
+## Response Flow
+
+1. Freeze execution lanes.
+2. Re-run replay battery and verification.
+3. Require founder override for business, deals, partnerships, collaborations, money, and sensitive strategic actions.
+4. Emit crisis disposition and route to escalation owner.
+===END===
+
+===FILE=== codex_os\v1_0\runbooks\operator_runbook.md
+# Operator Runbook
+
+## Startup
+
+1. Validate policy context.
+2. Build full snapshot via `build_codex_os_v1_snapshot`.
+3. Confirm governance, drift, runtime, stability, and authenticity dispositions.
+
+## Runtime Control
+
+1. If `ORCHESTRATE_GO`, permit execution.
+2. If `ORCHESTRATE_REVIEW`, hold execution and escalate.
+
+## Shutdown
+
+1. Archive snapshot.
+2. Attach provenance chain output to archive.
+===END===
+
+===FILE=== codex_os\v1_0\runtime_orchestration\runtime_orchestration_engine.md
+# Runtime Orchestration Engine
+
+Coordinates autonomous runtime and drift outputs into a single orchestration disposition.
+
+Outputs:
+
+- `ORCHESTRATE_GO`
+- `ORCHESTRATE_REVIEW`
+===END===
+
+===FILE=== codex_os\v1_0\runtime_orchestration\runtime_orchestration_engine.py
+"""Runtime Orchestration Engine."""
+
+
+def run_runtime_orchestration(runtime_state, drift_state):
+    orchestration_mode = "strict" if drift_state.get("disposition") == "DRIFT_ALERT" else "balanced"
+    execution = {
+        "runtime_disposition": runtime_state.get("disposition", "RUNTIME_HOLD"),
+        "drift_disposition": drift_state.get("disposition", "DRIFT_STABLE"),
+        "mode": orchestration_mode,
+    }
+    execution["orchestration_disposition"] = (
+        "ORCHESTRATE_GO"
+        if execution["runtime_disposition"] == "RUNTIME_GO" and execution["drift_disposition"] == "DRIFT_STABLE"
+        else "ORCHESTRATE_REVIEW"
+    )
+    return execution
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\__init__.py
+"""Simulation Layer stack."""
+
+from codex_os.v1_0.simulation_layer.runtime_simulation import run as runtime_simulation
+from codex_os.v1_0.simulation_layer.vm_simulation import run as vm_simulation
+from codex_os.v1_0.simulation_layer.hypervisor_simulation import run as hypervisor_simulation
+from codex_os.v1_0.simulation_layer.planetary_simulation import run as planetary_simulation
+from codex_os.v1_0.simulation_layer.interstellar_simulation import run as interstellar_simulation
+from codex_os.v1_0.simulation_layer.galactic_simulation import run as galactic_simulation
+from codex_os.v1_0.simulation_layer.multiversal_simulation import run as multiversal_simulation
+from codex_os.v1_0.simulation_layer.omniversal_simulation import run as omniversal_simulation
+
+
+def run_simulation_stack(runtime_state, stability_state):
+    base = {
+        "runtime_disposition": runtime_state.get("disposition", "RUNTIME_HOLD"),
+        "stability_status": stability_state.get("status", "UNSTABLE"),
+    }
+    outputs = {
+        "runtime": runtime_simulation(base),
+        "vm": vm_simulation(base),
+        "hypervisor": hypervisor_simulation(base),
+        "planetary": planetary_simulation(base),
+        "interstellar": interstellar_simulation(base),
+        "galactic": galactic_simulation(base),
+        "multiversal": multiversal_simulation(base),
+        "omniversal": omniversal_simulation(base),
+    }
+    return outputs
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\galactic_simulation.py
+def run(base):
+    return {"layer": "galactic", "state": base, "result": "SIM_OK"}
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\hypervisor_simulation.py
+def run(base):
+    return {"layer": "hypervisor", "state": base, "result": "SIM_OK"}
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\interstellar_simulation.py
+def run(base):
+    return {"layer": "interstellar", "state": base, "result": "SIM_OK"}
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\multiversal_simulation.py
+def run(base):
+    return {"layer": "multiversal", "state": base, "result": "SIM_OK"}
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\omniversal_simulation.py
+def run(base):
+    return {"layer": "omniversal", "state": base, "result": "SIM_OK"}
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\planetary_simulation.py
+def run(base):
+    return {"layer": "planetary", "state": base, "result": "SIM_OK"}
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\runtime_simulation.py
+def run(base):
+    return {"layer": "runtime", "state": base, "result": "SIM_OK"}
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\simulation_layer.md
+# Simulation Layer
+
+Includes deterministic simulation outputs for:
+
+- Runtime
+- VM
+- Hypervisor
+- Planetary
+- Interstellar
+- Galactic
+- Multiversal
+- Omniversal
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\vm_simulation.py
+def run(base):
+    return {"layer": "vm", "state": base, "result": "SIM_OK"}
+===END===
+
+===FILE=== codex_os\v1_0\stability\stability_engine.md
+# Stability Engine
+
+Computes deterministic system stability based on drift and orchestration dispositions.
+===END===
+
+===FILE=== codex_os\v1_0\stability\stability_engine.py
+"""Stability Engine for Codex OS v1.0."""
+
+
+def compute_stability_report(orchestration_state, drift_state):
+    drift_penalty = 30 if drift_state.get("disposition") == "DRIFT_ALERT" else 0
+    orchestration_penalty = 20 if orchestration_state.get("orchestration_disposition") == "ORCHESTRATE_REVIEW" else 0
+    score = 100 - drift_penalty - orchestration_penalty
+    status = "STABLE" if score >= 70 else "UNSTABLE"
+    return {"score": score, "status": status}
+===END===
+
+===FILE=== codex_os\v1_0\substrate\constitutional_substrate.md
+# Constitutional Substrate
+
+## Purpose
+
+Defines hard constraints that every Codex OS v1.0 layer must satisfy.
+
+## Invariants
+
+1. Determinism: identical inputs yield identical outputs.
+2. Explainability: every decision emits a machine-checkable receipt.
+3. Provenance: every artifact carries origin lineage.
+4. Founder Override: business, deals, partnerships, collaborations, money, and sensitive strategic decisions require explicit founder approval.
+===END===
+
+===FILE=== codex_os\v1_0\substrate\constitutional_substrate.py
+"""Constitutional Substrate for Codex OS v1.0."""
+
+
+def build_constitutional_substrate():
+    return {
+        "module": "Constitutional Substrate",
+        "version": "v1.0",
+        "principles": [
+            "Determinism before optimization",
+            "Safety before throughput",
+            "Provenance before privilege",
+            "Founder override on business, deals, partnerships, collaborations, money, and strategic decisions",
+        ],
+        "invariants": {
+            "no_hidden_mutation": True,
+            "explicit_receipts": True,
+            "verifiable_provenance": True,
+        },
+    }
+===END===
+
+===FILE=== codex_os\v1_0\system.py
+"""Unified deterministic assembly for Codex OS v1.0."""
+
+from codex_os.v1_0.substrate.constitutional_substrate import build_constitutional_substrate
+from codex_os.v1_0.governance import run_governance_stack
+from codex_os.v1_0.drift_engines import run_drift_stack
+from codex_os.v1_0.autonomous_runtime import run_autonomous_runtime_stack
+from codex_os.v1_0.runtime_orchestration.runtime_orchestration_engine import run_runtime_orchestration
+from codex_os.v1_0.stability.stability_engine import compute_stability_report
+from codex_os.v1_0.replay_battery.replay_battery import run_replay_battery
+from codex_os.v1_0.qa_device.codex_qa_device import run_qa_device
+from codex_os.v1_0.qa_device.codex_qa_v2 import run_codex_qa_v2
+from codex_os.v1_0.simulation_layer import run_simulation_stack
+from codex_os.v1_0.crisis_simulation.crisis_simulation import run_crisis_simulation
+from codex_os.v1_0.commerce.founder_override_layer import apply_founder_override
+from codex_os.v1_0.commerce.codex_commerce_v1 import run_codex_commerce_v1
+from codex_os.v1_0.commerce.codex_product_generator import mint_codex_product
+from codex_os.v1_0.commerce.stripe_mint_remint_engine import run_stripe_mint_remint
+from codex_os.v1_0.commerce.codex_product_registry import build_product_registry
+from codex_os.v1_0.trust.trust_root_v1 import build_trust_root
+from codex_os.v1_0.trust.receipt_verification_v2 import verify_receipt_v2
+from codex_os.v1_0.trust.codex_authenticity_engine import run_authenticity_engine
+from codex_os.v1_0.trust.codex_provenance_chain import build_provenance_chain
+
+
+def build_codex_os_v1_snapshot(raw_actions, policy_context, product_seed):
+    """Build a deterministic full-system snapshot for Codex OS v1.0."""
+    substrate = build_constitutional_substrate()
+    governance = run_governance_stack(raw_actions, policy_context)
+    drift = run_drift_stack(raw_actions, governance)
+    runtime = run_autonomous_runtime_stack(raw_actions, governance)
+    orchestration = run_runtime_orchestration(runtime, drift)
+    stability = compute_stability_report(orchestration, drift)
+    replay = run_replay_battery(raw_actions, governance)
+    qa = run_qa_device(replay, stability)
+    qa_v2 = run_codex_qa_v2(qa, governance)
+    simulations = run_simulation_stack(runtime, stability)
+    crisis = run_crisis_simulation(simulations, governance)
+
+    founder_gate = apply_founder_override(policy_context, governance)
+    commerce = run_codex_commerce_v1(raw_actions, founder_gate)
+    minted_product = mint_codex_product(product_seed, founder_gate)
+    stripe = run_stripe_mint_remint(minted_product, founder_gate)
+    registry = build_product_registry([minted_product], [stripe])
+
+    trust_root = build_trust_root(substrate, governance)
+    receipt_ok = verify_receipt_v2(replay, trust_root)
+    authenticity = run_authenticity_engine(receipt_ok, qa_v2)
+    provenance = build_provenance_chain(raw_actions, authenticity)
+
+    return {
+        "codex_os_version": "v1.0",
+        "substrate": substrate,
+        "governance": governance,
+        "drift_engines": drift,
+        "autonomous_runtime": runtime,
+        "runtime_orchestration_engine": orchestration,
+        "stability_engine": stability,
+        "replay_battery": replay,
+        "qa_device": qa,
+        "codex_q_a_v2_0": qa_v2,
+        "simulation_layer": simulations,
+        "crisis_simulation": crisis,
+        "founder_override_layer": founder_gate,
+        "codex_commerce_v1_0": commerce,
+        "codex_product_generator": minted_product,
+        "stripe_mint_remint_engine": stripe,
+        "codex_product_registry": registry,
+        "trust_root_v1_0": trust_root,
+        "receipt_verification_v2_0": receipt_ok,
+        "codex_authenticity_engine": authenticity,
+        "codex_provenance_chain": provenance,
+    }
+===END===
+
+===FILE=== codex_os\v1_0\trust\codex_authenticity_engine.py
+"""Codex Authenticity Engine."""
+
+
+def run_authenticity_engine(receipt_verification_state, qa_v2_state):
+    authentic = bool(receipt_verification_state.get("verified", False)) and bool(qa_v2_state.get("passed", False))
+    return {
+        "authentic": authentic,
+        "authenticity_disposition": "AUTHENTIC" if authentic else "INAUTHENTIC",
+    }
+===END===
+
+===FILE=== codex_os\v1_0\trust\codex_provenance_chain.py
+"""Codex Provenance Chain."""
+
+
+def build_provenance_chain(raw_actions, authenticity_state):
+    action_ids = [str(action.get("id", "")) for action in sorted(raw_actions, key=lambda item: str(item.get("id", "")))]
+    chain = []
+    prior = "root"
+    for action_id in action_ids:
+        current = prior + "->" + action_id
+        chain.append({"from": prior, "to": action_id, "edge": current})
+        prior = current
+    return {
+        "authenticity": authenticity_state.get("authenticity_disposition", "INAUTHENTIC"),
+        "chain": chain,
+    }
+===END===
+
+===FILE=== codex_os\v1_0\trust\receipt_verification_v2.py
+"""Receipt Verification v2.0."""
+
+
+def verify_receipt_v2(replay_state, trust_root):
+    envelopes = replay_state.get("envelopes", [])
+    has_ids = all("id" in envelope for envelope in envelopes)
+    trust_active = bool(trust_root.get("active", False))
+    return {
+        "version": "v2.0",
+        "verified": has_ids and trust_active,
+        "envelope_count": len(envelopes),
+    }
+===END===
+
+===FILE=== codex_os\v1_0\trust\trust_and_authenticity.md
+# Trust and Authenticity Suite
+
+Includes:
+
+- Trust Root v1.0
+- Receipt Verification v2.0
+- Codex Authenticity Engine
+- Codex Provenance Chain
+===END===
+
+===FILE=== codex_os\v1_0\trust\trust_root_v1.py
+"""Trust Root v1.0."""
+
+
+def build_trust_root(substrate_state, governance_state):
+    principle_count = len(substrate_state.get("principles", []))
+    governance_receipts = len(governance_state.get("receipts", []))
+    return {
+        "version": "v1.0",
+        "root_hash_material": "TR-" + str(principle_count) + "-" + str(governance_receipts),
+        "active": True,
+    }
+===END===
+

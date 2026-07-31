@@ -1,0 +1,458 @@
+PASS 1 — STRUCTURE GENERATION
+
+codex_os/v1_0/
+codex_os\v1_0\autonomous_runtime/
+codex_os\v1_0\commerce/
+codex_os\v1_0\crisis_simulation/
+codex_os\v1_0\docs/
+codex_os\v1_0\drift_engines/
+codex_os\v1_0\governance/
+codex_os\v1_0\qa_device/
+codex_os\v1_0\replay_battery/
+codex_os\v1_0\runbooks/
+codex_os\v1_0\runtime_orchestration/
+codex_os\v1_0\simulation_layer/
+codex_os\v1_0\stability/
+codex_os\v1_0\substrate/
+codex_os\v1_0\trust/
+codex_os\v1_0\__init__.py
+codex_os\v1_0\autonomous_runtime\__init__.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_spec.md
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v1.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v10.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v2.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v3.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v4.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v5.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v6.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v7.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v8.py
+codex_os\v1_0\autonomous_runtime\autonomous_runtime_v9.py
+codex_os\v1_0\commerce\codex_commerce_v1.md
+codex_os\v1_0\commerce\codex_commerce_v1.py
+codex_os\v1_0\commerce\codex_product_generator.md
+codex_os\v1_0\commerce\codex_product_generator.py
+codex_os\v1_0\commerce\codex_product_registry.md
+codex_os\v1_0\commerce\codex_product_registry.py
+codex_os\v1_0\commerce\founder_override_layer.md
+codex_os\v1_0\commerce\founder_override_layer.py
+codex_os\v1_0\commerce\stripe_mint_remint_engine.md
+codex_os\v1_0\commerce\stripe_mint_remint_engine.py
+codex_os\v1_0\crisis_simulation\crisis_simulation.md
+codex_os\v1_0\crisis_simulation\crisis_simulation.py
+codex_os\v1_0\docs\alpha_codex.md
+codex_os\v1_0\docs\developer_bible.md
+codex_os\v1_0\docs\eternal_codex.md
+codex_os\v1_0\docs\final_architecture_diagram.mmd
+codex_os\v1_0\docs\master_index.md
+codex_os\v1_0\docs\omega_codex.md
+codex_os\v1_0\docs\single_file_canon.txt
+codex_os\v1_0\docs\unified_map.md
+codex_os\v1_0\drift_engines\__init__.py
+codex_os\v1_0\drift_engines\drift_engine_v1.py
+codex_os\v1_0\drift_engines\drift_engine_v10.py
+codex_os\v1_0\drift_engines\drift_engine_v11.py
+codex_os\v1_0\drift_engines\drift_engine_v2.py
+codex_os\v1_0\drift_engines\drift_engine_v3.py
+codex_os\v1_0\drift_engines\drift_engine_v4.py
+codex_os\v1_0\drift_engines\drift_engine_v5.py
+codex_os\v1_0\drift_engines\drift_engine_v6.py
+codex_os\v1_0\drift_engines\drift_engine_v7.py
+codex_os\v1_0\drift_engines\drift_engine_v8.py
+codex_os\v1_0\drift_engines\drift_engine_v9.py
+codex_os\v1_0\drift_engines\drift_engines_spec.md
+codex_os\v1_0\governance\__init__.py
+codex_os\v1_0\governance\governance_spec.md
+codex_os\v1_0\governance\governance_v1.py
+codex_os\v1_0\governance\governance_v10.py
+codex_os\v1_0\governance\governance_v2.py
+codex_os\v1_0\governance\governance_v3.py
+codex_os\v1_0\governance\governance_v4.py
+codex_os\v1_0\governance\governance_v5.py
+codex_os\v1_0\governance\governance_v6.py
+codex_os\v1_0\governance\governance_v7.py
+codex_os\v1_0\governance\governance_v8.py
+codex_os\v1_0\governance\governance_v9.py
+codex_os\v1_0\qa_device\codex_qa_device.py
+codex_os\v1_0\qa_device\codex_qa_v2.py
+codex_os\v1_0\qa_device\qa_device.md
+codex_os\v1_0\README.md
+codex_os\v1_0\replay_battery\replay_battery.md
+codex_os\v1_0\replay_battery\replay_battery.py
+codex_os\v1_0\runbooks\incident_playbook.md
+codex_os\v1_0\runbooks\operator_runbook.md
+codex_os\v1_0\runtime_orchestration\runtime_orchestration_engine.md
+codex_os\v1_0\runtime_orchestration\runtime_orchestration_engine.py
+codex_os\v1_0\simulation_layer\__init__.py
+codex_os\v1_0\simulation_layer\galactic_simulation.py
+codex_os\v1_0\simulation_layer\hypervisor_simulation.py
+codex_os\v1_0\simulation_layer\interstellar_simulation.py
+codex_os\v1_0\simulation_layer\multiversal_simulation.py
+codex_os\v1_0\simulation_layer\omniversal_simulation.py
+codex_os\v1_0\simulation_layer\planetary_simulation.py
+codex_os\v1_0\simulation_layer\runtime_simulation.py
+codex_os\v1_0\simulation_layer\simulation_layer.md
+codex_os\v1_0\simulation_layer\vm_simulation.py
+codex_os\v1_0\stability\stability_engine.md
+codex_os\v1_0\stability\stability_engine.py
+codex_os\v1_0\substrate\constitutional_substrate.md
+codex_os\v1_0\substrate\constitutional_substrate.py
+codex_os\v1_0\system.py
+codex_os\v1_0\trust\codex_authenticity_engine.py
+codex_os\v1_0\trust\codex_provenance_chain.py
+codex_os\v1_0\trust\receipt_verification_v2.py
+codex_os\v1_0\trust\trust_and_authenticity.md
+codex_os\v1_0\trust\trust_root_v1.py
+
+===FILE=== codex_os\v1_0\__init__.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\__init__.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_spec.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v1.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v10.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v2.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v3.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v4.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v5.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v6.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v7.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v8.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\autonomous_runtime\autonomous_runtime_v9.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_commerce_v1.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_commerce_v1.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_product_generator.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_product_generator.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_product_registry.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\codex_product_registry.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\founder_override_layer.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\founder_override_layer.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\stripe_mint_remint_engine.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\commerce\stripe_mint_remint_engine.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\crisis_simulation\crisis_simulation.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\crisis_simulation\crisis_simulation.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\docs\alpha_codex.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\docs\developer_bible.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\docs\eternal_codex.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\docs\final_architecture_diagram.mmd
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\docs\master_index.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\docs\omega_codex.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\docs\single_file_canon.txt
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\docs\unified_map.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\__init__.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v1.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v10.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v11.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v2.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v3.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v4.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v5.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v6.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v7.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v8.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engine_v9.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\drift_engines\drift_engines_spec.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\__init__.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_spec.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v1.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v10.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v2.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v3.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v4.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v5.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v6.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v7.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v8.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\governance\governance_v9.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\qa_device\codex_qa_device.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\qa_device\codex_qa_v2.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\qa_device\qa_device.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\README.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\replay_battery\replay_battery.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\replay_battery\replay_battery.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\runbooks\incident_playbook.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\runbooks\operator_runbook.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\runtime_orchestration\runtime_orchestration_engine.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\runtime_orchestration\runtime_orchestration_engine.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\__init__.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\galactic_simulation.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\hypervisor_simulation.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\interstellar_simulation.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\multiversal_simulation.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\omniversal_simulation.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\planetary_simulation.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\runtime_simulation.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\simulation_layer.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\simulation_layer\vm_simulation.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\stability\stability_engine.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\stability\stability_engine.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\substrate\constitutional_substrate.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\substrate\constitutional_substrate.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\system.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\trust\codex_authenticity_engine.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\trust\codex_provenance_chain.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\trust\receipt_verification_v2.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\trust\trust_and_authenticity.md
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+
+===FILE=== codex_os\v1_0\trust\trust_root_v1.py
+# Codex OS v1.0 — stub (ready for deterministic fill)
+===END===
+

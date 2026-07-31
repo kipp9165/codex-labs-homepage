@@ -1,0 +1,22 @@
+Codex OS v1.0 — Architecture Diagram
+====================================
+
+                [ Eternal Codex ]
+                       |
+                [ Omniversal Codex ]
+                       |
+        -------------------------------------
+        |                                   |
+ [ Multiversal Codex ]             [ Absolute Governance ]
+        |                                   |
+ [ Galactic Codex ]                 [ Drift Engine v11 ]
+        |                                   |
+ [ Interstellar Codex ]             [ Autonomous Runtime v10 ]
+        |                                   |
+ [ Planetary Codex ]                [ Stability Engine ]
+        |                                   |
+ [ Local Constitutional OS ] — [ Replay Battery ] — [ QA Device ]
+        |
+ [ Runtime Orchestration Engine ]
+        |
+ [ Identity → Authority → Admissibility → Disposition → Execution → Receipt → Lineage → Drift ]
