@@ -12,6 +12,6 @@ This deployment configuration launches Codex OS Runtime Service v1 on Render.
 ## Deployment
 Render automatically builds and deploys the service using:
 - `pip install -r requirements.txt`
-- `python service/codex_os_service_launcher.py`
+- `cd service && uvicorn main:app --host 0.0.0.0 --port 10000`
 
 Codex OS is now deployable as a cloud API.
