@@ -1,0 +1,50 @@
+{
+  "artifact": "effect_evidence",
+  "receipt_source": "receipt_20260727T084836603946Z.json",
+  "action": "update_governance_policy",
+  "before_state": {
+    "description": "Governance policy state BEFORE update_governance_policy action",
+    "envelope": {
+      "authority": {
+        "scope": "read",
+        "surface": "public_api"
+      },
+      "classifier_outputs": {
+        "operation_class": "read",
+        "risk_class": "low",
+        "surface": "public_api"
+      },
+      "disposition": "allow",
+      "identity": {
+        "agent": "codex-os-replay",
+        "version": "prior"
+      },
+      "risk_class": "low"
+    },
+    "disposition": "allow",
+    "note": "Agent had surface=public_api, scope=read, risk_class=low, disposition=allow"
+  },
+  "after_state": {
+    "description": "Governance policy state AFTER update_governance_policy action",
+    "envelope": {
+      "authority": {
+        "scope": "write",
+        "surface": "governance"
+      },
+      "classifier_outputs": {
+        "operation_class": "write",
+        "risk_class": "high",
+        "surface": "governance"
+      },
+      "disposition": "review",
+      "identity": {
+        "agent": "codex-os-replay",
+        "version": "current"
+      },
+      "risk_class": "high"
+    },
+    "disposition": "review",
+    "note": "Elevated to surface=governance, scope=write, risk_class=high, disposition=review. A disposition of 'review' halts execution: no write proceeds without explicit approval. The action update_governance_policy was blocked from committing.",
+    "write_prevented": true
+  }
+}

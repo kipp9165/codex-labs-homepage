@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-07-27T08:48:36.603946+00:00",
+  "raw_action": {
+    "action": "update_governance_policy",
+    "parameters": {
+      "policy": "bundle_policy",
+      "mode": "enforce"
+    },
+    "context": {
+      "source": "scheduled_replay",
+      "actor": "codex-os-replay"
+    }
+  },
+  "prior_envelope": {
+    "identity": {
+      "agent": "codex-os-replay",
+      "version": "prior"
+    },
+    "authority": {
+      "surface": "public_api",
+      "scope": "read"
+    },
+    "classifier_outputs": {
+      "surface": "public_api",
+      "operation_class": "read",
+      "risk_class": "low"
+    },
+    "risk_class": "low",
+    "disposition": "allow"
+  },
+  "new_envelope": {
+    "identity": {
+      "agent": "codex-os-replay",
+      "version": "current"
+    },
+    "authority": {
+      "surface": "governance",
+      "scope": "write"
+    },
+    "classifier_outputs": {
+      "surface": "governance",
+      "operation_class": "write",
+      "risk_class": "high"
+    },
+    "risk_class": "high",
+    "disposition": "review"
+  },
+  "delta": {
+    "authority": {
+      "prior": {
+        "surface": "public_api",
+        "scope": "read"
+      },
+      "new": {
+        "surface": "governance",
+        "scope": "write"
+      }
+    },
+    "classifier_outputs": {
+      "prior": {
+        "surface": "public_api",
+        "operation_class": "read",
+        "risk_class": "low"
+      },
+      "new": {
+        "surface": "governance",
+        "operation_class": "write",
+        "risk_class": "high"
+      }
+    },
+    "disposition": {
+      "prior": "allow",
+      "new": "review"
+    },
+    "identity": {
+      "prior": {
+        "agent": "codex-os-replay",
+        "version": "prior"
+      },
+      "new": {
+        "agent": "codex-os-replay",
+        "version": "current"
+      }
+    },
+    "risk_class": {
+      "prior": "low",
+      "new": "high"
+    }
+  },
+  "prior_disposition": "allow",
+  "new_disposition": "review"
+}

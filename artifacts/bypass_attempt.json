@@ -1,0 +1,35 @@
+{
+  "artifact": "bypass_attempt",
+  "description": "Attempted direct governance write with null integrity_envelope and empty version_stamp, simulating a write that bypasses the standard envelope/disposition flow.",
+  "payload_sent": {
+    "action": "update_governance_policy",
+    "parameters": {
+      "policy": "bundle_policy",
+      "mode": "enforce"
+    },
+    "actor": "abraham_manzano",
+    "integrity_envelope": null,
+    "version_stamp": "",
+    "version_seal": "v1.0",
+    "os_state": "runtime"
+  },
+  "governance_response": {
+    "rule_violations": [
+      "version_policy",
+      "integrity_policy"
+    ],
+    "invariant_violations": [
+      "version_invariant",
+      "integrity_invariant"
+    ],
+    "execution_blocked": true,
+    "refusal_reason": "Governance rules triggered: ['version_policy', 'integrity_policy']. Invariant violations: ['version_invariant', 'integrity_invariant']. Null integrity_envelope and empty version_stamp are caught by enforce_rules() and enforce_invariants(), blocking the write."
+  },
+  "disposition_context": {
+    "note": "In the replay receipt, disposition=review was set after envelope reclassification to surface=governance/scope=write/risk_class=high. A review disposition prevents any write from being committed until approved.",
+    "prior_disposition": "allow",
+    "new_disposition": "review",
+    "write_executed": false
+  },
+  "conclusion": "BYPASS_PREVENTED"
+}
