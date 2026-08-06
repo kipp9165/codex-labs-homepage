@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Codex OS v1.0 — Interactive Demo</title>
+  <link rel="stylesheet" href="styles.css">
+  <!--#include file="seo.html" -->
+</head>
+<body>
+<!--#include file="header.html" -->
+
+<main>
+<section>
+  <h2>Try the Runtime</h2>
+  <p>Submit a sample action payload to the live Codex OS runtime service.</p>
+
+  <form id="demo-form">
+    <textarea id="payload" rows="10" style="width:100%;">
+{
+  "raw_actions": [
+    {"id": "demo1", "type": "access", "domain": "runtime", "risk": 1, "confidence": 0.99}
+  ],
+  "policy_context": {
+    "operator_role": "founder",
+    "allowed_domains": ["runtime"],
+    "founder_present": true
+  },
+  "product_seed": "demo-seed"
+}
+    </textarea>
+    <button type="button" onclick="runDemo()">Run Codex OS</button>
+  </form>
+
+  <pre id="result"></pre>
+</section>
+
+<script>
+async function runDemo() {
+  const payload = document.getElementById('payload').value;
+  const resultEl = document.getElementById('result');
+
+  try {
+    const res = await fetch('https://codex-os-runtime-service.onrender.com', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: payload
+    });
+    const data = await res.json();
+    resultEl.textContent = JSON.stringify(data, null, 2);
+  } catch (err) {
+    resultEl.textContent = 'Error: ' + err;
+  }
+}
+</script>
+
+</main>
+
+<!--#include file="footer.html" -->
+</body>
+</html>

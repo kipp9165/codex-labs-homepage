@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1300" viewBox="0 0 1800 1300">
+  <defs>
+    <style>
+      .title { font: 700 24px Arial, sans-serif; fill: #0f172a; }
+      .layerLabel { font: 700 16px Arial, sans-serif; fill: #0f172a; }
+      .nodeText { font: 12px Arial, sans-serif; fill: #0f172a; }
+      .band { stroke: #94a3b8; stroke-width: 1; }
+      .node { fill: #ffffff; stroke: #334155; stroke-width: 1; rx: 8; ry: 8; }
+      .arrow { stroke: #1d4ed8; stroke-width: 2; fill: none; marker-end: url(#arrow); }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1d4ed8" />
+    </marker>
+  </defs>
+
+  <text x="30" y="36" class="title">Codex OS v2.0 - Enterprise Architecture Diagram</text>
+
+  <rect x="30" y="60" width="1740" height="46" class="band" fill="#e2e8f0" />
+  <text x="44" y="88" class="layerLabel">Root Node: Codex OS v2.0</text>
+
+  <rect x="30" y="118" width="1740" height="108" class="band" fill="#f8fafc" />
+  <text x="44" y="142" class="layerLabel">Layer 1: Constitutional Substrate</text>
+  <rect x="44" y="152" width="165" height="28" class="node" /><text x="54" y="171" class="nodeText">Identity</text>
+  <rect x="214" y="152" width="165" height="28" class="node" /><text x="224" y="171" class="nodeText">Authority</text>
+  <rect x="384" y="152" width="165" height="28" class="node" /><text x="394" y="171" class="nodeText">Admissibility</text>
+  <rect x="554" y="152" width="165" height="28" class="node" /><text x="564" y="171" class="nodeText">Execution</text>
+  <rect x="724" y="152" width="165" height="28" class="node" /><text x="734" y="171" class="nodeText">Receipts</text>
+  <rect x="894" y="152" width="165" height="28" class="node" /><text x="904" y="171" class="nodeText">Drift</text>
+  <rect x="1064" y="152" width="165" height="28" class="node" /><text x="1074" y="171" class="nodeText">Legitimacy</text>
+
+  <rect x="30" y="236" width="1740" height="108" class="band" fill="#eff6ff" />
+  <text x="44" y="260" class="layerLabel">Layer 2: Constitutional Intelligence Layer (CIL)</text>
+  <rect x="44" y="272" width="390" height="30" class="node" /><text x="54" y="292" class="nodeText">Constitutional Inference Engine</text>
+  <rect x="444" y="272" width="390" height="30" class="node" /><text x="454" y="292" class="nodeText">Authority Gradient Model</text>
+  <rect x="844" y="272" width="390" height="30" class="node" /><text x="854" y="292" class="nodeText">Legitimacy Horizon Model</text>
+  <rect x="1244" y="272" width="500" height="30" class="node" /><text x="1254" y="292" class="nodeText">Cross-Constitutional Arbitration Engine</text>
+
+  <rect x="30" y="354" width="1740" height="108" class="band" fill="#f0fdf4" />
+  <text x="44" y="378" class="layerLabel">Layer 3: Governance v20-v23</text>
+  <rect x="44" y="390" width="410" height="30" class="node" /><text x="54" y="410" class="nodeText">Governance v20: Constitutional Intent</text>
+  <rect x="464" y="390" width="410" height="30" class="node" /><text x="474" y="410" class="nodeText">Governance v21: Authority Gradient</text>
+  <rect x="884" y="390" width="410" height="30" class="node" /><text x="894" y="410" class="nodeText">Governance v22: Legitimacy Continuum</text>
+  <rect x="1304" y="390" width="440" height="30" class="node" /><text x="1314" y="410" class="nodeText">Governance v23: Cross-Constitutional Arbitration</text>
+
+  <rect x="30" y="472" width="1740" height="108" class="band" fill="#fff7ed" />
+  <text x="44" y="496" class="layerLabel">Layer 4: Drift Engines v20-v23</text>
+  <rect x="44" y="508" width="410" height="30" class="node" /><text x="54" y="528" class="nodeText">Drift v20: Temporal Entropy</text>
+  <rect x="464" y="508" width="410" height="30" class="node" /><text x="474" y="528" class="nodeText">Drift v21: Constitutional Drift</text>
+  <rect x="884" y="508" width="410" height="30" class="node" /><text x="894" y="528" class="nodeText">Drift v22: Authority Drift</text>
+  <rect x="1304" y="508" width="440" height="30" class="node" /><text x="1314" y="528" class="nodeText">Drift v23: Legitimacy Drift</text>
+
+  <rect x="30" y="590" width="1740" height="88" class="band" fill="#fefce8" />
+  <text x="44" y="614" class="layerLabel">Layer 5: Autonomous Runtime v20 Series</text>
+  <rect x="44" y="626" width="540" height="30" class="node" /><text x="54" y="646" class="nodeText">Constitutional Bundles</text>
+  <rect x="594" y="626" width="540" height="30" class="node" /><text x="604" y="646" class="nodeText">Constitutional Fallback Routes</text>
+  <rect x="1144" y="626" width="600" height="30" class="node" /><text x="1154" y="646" class="nodeText">Constitutional Checkpoint Receipts</text>
+
+  <rect x="30" y="688" width="1740" height="118" class="band" fill="#f5f3ff" />
+  <text x="44" y="712" class="layerLabel">Layer 6: Constitutional Simulation Tier</text>
+  <rect x="44" y="724" width="165" height="28" class="node" /><text x="54" y="743" class="nodeText">Runtime</text>
+  <rect x="214" y="724" width="165" height="28" class="node" /><text x="224" y="743" class="nodeText">VM</text>
+  <rect x="384" y="724" width="165" height="28" class="node" /><text x="394" y="743" class="nodeText">Hypervisor</text>
+  <rect x="554" y="724" width="165" height="28" class="node" /><text x="564" y="743" class="nodeText">Planetary</text>
+  <rect x="724" y="724" width="165" height="28" class="node" /><text x="734" y="743" class="nodeText">Interstellar</text>
+  <rect x="894" y="724" width="165" height="28" class="node" /><text x="904" y="743" class="nodeText">Galactic</text>
+  <rect x="1064" y="724" width="165" height="28" class="node" /><text x="1074" y="743" class="nodeText">Multiversal</text>
+  <rect x="1234" y="724" width="165" height="28" class="node" /><text x="1244" y="743" class="nodeText">Omniversal</text>
+  <rect x="1404" y="724" width="340" height="28" class="node" /><text x="1414" y="743" class="nodeText">Constitutional Tier</text>
+
+  <rect x="30" y="816" width="1740" height="88" class="band" fill="#ecfeff" />
+  <text x="44" y="840" class="layerLabel">Layer 7: Commerce Layer v2.0</text>
+  <rect x="44" y="852" width="540" height="30" class="node" /><text x="54" y="872" class="nodeText">Constitutional Pricing Engine</text>
+  <rect x="594" y="852" width="540" height="30" class="node" /><text x="604" y="872" class="nodeText">Constitutional Product Registry</text>
+  <rect x="1144" y="852" width="600" height="30" class="node" /><text x="1154" y="872" class="nodeText">Founder Override v3</text>
+
+  <rect x="30" y="914" width="1740" height="88" class="band" fill="#fdf2f8" />
+  <text x="44" y="938" class="layerLabel">Layer 8: Trust Layer v2.0</text>
+  <rect x="44" y="950" width="540" height="30" class="node" /><text x="54" y="970" class="nodeText">Constitutional Provenance Chain</text>
+  <rect x="594" y="950" width="540" height="30" class="node" /><text x="604" y="970" class="nodeText">Authenticity Engine v4</text>
+  <rect x="1144" y="950" width="600" height="30" class="node" /><text x="1154" y="970" class="nodeText">Receipt Verification v4</text>
+
+  <rect x="30" y="1012" width="1740" height="120" class="band" fill="#eef2ff" />
+  <text x="44" y="1036" class="layerLabel">Enterprise Integration Nodes</text>
+  <rect x="44" y="1048" width="330" height="30" class="node" /><text x="54" y="1068" class="nodeText">Enterprise Workflows</text>
+  <rect x="384" y="1048" width="330" height="30" class="node" /><text x="394" y="1068" class="nodeText">Governance Systems</text>
+  <rect x="724" y="1048" width="330" height="30" class="node" /><text x="734" y="1068" class="nodeText">Compliance and Audit</text>
+  <rect x="1064" y="1048" width="330" height="30" class="node" /><text x="1074" y="1068" class="nodeText">Autonomous Agents</text>
+  <rect x="1404" y="1048" width="340" height="30" class="node" /><text x="1414" y="1068" class="nodeText">Observability and Reporting</text>
+
+  <rect x="30" y="1142" width="1740" height="60" class="band" fill="#e0f2fe" />
+  <text x="44" y="1178" class="layerLabel">External Node: Codex OS Runtime Service (Live)</text>
+
+  <line x1="900" y1="226" x2="900" y2="236" class="arrow" />
+  <line x1="900" y1="344" x2="900" y2="354" class="arrow" />
+  <line x1="900" y1="462" x2="900" y2="472" class="arrow" />
+  <line x1="900" y1="580" x2="900" y2="590" class="arrow" />
+  <line x1="900" y1="678" x2="900" y2="688" class="arrow" />
+  <line x1="900" y1="806" x2="900" y2="816" class="arrow" />
+  <line x1="900" y1="904" x2="900" y2="914" class="arrow" />
+  <line x1="900" y1="1002" x2="900" y2="1012" class="arrow" />
+  <line x1="900" y1="1132" x2="900" y2="1142" class="arrow" />
+</svg>

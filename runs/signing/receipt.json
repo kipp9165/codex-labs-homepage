@@ -1,0 +1,12 @@
+{
+  "disposition": "ADMISSIBLE",
+  "hashes": {
+    "input_hash": "b46b2a1a7451178831fe346561c28ab52383ba9991d3961e40d32bf52812a169",
+    "canonical_hash": "ec55862d685bf3dd6a45e5d5de2606c9ce8f1da4675052b1f5b68fda844f8a10",
+    "decision_hash": "1d65eb941399361cee262c4457cf1b5d6321ddedb3a09b53f88375e3231e6345"
+  },
+  "drift_deltas": [],
+  "replay_flag": false,
+  "signature": "b074ed99f9712d66f0ae8f95da2c026e7fa4346920cb5757f729e34ab63f6981eacc0f3b05a6e9d9a8769cc2d72c4f95086c3b87aa6fdeab466ed100ca9ac009",
+  "verified": true
+}

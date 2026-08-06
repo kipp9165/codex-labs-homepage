@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: /components/codex-os-site/sitemap.xml

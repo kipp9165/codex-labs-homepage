@@ -1,0 +1,12 @@
+{
+  "disposition": "REFUSED_REPLAY_PREVENTED",
+  "hashes": {
+    "input_hash": "19269a6fe38658a8eed8425a245be19ae810120219d04bbbb679af2aa29628a8",
+    "canonical_hash": "6bead4af5a5e8e6aae3b5a4aecadd2464061fc6cf9eb5ef294e5c736e7867183",
+    "decision_hash": "763865336c942ff7dd007403f82e7abc9cde168e4d8edde0cf676f661688656c"
+  },
+  "drift_deltas": [],
+  "replay_flag": true,
+  "signature": "ec1aa9b4b5f368e623e068b8945050ee9d0837f82354b3505bb3e28ba7539c73cb80dae2073df01e7ddb40474c430b518ec4f601f7855e232ad8ecbdadf5280f",
+  "verified": true
+}

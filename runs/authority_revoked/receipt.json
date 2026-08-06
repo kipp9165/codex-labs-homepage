@@ -1,0 +1,12 @@
+{
+  "disposition": "REFUSED_AUTHORITY_REVOKED",
+  "hashes": {
+    "input_hash": "22e2d60128f1025b510fe2c51a0d651ce16ce7c3d62451b1bbf6e1e0eab2e68d",
+    "canonical_hash": "ce3fd88455b5b1e83f0c65afa5bac468a7d891bb55b80adcb7deb85535f60fe2",
+    "decision_hash": "03d994f6c4ad06a7924234b50077a5d043a49cd68b58aa3ee799f8ed6d298c3c"
+  },
+  "drift_deltas": [],
+  "replay_flag": false,
+  "signature": "a83f935b07746da304e161a78555e6193a23c96cc25bbc5e0539933d639b4b6470437c2c2addaa2e8cd1b8a34108663874c45ec795f4d386a0501c1a6508d103",
+  "verified": true
+}

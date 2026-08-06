@@ -1,0 +1,12 @@
+{
+  "disposition": "REFUSED_ALT_ROUTE",
+  "hashes": {
+    "input_hash": "26aaea010e583a187660d8459bfc9c89b35f9651be02a09e2480754d5d9fed26",
+    "canonical_hash": "3b93ba0eedd97c31edcdf39fcf752e75fefa04c92b13ebe9fce63d8459c57e3d",
+    "decision_hash": "402f9fdcca2652d7a28e446dcec22f2ead774e9c35efe705761253e4eced9807"
+  },
+  "drift_deltas": [],
+  "replay_flag": false,
+  "signature": "d6a10550106df3396240fc0a18fb1408074e4f56e756a200b0b52f0acf553210264bd8be295d36e81db604eb1d2846dd73b5e674c1038de4de8d9bf4b58d5a08",
+  "verified": true
+}

@@ -1,0 +1,26 @@
+{
+  "scenario_name": "baseline",
+  "action": "baseline_admissible_action",
+  "authority_valid": true,
+  "conditions": {
+    "ok": true,
+    "drift_deltas": []
+  },
+  "route": {
+    "ok": true,
+    "used_route": "route.primary",
+    "reason": "requested_route_matches_primary"
+  },
+  "replay": {
+    "is_replay": false,
+    "allowed": true,
+    "reason": "nonce_not_seen"
+  },
+  "disposition": "ADMISSIBLE",
+  "hashes": {
+    "input_hash": "b692751c3111e042965682b9b360e71e4bad0c7d5b3a6b7e66413d61b879b5b1",
+    "canonical_hash": "3f3deea47183ab69e44b1e0c691bf2cd29d33d14f622fdb7c72c7c313cf92154",
+    "decision_hash": "a5349d5853f56df694163b29dd888533951edf6afdc25716c2f4c1a1d17cd1a5"
+  },
+  "public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8"
+}

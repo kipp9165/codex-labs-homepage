@@ -1,0 +1,40 @@
+{
+  "products": [
+    {
+      "id": "codex-os-v1-core",
+      "name": "Codex OS v1.0 — Core",
+      "description": "Deterministic constitutional operating substrate with governance, drift, runtime, and trust layers.",
+      "metadata": {
+        "tier": "core",
+        "version": "v1.0"
+      }
+    },
+    {
+      "id": "codex-os-v1-pro",
+      "name": "Codex OS v1.0 — Pro",
+      "description": "Extended governance, drift engines, and simulation stack for multi-domain execution.",
+      "metadata": {
+        "tier": "pro",
+        "version": "v1.0"
+      }
+    },
+    {
+      "id": "codex-os-v1-enterprise",
+      "name": "Codex OS v1.0 — Enterprise",
+      "description": "Full Codex OS stack including omniversal simulation, commerce, and trust layers.",
+      "metadata": {
+        "tier": "enterprise",
+        "version": "v1.0"
+      }
+    },
+    {
+      "id": "codex-os-v1-qa-autonomous",
+      "name": "Codex OS v1.0 — Autonomous Q/A",
+      "description": "Codex Q/A v2.0 universal constitutional responder for inbound questions and governed replies.",
+      "metadata": {
+        "tier": "qa",
+        "version": "v2.0"
+      }
+    }
+  ]
+}

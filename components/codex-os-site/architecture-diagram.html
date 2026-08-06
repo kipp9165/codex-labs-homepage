@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Codex OS v1.0 — Interactive Architecture Diagram</title>
+  <link rel="stylesheet" href="styles.css">
+  <!--#include file="seo.html" -->
+  <style>
+    .layer { padding: 1rem; border: 1px solid #333; margin-bottom: 1rem; cursor: pointer; }
+    .details { display: none; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+
+<!--#include file="header.html" -->
+
+<main>
+  <h2>Codex OS v1.0 — Interactive Architecture Diagram</h2>
+
+  <div class="layer" onclick="toggle('substrate')">
+    <h3>Constitutional Substrate</h3>
+    <div id="substrate" class="details">
+      <p>Identity, authority, admissibility, execution, receipts, drift, legitimacy.</p>
+    </div>
+  </div>
+
+  <div class="layer" onclick="toggle('governance')">
+    <h3>Governance v1–v10</h3>
+    <div id="governance" class="details">
+      <p>Normalization → Role → Domain → Budget → Compliance → Safety → Escalation → Replay Lock → Confidence → Disposition</p>
+    </div>
+  </div>
+
+  <div class="layer" onclick="toggle('drift')">
+    <h3>Drift Engines v1–v11</h3>
+    <div id="drift" class="details">
+      <p>Signal → Skew → Mismatch → Confidence Slope → Entropy → Route Mutation → Replay Divergence → Latency → Clustering → Severity → Drift Disposition</p>
+    </div>
+  </div>
+
+  <div class="layer" onclick="toggle('runtime')">
+    <h3>Autonomous Runtime v1–v10</h3>
+    <div id="runtime" class="details">
+      <p>Queue → Plan → Ordering → Gate → Slices → Fallback → Checkpoints → Health → Stabilization → Runtime Disposition</p>
+    </div>
+  </div>
+
+  <div class="layer" onclick="toggle('simulation')">
+    <h3>Simulation Layer</h3>
+    <div id="simulation" class="details">
+      <p>Runtime → VM → Hypervisor → Planetary → Interstellar → Galactic → Multiversal → Omniversal</p>
+    </div>
+  </div>
+
+  <div class="layer" onclick="toggle('commerce')">
+    <h3>Commerce Layer</h3>
+    <div id="commerce" class="details">
+      <p>Founder Override → Commerce v1 → Product Generator → Stripe Mint/Remint → Registry</p>
+    </div>
+  </div>
+
+  <div class="layer" onclick="toggle('trust')">
+    <h3>Trust Layer</h3>
+    <div id="trust" class="details">
+      <p>Trust Root → Receipt Verification → Authenticity → Provenance</p>
+    </div>
+  </div>
+</main>
+
+<script>
+function toggle(id) {
+  const el = document.getElementById(id);
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+</script>
+
+<!--#include file="footer.html" -->
+
+</body>
+</html>

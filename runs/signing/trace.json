@@ -1,0 +1,26 @@
+{
+  "scenario_name": "signing",
+  "action": "ed25519_signing_verification",
+  "authority_valid": true,
+  "conditions": {
+    "ok": true,
+    "drift_deltas": []
+  },
+  "route": {
+    "ok": true,
+    "used_route": "route.primary",
+    "reason": "requested_route_matches_primary"
+  },
+  "replay": {
+    "is_replay": false,
+    "allowed": true,
+    "reason": "nonce_not_seen"
+  },
+  "disposition": "ADMISSIBLE",
+  "hashes": {
+    "input_hash": "b46b2a1a7451178831fe346561c28ab52383ba9991d3961e40d32bf52812a169",
+    "canonical_hash": "ec55862d685bf3dd6a45e5d5de2606c9ce8f1da4675052b1f5b68fda844f8a10",
+    "decision_hash": "1d65eb941399361cee262c4457cf1b5d6321ddedb3a09b53f88375e3231e6345"
+  },
+  "public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8"
+}

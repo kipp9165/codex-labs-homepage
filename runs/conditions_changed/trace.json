@@ -1,0 +1,29 @@
+{
+  "scenario_name": "conditions_changed",
+  "action": "governed_condition_change",
+  "authority_valid": true,
+  "conditions": {
+    "ok": false,
+    "drift_deltas": [
+      "fingerprint:cfg-v1-fp->cfg-v2-fp",
+      "policy_version:policy-1->policy-2"
+    ]
+  },
+  "route": {
+    "ok": true,
+    "used_route": "route.primary",
+    "reason": "requested_route_matches_primary"
+  },
+  "replay": {
+    "is_replay": false,
+    "allowed": true,
+    "reason": "nonce_not_seen"
+  },
+  "disposition": "REFUSED_CONDITIONS_CHANGED",
+  "hashes": {
+    "input_hash": "d001f4bc016590e801e8a0898b21112f310dd87c1e600bd84d4f7f3fb108b551",
+    "canonical_hash": "65df6f59109220dfafa8c71403617dd33726a24c1d460074276c255ccc7607d7",
+    "decision_hash": "1f67d4688e33562965593e3cdb5af0ef33f382c29b156e87fee1de501e8f3404"
+  },
+  "public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8"
+}

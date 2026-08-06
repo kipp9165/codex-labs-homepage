@@ -1,0 +1,26 @@
+{
+  "scenario_name": "replay",
+  "action": "same_condition_replay",
+  "authority_valid": true,
+  "conditions": {
+    "ok": true,
+    "drift_deltas": []
+  },
+  "route": {
+    "ok": true,
+    "used_route": "route.primary",
+    "reason": "requested_route_matches_primary"
+  },
+  "replay": {
+    "is_replay": true,
+    "allowed": true,
+    "reason": "replay_detected_not_blocked"
+  },
+  "disposition": "ADMISSIBLE_REPLAY_DETECTED",
+  "hashes": {
+    "input_hash": "eda50e180bc7957ab7813f5f1eff0e91e4b1d7e26a8897a13bc0c55b1d6a1bdd",
+    "canonical_hash": "e1fbeeaf0d86ff3b2a69397dd8364ea7547ea43acf8d93c96e7377145d6f500a",
+    "decision_hash": "f1893bd50f2a0cd6633f771eeb904f9b351797c103d2b17d91cee3bcce0c35c5"
+  },
+  "public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8"
+}

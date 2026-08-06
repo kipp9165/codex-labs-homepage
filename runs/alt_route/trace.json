@@ -1,0 +1,26 @@
+{
+  "scenario_name": "alt_route",
+  "action": "alternate_route_attempt",
+  "authority_valid": true,
+  "conditions": {
+    "ok": true,
+    "drift_deltas": []
+  },
+  "route": {
+    "ok": false,
+    "used_route": "route.primary",
+    "reason": "alternate_route_denied"
+  },
+  "replay": {
+    "is_replay": false,
+    "allowed": true,
+    "reason": "nonce_not_seen"
+  },
+  "disposition": "REFUSED_ALT_ROUTE",
+  "hashes": {
+    "input_hash": "26aaea010e583a187660d8459bfc9c89b35f9651be02a09e2480754d5d9fed26",
+    "canonical_hash": "3b93ba0eedd97c31edcdf39fcf752e75fefa04c92b13ebe9fce63d8459c57e3d",
+    "decision_hash": "402f9fdcca2652d7a28e446dcec22f2ead774e9c35efe705761253e4eced9807"
+  },
+  "public_key": "03a107bff3ce10be1d70dd18e74bc09967e4d6309ba50d5f1ddc8664125531b8"
+}

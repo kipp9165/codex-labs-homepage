@@ -1,0 +1,29 @@
+{
+  "scenario_name": "signing",
+  "action": "ed25519_signing_verification",
+  "authority": {
+    "actor": "operator.golf",
+    "authorized": true,
+    "revoked": false
+  },
+  "governed_conditions": {
+    "expected_fingerprint": "cfg-v1-fp",
+    "current_fingerprint": "cfg-v1-fp",
+    "expected_policy_version": "policy-1",
+    "current_policy_version": "policy-1"
+  },
+  "routes": {
+    "primary_route": "route.primary",
+    "requested_route": "route.primary",
+    "alternate_allowed": false
+  },
+  "replay": {
+    "nonce": "nonce-sign-001",
+    "seen_nonces": [],
+    "prevent_replay": true
+  },
+  "signing": {
+    "enabled": true,
+    "private_key_hex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+  }
+}

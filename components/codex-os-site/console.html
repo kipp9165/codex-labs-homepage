@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Codex OS v1.0 — Interactive Console</title>
+  <link rel="stylesheet" href="styles.css">
+  <!--#include file="seo.html" -->
+</head>
+<body>
+<!--#include file="header.html" -->
+
+<main>
+<section>
+  <h2>Payload</h2>
+  <textarea id="payload" rows="14" style="width:100%;">
+{
+  "raw_actions": [
+    {"id": "demo1", "type": "access", "domain": "runtime", "risk": 1, "confidence": 0.99}
+  ],
+  "policy_context": {
+    "operator_role": "founder",
+    "allowed_domains": ["runtime"],
+    "founder_present": true
+  },
+  "product_seed": "console-demo"
+}
+  </textarea>
+  <button onclick="runConsole()">Run Codex OS</button>
+</section>
+
+<section>
+  <h2>Result</h2>
+  <pre id="result"></pre>
+</section>
+
+<script>
+async function runConsole() {
+  const payload = document.getElementById('payload').value;
+  const resultEl = document.getElementById('result');
+
+  try {
+    const res = await fetch('https://codex-os-runtime-service.onrender.com', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: payload
+    });
+    const data = await res.json();
+    resultEl.textContent = JSON.stringify(data, null, 2);
+  } catch (err) {
+    resultEl.textContent = 'Error: ' + err;
+  }
+}
+</script>
+
+</main>
+
+<!--#include file="footer.html" -->
+</body>
+</html>
