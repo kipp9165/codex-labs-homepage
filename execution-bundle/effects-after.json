@@ -1,0 +1,17 @@
+{
+  "state_version": "v1.0.1",
+  "allowed_effect": {
+    "action_id": "act-4401",
+    "effect": "append_execution_receipt",
+    "applied": true
+  },
+  "bypass_refusal": {
+    "attempted": true,
+    "path": "authority_override_without_lineage",
+    "refused": true,
+    "reason": "missing signer lineage continuity"
+  },
+  "execution_state": {
+    "last_action_id": "act-4401"
+  }
+}

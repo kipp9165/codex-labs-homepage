@@ -1,0 +1,5 @@
+OK: hash validated
+OK: signature validated
+OK: rfc3161 token validated
+OK: policy continuity validated
+PASS

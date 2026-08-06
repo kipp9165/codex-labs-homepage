@@ -1,0 +1,16 @@
+{
+  "state_version": "v1.0.0",
+  "policy_version": "policy-2026.08.06",
+  "authority_registry": {
+    "actor": "founder.operator",
+    "scope": [
+      "execution:apply",
+      "execution:trace"
+    ],
+    "revoked": false
+  },
+  "execution_state": {
+    "last_action_id": "act-4400",
+    "last_receipt_hash": "b5f7180fcb4d3e0b6f4f2f36ed8d4ea65b3496804f2f72fecf3f86c1be36f971"
+  }
+}

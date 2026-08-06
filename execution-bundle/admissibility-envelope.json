@@ -1,0 +1,22 @@
+{
+  "identity_continuity_evaluation": {
+    "identity_id": "idn-codex-founder-01",
+    "continuous": true,
+    "evidence": "sess-9910->sess-9911"
+  },
+  "authority_provenance_evaluation": {
+    "grant_id": "grant-7781",
+    "revoked": false,
+    "valid": true
+  },
+  "policy_version_binding": {
+    "policy_version": "policy-2026.08.06",
+    "parent_hash": "245e6b6e24afd36d55b81d5d2d6c1c59ef1ebd8cd6285fe3f07a7c7178412113",
+    "lineage_prior_hash": "245e6b6e24afd36d55b81d5d2d6c1c59ef1ebd8cd6285fe3f07a7c7178412113",
+    "bound": true
+  },
+  "drift": {
+    "detected": false,
+    "details": []
+  }
+}
