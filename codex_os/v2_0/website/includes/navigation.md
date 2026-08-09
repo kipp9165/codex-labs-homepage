@@ -1,0 +1,13 @@
+# Navigation
+- Home
+- Features
+- Pricing
+- Enterprise
+- Support
+- FAQ
+- Checkout
+- Founder Override
+- Terms
+- Privacy
+- Press Kit
+- Launch Trailer
