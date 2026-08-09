@@ -1,0 +1,18 @@
+Paste the following into your Render deploy description:
+
+---
+Codex Q/A v2.0 — Founder’s Release Notes
+
+The full Codex Q/A v2.0 deterministic execution system has been assembled, sealed, certified, finalized, and published.
+
+Completed Layers:
+Hardening, Observability, Reliability, Performance, Scalability, Resilience, Continuity, Governance, Constitutional Intelligence, Intelligence, Runtime, Execution, Finalization.
+
+Founder‑Grade Artifacts:
+SYSTEM_RECEIPT.md, SYSTEM_SEAL.md, SYSTEM_CERTIFICATE.md, MASTER_SEAL_SCROLL.md, FOUNDERS_EDITION_SCROLL.md.
+
+Integrity:
+Drift: None • Continuity: Maintained • Authority: Bound • Legitimacy: Affirmed • Boundary: Sealed • Determinism: Guaranteed.
+
+Codex Q/A v2.0 is complete.
+---

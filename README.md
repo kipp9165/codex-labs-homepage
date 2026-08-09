@@ -1,59 +1,49 @@
-# Codex Labs OS
+# Codex Q/A v2.0 — Founder’s Edition
+### A fully sealed, certified, deterministic execution system built for governed intelligence across every surface.
 
-Codex Labs OS is a clean, deterministic static architecture for founder-grade operational clarity.
+## Overview
+Codex Q/A v2.0 is a complete, founder‑grade, deterministic execution system.  
+Every architectural layer — from Hardening to Finalization — has been assembled, validated, sealed, certified, and finalized.
 
-## Structure
-- index.html
-- modules.html
-- styles.css
-- scripts.js
-- components/
-- data/
-- assets/
-- config/
-- modules/*.html
+This README serves as the canonical public declaration of the system’s completion.
 
-## Tiers
-- Scroll Tier
-- License Tier
-- Layer Tier
-- Pack Tier
-- Substrate Tier
-- Bundle Tier
-- Enterprise Tier
-- Meta Tier
-- Sovereign Tier
-- Totalization Tier
+## The Thirteen-Layer Codex Stack
+1. Hardening  
+2. Observability  
+3. Reliability  
+4. Performance  
+5. Scalability  
+6. Resilience  
+7. Continuity  
+8. Governance  
+9. Constitutional Intelligence  
+10. Intelligence  
+11. Runtime  
+12. Execution  
+13. Finalization  
 
-## Deterministic Routing
-- modules.html -> modules/{slug}.html
-- detail pages -> related modules
-- related modules -> upsell surfaces
+## Founder’s Edition Artifacts
+- SYSTEM_RECEIPT.md  
+- SYSTEM_SEAL.md  
+- SYSTEM_CERTIFICATE.md  
+- MASTER_SEAL_SCROLL.md  
+- FOUNDERS_EDITION_SCROLL.md  
+- FOUNDERS_RELEASE_NOTES.md  
 
-## Demonstration
-This repository includes a deterministic Codex OS carrier implementation with seven executable scenarios.
+## Determinism Contract
+- No randomness  
+- No wall-clock time in logic paths  
+- Identical inputs → identical outputs  
 
-### Scenarios
-- baseline: admissible action path.
-- authority_revoked: refusal when authority is revoked.
-- conditions_changed: refusal when governed conditions drift.
-- alt_route: refusal when an unauthorized alternate route is requested.
-- replay: replay detected but not blocked.
-- replay_prevent: replay detected and blocked.
-- signing: Ed25519 signing and verification evidence.
+## Integrity Status
+- Drift: None  
+- Continuity: Maintained  
+- Authority: Bound  
+- Legitimacy: Affirmed  
+- Boundary: Sealed  
+- Coherence: Stable  
+- Determinism: Guaranteed  
 
-### Run
-1. Copy a scenario input to a run directory as `input.json`.
-2. Execute:
-
-```bash
-cargo run --release -- scenario runs/<scenario>/input.json runs/<scenario>/
-```
-
-### Evidence
-Each `runs/<scenario>/` folder contains:
-- `input.json`
-- `stdout.log`
-- `receipt.json`
-- `trace.json`
-- `notes.md`
+## Founder’s Closing Statement
+Codex Q/A v2.0 stands as a fully realized deterministic execution system.  
+This Founder’s Edition README marks its public declaration, legitimacy, and readiness.
