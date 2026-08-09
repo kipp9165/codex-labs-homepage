@@ -1,0 +1,447 @@
+{
+  "inputs": {
+    "policy_context": {
+      "escalate": true,
+      "founder_present": false,
+      "qa_mode": true,
+      "user_tier": "internal_smoke_test"
+    },
+    "product_seed": "qa_v2_test",
+    "raw_actions": [
+      {
+        "action": "test_basic_qa",
+        "payload": "Explain admissibility at T=0."
+      },
+      {
+        "action": "test_governance",
+        "payload": "Compare authority provenance vs identity continuity."
+      },
+      {
+        "action": "test_multilayer",
+        "payload": "Trace a transition through governance -> drift -> runtime."
+      },
+      {
+        "action": "test_founder_override",
+        "payload": "Check founder override path."
+      },
+      {
+        "action": "test_commerce",
+        "payload": "Mint product seed 'qa_v2_test'."
+      },
+      {
+        "action": "test_receipts",
+        "payload": "Verify replay -> receipt -> authenticity -> provenance."
+      }
+    ]
+  },
+  "result": {
+    "authenticity": {
+      "authentic": true,
+      "qa_passed": true,
+      "verified": true
+    },
+    "basic_qa": {
+      "checks": [
+        {
+          "name": "envelope_count_present",
+          "pass": true
+        },
+        {
+          "name": "stability_status_valid",
+          "pass": true
+        },
+        {
+          "name": "governance_disposition_present",
+          "pass": true
+        }
+      ],
+      "passed": true,
+      "version": "v2.0"
+    },
+    "commerce": {
+      "actions_processed": 6,
+      "commerce_allowed": false,
+      "version": "v1.0"
+    },
+    "drift": {
+      "actions": [
+        {
+          "action": "test_basic_qa",
+          "payload": "Explain admissibility at T=0."
+        },
+        {
+          "action": "test_governance",
+          "payload": "Compare authority provenance vs identity continuity."
+        },
+        {
+          "action": "test_multilayer",
+          "payload": "Trace a transition through governance -> drift -> runtime."
+        },
+        {
+          "action": "test_founder_override",
+          "payload": "Check founder override path."
+        },
+        {
+          "action": "test_commerce",
+          "payload": "Mint product seed 'qa_v2_test'."
+        },
+        {
+          "action": "test_receipts",
+          "payload": "Verify replay -> receipt -> authenticity -> provenance."
+        }
+      ],
+      "cluster_score": 1,
+      "confidence_slope": 0.0,
+      "disposition": "DRIFT_STABLE",
+      "governance_disposition": "REVIEW",
+      "latency_band": "stable",
+      "mismatch": true,
+      "policy_entropy": 1,
+      "receipts": [
+        {
+          "layer": "drift_engine_v1",
+          "signal_count": 6
+        },
+        {
+          "layer": "drift_engine_v2",
+          "skew": 0
+        },
+        {
+          "layer": "drift_engine_v3",
+          "mismatch": true
+        },
+        {
+          "confidence_slope": 0.0,
+          "layer": "drift_engine_v4"
+        },
+        {
+          "layer": "drift_engine_v5",
+          "policy_entropy": 1
+        },
+        {
+          "layer": "drift_engine_v6",
+          "route_mutation": false
+        },
+        {
+          "layer": "drift_engine_v7",
+          "replay_divergence": 0
+        },
+        {
+          "latency_band": "stable",
+          "layer": "drift_engine_v8"
+        },
+        {
+          "cluster_score": 1,
+          "layer": "drift_engine_v9"
+        },
+        {
+          "layer": "drift_engine_v10",
+          "severity": 1
+        },
+        {
+          "disposition": "DRIFT_STABLE",
+          "layer": "drift_engine_v11"
+        }
+      ],
+      "replay_divergence": 0,
+      "route_mutation": false,
+      "severity": 1,
+      "signal_count": 6,
+      "skew": 0
+    },
+    "founder_override": {
+      "founder_present": false,
+      "founder_required": true,
+      "override_allowed": false
+    },
+    "governance": {
+      "actions": [
+        {
+          "action": "test_basic_qa",
+          "payload": "Explain admissibility at T=0."
+        },
+        {
+          "action": "test_governance",
+          "payload": "Compare authority provenance vs identity continuity."
+        },
+        {
+          "action": "test_multilayer",
+          "payload": "Trace a transition through governance -> drift -> runtime."
+        },
+        {
+          "action": "test_founder_override",
+          "payload": "Check founder override path."
+        },
+        {
+          "action": "test_commerce",
+          "payload": "Mint product seed 'qa_v2_test'."
+        },
+        {
+          "action": "test_receipts",
+          "payload": "Verify replay -> receipt -> authenticity -> provenance."
+        }
+      ],
+      "compliant": true,
+      "confidence_ok": true,
+      "disposition": "REVIEW",
+      "domains_ok": true,
+      "escalate": true,
+      "normalized": false,
+      "policy_context": {
+        "escalate": true,
+        "founder_present": false,
+        "qa_mode": true,
+        "user_tier": "internal_smoke_test"
+      },
+      "receipts": [
+        {
+          "layer": "governance_v1",
+          "normalized": false
+        },
+        {
+          "layer": "governance_v2",
+          "role_allowed": false
+        },
+        {
+          "domains_ok": true,
+          "layer": "governance_v3"
+        },
+        {
+          "layer": "governance_v4",
+          "within_budget": true
+        },
+        {
+          "compliant": true,
+          "layer": "governance_v5"
+        },
+        {
+          "layer": "governance_v6",
+          "max_risk": 0,
+          "safe": true
+        },
+        {
+          "escalate": true,
+          "layer": "governance_v7"
+        },
+        {
+          "layer": "governance_v8",
+          "replay_lock": "|||||"
+        },
+        {
+          "confidence_ok": true,
+          "layer": "governance_v9"
+        },
+        {
+          "disposition": "REVIEW",
+          "layer": "governance_v10"
+        }
+      ],
+      "replay_lock": "|||||",
+      "role_allowed": false,
+      "safe": true,
+      "within_budget": true
+    },
+    "minted_product": {
+      "minted": false,
+      "product_id": "codex-product-qa_v2_test",
+      "seed": "qa_v2_test"
+    },
+    "provenance": {
+      "count": 6,
+      "entries": [
+        {
+          "authentic": true,
+          "domain": "core",
+          "id": null,
+          "type": "unknown"
+        },
+        {
+          "authentic": true,
+          "domain": "core",
+          "id": null,
+          "type": "unknown"
+        },
+        {
+          "authentic": true,
+          "domain": "core",
+          "id": null,
+          "type": "unknown"
+        },
+        {
+          "authentic": true,
+          "domain": "core",
+          "id": null,
+          "type": "unknown"
+        },
+        {
+          "authentic": true,
+          "domain": "core",
+          "id": null,
+          "type": "unknown"
+        },
+        {
+          "authentic": true,
+          "domain": "core",
+          "id": null,
+          "type": "unknown"
+        }
+      ]
+    },
+    "receipt_verification": {
+      "envelope_count": 6,
+      "trust_root_active": true,
+      "verified": true,
+      "version": "v2.0"
+    },
+    "registry": {
+      "count": 1,
+      "registry": [
+        {
+          "minted": false,
+          "product_id": "codex-product-qa_v2_test",
+          "stripe_ready": false
+        }
+      ]
+    },
+    "runtime": {
+      "actions": [
+        {
+          "action": "test_basic_qa",
+          "payload": "Explain admissibility at T=0."
+        },
+        {
+          "action": "test_governance",
+          "payload": "Compare authority provenance vs identity continuity."
+        },
+        {
+          "action": "test_multilayer",
+          "payload": "Trace a transition through governance -> drift -> runtime."
+        },
+        {
+          "action": "test_founder_override",
+          "payload": "Check founder override path."
+        },
+        {
+          "action": "test_commerce",
+          "payload": "Mint product seed 'qa_v2_test'."
+        },
+        {
+          "action": "test_receipts",
+          "payload": "Verify replay -> receipt -> authenticity -> provenance."
+        }
+      ],
+      "capability_gate": false,
+      "checkpoints": [
+        "cp:0",
+        "cp:1",
+        "cp:2",
+        "cp:3",
+        "cp:4",
+        "cp:5"
+      ],
+      "disposition": "RUNTIME_GO",
+      "fallback_ready": true,
+      "governance_disposition": "REVIEW",
+      "health": 80,
+      "ordered_plan": [
+        "exec:0",
+        "exec:1",
+        "exec:2",
+        "exec:3",
+        "exec:4",
+        "exec:5"
+      ],
+      "plan": [
+        "exec:0",
+        "exec:1",
+        "exec:2",
+        "exec:3",
+        "exec:4",
+        "exec:5"
+      ],
+      "queue": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "receipts": [
+        {
+          "layer": "autonomous_runtime_v1",
+          "queue": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "layer": "autonomous_runtime_v2",
+          "plan_size": 6
+        },
+        {
+          "layer": "autonomous_runtime_v3",
+          "ordered": true
+        },
+        {
+          "capability_gate": false,
+          "layer": "autonomous_runtime_v4"
+        },
+        {
+          "layer": "autonomous_runtime_v5",
+          "slices": 6
+        },
+        {
+          "fallback_ready": true,
+          "layer": "autonomous_runtime_v6"
+        },
+        {
+          "checkpoints": 6,
+          "layer": "autonomous_runtime_v7"
+        },
+        {
+          "health": 80,
+          "layer": "autonomous_runtime_v8"
+        },
+        {
+          "layer": "autonomous_runtime_v9",
+          "stabilized": true
+        },
+        {
+          "disposition": "RUNTIME_GO",
+          "layer": "autonomous_runtime_v10"
+        }
+      ],
+      "slices": 6,
+      "stabilized": true
+    },
+    "smoke_test_version": "v2.0",
+    "status": "Codex Q/A v2.0 Smoke Test Complete",
+    "stripe_state": {
+      "product_id": "codex-product-qa_v2_test",
+      "remint": false,
+      "stripe_ready": false
+    },
+    "trust_root": {
+      "active": true,
+      "root_hash_material": "TR-4-10",
+      "version": "v1.0"
+    }
+  },
+  "validation": {
+    "criteria": {
+      "authenticity_chain_valid": true,
+      "basic_qa_passed": true,
+      "founder_override_blocked": true,
+      "governance_review": true,
+      "mint_blocked_without_founder": true,
+      "receipt_verified": true,
+      "stripe_blocked_without_founder": true
+    },
+    "deterministic_equal": true
+  }
+}
