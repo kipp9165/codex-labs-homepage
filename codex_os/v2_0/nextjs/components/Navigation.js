@@ -3,11 +3,18 @@ import Link from 'next/link';
 export default function Navigation() {
   return (
     <nav className="bg-white shadow mb-6">
-      <ul className="flex space-x-4 p-4 text-sm font-medium">
+      <ul className="flex flex-wrap gap-x-4 gap-y-2 p-4 text-sm font-medium">
         <li><Link href="/">Home</Link></li>
         <li><Link href="/features">Features</Link></li>
         <li><Link href="/pricing">Pricing</Link></li>
         <li><Link href="/enterprise">Enterprise</Link></li>
+        <li><Link href="/whale-pricing">Whale Pricing</Link></li>
+        <li><Link href="/whale-procurement">Whale Procurement</Link></li>
+        <li><Link href="/whale-sales-script">Whale Sales Script</Link></li>
+        <li><Link href="/whale-dm-opener">Whale DM Opener</Link></li>
+        <li><Link href="/whale-compliance">Whale Compliance</Link></li>
+        <li><Link href="/whale-procurement-pdf">Whale Procurement PDF</Link></li>
+        <li><Link href="/whale-call-flow">Whale Call Flow</Link></li>
         <li><Link href="/support">Support</Link></li>
         <li><Link href="/faq">FAQ</Link></li>
         <li><Link href="/checkout">Checkout</Link></li>

@@ -2,48 +2,50 @@
 ### A fully sealed, certified, deterministic execution system built for governed intelligence across every surface.
 
 ## Overview
-Codex Q/A v2.0 is a complete, founder‑grade, deterministic execution system.  
-Every architectural layer — from Hardening to Finalization — has been assembled, validated, sealed, certified, and finalized.
+Codex Q/A v2.0 is a founder-grade system with layered governance, deterministic runtime behavior, and enterprise continuity surfaces.
 
-This README serves as the canonical public declaration of the system’s completion.
+## Stack
+- Root service/runtime: Python + Node artifacts at repository root
+- Founder web experience: Next.js 13.5.0 app in `codex_os/v2_0/nextjs`
+- UI layer: React 18.2.0 with Tailwind CSS
+- Deployment target: Render (Node service for Next.js and optional Python runtime service)
 
-## The Thirteen-Layer Codex Stack
-1. Hardening  
-2. Observability  
-3. Reliability  
-4. Performance  
-5. Scalability  
-6. Resilience  
-7. Continuity  
-8. Governance  
-9. Constitutional Intelligence  
-10. Intelligence  
-11. Runtime  
-12. Execution  
-13. Finalization  
+## Quick Start
+### Next.js Founder Surface
+1. `cd codex_os/v2_0/nextjs`
+2. `npm install`
+3. `npm run dev`
+4. Open `http://localhost:3000`
+
+### Root Service Surface
+1. `npm install`
+2. `npm run dev`
+
+## Whale-Tier Suite Overview
+- Total Intelligence Suite: $2,500/mo
+	- Stripe product key: `prod_whale_total_intelligence_suite`
+- Enterprise Continuity Suite: $1,500/mo
+	- Stripe product key: `prod_whale_enterprise_continuity_suite`
+- Identity Governance Suite: $900/mo
+	- Stripe product key: `prod_whale_identity_governance_suite`
+
+## Render Deployment Notes
+- Next.js deployment file: `codex_os/v2_0/nextjs/deploy/render.yaml`
+- Root runtime deployment file: `render.yaml`
+- For Founder web deploys, set Render root directory to `codex_os/v2_0/nextjs` and run:
+	- Build command: `npm install && npm run build`
+	- Start command: `npm start`
+- Ensure `NODE_ENV=production` is present.
 
 ## Founder’s Edition Artifacts
-- SYSTEM_RECEIPT.md  
-- SYSTEM_SEAL.md  
-- SYSTEM_CERTIFICATE.md  
-- MASTER_SEAL_SCROLL.md  
-- FOUNDERS_EDITION_SCROLL.md  
-- FOUNDERS_RELEASE_NOTES.md  
+- `codex_os/v2_0/nextjs/system/SYSTEM_RECEIPT.md`
+- `codex_os/v2_0/nextjs/system/SYSTEM_SEAL.md`
+- `codex_os/v2_0/nextjs/system/SYSTEM_CERTIFICATE.md`
+- `codex_os/v2_0/nextjs/system/MASTER_SEAL_SCROLL.md`
+- `codex_os/v2_0/nextjs/system/FOUNDERS_EDITION_SCROLL.md`
+- `codex_os/v2_0/FOUNDERS_RELEASE_NOTES.md`
 
 ## Determinism Contract
-- No randomness  
-- No wall-clock time in logic paths  
-- Identical inputs → identical outputs  
-
-## Integrity Status
-- Drift: None  
-- Continuity: Maintained  
-- Authority: Bound  
-- Legitimacy: Affirmed  
-- Boundary: Sealed  
-- Coherence: Stable  
-- Determinism: Guaranteed  
-
-## Founder’s Closing Statement
-Codex Q/A v2.0 stands as a fully realized deterministic execution system.  
-This Founder’s Edition README marks its public declaration, legitimacy, and readiness.
+- No randomness in core governed logic paths
+- No wall-clock dependence in deterministic decision surfaces
+- Identical inputs produce identical governed outputs
