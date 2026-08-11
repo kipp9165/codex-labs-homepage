@@ -6,7 +6,7 @@ Codex Q/A v2.0 is a founder-grade system with layered governance, deterministic 
 
 ## Stack
 - Root service/runtime: Python + Node artifacts at repository root
-- Founder web experience: Next.js 13.5.0 app in `codex_os/v2_0/nextjs`
+- Founder web experience: Next.js 13.5.11 app in `codex_os/v2_0/nextjs`
 - UI layer: React 18.2.0 with Tailwind CSS
 - Deployment target: Render (Node service for Next.js and optional Python runtime service)
 
@@ -28,6 +28,12 @@ Codex Q/A v2.0 is a founder-grade system with layered governance, deterministic 
 	- Stripe product key: `prod_whale_enterprise_continuity_suite`
 - Identity Governance Suite: $900/mo
 	- Stripe product key: `prod_whale_identity_governance_suite`
+
+## Additional Whale Pages
+- Whale Deterministic Continuity Matrix Page
+- Whale Enterprise Determinism Map Page
+- Whale Regulated Governance Diagram Page
+- Whale Intelligence Runtime Matrix Page
 
 ## Render Deployment Notes
 - Next.js deployment file: `codex_os/v2_0/nextjs/deploy/render.yaml`
