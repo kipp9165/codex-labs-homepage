@@ -19,6 +19,8 @@ export default function Navigation() {
         <li><Link href="/whale-enterprise-determinism-map">Whale Enterprise Determinism Map</Link></li>
         <li><Link href="/whale-regulated-governance-diagram">Whale Regulated Governance Diagram</Link></li>
         <li><Link href="/whale-intelligence-runtime-matrix">Whale Intelligence Runtime Matrix</Link></li>
+        <li><Link href="/whale-enterprise-contact">Whale Enterprise Contact</Link></li>
+        <li><Link href="/retainer">Retainer</Link></li>
         <li><Link href="/support">Support</Link></li>
         <li><Link href="/faq">FAQ</Link></li>
         <li><Link href="/checkout">Checkout</Link></li>

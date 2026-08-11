@@ -35,6 +35,27 @@ Codex Q/A v2.0 is a founder-grade system with layered governance, deterministic 
 - Whale Regulated Governance Diagram Page
 - Whale Intelligence Runtime Matrix Page
 
+## Activation Surfaces
+- Retainer route: `/retainer?ref=NAME`
+- Whale Enterprise Contact Page
+- Whale DM Opener Page
+- Whale Procurement Page
+
+## Outbound Enterprise Artifacts
+- `docs/whale-procurement-deck/01_founders_signal.md`
+- `docs/whale-procurement-deck/02_enterprise_alignment.md`
+- `docs/whale-procurement-deck/03_deterministic_runtime.md`
+- `docs/whale-procurement-deck/04_regulated_environments.md`
+- `docs/whale-procurement-deck/05_continuity_identity_governance.md`
+- `docs/whale-procurement-deck/06_whale_pricing.md`
+- `docs/whale-procurement-deck/07_procurement_flow.md`
+
+## Activation Notes
+- `codex_os/v2_0/nextjs/src/activation/linkedin_signal.md`
+- `codex_os/v2_0/nextjs/src/activation/whale_dm_opener.md`
+- `codex_os/v2_0/nextjs/src/activation/enterprise_contact_email.md`
+- `codex_os/v2_0/nextjs/src/activation/whale_followup_email.md`
+
 ## Render Deployment Notes
 - Next.js deployment file: `codex_os/v2_0/nextjs/deploy/render.yaml`
 - Root runtime deployment file: `render.yaml`
