@@ -1,7 +1,7 @@
-# Enterprise Asynchronous DM Opener
+Hi — reaching out because your team operates in a continuity‑sensitive or governance‑aligned environment.
 
-Hi [Name],
+Codex Labs OS is a deterministic intelligence system designed for regulated, high‑altitude enterprise contexts.
 
-Codex Labs builds deterministic enterprise intelligence infrastructure for regulated clients and continuity-bound teams.
+If you’re exploring deterministic intelligence, continuity architecture, governance‑aligned runtime surfaces, or identity‑safe operational intelligence, I can provide a full written overview.
 
-If governance alignment, identity lifecycle integrity, or deterministic runtime behavior are active priorities, I can send asynchronous enterprise documentation.
+All engagements are asynchronous and documentation‑based.

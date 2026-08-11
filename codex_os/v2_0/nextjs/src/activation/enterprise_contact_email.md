@@ -1,11 +1,19 @@
-# Enterprise Contact Email
+Subject: Enterprise Inquiry — Codex Labs OS
 
-Subject: Codex Labs Enterprise Infrastructure Materials
+Hi,
 
-Hello [Name],
+Thank you for your interest in Codex Labs OS.
 
-Sharing this note asynchronously for your internal review.
+Codex Labs OS is a deterministic intelligence system designed for organizations operating in regulated environments, continuity‑bound workflows, or governance‑aligned architectures.
 
-Codex Labs supports governance-aligned clients with deterministic runtime and continuity-focused enterprise infrastructure.
+I can provide:
+• a full enterprise overview (written)
+• deterministic runtime documentation
+• continuity and governance alignment details
+• integration guidance
 
-If useful, we can provide the enterprise procurement deck and written continuity artifacts.
+All communication is asynchronous and email‑based.
+
+— Kipp
+Founder, Codex Labs OS
+kippkppwggns@aol.com

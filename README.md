@@ -41,20 +41,31 @@ Codex Q/A v2.0 is a founder-grade system with layered governance, deterministic 
 - Whale DM Opener Page
 - Whale Procurement Page
 
+## Enterprise Activation Suite
+- Enterprise LinkedIn Signal
+- Enterprise Outreach Opener
+- Enterprise Contact Email
+- Enterprise Procurement Deck
+- Enterprise Pricing Content
+- Enterprise Continuity Content
+- Enterprise Deterministic Runtime Content
+
 ## Outbound Enterprise Artifacts
-- `docs/whale-procurement-deck/01_founders_signal.md`
-- `docs/whale-procurement-deck/02_enterprise_alignment.md`
-- `docs/whale-procurement-deck/03_deterministic_runtime.md`
-- `docs/whale-procurement-deck/04_regulated_environments.md`
-- `docs/whale-procurement-deck/05_continuity_identity_governance.md`
-- `docs/whale-procurement-deck/06_whale_pricing.md`
-- `docs/whale-procurement-deck/07_procurement_flow.md`
+- `docs/enterprise-procurement-deck/01_enterprise_activation.md`
+- `docs/enterprise-procurement-deck/02_enterprise_alignment.md`
+- `docs/enterprise-procurement-deck/03_deterministic_runtime.md`
+- `docs/enterprise-procurement-deck/04_regulated_environments.md`
+- `docs/enterprise-procurement-deck/05_continuity_architecture.md`
+- `docs/enterprise-procurement-deck/06_enterprise_pricing.md`
+- `docs/enterprise-procurement-deck/07_procurement_flow.md`
 
 ## Activation Notes
-- `codex_os/v2_0/nextjs/src/activation/linkedin_signal.md`
-- `codex_os/v2_0/nextjs/src/activation/whale_dm_opener.md`
+- `codex_os/v2_0/nextjs/src/activation/linkedin_enterprise_signal.md`
+- `codex_os/v2_0/nextjs/src/activation/enterprise_dm_opener.md`
 - `codex_os/v2_0/nextjs/src/activation/enterprise_contact_email.md`
-- `codex_os/v2_0/nextjs/src/activation/whale_followup_email.md`
+- `codex_os/v2_0/nextjs/src/activation/enterprise_pricing.md`
+- `codex_os/v2_0/nextjs/src/activation/enterprise_continuity.md`
+- `codex_os/v2_0/nextjs/src/activation/enterprise_deterministic_runtime.md`
 
 ## Render Deployment Notes
 - Next.js deployment file: `codex_os/v2_0/nextjs/deploy/render.yaml`
