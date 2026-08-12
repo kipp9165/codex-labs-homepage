@@ -37,11 +37,11 @@
       return urlValue;
     }
 
-    var separator = urlValue.indexOf('?') === -1 ? '?' : '&';
     if (/[?&]ref=/.test(urlValue)) {
       return urlValue;
     }
 
+    var separator = urlValue.indexOf('?') === -1 ? '?' : '&';
     return urlValue + separator + 'ref=' + encodeURIComponent(refValue);
   }
 
