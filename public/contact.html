@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whale Enterprise Contact · Codex Labs</title>
+  <meta name="description" content="Static-safe enterprise contact surface for whale intake, procurement alignment, and governed deployment planning.">
+  <meta property="og:title" content="Whale Enterprise Contact">
+  <meta property="og:description" content="Reach Codex Labs for enterprise intelligence infrastructure, procurement alignment, and governed deployment planning.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codex-labs-homepage.onrender.com/contact.html">
+  <meta property="og:image" content="https://codex-labs-homepage.onrender.com/assets/img/social-default.png">
+  <meta property="og:image:alt" content="Whale Enterprise Contact">
+  <link rel="canonical" href="https://codex-labs-homepage.onrender.com/contact.html">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script
+    defer
+    data-domain="codex-labs-homepage-static.onrender.com"
+    src="https://plausible.io/js/script.js"
+  ></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/index.html">Codex Labs</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="modules.html">Modules</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="affiliates.html">Affiliates</a></li>
+      </ul>
+    </nav>
+    <div class="site-search">
+      <input type="search" id="site-search" placeholder="Search Codex Labs OS..." aria-label="Search Codex Labs OS">
+      <div id="site-search-results" class="site-search-results"></div>
+    </div>
+  </div>
+</header>
+
+<main class="page">
+  <section class="hero">
+    <div class="hero-kicker">Enterprise Intake</div>
+    <h1 class="hero-title">Whale Enterprise Contact</h1>
+    <p class="hero-subtitle">Reach Codex Labs for enterprise intelligence infrastructure, procurement alignment, and governed deployment planning.</p>
+  </section>
+
+  <section class="contact-grid">
+    <article class="form-card">
+      <h2>Submit your enterprise request</h2>
+      <p class="supporting-copy">This static-safe form saves your request locally so you can open a prefilled email without requiring a backend.</p>
+
+      <form id="whaleLeadForm">
+        <div class="field-group">
+          <label for="name">Name</label>
+          <input class="text-input" type="text" id="name" name="name" autocomplete="name" required>
+        </div>
+
+        <div class="field-group">
+          <label for="email">Email</label>
+          <input class="text-input" type="email" id="email" name="email" autocomplete="email" required>
+        </div>
+
+        <div class="field-group">
+          <label for="message">What do you need?</label>
+          <textarea class="text-input" id="message" name="message" placeholder="Share the procurement context, scope, timing, or governance constraints." required></textarea>
+        </div>
+
+        <button class="buy-button" type="submit">Save enterprise request</button>
+        <button class="access-button" id="whaleEmailButton" type="button">Open prefilled email</button>
+        <p id="whaleLeadStatus" class="form-status" aria-live="polite">Submit the form to generate a prefilled enterprise request email.</p>
+      </form>
+    </article>
+
+    <article class="form-card">
+      <h2>Request context</h2>
+      <p class="form-meta">Referral attribution and requested tier are captured from the landing URL when available.</p>
+      <ul class="feature-list">
+        <li><strong>Referral code:</strong> <span id="whaleRefValue">Not provided</span></li>
+        <li><strong>Requested tier:</strong> <span id="whaleTierValue">Not provided</span></li>
+        <li><strong>Delivery path:</strong> Prefilled mailto workflow for static hosting</li>
+      </ul>
+      <p class="supporting-copy">Example link format: <code>/contact.html?ref=PARTNER123&tier=enterprise-governance-audit</code></p>
+    </article>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="page footer-inner">
+    <p>Codex Labs OS</p>
+    <p>Clarity. Structure. Execution.</p>
+    <p><a href="mailto:kippkppwggns@aol.com">kippkppwggns@aol.com</a></p>
+  </div>
+</footer>
+
+<script src="./assets/js/checkout-links.js"></script>
+<script src="./assets/js/search.js"></script>
+<script src="./whale/email.js"></script>
+</body>
+</html>
