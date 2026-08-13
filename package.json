@@ -7,6 +7,7 @@
     "start": "node scripts/static-server.js",
     "dev": "node scripts/static-server.js",
     "generate": "node scripts/generate-checkout-urls-from-csv.cjs",
+    "export": "npm run build",
     "build": "npm run generate",
     "verify": "node verify_codex_csv.js",
     "test": "npm run verify"

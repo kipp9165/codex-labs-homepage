@@ -1,4 +1,4 @@
-export default function WhaleEnterpriseDeterminismMap() {
+export default function AltitudeEnterpriseDeterminismMap() {
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-bold">Enterprise Determinism Map</h1>

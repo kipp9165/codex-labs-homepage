@@ -17,10 +17,10 @@ const sections = [
   }
 ];
 
-export default function WhaleProcurementPDF() {
+export default function AltitudeProcurementPDF() {
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-bold">Whale Procurement PDF</h1>
+      <h1 className="text-2xl font-bold">Altitude Procurement PDF</h1>
       <p className="text-gray-800">
         This page provides the structured content used to generate the Codex Labs procurement PDF.
       </p>

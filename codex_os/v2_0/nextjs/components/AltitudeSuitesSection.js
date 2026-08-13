@@ -2,24 +2,24 @@ const suites = [
   {
     name: 'Total Intelligence Suite',
     monthly: '$2,500/mo',
-    stripeProductKey: 'prod_whale_total_intelligence_suite'
+    stripeProductKey: 'prod_altitude_total_intelligence_suite'
   },
   {
     name: 'Enterprise Continuity Suite',
     monthly: '$1,500/mo',
-    stripeProductKey: 'prod_whale_enterprise_continuity_suite'
+    stripeProductKey: 'prod_altitude_enterprise_continuity_suite'
   },
   {
     name: 'Identity Governance Suite',
     monthly: '$900/mo',
-    stripeProductKey: 'prod_whale_identity_governance_suite'
+    stripeProductKey: 'prod_altitude_identity_governance_suite'
   }
 ];
 
-export default function WhaleSuitesSection() {
+export default function AltitudeSuitesSection() {
   return (
-    <section id="whale-suites" className="space-y-4">
-      <h2 className="text-2xl font-bold">Whale Enterprise Suites</h2>
+    <section id="altitude-suites" className="space-y-4">
+      <h2 className="text-2xl font-bold">Altitude Enterprise Suites</h2>
       <div className="grid gap-4 md:grid-cols-3">
         {suites.map((suite) => (
           <article key={suite.name} className="rounded border border-gray-200 bg-white p-4 shadow-sm">

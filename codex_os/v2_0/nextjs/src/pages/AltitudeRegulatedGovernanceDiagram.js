@@ -1,4 +1,4 @@
-export default function WhaleRegulatedGovernanceDiagram() {
+export default function AltitudeRegulatedGovernanceDiagram() {
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-bold">Regulated Governance Diagram</h1>

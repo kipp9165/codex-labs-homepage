@@ -1,4 +1,4 @@
-export default function WhaleIntelligenceRuntimeMatrix() {
+export default function AltitudeIntelligenceRuntimeMatrix() {
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-bold">Intelligence Runtime Matrix</h1>

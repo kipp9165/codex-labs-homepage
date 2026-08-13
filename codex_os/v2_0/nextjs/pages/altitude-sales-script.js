@@ -29,10 +29,10 @@ const sections = [
   }
 ];
 
-export default function WhaleSalesScript() {
+export default function AltitudeSalesScript() {
   return (
     <div className="space-y-5">
-      <h1 className="text-2xl font-bold">Whale Sales Script</h1>
+      <h1 className="text-2xl font-bold">Altitude Sales Script</h1>
       <div className="space-y-4">
         {sections.map((section) => (
           <section key={section.title} className="rounded border border-gray-200 bg-white p-4 shadow-sm">
