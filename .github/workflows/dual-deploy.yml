@@ -1,0 +1,54 @@
+name: Dual Deploy (GitHub Pages + Render)
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  dual-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
+
+      - name: Deploy to GitHub Pages (push to main)
+        run: |
+          git config user.name "GitHub Agent"
+          git config user.email "agent@github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit -- skipping GitHub Pages push."
+          else
+            git commit -m "Dual Deploy: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            git push origin main
+          fi
+          echo "GitHub Pages deployment step complete."
+
+      - name: Trigger Render redeploy
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          curl -fsS -X POST https://api.render.com/deploy/srv-d9j543d8nd3s73ar9ua0 \
+            -H "Authorization: Bearer $RENDER_API_KEY"
+          echo "Render redeploy triggered."
