@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whale Enterprise Dashboard — Codex Labs OS</title>
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:#0a0a1a; color:#e0e0ff; font-family:"Inter",sans-serif; min-height:100vh; }
+    nav { display:flex; align-items:center; justify-content:space-between; padding:18px 32px; border-bottom:1px solid rgba(255,255,255,0.08); }
+    nav .brand { font-size:1.1rem; font-weight:800; color:#9b5de5; }
+    nav ul { list-style:none; display:flex; gap:20px; }
+    nav a { color:#e0e0ff; text-decoration:none; font-size:0.95rem; opacity:0.8; }
+    nav a:hover { opacity:1; }
+    .layout { display:grid; grid-template-columns:220px 1fr; min-height:calc(100vh - 61px); }
+    .sidebar { background:rgba(255,255,255,0.04); border-right:1px solid rgba(255,255,255,0.08); padding:28px 20px; }
+    .sidebar h3 { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; opacity:0.5; margin-bottom:12px; }
+    .sidebar a { display:block; padding:9px 12px; border-radius:8px; text-decoration:none; color:#e0e0ff; font-size:0.95rem; margin-bottom:4px; opacity:0.8; }
+    .sidebar a:hover, .sidebar a.active { background:rgba(155,93,229,0.2); opacity:1; }
+    .content { padding:36px 32px; }
+    .page-title { font-size:1.8rem; font-weight:800; margin-bottom:4px; }
+    .page-sub { opacity:0.6; margin-bottom:32px; font-size:0.95rem; }
+    .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px; margin-bottom:32px; }
+    .stat-card { background:rgba(255,255,255,0.06); border-radius:12px; padding:20px; border:1px solid rgba(255,255,255,0.08); }
+    .stat-card .label { font-size:0.8rem; opacity:0.6; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:8px; }
+    .stat-card .value { font-size:2rem; font-weight:800; }
+    .stat-card .sub { font-size:0.8rem; opacity:0.5; margin-top:4px; }
+    .section-title { font-size:1rem; font-weight:700; margin-bottom:14px; opacity:0.9; }
+    .lead-table { width:100%; border-collapse:collapse; font-size:0.92rem; }
+    .lead-table th { text-align:left; padding:10px 14px; opacity:0.5; font-size:0.78rem; text-transform:uppercase; border-bottom:1px solid rgba(255,255,255,0.08); }
+    .lead-table td { padding:12px 14px; border-bottom:1px solid rgba(255,255,255,0.05); }
+    .badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:0.78rem; font-weight:600; }
+    .badge-sovereign { background:rgba(92,225,230,0.15); color:#5ce1e6; }
+    .badge-apex { background:rgba(155,93,229,0.2); color:#9b5de5; }
+    .badge-continuity { background:rgba(255,222,89,0.15); color:#ffde59; }
+    .actions { display:flex; gap:12px; margin-top:24px; }
+    .btn { padding:10px 22px; border-radius:50px; font-size:0.9rem; font-weight:700; cursor:pointer; border:none; }
+    .btn-primary { background:#9b5de5; color:#fff; }
+    .btn-outline { background:transparent; color:#9b5de5; border:2px solid #9b5de5; }
+    .empty { opacity:0.4; font-style:italic; }
+  </style>
+</head>
+<body>
+  <nav>
+    <span class="brand">🐋 Whale Dashboard</span>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="funnel.html">Apply</a></li>
+    </ul>
+  </nav>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h3>Navigation</h3>
+      <a href="#" class="active">Overview</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="funnel.html">Funnel</a>
+      <a href="onboarding.html">Onboarding</a>
+      <h3 style="margin-top:24px;">CRM</h3>
+      <a href="#" onclick="exportWhaleCRM();return false;">Export CRM</a>
+      <a href="#" onclick="sendToBaserow();return false;">→ Baserow</a>
+      <a href="#" onclick="sendToAirtable();return false;">→ Airtable</a>
+    </aside>
+
+    <div class="content">
+      <div class="page-title">Enterprise Overview</div>
+      <div class="page-sub">Static dashboard — data loaded from localStorage</div>
+
+      <div class="stats">
+        <div class="stat-card">
+          <div class="label">Leads Captured</div>
+          <div class="value" id="leadCount">—</div>
+          <div class="sub">from funnel</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Selected Tier</div>
+          <div class="value" id="leadTier">—</div>
+          <div class="sub">latest submission</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Last Activity</div>
+          <div class="value" id="lastActivity" style="font-size:1rem;line-height:1.4;">—</div>
+          <div class="sub">CRM event</div>
+        </div>
+      </div>
+
+      <div class="section-title">Recent Lead</div>
+      <table class="lead-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Org</th>
+            <th>Tier</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody id="leadTableBody">
+          <tr><td colspan="5" class="empty">No lead data found. Submit the funnel first.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="actions">
+        <button class="btn btn-primary" onclick="exportWhaleCRM()">Export CRM</button>
+        <button class="btn btn-outline" onclick="sendToBaserow()">Send to Baserow</button>
+        <button class="btn btn-outline" onclick="sendToAirtable()">Send to Airtable</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="export.js"></script>
+  <script src="baserow.js"></script>
+  <script src="airtable.js"></script>
+  <script>
+    (function loadDashboard() {
+      const lead = JSON.parse(localStorage.getItem("whale_lead") || "null");
+      const crmEvent = localStorage.getItem("whale_crm_event") || "—";
+
+      document.getElementById("lastActivity").textContent = crmEvent;
+
+      if (lead) {
+        document.getElementById("leadCount").textContent = "1";
+        document.getElementById("leadTier").textContent = lead.tier || "—";
+
+        const badgeClass = {
+          sovereign: "badge-sovereign",
+          apex: "badge-apex",
+          continuity: "badge-continuity"
+        }[lead.tier] || "";
+
+        document.getElementById("leadTableBody").innerHTML = `
+          <tr>
+            <td>${lead.name || "—"}</td>
+            <td>${lead.email || "—"}</td>
+            <td>${lead.org || "—"}</td>
+            <td><span class="badge ${badgeClass}">${lead.tier || "—"}</span></td>
+            <td>${lead.timestamp ? new Date(lead.timestamp).toLocaleString() : "—"}</td>
+          </tr>
+        `;
+      } else {
+        document.getElementById("leadCount").textContent = "0";
+        document.getElementById("leadTier").textContent = "—";
+      }
+    })();
+  </script>
+</body>
+</html>

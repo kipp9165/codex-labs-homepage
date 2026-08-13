@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whale Enterprise Pricing — Codex Labs OS</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { background:#0a0a1a; color:#e0e0ff; font-family:"Inter",sans-serif; margin:0; padding:0; }
+    nav ul { list-style:none; display:flex; gap:24px; padding:20px 32px; margin:0; }
+    nav a { color:#e0e0ff; text-decoration:none; font-weight:600; }
+    main { max-width:960px; margin:0 auto; padding:60px 20px; }
+    h1 { font-size:2.4rem; font-weight:800; text-align:center; margin-bottom:12px; }
+    .subtitle { text-align:center; opacity:0.75; font-size:1.1rem; margin-bottom:48px; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:24px; }
+    .tier-card {
+      background:rgba(255,255,255,0.06);
+      border-radius:16px;
+      padding:32px 24px;
+      border:1px solid rgba(255,255,255,0.12);
+      text-align:center;
+    }
+    .tier-card.featured { border-color:#9b5de5; box-shadow:0 0 32px rgba(155,93,229,0.25); }
+    .tier-card h2 { font-size:1.5rem; margin-bottom:8px; }
+    .tier-card .price { font-size:2.2rem; font-weight:800; margin:16px 0; }
+    .tier-card ul { list-style:none; padding:0; text-align:left; margin:0 0 24px; }
+    .tier-card ul li { padding:6px 0; opacity:0.85; }
+    .tier-card ul li::before { content:"✔ "; color:#7ed957; }
+    .btn {
+      display:inline-block;
+      padding:12px 28px;
+      border-radius:50px;
+      font-weight:700;
+      text-decoration:none;
+      font-size:1rem;
+      cursor:pointer;
+      border:none;
+    }
+    .btn-primary { background:#9b5de5; color:#fff; }
+    .btn-outline { background:transparent; color:#9b5de5; border:2px solid #9b5de5; }
+    footer { text-align:center; padding:32px; opacity:0.6; font-size:0.9rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pricing.html">Pricing</a></li>
+      <li><a href="funnel.html">Apply</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>🐋 Whale Enterprise Pricing</h1>
+    <p class="subtitle">Substrate-level systems for organizations that refuse to operate below their ceiling.</p>
+
+    <div class="pricing-grid">
+      <div class="tier-card">
+        <h2 style="color:#5ce1e6;">Sovereign</h2>
+        <div class="price">$9,500<span style="font-size:1rem;opacity:0.7;">/engagement</span></div>
+        <ul>
+          <li>Full OS deployment</li>
+          <li>Executive team onboarding</li>
+          <li>Governance architecture</li>
+          <li>90-day activation sprint</li>
+          <li>Dedicated advisory access</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openWhaleCheckout('sovereign')">Get Sovereign</button>
+      </div>
+
+      <div class="tier-card featured">
+        <h2 style="color:#9b5de5;">Apex</h2>
+        <div class="price">$18,000<span style="font-size:1rem;opacity:0.7;">/quarter</span></div>
+        <ul>
+          <li>Everything in Sovereign</li>
+          <li>Ongoing retainer access</li>
+          <li>Architecture + governance</li>
+          <li>Quarterly reset sessions</li>
+          <li>Priority response SLA</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openWhaleCheckout('apex')">Get Apex</button>
+      </div>
+
+      <div class="tier-card">
+        <h2 style="color:#ffde59;">Continuity</h2>
+        <div class="price">$36,000<span style="font-size:1rem;opacity:0.7;">/year</span></div>
+        <ul>
+          <li>Everything in Apex</li>
+          <li>Annual continuity program</li>
+          <li>Systems integrity reviews</li>
+          <li>Custom module licensing</li>
+          <li>White-glove onboarding</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openWhaleCheckout('continuity')">Get Continuity</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Codex Labs OS — Clarity. Structure. Execution.</p>
+    <p><a href="mailto:codexlabsos@gmail.com" style="color:#9b5de5;">codexlabsos@gmail.com</a></p>
+  </footer>
+
+  <script src="checkout.js"></script>
+</body>
+</html>

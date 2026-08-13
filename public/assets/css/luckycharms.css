@@ -1,0 +1,37 @@
+/* Lucky Charms Magical OS Theme */
+
+:root {
+  --lc-pink: #ff66c4;
+  --lc-yellow: #ffde59;
+  --lc-green: #7ed957;
+  --lc-blue: #5ce1e6;
+  --lc-purple: #9b5de5;
+}
+
+body.luckycharms {
+  background: linear-gradient(135deg,
+    var(--lc-pink),
+    var(--lc-yellow),
+    var(--lc-green),
+    var(--lc-blue),
+    var(--lc-purple)
+  );
+  background-size: 400% 400%;
+  animation: lcShift 12s ease infinite;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+@keyframes lcShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.lc-card {
+  background: rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4);
+}

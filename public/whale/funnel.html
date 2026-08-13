@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whale Enterprise — Apply Now</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    body { background:#0a0a1a; color:#e0e0ff; font-family:"Inter",sans-serif; margin:0; padding:0; }
+    nav ul { list-style:none; display:flex; gap:24px; padding:20px 32px; margin:0; }
+    nav a { color:#e0e0ff; text-decoration:none; font-weight:600; }
+    main { max-width:640px; margin:0 auto; padding:60px 20px; }
+    h1 { font-size:2.2rem; font-weight:800; text-align:center; margin-bottom:12px; }
+    .subtitle { text-align:center; opacity:0.75; font-size:1.05rem; margin-bottom:40px; }
+    .form-group { margin-bottom:20px; }
+    label { display:block; font-weight:600; margin-bottom:6px; opacity:0.9; }
+    input, textarea, select {
+      width:100%; box-sizing:border-box;
+      background:rgba(255,255,255,0.07);
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:8px; padding:12px 14px;
+      color:#e0e0ff; font-size:1rem; font-family:inherit;
+    }
+    textarea { resize:vertical; min-height:120px; }
+    .btn-submit {
+      width:100%; padding:14px; border:none; border-radius:50px;
+      background:#9b5de5; color:#fff; font-size:1.1rem;
+      font-weight:700; cursor:pointer;
+    }
+    .success { display:none; text-align:center; padding:24px; background:rgba(126,217,87,0.15);
+      border-radius:12px; margin-top:24px; color:#7ed957; font-size:1.1rem; }
+    footer { text-align:center; padding:32px; opacity:0.6; font-size:0.9rem; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>🐋 Apply for Whale Enterprise</h1>
+    <p class="subtitle">Tell us about your organization and we'll match you to the right tier.</p>
+
+    <form id="whaleFunnel" onsubmit="submitFunnel(event)">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" required placeholder="Jane Smith">
+      </div>
+      <div class="form-group">
+        <label for="email">Work Email</label>
+        <input type="email" id="email" name="email" required placeholder="jane@company.com">
+      </div>
+      <div class="form-group">
+        <label for="org">Organization</label>
+        <input type="text" id="org" name="org" placeholder="Acme Corp">
+      </div>
+      <div class="form-group">
+        <label for="tier">Tier of Interest</label>
+        <select id="tier" name="tier">
+          <option value="sovereign">Sovereign ($9,500)</option>
+          <option value="apex">Apex ($18,000/quarter)</option>
+          <option value="continuity">Continuity ($36,000/year)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Describe your challenge</label>
+        <textarea id="message" name="message" placeholder="What are you trying to solve?"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Submit Application →</button>
+    </form>
+
+    <div class="success" id="successMsg">
+      ✔ Application received. We'll be in touch within 48 hours.
+    </div>
+  </main>
+
+  <footer>
+    <p>Codex Labs OS — Clarity. Structure. Execution.</p>
+  </footer>
+
+  <script>
+    function submitFunnel(e) {
+      e.preventDefault();
+      const lead = {
+        name: document.getElementById("name").value,
+        email: document.getElementById("email").value,
+        org: document.getElementById("org").value,
+        tier: document.getElementById("tier").value,
+        message: document.getElementById("message").value,
+        timestamp: new Date().toISOString()
+      };
+      localStorage.setItem("whale_lead", JSON.stringify(lead));
+      localStorage.setItem("whale_crm_event", "funnel_submit:" + lead.email);
+      document.getElementById("whaleFunnel").style.display = "none";
+      document.getElementById("successMsg").style.display = "block";
+    }
+  </script>
+</body>
+</html>
