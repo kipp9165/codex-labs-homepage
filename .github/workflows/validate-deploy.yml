@@ -1,0 +1,52 @@
+name: Validate Render + Pages Deployment
+
+on:
+  workflow_run:
+    workflows: ["Dual Deploy (GitHub Pages + Render)"]
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  validate-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Create logs directory
+        run: mkdir -p logs
+
+      - name: Check GitHub Pages
+        run: |
+          echo "Checking GitHub Pages..."
+          curl -I https://kipp9165.github.io/codex-labs-homepage/ > logs/pages_status.txt 2>&1
+          echo "GitHub Pages status logged."
+
+      - name: Check Render runtime
+        run: |
+          echo "Checking Render runtime..."
+          curl -I https://codex-os-runtime-service.onrender.com > logs/render_status.txt 2>&1
+          echo "Render runtime status logged."
+
+      - name: Record artifact size
+        run: |
+          echo "Recording artifact size..."
+          du -sh dist 2>/dev/null > logs/monitor.log || echo 'dist directory not found' > logs/monitor.log
+          echo "Artifact size recorded."
+
+      - name: Print validation results
+        run: |
+          echo "=== GitHub Pages status ==="
+          cat logs/pages_status.txt
+          echo "=== Render runtime status ==="
+          cat logs/render_status.txt
+          echo "=== Artifact size ==="
+          cat logs/monitor.log
+
+      - name: Upload validation logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: validation-logs
+          path: logs/
+          retention-days: 7
