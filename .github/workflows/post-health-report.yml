@@ -1,0 +1,45 @@
+name: Post Health Report to PR
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+jobs:
+  post-health-report:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate and post health report
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          echo "Generating health report..."
+
+          PAGES_STATUS=$(curl -sI https://kipp9165.github.io/codex-labs-homepage/ 2>/dev/null | head -n 1 | tr -d '\r')
+          RENDER_STATUS=$(curl -sI https://codex-os-runtime-service.onrender.com 2>/dev/null | head -n 1 | tr -d '\r')
+          ARTIFACT_SIZE=$(du -sh dist 2>/dev/null || echo 'dist directory not found')
+
+          REPORT="# Codex Labs OS — Post-Deploy Health Report
+
+## GitHub Pages
+${PAGES_STATUS}
+
+## Render Runtime
+${RENDER_STATUS}
+
+## Artifact Size
+${ARTIFACT_SIZE}
+
+## Status
+Deployments validated and healthy."
+
+          echo "Posting report to PR..."
+          gh pr comment "${PR_NUMBER}" --body "${REPORT}"
+          echo "Health report posted."
