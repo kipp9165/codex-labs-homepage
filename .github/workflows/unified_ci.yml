@@ -1,0 +1,74 @@
+name: Unified CI
+
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Initialize environment
+        run: |
+          echo "Initializing environment..."
+          mkdir -p .codex logs env config docs src public dist
+          touch .codex/agent.log
+          echo "Environment initialized." > .codex/agent.log
+
+      - name: Agent auto-creation of required files
+        run: |
+          echo "Auto-creating required project files..."
+          [ -f src/index.js ] || touch src/index.js
+          [ -f config/config.json ] || echo '{ "env": "production" }' > config/config.json
+          [ -f .env ] || echo "NODE_ENV=production" > .env
+          echo "Auto-creation complete." >> .codex/agent.log
+
+      - name: Sync repository context
+        run: |
+          git fetch --all --prune
+          echo "Repository synced." >> .codex/agent.log
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          echo "Dependencies installed." >> .codex/agent.log
+
+      - name: Build project
+        run: |
+          npm run build
+          echo "Build complete." >> .codex/agent.log
+
+      - name: Run tests
+        run: |
+          npm test
+          echo "Tests complete." >> .codex/agent.log
+
+      - name: Lightweight observability logging
+        run: |
+          {
+            echo "Timestamp: $(date)"
+            du -sh dist
+          } > logs/monitor.log
+          echo "Observability logged." >> .codex/agent.log
+
+      - name: Upload CI logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: unified-ci-observability
+          path: |
+            logs/monitor.log
+            .codex/agent.log
+          if-no-files-found: error

@@ -74,6 +74,7 @@ Codex Q/A v2.0 is a founder-grade system with layered governance, deterministic 
 	- Build command: `npm install && npm run build`
 	- Start command: `npm start`
 - Ensure `NODE_ENV=production` is present.
+- For GitHub Actions deployment workflow, set repository secret `RENDER_API_KEY`.
 
 ## Founder’s Edition Artifacts
 - `codex_os/v2_0/nextjs/system/SYSTEM_RECEIPT.md`

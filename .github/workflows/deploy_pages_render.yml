@@ -1,0 +1,116 @@
+name: Deploy Static Site
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build-pages:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Initialize environment
+        run: |
+          mkdir -p .codex logs env config docs src public dist
+          touch .codex/agent.log
+          echo "Environment initialized." > .codex/agent.log
+
+      - name: Agent auto-creation of required files
+        run: |
+          [ -f src/index.js ] || touch src/index.js
+          [ -f config/config.json ] || echo '{ "env": "production" }' > config/config.json
+          [ -f .env ] || echo "NODE_ENV=production" > .env
+          echo "Auto-creation complete." >> .codex/agent.log
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
+
+      - name: Prepare GitHub Pages artifact
+        run: |
+          rm -rf dist
+          mkdir -p dist
+          rsync -av --delete ./ ./dist \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'node_modules/' \
+            --exclude 'dist/' \
+            --exclude 'logs/' \
+            --exclude 'env/' \
+            --exclude '.codex/' \
+            --exclude '.env'
+
+      - name: Lightweight observability logging
+        run: |
+          {
+            echo "Timestamp: $(date)"
+            du -sh dist
+          } > logs/monitor.log
+          echo "Observability logged." >> .codex/agent.log
+
+      - name: Upload observability logs
+        uses: actions/upload-artifact@v4
+        with:
+          name: deploy-observability
+          path: |
+            logs/monitor.log
+            .codex/agent.log
+          if-no-files-found: error
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy-pages:
+    runs-on: ubuntu-latest
+    needs: build-pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  render-deploy:
+    runs-on: ubuntu-latest
+    needs: deploy-pages
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Trigger Render deployment
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          if [ -z "$RENDER_API_KEY" ]; then
+            echo "Missing required secret: RENDER_API_KEY"
+            exit 1
+          fi
+          AUTH_HEADER="Authorization: ******"
+          curl -fsSL -X POST "https://api.render.com/deploy/srv-d9j543d8nd3s73ar9ua0" \
+            -H "$AUTH_HEADER"
