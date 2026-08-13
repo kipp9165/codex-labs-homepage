@@ -21,7 +21,7 @@ const sections = [
   }
 ];
 
-export default function WhaleCompliance() {
+export default function AltitudeCompliance() {
   return (
     <div className="space-y-4">
       <h1 className="text-2xl font-bold">Codex Compliance & Regulated Environment Readiness</h1>

@@ -18,10 +18,10 @@ const suites = [
   'Identity Governance Suite ($900/mo)'
 ];
 
-export default function WhaleProcurement() {
+export default function AltitudeProcurement() {
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-bold">Whale Procurement</h1>
+      <h1 className="text-2xl font-bold">Altitude Procurement</h1>
 
       <section className="space-y-2">
         <h2 className="text-lg font-semibold">Procurement Steps</h2>
