@@ -33,7 +33,7 @@ export default function AltitudeSuitesSection() {
             <h3 className="text-lg font-semibold">{suite.name}</h3>
             <p className="mt-2 text-sm font-medium text-gray-900">{suite.monthly}</p>
             <p className="mt-2 text-xs text-gray-600">Stripe product key: {suite.stripeProductKey}</p>
-            <a href={suite.checkoutUrl} className="mt-3 inline-flex rounded px-3 py-2 text-xs font-semibold text-white" style={{ backgroundColor: '#FF6B00' }}>
+            <a href={suite.checkoutUrl} target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex rounded px-3 py-2 text-xs font-semibold text-white" style={{ backgroundColor: '#FF6B00' }}>
               Checkout
             </a>
           </article>
