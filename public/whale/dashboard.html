@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whale Enterprise Dashboard · Codex Labs</title>
+  <meta name="description" content="Whale enterprise dashboard for CRM intake, backend sync, and continuity scoring.">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    .dashboard-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .metric-value {
+      font-size: 40px;
+      font-weight: 800;
+      color: var(--accent-secondary);
+      margin: 12px 0 0;
+    }
+
+    .dashboard-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .dashboard-actions button,
+    .dashboard-actions a {
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+      color: #050509;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .data-block {
+      min-height: 180px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .status-line {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="/index.html" class="nav-logo">Codex Labs</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/console.html">Console</a></li>
+        <li><a href="/products.html">Products</a></li>
+        <li><a href="/pricing.html">Pricing</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="page">
+  <section class="hero">
+    <div class="hero-kicker">Whale Enterprise</div>
+    <h1 class="hero-title">Live CRM intake and continuity scoring.</h1>
+    <p class="hero-subtitle">Review local Whale CRM state, sync it to the Render runtime, and monitor enterprise readiness from one dashboard.</p>
+    <div class="dashboard-actions">
+      <button type="button" id="sendWhaleDataButton">Send Whale data to Runtime</button>
+      <button type="button" id="calculateContinuityButton">Calculate Continuity Score</button>
+      <button type="button" id="refreshBackendButton">Refresh Backend Data</button>
+    </div>
+    <p class="status-line" id="dashboardStatus">Dashboard ready.</p>
+  </section>
+
+  <section>
+    <h2 class="section-heading">Continuity scoring</h2>
+    <div class="dashboard-grid">
+      <article class="card">
+        <h3>Composite continuity</h3>
+        <p id="continuityScore" class="metric-value">Continuity Score: --</p>
+      </article>
+      <article class="card">
+        <h3>Governance alignment</h3>
+        <p id="governanceAlignmentScore" class="metric-value">--</p>
+      </article>
+      <article class="card">
+        <h3>Continuity stability</h3>
+        <p id="continuityStabilityScore" class="metric-value">--</p>
+      </article>
+      <article class="card">
+        <h3>Identity lifecycle</h3>
+        <p id="identityLifecycleScore" class="metric-value">--</p>
+      </article>
+      <article class="card">
+        <h3>Enterprise readiness</h3>
+        <p id="enterpriseReadinessScore" class="metric-value">--</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-heading">Live data surfaces</h2>
+    <div class="dashboard-grid">
+      <article class="card">
+        <h3>Local Whale lead</h3>
+        <pre id="localLead" class="data-block">{}</pre>
+      </article>
+      <article class="card">
+        <h3>Local Whale CRM</h3>
+        <pre id="localCrm" class="data-block">{}</pre>
+      </article>
+      <article class="card">
+        <h3>Backend CRM + intake</h3>
+        <pre id="backendData" class="data-block">{}</pre>
+      </article>
+      <article class="card">
+        <h3>Continuity response</h3>
+        <pre id="continuityResponse" class="data-block">{}</pre>
+      </article>
+    </div>
+  </section>
+</main>
+<script src="./render.js"></script>
+<script src="./continuity.js"></script>
+<script>
+  const statusNode = document.getElementById("dashboardStatus");
+
+  function setStatus(message) {
+    statusNode.textContent = message;
+  }
+
+  function refreshLocalData() {
+    window.setJsonContent("localLead", window.readWhaleStorage("whale_lead"));
+    window.setJsonContent("localCrm", window.readWhaleStorage("whale_crm_event"));
+  }
+
+  async function runAction(action, successMessage) {
+    setStatus("Working...");
+    try {
+      await action();
+      refreshLocalData();
+      setStatus(successMessage);
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Unexpected dashboard error.");
+    }
+  }
+
+  document.getElementById("sendWhaleDataButton").addEventListener("click", () => {
+    runAction(window.sendToRenderBackend, "Whale intake synced to Render runtime.");
+  });
+
+  document.getElementById("calculateContinuityButton").addEventListener("click", () => {
+    runAction(window.calculateContinuityScore, "Continuity score refreshed.");
+  });
+
+  document.getElementById("refreshBackendButton").addEventListener("click", () => {
+    runAction(window.fetchWhaleBackendData, "Backend Whale data refreshed.");
+  });
+
+  refreshLocalData();
+  runAction(window.fetchWhaleBackendData, "Backend Whale data refreshed.");
+</script>
+</body>
+</html>

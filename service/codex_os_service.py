@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from codex_os.codex.os.os_api import codex_os_boot, codex_os_shutdown
@@ -10,10 +11,19 @@ from marketplace.marketplace_routes import router as marketplace_router
 from identity.identity_routes import router as identity_router
 from governance.governance_routes import router as governance_router
 from public_api.public_api_routes import router as public_api_router
+from whale.whale_routes import router as whale_router
 
 app = FastAPI(
     title="Codex OS Runtime Service v2.0",
     version="2.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
@@ -26,6 +36,7 @@ app.include_router(marketplace_router, tags=["Marketplace"])
 app.include_router(identity_router, prefix="/identity", tags=["Identity"])
 app.include_router(governance_router, prefix="/governance", tags=["Governance"])
 app.include_router(public_api_router, prefix="/public_api", tags=["Public API"])
+app.include_router(whale_router, tags=["Whale"])
 
 class Payload(BaseModel):
     data: dict | None = None
