@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enterprise Runtime Console · Whale OS</title>
+  <meta name="description" content="Whale OS runtime health, envelope activity, and risk surface console.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./whale.css">
+  <script defer src="./whale.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">Codex Labs</a>
+      <nav>
+        <div class="nav-links">
+          <a href="/index.html">Home</a>
+          <a href="/console.html">Console</a>
+          <a href="./index.html">Whale OS</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="page whale-page">
+    <section class="hero">
+      <p class="hero-kicker">Whale Phase 6</p>
+      <h1 class="hero-title">Enterprise Runtime Console</h1>
+      <p class="hero-summary">Real-time runtime introspection for runtime health, envelope activity, risk surface, and operational state using the enterprise runtime endpoints.</p>
+<div class="whale-nav">
+        <a href="./index.html">Whale OS</a>
+        <a href="./continuity-dashboard.html">Continuity</a>
+        <a href="./governance-console.html">Governance</a>
+        <a href="./identity-engine.html">Identity</a>
+        <a href="./runtime-console.html">Runtime</a>
+        <a href="./governance-replay.html">Replay</a>
+        <a href="./continuity-map.html">Map</a>
+      </div>
+    </section>
+    <section class="whale-toolbar">
+      <div id="status" class="whale-status">Awaiting runtime status</div>
+      <button id="refresh" class="whale-button" type="button">Refresh runtime</button>
+    </section>
+    <section id="metrics" class="whale-metrics"></section>
+    <section class="whale-columns">
+      <article class="whale-card">
+        <h2>Runtime Status</h2>
+        <div id="runtime-status"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Risk Surface</h2>
+        <div id="risk-surface"></div>
+      </article>
+    </section>
+    <section class="whale-grid">
+      <article class="whale-card">
+        <h2>Envelope Activity</h2>
+        <div id="envelopes"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Raw Runtime Snapshot</h2>
+        <div id="raw"></div>
+      </article>
+    </section>
+    <script>
+      const { fetchJson, renderJson, renderKeyValue, renderMetrics, renderTable, setStatus, startPolling, firstValue, firstNumber, asArray } = window.whaleUI;
+      async function loadRuntime() {
+        setStatus('status', 'Refreshing enterprise runtime…');
+        try {
+          const [statusPayload, envelopesPayload, riskPayload] = await Promise.all([
+            fetchJson('/api/runtime/status'),
+            fetchJson('/api/runtime/envelopes'),
+            fetchJson('/api/runtime/risk-surface')
+          ]);
+          const envelopes = asArray(envelopesPayload.envelopes || envelopesPayload.items || envelopesPayload);
+          const riskClass = firstValue(riskPayload.risk_class, riskPayload.class, riskPayload.surface, 'Unknown');
+          renderMetrics('metrics', [
+            { label: 'Runtime Health', value: firstNumber(statusPayload.health, statusPayload.runtime_health, riskPayload.health) ?? 'Live', tone: 'good', note: firstValue(statusPayload.disposition, statusPayload.status, 'Runtime telemetry feed') },
+            { label: 'Operational State', value: firstValue(statusPayload.operational_state, statusPayload.state, statusPayload.status, 'Unknown'), tone: 'info', note: 'Current operating state returned by runtime status' },
+            { label: 'Envelope Activity', value: envelopes.length, note: 'Envelope records currently visible to runtime' },
+            { label: 'Risk Surface', value: riskClass, tone: String(riskClass).toLowerCase().includes('high') ? 'alert' : 'good', note: firstValue(riskPayload.disposition, riskPayload.status, 'Risk surface monitor') }
+          ]);
+          renderKeyValue('runtime-status', statusPayload, ['operational_state', 'status', 'disposition', 'health', 'updated_at']);
+          renderKeyValue('risk-surface', riskPayload, ['risk_class', 'surface', 'score', 'disposition', 'updated_at']);
+          renderTable('envelopes', envelopes);
+          renderJson('raw', { status: statusPayload, envelopes: envelopesPayload, riskSurface: riskPayload });
+          setStatus('status', 'Runtime console is live', 'ready');
+        } catch (error) {
+          renderMetrics('metrics', [{ label: 'Runtime Health', value: 'Unavailable', tone: 'alert', note: error.message }]);
+          renderKeyValue('runtime-status', { error: error.message });
+          renderKeyValue('risk-surface', { error: error.message });
+          renderTable('envelopes', []);
+          renderJson('raw', { error: error.message });
+          setStatus('status', `Runtime fetch failed · ${error.message}`, 'error');
+        }
+      }
+      document.getElementById('refresh').addEventListener('click', loadRuntime);
+      startPolling(loadRuntime);
+    </script>
+  </main>
+</body>
+</html>

@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governance Replay Visualizer · Whale OS</title>
+  <meta name="description" content="Whale OS governance replay receipts and transition visualizer.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./whale.css">
+  <script defer src="./whale.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">Codex Labs</a>
+      <nav>
+        <div class="nav-links">
+          <a href="/index.html">Home</a>
+          <a href="/console.html">Console</a>
+          <a href="./index.html">Whale OS</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="page whale-page">
+    <section class="hero">
+      <p class="hero-kicker">Whale Phase 7</p>
+      <h1 class="hero-title">Governance Replay Visualizer</h1>
+      <p class="hero-summary">Visualize governance replay receipts, envelope transitions, risk class changes, disposition changes, and identity version transitions from the replay log endpoints.</p>
+<div class="whale-nav">
+        <a href="./index.html">Whale OS</a>
+        <a href="./continuity-dashboard.html">Continuity</a>
+        <a href="./governance-console.html">Governance</a>
+        <a href="./identity-engine.html">Identity</a>
+        <a href="./runtime-console.html">Runtime</a>
+        <a href="./governance-replay.html">Replay</a>
+        <a href="./continuity-map.html">Map</a>
+      </div>
+    </section>
+    <section class="whale-toolbar">
+      <div id="status" class="whale-status">Awaiting governance replay feed</div>
+      <button id="refresh" class="whale-button" type="button">Refresh replay</button>
+    </section>
+    <section id="metrics" class="whale-metrics"></section>
+    <section class="whale-columns">
+      <article class="whale-card">
+        <h2>Replay Timeline</h2>
+        <div id="timeline"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Replay Receipts</h2>
+        <div id="receipts"></div>
+      </article>
+    </section>
+    <section class="whale-grid">
+      <article class="whale-card">
+        <h2>Change Monitor</h2>
+        <div id="monitor"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Raw Replay Payload</h2>
+        <div id="raw"></div>
+      </article>
+    </section>
+    <script>
+      const { fetchJson, renderJson, renderKeyValue, renderMetrics, renderTable, renderTimeline, setStatus, startPolling, asArray } = window.whaleUI;
+      function countKeyTransitions(items, keys) {
+        let total = 0;
+        let previousSignature = null;
+        for (const item of items) {
+          if (!item || typeof item !== 'object') {
+            continue;
+          }
+          const signature = keys.map((key) => item[key] ?? '').join('|');
+          if (previousSignature !== null && signature !== previousSignature) {
+            total += 1;
+          }
+          previousSignature = signature;
+        }
+        return total;
+      }
+      async function loadReplay() {
+        setStatus('status', 'Refreshing governance replay…');
+        try {
+          const [receiptsPayload, timelinePayload] = await Promise.all([
+            fetchJson('/api/governance/receipts'),
+            fetchJson('/api/governance/timeline')
+          ]);
+          const receipts = asArray(receiptsPayload.receipts || receiptsPayload.items || receiptsPayload);
+          const timeline = asArray(timelinePayload.timeline || timelinePayload.events || timelinePayload.items || timelinePayload);
+          const replayStream = timeline.length ? timeline : receipts;
+          renderMetrics('metrics', [
+            { label: 'Replay Receipts', value: receipts.length, note: 'Governance receipts returned by replay logs' },
+            { label: 'Envelope Transitions', value: countKeyTransitions(replayStream, ['envelope_id', 'envelope', 'transition']), note: 'Detected envelope signature changes' },
+            { label: 'Risk Class Changes', value: countKeyTransitions(replayStream, ['risk_class', 'class']), tone: 'info', note: 'Risk class movement across the replay stream' },
+            { label: 'Identity Version Changes', value: countKeyTransitions(replayStream, ['identity_version', 'version']), note: 'Identity transitions observed across replay events' }
+          ]);
+          renderTimeline('timeline', timeline);
+          renderTable('receipts', receipts);
+          renderKeyValue('monitor', {
+            disposition_changes: countKeyTransitions(replayStream, ['disposition']),
+            risk_class_changes: countKeyTransitions(replayStream, ['risk_class', 'class']),
+            identity_version_changes: countKeyTransitions(replayStream, ['identity_version', 'version']),
+            envelope_transitions: countKeyTransitions(replayStream, ['envelope_id', 'envelope', 'transition'])
+          });
+          renderJson('raw', { receipts: receiptsPayload, timeline: timelinePayload });
+          setStatus('status', 'Governance replay visualizer is live', 'ready');
+        } catch (error) {
+          renderMetrics('metrics', [{ label: 'Replay Receipts', value: 'Unavailable', tone: 'alert', note: error.message }]);
+          renderTimeline('timeline', []);
+          renderTable('receipts', []);
+          renderKeyValue('monitor', { error: error.message });
+          renderJson('raw', { error: error.message });
+          setStatus('status', `Replay fetch failed · ${error.message}`, 'error');
+        }
+      }
+      document.getElementById('refresh').addEventListener('click', loadReplay);
+      startPolling(loadReplay);
+    </script>
+  </main>
+</body>
+</html>

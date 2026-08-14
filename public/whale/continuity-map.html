@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Continuity Map Generator · Whale OS</title>
+  <meta name="description" content="Whale OS continuity map generator for operational continuity surfaces.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./whale.css">
+  <script defer src="./whale.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">Codex Labs</a>
+      <nav>
+        <div class="nav-links">
+          <a href="/index.html">Home</a>
+          <a href="/console.html">Console</a>
+          <a href="./index.html">Whale OS</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="page whale-page">
+    <section class="hero">
+      <p class="hero-kicker">Whale Phase 8</p>
+      <h1 class="hero-title">Continuity Map Generator</h1>
+      <p class="hero-summary">Generate the final continuity visualization layer from <span class="inline-code">GET /api/continuity/map</span>, including continuity events, stability nodes, governance intersections, identity lifecycle anchors, and operational surfaces.</p>
+<div class="whale-nav">
+        <a href="./index.html">Whale OS</a>
+        <a href="./continuity-dashboard.html">Continuity</a>
+        <a href="./governance-console.html">Governance</a>
+        <a href="./identity-engine.html">Identity</a>
+        <a href="./runtime-console.html">Runtime</a>
+        <a href="./governance-replay.html">Replay</a>
+        <a href="./continuity-map.html">Map</a>
+      </div>
+    </section>
+    <section class="whale-toolbar">
+      <div id="status" class="whale-status">Awaiting continuity map</div>
+      <button id="refresh" class="whale-button" type="button">Refresh map</button>
+    </section>
+    <section id="metrics" class="whale-metrics"></section>
+    <section class="whale-grid">
+      <article class="whale-card">
+        <h2>Continuity Events</h2>
+        <div id="events"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Stability Nodes</h2>
+        <div id="nodes"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Governance Intersections</h2>
+        <div id="intersections"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Identity Lifecycle Anchors</h2>
+        <div id="anchors"></div>
+      </article>
+    </section>
+    <section class="whale-columns">
+      <article class="whale-card">
+        <h2>Operational Surfaces</h2>
+        <div id="surfaces"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Raw Continuity Map</h2>
+        <div id="raw"></div>
+      </article>
+    </section>
+    <script>
+      const { fetchJson, renderJson, renderMetrics, renderTable, renderTimeline, renderTokens, setStatus, startPolling, asArray } = window.whaleUI;
+      async function loadMap() {
+        setStatus('status', 'Refreshing continuity map…');
+        try {
+          const data = await fetchJson('/api/continuity/map');
+          const events = asArray(data.events || data.continuity_events || data.timeline);
+          const nodes = asArray(data.nodes || data.stability_nodes);
+          const intersections = asArray(data.intersections || data.governance_intersections);
+          const anchors = asArray(data.anchors || data.identity_lifecycle_anchors);
+          const surfaces = asArray(data.surfaces || data.operational_surfaces);
+          renderMetrics('metrics', [
+            { label: 'Continuity Events', value: events.length, note: 'Events included in the generated continuity map' },
+            { label: 'Stability Nodes', value: nodes.length, tone: 'good', note: 'Active stability nodes' },
+            { label: 'Governance Intersections', value: intersections.length, tone: 'info', note: 'Governance touchpoints across the map' },
+            { label: 'Lifecycle Anchors', value: anchors.length, note: 'Identity lifecycle anchors detected by the backend' }
+          ]);
+          renderTimeline('events', events);
+          renderTable('nodes', nodes);
+          renderTable('intersections', intersections);
+          renderTable('anchors', anchors);
+          renderTokens('surfaces', surfaces);
+          renderJson('raw', data);
+          setStatus('status', 'Continuity map is live', 'ready');
+        } catch (error) {
+          renderMetrics('metrics', [{ label: 'Continuity Events', value: 'Unavailable', tone: 'alert', note: error.message }]);
+          renderTimeline('events', []);
+          renderTable('nodes', []);
+          renderTable('intersections', []);
+          renderTable('anchors', []);
+          renderTokens('surfaces', []);
+          renderJson('raw', { error: error.message });
+          setStatus('status', `Continuity map fetch failed · ${error.message}`, 'error');
+        }
+      }
+      document.getElementById('refresh').addEventListener('click', loadMap);
+      startPolling(loadMap);
+    </script>
+  </main>
+</body>
+</html>

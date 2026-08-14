@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Identity Lifecycle Engine · Whale OS</title>
+  <meta name="description" content="Whale OS identity versioning and lifecycle transition console.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./whale.css">
+  <script defer src="./whale.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">Codex Labs</a>
+      <nav>
+        <div class="nav-links">
+          <a href="/index.html">Home</a>
+          <a href="/console.html">Console</a>
+          <a href="./index.html">Whale OS</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="page whale-page">
+    <section class="hero">
+      <p class="hero-kicker">Whale Phase 5</p>
+      <h1 class="hero-title">Identity Lifecycle Engine</h1>
+      <p class="hero-summary">Manage identity versioning, lifecycle transitions, governance alignment, continuity stability, and enterprise readiness through <span class="inline-code">GET /api/whale/identity-state</span> and <span class="inline-code">POST /api/whale/identity-transition</span>.</p>
+<div class="whale-nav">
+        <a href="./index.html">Whale OS</a>
+        <a href="./continuity-dashboard.html">Continuity</a>
+        <a href="./governance-console.html">Governance</a>
+        <a href="./identity-engine.html">Identity</a>
+        <a href="./runtime-console.html">Runtime</a>
+        <a href="./governance-replay.html">Replay</a>
+        <a href="./continuity-map.html">Map</a>
+      </div>
+    </section>
+    <section class="whale-toolbar">
+      <div id="status" class="whale-status">Awaiting identity state</div>
+      <button id="refresh" class="whale-button" type="button">Refresh state</button>
+    </section>
+    <section id="metrics" class="whale-metrics"></section>
+    <section class="whale-columns">
+      <article class="whale-card">
+        <h2>Current Identity State</h2>
+        <div id="state"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Lifecycle Transition</h2>
+        <form id="transition-form">
+          <div>
+            <label for="transition-json">Transition payload</label>
+            <textarea id="transition-json">{
+  "transition": "advance_identity",
+  "target_state": "enterprise_ready",
+  "identity_version": "vNext",
+  "governance_alignment": "aligned",
+  "continuity_stability": "stable",
+  "enterprise_readiness": true
+}</textarea>
+          </div>
+          <button class="whale-button" type="submit">Submit transition</button>
+        </form>
+      </article>
+    </section>
+    <section class="whale-grid">
+      <article class="whale-card">
+        <h2>Transition Response</h2>
+        <div id="transition-response"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Raw Identity State</h2>
+        <div id="raw"></div>
+      </article>
+    </section>
+    <script>
+      const { fetchJson, renderJson, renderKeyValue, renderMetrics, setStatus, startPolling, firstValue, firstNumber, asArray } = window.whaleUI;
+      async function loadIdentityState() {
+        setStatus('status', 'Refreshing identity lifecycle state…');
+        try {
+          const data = await fetchJson('/api/whale/identity-state');
+          const transitions = asArray(data.transitions || data.lifecycle_transitions || data.timeline);
+          renderMetrics('metrics', [
+            { label: 'Identity Version', value: firstValue(data.identity_version, data.version, 'Unknown'), tone: 'info', note: 'Current enterprise identity version' },
+            { label: 'Lifecycle State', value: firstValue(data.lifecycle_state, data.state, data.status, 'Unknown'), note: 'Active lifecycle position' },
+            { label: 'Continuity Stability', value: firstValue(data.continuity_stability, data.stability, firstNumber(data.continuity_score, data.health), 'Unknown'), tone: 'good', note: 'Continuity posture reported by the engine' },
+            { label: 'Enterprise Readiness', value: firstValue(data.enterprise_readiness, data.readiness, 'Unknown'), note: `Transitions tracked: ${transitions.length}` }
+          ]);
+          renderKeyValue('state', data, ['identity_version', 'lifecycle_state', 'governance_alignment', 'continuity_stability', 'enterprise_readiness', 'updated_at']);
+          renderJson('raw', data);
+          if (!document.getElementById('transition-response').innerHTML.trim()) {
+            renderJson('transition-response', { message: 'Submit a transition to inspect the engine response.' });
+          }
+          setStatus('status', 'Identity lifecycle engine is live', 'ready');
+        } catch (error) {
+          renderMetrics('metrics', [{ label: 'Identity Version', value: 'Unavailable', tone: 'alert', note: error.message }]);
+          renderKeyValue('state', { error: error.message });
+          renderJson('raw', { error: error.message });
+          setStatus('status', `Identity fetch failed · ${error.message}`, 'error');
+        }
+      }
+      async function submitTransition(event) {
+        event.preventDefault();
+        setStatus('status', 'Submitting identity transition…');
+        try {
+          const payload = JSON.parse(document.getElementById('transition-json').value);
+          const response = await fetchJson('/api/whale/identity-transition', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          renderJson('transition-response', response);
+          setStatus('status', 'Identity transition submitted', 'ready');
+          await loadIdentityState();
+        } catch (error) {
+          renderJson('transition-response', { error: error.message });
+          setStatus('status', `Identity transition failed · ${error.message}`, 'error');
+        }
+      }
+      document.getElementById('refresh').addEventListener('click', loadIdentityState);
+      document.getElementById('transition-form').addEventListener('submit', submitTransition);
+      startPolling(loadIdentityState);
+    </script>
+  </main>
+</body>
+</html>

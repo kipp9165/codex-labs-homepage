@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Governance Console · Whale OS</title>
+  <meta name="description" content="Whale OS governance envelope viewer and risk class monitor.">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="./whale.css">
+  <script defer src="./whale.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="/index.html" class="nav-logo">Codex Labs</a>
+      <nav>
+        <div class="nav-links">
+          <a href="/index.html">Home</a>
+          <a href="/console.html">Console</a>
+          <a href="./index.html">Whale OS</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main class="page whale-page">
+    <section class="hero">
+      <p class="hero-kicker">Whale Phase 4</p>
+      <h1 class="hero-title">Governance Console</h1>
+      <p class="hero-summary">Governance envelope viewer and risk class monitor powered by <span class="inline-code">GET /api/whale/governance-envelope</span> and <span class="inline-code">GET /api/whale/risk-class</span>.</p>
+<div class="whale-nav">
+        <a href="./index.html">Whale OS</a>
+        <a href="./continuity-dashboard.html">Continuity</a>
+        <a href="./governance-console.html">Governance</a>
+        <a href="./identity-engine.html">Identity</a>
+        <a href="./runtime-console.html">Runtime</a>
+        <a href="./governance-replay.html">Replay</a>
+        <a href="./continuity-map.html">Map</a>
+      </div>
+    </section>
+    <section class="whale-toolbar">
+      <div id="status" class="whale-status">Awaiting governance envelope</div>
+      <button id="refresh" class="whale-button" type="button">Refresh governance</button>
+    </section>
+    <section id="metrics" class="whale-metrics"></section>
+    <section class="whale-columns">
+      <article class="whale-card">
+        <h2>Governance Surface</h2>
+        <div id="envelope"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Scope</h2>
+        <div id="scope"></div>
+      </article>
+    </section>
+    <section class="whale-grid">
+      <article class="whale-card">
+        <h2>Risk Class Monitor</h2>
+        <div id="risk"></div>
+      </article>
+      <article class="whale-card">
+        <h2>Envelope Snapshot</h2>
+        <div id="raw"></div>
+      </article>
+    </section>
+    <script>
+      const { fetchJson, renderJson, renderKeyValue, renderMetrics, renderTokens, setStatus, startPolling, firstValue, asArray } = window.whaleUI;
+      async function loadGovernance() {
+        setStatus('status', 'Refreshing governance surface…');
+        try {
+          const [envelope, risk] = await Promise.all([
+            fetchJson('/api/whale/governance-envelope'),
+            fetchJson('/api/whale/risk-class')
+          ]);
+          const scope = asArray(envelope.scope || envelope.governance_scope || envelope.authority_scope);
+          const riskClass = firstValue(risk.risk_class, risk.class, envelope.risk_class, 'Unknown');
+          renderMetrics('metrics', [
+            { label: 'Governance Surface', value: firstValue(envelope.governance_surface, envelope.surface, envelope.layer, envelope.name, 'Envelope'), tone: 'info', note: 'Primary governance plane reported by the backend' },
+            { label: 'Scope Count', value: scope.length, note: 'Enterprise scope entries under governance' },
+            { label: 'Risk Class', value: riskClass, tone: String(riskClass).toLowerCase().includes('high') ? 'alert' : 'good', note: firstValue(risk.disposition, risk.status, 'Live risk monitor') },
+            { label: 'Disposition', value: firstValue(envelope.disposition, risk.disposition, envelope.status, '—'), note: `Identity version ${firstValue(envelope.identity_version, envelope.version, 'unknown')}` }
+          ]);
+          renderKeyValue('envelope', envelope, ['governance_surface', 'disposition', 'identity_version', 'version', 'status', 'updated_at']);
+          renderTokens('scope', scope);
+          renderKeyValue('risk', Object.assign({}, risk, { scope_count: scope.length }), ['risk_class', 'class', 'score', 'disposition', 'updated_at', 'scope_count']);
+          renderJson('raw', { envelope, risk });
+          setStatus('status', 'Governance envelope and risk class are live', 'ready');
+        } catch (error) {
+          renderMetrics('metrics', [{ label: 'Governance Surface', value: 'Unavailable', tone: 'alert', note: error.message }]);
+          renderKeyValue('envelope', { error: error.message });
+          renderTokens('scope', []);
+          renderKeyValue('risk', { error: error.message });
+          renderJson('raw', { error: error.message });
+          setStatus('status', `Governance fetch failed · ${error.message}`, 'error');
+        }
+      }
+      document.getElementById('refresh').addEventListener('click', loadGovernance);
+      startPolling(loadGovernance);
+    </script>
+  </main>
+</body>
+</html>
