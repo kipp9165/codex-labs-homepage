@@ -3,11 +3,12 @@
   <head>
     <meta charset="UTF-8">
     <script>
-      window.location.replace("public/index.html");
+      // Stop Codex OS router from loading
+      window.stop();
+
+      // Redirect immediately
+      window.location.href = "public/index.html";
     </script>
-    <noscript>
-      <meta http-equiv="refresh" content="0; url=public/index.html">
-    </noscript>
   </head>
   <body>
     <p>Redirecting…</p>
