@@ -109,7 +109,9 @@
       }
 
       list.innerHTML = "";
-      Object.entries(metadata).forEach(function ([key, value]) {
+      metadata.forEach(function (entry) {
+        var key = entry[0];
+        var value = entry[1];
         var item = document.createElement("li");
         var label = document.createElement("strong");
         label.textContent = key + ":";
@@ -210,27 +212,27 @@
         title: "FreezeGuard",
         description: "Freeze-risk readiness and continuity protocol layer.",
         href: "./index.html",
-        metadata: {
-          "scroll-class": "guardian",
-          "scroll-version": "v-final",
-          "scroll-scope": "surface",
-          "scroll-continuity": "omni",
-          "scroll-autonomy": "founder-grade",
-          "scroll-id": "guardian-freezeguard-segment-1"
-        }
+        metadata: [
+          ["scroll-class", "guardian"],
+          ["scroll-version", "v-final"],
+          ["scroll-scope", "surface"],
+          ["scroll-continuity", "omni"],
+          ["scroll-autonomy", "founder-grade"],
+          ["scroll-id", "guardian-freezeguard-segment-1"]
+        ]
       },
       "homeguardian": {
         title: "HomeGuardian",
         description: "Household safety orchestration across critical domestic vectors.",
         href: "../store/index.html",
-        metadata: {
-          "scroll-class": "guardian",
-          "scroll-version": "v-final",
-          "scroll-scope": "surface",
-          "scroll-continuity": "omni",
-          "scroll-autonomy": "founder-grade",
-          "scroll-id": "guardian-homeguardian-segment-2"
-        }
+        metadata: [
+          ["scroll-class", "guardian"],
+          ["scroll-version", "v-final"],
+          ["scroll-scope", "surface"],
+          ["scroll-continuity", "omni"],
+          ["scroll-autonomy", "founder-grade"],
+          ["scroll-id", "guardian-homeguardian-segment-2"]
+        ]
       },
       "identity-os": {
         title: "Identity OS",
