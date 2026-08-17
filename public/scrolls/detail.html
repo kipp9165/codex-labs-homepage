@@ -109,12 +109,12 @@
       }
 
       list.innerHTML = "";
-      Object.entries(metadata).forEach(function (entry) {
+      Object.entries(metadata).forEach(function ([key, value]) {
         var item = document.createElement("li");
         var label = document.createElement("strong");
-        label.textContent = entry[0] + ":";
+        label.textContent = key + ":";
         item.appendChild(label);
-        item.appendChild(document.createTextNode(" " + entry[1]));
+        item.appendChild(document.createTextNode(" " + value));
         list.appendChild(item);
       });
       section.hidden = false;
