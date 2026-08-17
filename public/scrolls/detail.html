@@ -75,6 +75,16 @@
   </article>
   </div>
 </section>
+<section class="core-systems" id="scroll-metadata-section" hidden>
+  <h2 class="section-heading">Scroll Metadata</h2>
+  <div class="product-grid">
+  <article class="product-card">
+    <div class="product-tagline">Schema</div>
+    <h3>Scroll Metadata</h3>
+    <ul class="feature-list" id="scroll-metadata-list"></ul>
+  </article>
+  </div>
+</section>
 </main>
 <footer class="site-footer">
   <div class="page footer-inner">
@@ -84,6 +94,38 @@
 </footer>
 <script>
   (function () {
+    function renderMetadata(metadata) {
+      var section = document.getElementById("scroll-metadata-section");
+      var list = document.getElementById("scroll-metadata-list");
+
+      if (!section || !list) {
+        return;
+      }
+
+      if (!metadata) {
+        section.hidden = true;
+        list.innerHTML = "";
+        return;
+      }
+
+      list.innerHTML = "";
+      metadata.forEach(function (entry) {
+        if (!entry || typeof entry.key !== "string" || typeof entry.value !== "string") {
+          return;
+        }
+
+        var key = entry.key;
+        var value = entry.value;
+        var item = document.createElement("li");
+        var label = document.createElement("strong");
+        label.textContent = key + ":";
+        item.appendChild(label);
+        item.appendChild(document.createTextNode(" " + value));
+        list.appendChild(item);
+      });
+      section.hidden = false;
+    }
+
     var catalog = {
       "independence-momentum-v1": {
         title: "Independence Momentum Scroll v1",
@@ -173,12 +215,28 @@
       "freezeguard": {
         title: "FreezeGuard",
         description: "Freeze-risk readiness and continuity protocol layer.",
-        href: "./index.html"
+        href: "./index.html",
+        metadata: [
+          { key: "scroll-class", value: "guardian" },
+          { key: "scroll-version", value: "v-final" },
+          { key: "scroll-scope", value: "surface" },
+          { key: "scroll-continuity", value: "omni" },
+          { key: "scroll-autonomy", value: "founder-grade" },
+          { key: "scroll-id", value: "guardian-freezeguard-segment-1" }
+        ]
       },
       "homeguardian": {
         title: "HomeGuardian",
         description: "Household safety orchestration across critical domestic vectors.",
-        href: "../store/index.html"
+        href: "../store/index.html",
+        metadata: [
+          { key: "scroll-class", value: "guardian" },
+          { key: "scroll-version", value: "v-final" },
+          { key: "scroll-scope", value: "surface" },
+          { key: "scroll-continuity", value: "omni" },
+          { key: "scroll-autonomy", value: "founder-grade" },
+          { key: "scroll-id", value: "guardian-homeguardian-segment-2" }
+        ]
       },
       "identity-os": {
         title: "Identity OS",
@@ -208,6 +266,7 @@
     document.getElementById("scroll-description").textContent = item.description;
     document.getElementById("scroll-route-link").href = item.href;
     document.getElementById("scroll-route-link").setAttribute("data-product-id", "nav_" + slug.replace(/-/g, "_"));
+    renderMetadata(item.metadata || null);
   })();
 </script>
 <script src="../assets/js/checkout-links.js"></script>
