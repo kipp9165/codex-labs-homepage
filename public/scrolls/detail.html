@@ -111,9 +111,15 @@
         return;
       }
 
-      list.innerHTML = Object.entries(metadata).map(function (entry) {
-        return "<li><strong>" + entry[0] + ":</strong> " + entry[1] + "</li>";
-      }).join("");
+      list.innerHTML = "";
+      Object.entries(metadata).forEach(function (entry) {
+        var item = document.createElement("li");
+        var label = document.createElement("strong");
+        label.textContent = entry[0] + ":";
+        item.appendChild(label);
+        item.appendChild(document.createTextNode(" " + entry[1]));
+        list.appendChild(item);
+      });
       payload.textContent = JSON.stringify(metadata, null, 2);
       section.hidden = false;
     }
