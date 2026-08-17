@@ -110,8 +110,12 @@
 
       list.innerHTML = "";
       metadata.forEach(function (entry) {
-        var key = entry[0];
-        var value = entry[1];
+        if (!entry || typeof entry.key !== "string" || typeof entry.value !== "string") {
+          return;
+        }
+
+        var key = entry.key;
+        var value = entry.value;
         var item = document.createElement("li");
         var label = document.createElement("strong");
         label.textContent = key + ":";
@@ -213,12 +217,12 @@
         description: "Freeze-risk readiness and continuity protocol layer.",
         href: "./index.html",
         metadata: [
-          ["scroll-class", "guardian"],
-          ["scroll-version", "v-final"],
-          ["scroll-scope", "surface"],
-          ["scroll-continuity", "omni"],
-          ["scroll-autonomy", "founder-grade"],
-          ["scroll-id", "guardian-freezeguard-segment-1"]
+          { key: "scroll-class", value: "guardian" },
+          { key: "scroll-version", value: "v-final" },
+          { key: "scroll-scope", value: "surface" },
+          { key: "scroll-continuity", value: "omni" },
+          { key: "scroll-autonomy", value: "founder-grade" },
+          { key: "scroll-id", value: "guardian-freezeguard-segment-1" }
         ]
       },
       "homeguardian": {
@@ -226,12 +230,12 @@
         description: "Household safety orchestration across critical domestic vectors.",
         href: "../store/index.html",
         metadata: [
-          ["scroll-class", "guardian"],
-          ["scroll-version", "v-final"],
-          ["scroll-scope", "surface"],
-          ["scroll-continuity", "omni"],
-          ["scroll-autonomy", "founder-grade"],
-          ["scroll-id", "guardian-homeguardian-segment-2"]
+          { key: "scroll-class", value: "guardian" },
+          { key: "scroll-version", value: "v-final" },
+          { key: "scroll-scope", value: "surface" },
+          { key: "scroll-continuity", value: "omni" },
+          { key: "scroll-autonomy", value: "founder-grade" },
+          { key: "scroll-id", value: "guardian-homeguardian-segment-2" }
         ]
       },
       "identity-os": {
