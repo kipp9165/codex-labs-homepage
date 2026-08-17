@@ -92,22 +92,19 @@
     <div class="footer-right">Sovereign infrastructure for the age of intelligence.</div>
   </div>
 </footer>
-<div id="scroll-metadata-json" hidden aria-hidden="true"></div>
 <script>
   (function () {
     function renderMetadata(metadata) {
       var section = document.getElementById("scroll-metadata-section");
       var list = document.getElementById("scroll-metadata-list");
-      var payload = document.getElementById("scroll-metadata-json");
 
-      if (!section || !list || !payload) {
+      if (!section || !list) {
         return;
       }
 
       if (!metadata) {
         section.hidden = true;
         list.innerHTML = "";
-        payload.textContent = "";
         return;
       }
 
@@ -120,7 +117,6 @@
         item.appendChild(document.createTextNode(" " + entry[1]));
         list.appendChild(item);
       });
-      payload.textContent = JSON.stringify(metadata, null, 2);
       section.hidden = false;
     }
 
