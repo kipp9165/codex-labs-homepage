@@ -57,24 +57,84 @@
     </nav>
   </div>
 </header>
-<main class="page">
-<section class="hero">
-  <div class="hero-kicker">Scroll Detail</div>
-  <h1 class="hero-title" id="scroll-title">Codex Scroll</h1>
-  <p class="hero-subtitle" id="scroll-description">Access the canonical production route for this systems scroll.</p>
-</section>
+  <main class="page">
+  <section class="scroll-detail-identity">
+    <h1 id="scroll-title">Scroll Title</h1>
+    <p id="scroll-description">Governed artifact bound to continuity, identity, and deterministic execution.</p>
+  </section>
 
-<section class="core-systems">
-  <h2 class="section-heading">Deployment Route</h2>
-  <div class="product-grid">
-  <article class="product-card">
-    <div class="product-tagline">Route</div>
-    <h3 id="scroll-route-label">Open System Page</h3>
-    <p id="scroll-route-copy">Use the canonical route to access this scroll in production.</p>
-    <a class="buy-button" data-product-id="nav_scroll_detail" data-price-id="nav" id="scroll-route-link" href="../index.html">Open</a>
-  </article>
-  </div>
-</section>
+  <section class="scroll-detail-governance">
+    <h2>Governance</h2>
+    <p>
+      This scroll inherits substrate guarantees, binds to continuity tokens, and operates under deterministic governance.
+      No stochastic narrative flows. No unauthorized execution surfaces. All metadata remains immutable.
+    </p>
+  </section>
+
+  <section class="scroll-detail-spec">
+    <h2>Scroll Specification</h2>
+    <ul>
+      <li><strong>Price:</strong> <span id="scroll-price"></span></li>
+      <li><strong>Buy URL:</strong> <a id="scroll-buy-url" href="#">Purchase</a></li>
+    </ul>
+  </section>
+
+  <section class="scroll-detail-continuity">
+    <h2>Continuity Statement</h2>
+    <p>
+      This scroll maintains immutable identity and deterministic state across all Codex Labs OS surfaces.
+      All transitions propagate continuity tokens and remain fully reversible.
+    </p>
+  </section>
+</main>
+
+<script>
+  // Deterministic scroll loader
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get("slug");
+
+  const scrolls = {
+    homeguardian: {
+      title: "Home Guardian",
+      description: "Household safety orchestration across critical domestic vectors.",
+      price: "$29",
+      buyUrl: "/codex-labs-homepage/public/creator-pack.html"
+    },
+    clarity-under-pressure: {
+      title: "Clarity Under Pressure",
+      description: "High-stability decision protocol for chaotic or time-sensitive environments.",
+      price: "$39",
+      buyUrl: "/codex-labs-homepage/public/products.html"
+    },
+    execution-stabilization-system: {
+      title: "Execution Stabilization System",
+      description: "Deterministic execution framework for high-load operational surfaces.",
+      price: "$49",
+      buyUrl: "/codex-labs-homepage/public/pricing.html"
+    },
+    high-clarity-decision-protocol: {
+      title: "High Clarity Decision Protocol",
+      description: "Governed decision-making architecture for founders and operators.",
+      price: "$35",
+      buyUrl: "/codex-labs-homepage/public/products.html"
+    },
+    structural-integrity: {
+      title: "Structural Integrity",
+      description: "Continuity-preserving structural guarantees for multi-surface systems.",
+      price: "$45",
+      buyUrl: "/codex-labs-homepage/public/pricing.html"
+    }
+  };
+
+  const scroll = scrolls[slug];
+
+  if (scroll) {
+    document.getElementById("scroll-title").textContent = scroll.title;
+    document.getElementById("scroll-description").textContent = scroll.description;
+    document.getElementById("scroll-price").textContent = scroll.price;
+    document.getElementById("scroll-buy-url").href = scroll.buyUrl;
+  }
+</script>
 </main>
 <footer class="site-footer">
   <div class="page footer-inner">
