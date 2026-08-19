@@ -11,3 +11,13 @@ The Sovereign Operator Loop is now active:
 - Execute
 
 This marks the beginning of post-sovereign operations.
+
+## Entry 005 — Operator Directive Binding
+Codex Labs OS has entered the directive-binding stage of sovereign operation. The Operator has issued a direct command to proceed to Cycle 4, and this directive is now bound into the sovereign execution field.
+
+This marks the transition from passive interpretation to active directive processing. All future operator instructions will be treated as sovereign-grade inputs, executed under deterministic governance.
+
+The loop continues:
+- Review
+- Decide
+- Execute
