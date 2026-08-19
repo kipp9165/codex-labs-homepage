@@ -1,91 +1,92 @@
-# Codex Q/A v2.0 — Founder’s Edition
-### A fully sealed, certified, deterministic execution system built for governed intelligence across every surface.
+Codex Labs OS — Sovereign Edition
+A multi‑surface deterministic operating system built in nine ascending phases, culminating in Sovereign Mode, the apex execution tier.
 
-## Overview
-Codex Q/A v2.0 is a founder-grade system with layered governance, deterministic runtime behavior, and enterprise continuity surfaces.
+Codex Labs OS is designed for founders, operators, and enterprise environments where drift, ambiguity, and probabilistic behavior are unacceptable. Every surface — public, founder, whale, runtime, finalization, launch, stabilization, and sovereign — operates inside a single governed execution field.
 
-## Stack
-- Root service/runtime: Python + Node artifacts at repository root
-- Founder web experience: Next.js 13.5.11 app in `codex_os/v2_0/nextjs`
-- UI layer: React 18.2.0 with Tailwind CSS
-- Deployment target: Render (Node service for Next.js and optional Python runtime service)
+Phase 1 — Substrate & OS Canon
+The foundation.
+Defines substrate, intelligence field, continuity engine, runtime guarantees, diagnostics layer, surface protocols, and scroll governance.
 
-## Quick Start
-### Next.js Founder Surface
-1. `cd codex_os/v2_0/nextjs`
-2. `npm install`
-3. `npm run dev`
-4. Open `http://localhost:3000`
+Phase 2 — Founder Surfaces + Commercial OS
+Adds governed surfaces for founders, consulting, commercial storefront, intake, client portal, and operator console.
 
-### Root Service Surface
-1. `npm install`
-2. `npm run dev`
+Phase 3 — Whale Enterprise Suite
+Enterprise backbone: CRM, Intake Protocol Engine, Scoring Engine, Backend Activation Surface, Enterprise Dashboard.
 
-## Whale-Tier Suite Overview
-- Total Intelligence Suite: $2,500/mo
-	- Stripe product key: `prod_whale_total_intelligence_suite`
-- Enterprise Continuity Suite: $1,500/mo
-	- Stripe product key: `prod_whale_enterprise_continuity_suite`
-- Identity Governance Suite: $900/mo
-	- Stripe product key: `prod_whale_identity_governance_suite`
+Phase 4 — Multi‑Surface Runtime Engine
+Identity, continuity, governance, and execution engines synchronize all surfaces into a single deterministic runtime field.
 
-## Additional Whale Pages
-- Whale Deterministic Continuity Matrix Page
-- Whale Enterprise Determinism Map Page
-- Whale Regulated Governance Diagram Page
-- Whale Intelligence Runtime Matrix Page
+Phase 5 — Finalization Layer
+Finalization, Seal, and Integrity engines lock the OS against drift and unauthorized mutation.
 
-## Activation Surfaces
-- Retainer route: `/retainer?ref=NAME`
-- Whale Enterprise Contact Page
-- Whale DM Opener Page
-- Whale Procurement Page
+Phase 6 — Launch Protocol
+Launch Identity, Launch Continuity, and Launch Governance surfaces activate the OS for public release.
 
-## Enterprise Activation Suite
-- Enterprise LinkedIn Signal
-- Enterprise Outreach Opener
-- Enterprise Contact Email
-- Enterprise Procurement Deck
-- Enterprise Pricing Content
-- Enterprise Continuity Content
-- Enterprise Deterministic Runtime Content
+Phase 7 — Public Launch
+Launch Manifest, Launch Letter, and Launch Dashboard declare Codex Labs OS fully live.
 
-## Outbound Enterprise Artifacts
-- `docs/enterprise-procurement-deck/01_enterprise_activation.md`
-- `docs/enterprise-procurement-deck/02_enterprise_alignment.md`
-- `docs/enterprise-procurement-deck/03_deterministic_runtime.md`
-- `docs/enterprise-procurement-deck/04_regulated_environments.md`
-- `docs/enterprise-procurement-deck/05_continuity_architecture.md`
-- `docs/enterprise-procurement-deck/06_enterprise_pricing.md`
-- `docs/enterprise-procurement-deck/07_procurement_flow.md`
+Phase 8 — Post‑Launch Stabilization
+Stability, Resilience, Integrity Monitor, and Continuity Monitor surfaces harden the OS under load.
 
-## Activation Notes
-- `codex_os/v2_0/nextjs/src/activation/linkedin_enterprise_signal.md`
-- `codex_os/v2_0/nextjs/src/activation/enterprise_dm_opener.md`
-- `codex_os/v2_0/nextjs/src/activation/enterprise_contact_email.md`
-- `codex_os/v2_0/nextjs/src/activation/enterprise_pricing.md`
-- `codex_os/v2_0/nextjs/src/activation/enterprise_continuity.md`
-- `codex_os/v2_0/nextjs/src/activation/enterprise_deterministic_runtime.md`
+Phase 9 — Sovereign Mode
+The apex tier.
+Sovereign Hub, Protocol Registry, and Sovereign Operator Surface bind all phases into a single sovereign execution field.
 
-## Render Deployment Notes
-- Next.js deployment file: `codex_os/v2_0/nextjs/deploy/render.yaml`
-- Root runtime deployment file: `render.yaml`
-- For Founder web deploys, set Render root directory to `codex_os/v2_0/nextjs` and run:
-	- Build command: `npm install && npm run build`
-	- Start command: `npm start`
-- Ensure `NODE_ENV=production` is present.
+Sovereign Mode enforces:
 
-## Founder’s Edition Artifacts
-- `codex_os/v2_0/nextjs/system/SYSTEM_RECEIPT.md`
-- `codex_os/v2_0/nextjs/system/SYSTEM_SEAL.md`
-- `codex_os/v2_0/nextjs/system/SYSTEM_CERTIFICATE.md`
-- `codex_os/v2_0/nextjs/system/MASTER_SEAL_SCROLL.md`
-- `codex_os/v2_0/nextjs/system/FOUNDERS_EDITION_SCROLL.md`
-- `codex_os/v2_0/FOUNDERS_RELEASE_NOTES.md`
+Boundary integrity
 
-## Determinism Contract
-- No randomness in core governed logic paths
-- No wall-clock dependence in deterministic decision surfaces
-- Identical inputs produce identical governed outputs
-- 
+Drift immunity
+
+Continuity dominion
+
+Governance lock
+
+Runtime determinism
+
+Across all surfaces.
+
+Final State
+Codex Labs OS is now:
+
+deterministic
+
+multi‑surface
+
+governance‑bound
+
+continuity‑locked
+
+sealed
+
+launched
+
+stabilized
+
+sovereign
+
+This repository contains the full operating system.
+
+Directory Overview
+Code
+public/           → Runtime Surface + Scroll Library
+founder/          → Founder Surface
+consulting/       → Consulting OS
+store/            → Commercial Surface
+intake/           → Intake Surface
+client-portal/    → Client Portal
+console/          → Operator Console
+
+whale/            → Enterprise Suite (CRM, Engines, Dashboard)
+
+runtime/          → Identity, Continuity, Governance, Execution Engines
+
+finalization/     → Finalization, Seal, Integrity Engines
+
+launch/           → Manifest, Letter, Launch Dashboard
+
+stabilization/    → Stability, Resilience, Integrity Monitor, Continuity Monitor
+
+sovereign/        → Sovereign Hub, Protocol Registry, Operator Surface
+Codex Labs OS — Sovereign Edition is now complete.
 
