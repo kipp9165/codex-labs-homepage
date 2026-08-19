@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scoring Engine — Codex Labs</title>
+  <meta name="description" content="Governed Scoring Engine with deterministic protocols, matrix scoring, and immutable records.">
+  <link href="../styles.css" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">Codex Labs</div>
+    <nav class="nav">
+      <a href="../index.html">Home</a>
+      <a href="crm.html">Whale CRM</a>
+      <a href="intake-engine.html">Intake Engine</a>
+      <a href="scoring.html" class="active">Scoring Engine</a>
+      <a href="backend.html">Backend</a>
+      <a href="dashboard.html">Dashboard</a>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <h1>Governed Scoring Engine</h1>
+      <p>Deterministic enterprise scoring surface for multi-signal qualification and activation readiness.</p>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <h2>Identity</h2>
+        <p>Surface ID: WHALE-SCORING-ENGINE · Owner: Enterprise Scoring Governance · Version: 1.0.0</p>
+      </article>
+      <article class="card">
+        <h2>Governance</h2>
+        <p>Scoring models are locked by version; score calculation must be reproducible and independently auditable.</p>
+      </article>
+      <article class="card">
+        <h2>Deterministic Scoring Protocols</h2>
+        <ul>
+          <li>Use canonical normalized inputs only.</li>
+          <li>Apply fixed-weight sequence with no runtime weight mutation.</li>
+          <li>Produce deterministic score bands and disposition flags.</li>
+        </ul>
+      </article>
+      <article class="card">
+        <h2>Multi-Surface Scoring Matrix</h2>
+        <ul>
+          <li>CRM Integrity Surface</li>
+          <li>Intake Quality Surface</li>
+          <li>Activation Readiness Surface</li>
+          <li>Continuity Risk Surface</li>
+        </ul>
+      </article>
+    </section>
+
+    <section>
+      <h2>Continuity</h2>
+      <p>Scoring outputs preserve full source provenance and persist unchanged into backend activation decisions.</p>
+    </section>
+
+    <section>
+      <h2>Immutable Scoring Record Structure</h2>
+      <ul>
+        <li>score_record_id</li>
+        <li>source_intake_record_id</li>
+        <li>model_version</li>
+        <li>composite_score</li>
+        <li>score_band</li>
+        <li>scoring_timestamp_utc</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© Codex Labs — Whale Enterprise Suite Governance</p>
+  </footer>
+</body>
+</html>
