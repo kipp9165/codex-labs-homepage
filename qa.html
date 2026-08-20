@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Codex Q/A v2.0 - Universal Constitutional Responder</title>
   <meta name="description" content="Codex Q/A v2.0 universal constitutional responder.">
+  <meta name="codex-qa-api-origin" content="https://codex-labs-homepage.onrender.com">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="public/assets/css/whale.css">
   <meta name="codex-os-surface" content="active">
@@ -25,10 +26,135 @@
   <meta name="codex-finalization" content="qa-final">
   <meta name="codex-seal-token" content="v2.0-seal">
   <meta name="codex-seal" content="qa-seal">
+  <style>
+    .qa-shell {
+      display: grid;
+      gap: 24px;
+    }
+
+    .qa-card {
+      border: 1px solid #222533;
+      border-radius: 12px;
+      background: #0b0c12;
+      padding: 24px;
+    }
+
+    .qa-form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .qa-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .qa-field label {
+      font-size: 0.9rem;
+      color: #d8d9e3;
+      font-weight: 600;
+    }
+
+    .qa-field textarea,
+    .qa-field select,
+    .qa-field input {
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid #303347;
+      background: #06070d;
+      color: #f5f5f7;
+      padding: 12px 14px;
+      box-sizing: border-box;
+      font: inherit;
+    }
+
+    .qa-field textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    .qa-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .qa-submit {
+      border: 0;
+      border-radius: 999px;
+      background: #7b5cff;
+      color: #fff;
+      font-weight: 600;
+      padding: 12px 22px;
+      cursor: pointer;
+      width: fit-content;
+      box-shadow: 0 0 18px rgba(123, 92, 255, 0.35);
+    }
+
+    .qa-submit:disabled {
+      opacity: 0.7;
+      cursor: wait;
+    }
+
+    .qa-status {
+      min-height: 24px;
+      color: #c3c4cf;
+      font-size: 0.92rem;
+    }
+
+    .qa-status.error {
+      color: #ff8f8f;
+    }
+
+    .qa-output {
+      display: grid;
+      gap: 20px;
+    }
+
+    .qa-output[hidden] {
+      display: none;
+    }
+
+    .qa-output pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-family: inherit;
+      line-height: 1.6;
+      color: #f5f5f7;
+    }
+
+    .qa-meta {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+
+    .qa-meta-block {
+      background: #06070d;
+      border: 1px solid #222533;
+      border-radius: 10px;
+      padding: 14px;
+    }
+
+    .qa-meta-label {
+      display: block;
+      color: #8b8da0;
+      font-size: 0.82rem;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .qa-notes {
+      margin: 0;
+      color: #8b8da0;
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
-    <!-- Codex Labs OS Surface Switcher -->
     <div class="surface-switcher">
       <a href="/codex-labs-homepage/" class="surface-link">OS Surface</a>
       <a href="/codex-labs-homepage/public/index.html" class="surface-link">Runtime Surface</a>
@@ -37,18 +163,82 @@
     </div>
     <div class="logo">Codex Q/A v2.0</div>
   </header>
-  <main class="page">
-    <div class="whale-priority-banner">
-      <img src="public/assets/img/whale-trident.svg" alt="" width="16" height="16">
-      Whale Tier Priority Mode available for designated participants.
-    </div>
+  <main class="page qa-shell">
     <section class="hero">
       <h1>Codex Q/A v2.0</h1>
-      <p>Universal constitutional responder.</p>
+      <p>Universal constitutional responder with admissibility checks, Stripe access control, domain classification, and Whale Tier priority routing.</p>
     </section>
-    <section>
-      <h2>Purpose</h2>
-      <p>Classifies inbound questions into authority, admissibility, continuity, consequence, or interoperability domains and generates governed replies.</p>
+
+    <div id="whale-priority-banner" class="whale-priority-banner" hidden>
+      <img src="public/assets/img/whale-trident.svg" alt="" width="16" height="16">
+      Whale Tier Priority Mode Active
+    </div>
+
+    <section class="qa-card">
+      <form id="qa-form" class="qa-form">
+        <div class="qa-field">
+          <label for="question">Question</label>
+          <textarea id="question" name="question" placeholder="Ask a constitutional, governance, continuity, consequence, or interoperability question." required></textarea>
+        </div>
+
+        <div class="qa-grid">
+          <div class="qa-field">
+            <label for="domain">Domain</label>
+            <select id="domain" name="domain">
+              <option value="auto">Auto-classify</option>
+              <option value="authority">Authority</option>
+              <option value="admissibility">Admissibility</option>
+              <option value="continuity">Continuity</option>
+              <option value="consequence">Consequence</option>
+              <option value="interoperability">Interoperability</option>
+            </select>
+          </div>
+
+          <div class="qa-field">
+            <label for="user-tier">User tier</label>
+            <select id="user-tier" name="user_tier">
+              <option value="standard">Standard</option>
+              <option value="whale">Whale</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="qa-field">
+          <label for="access-reference">Stripe access reference</label>
+          <input id="access-reference" name="access_reference" type="text" placeholder="Stripe customer ID, subscription ID, or subscriber email">
+        </div>
+
+        <button class="qa-submit" type="submit">Run Codex Q/A</button>
+        <div id="qa-status" class="qa-status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section id="qa-output" class="qa-card qa-output" hidden>
+      <div>
+        <h2>Response</h2>
+        <pre id="qa-response"></pre>
+      </div>
+
+      <div class="qa-meta">
+        <div class="qa-meta-block">
+          <span class="qa-meta-label">Domain</span>
+          <span id="qa-domain"></span>
+        </div>
+        <div class="qa-meta-block">
+          <span class="qa-meta-label">Admissibility</span>
+          <span id="qa-admissibility"></span>
+        </div>
+        <div class="qa-meta-block">
+          <span class="qa-meta-label">Drift</span>
+          <span id="qa-drift"></span>
+        </div>
+        <div class="qa-meta-block">
+          <span class="qa-meta-label">Timestamp</span>
+          <span id="qa-timestamp"></span>
+        </div>
+      </div>
+
+      <p class="qa-notes">Whale responses include deeper frames, architectural comparisons, and governance-layer insights when access is admitted.</p>
     </section>
   </main>
   <a id="codex-sync" href="/codex-labs-homepage/qa.html"></a>
@@ -70,6 +260,78 @@
     console.log("Codex Labs OS v2.0 — Finalization Pulse");
     console.log("Codex Labs OS v2.0 — Seal Signal Active");
     console.log("Codex Labs OS v2.0 — Seal Pulse");
+
+    const form = document.getElementById("qa-form");
+    const statusNode = document.getElementById("qa-status");
+    const outputNode = document.getElementById("qa-output");
+    const responseNode = document.getElementById("qa-response");
+    const domainNode = document.getElementById("qa-domain");
+    const admissibilityNode = document.getElementById("qa-admissibility");
+    const driftNode = document.getElementById("qa-drift");
+    const timestampNode = document.getElementById("qa-timestamp");
+    const whaleBanner = document.getElementById("whale-priority-banner");
+    const apiOriginMeta = document.querySelector('meta[name="codex-qa-api-origin"]');
+
+    function resolveApiOrigin() {
+      const configuredOrigin = apiOriginMeta ? apiOriginMeta.content.replace(/\/$/, "") : "";
+      const isGithubPages = /^[a-z0-9-]+\.github\.io$/i.test(window.location.hostname);
+      return isGithubPages && configuredOrigin ? configuredOrigin : window.location.origin;
+    }
+
+    function setStatus(message, isError = false) {
+      statusNode.textContent = message;
+      statusNode.classList.toggle("error", isError);
+    }
+
+    function renderResult(payload) {
+      outputNode.hidden = false;
+      responseNode.textContent = payload.response || "";
+      domainNode.textContent = payload.domain || "—";
+      admissibilityNode.textContent = payload.admissibility || "—";
+      driftNode.textContent = payload.drift ? JSON.stringify(payload.drift) : "—";
+      timestampNode.textContent = payload.timestamp || "—";
+      whaleBanner.hidden = !payload.whale_priority;
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector("button[type='submit']");
+      const formData = new FormData(form);
+      const payload = {
+        question: String(formData.get("question") || "").trim(),
+        domain: String(formData.get("domain") || "auto"),
+        user_tier: String(formData.get("user_tier") || "standard"),
+      };
+      const accessReference = String(formData.get("access_reference") || "").trim();
+      if (accessReference) {
+        payload.access_reference = accessReference;
+      }
+
+      outputNode.hidden = true;
+      whaleBanner.hidden = true;
+      setStatus("Routing request...");
+      submitButton.disabled = true;
+
+      try {
+        const apiOrigin = resolveApiOrigin();
+        const backendResponse = await fetch(`${apiOrigin}/api/qa`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const responsePayload = await backendResponse.json();
+        renderResult(responsePayload);
+        setStatus(backendResponse.ok ? "Response frame ready." : "Request reviewed and returned with restrictions.");
+      } catch (_error) {
+        setStatus("Backend unavailable — please try again.", true);
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
   </script>
 </body>
 </html>
