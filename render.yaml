@@ -1,16 +1,20 @@
-pythonVersion: 3.12.3
-
 services:
   - type: web
-    name: codex-os-runtime-service
-    env: python3
+    name: codex-labs-homepage
+    env: node
     plan: starter
     region: oregon
-    pythonVersion: 3.12.3
-    startCommand: "python -m service.codex_os_service_launcher"
+    branch: main
     autoDeploy: true
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /healthz
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.12.3
-    healthCheckPath: "/os_boot"
-    runtime: python3
+      - key: BASEROW_API_KEY
+        sync: false
+      - key: BASEROW_TABLE_ID
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: PORT
+        value: 10000

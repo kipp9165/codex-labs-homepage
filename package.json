@@ -2,10 +2,10 @@
   "name": "codex-labs-homepage",
   "version": "1.0.0",
   "description": "",
-  "main": "checkout-url-generator.js",
+  "main": "backend/server.js",
   "scripts": {
-    "start": "node scripts/static-server.js",
-    "dev": "node scripts/static-server.js",
+    "start": "node backend/server.js",
+    "dev": "node backend/server.js",
     "generate": "node scripts/generate-checkout-urls-from-csv.cjs",
     "export": "npm run build",
     "build": "npm run generate",
