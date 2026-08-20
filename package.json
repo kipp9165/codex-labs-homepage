@@ -25,8 +25,9 @@
   },
   "homepage": "https://github.com/kipp9165/codex-labs-homepage#readme",
   "dependencies": {
-    "body-parser": "^2.2.2",
+    "body-parser": "^2.3.0",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.6.2",
     "stripe": "^22.1.0"
   }
 }

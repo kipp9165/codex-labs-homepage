@@ -274,7 +274,7 @@
 
     function resolveApiOrigin() {
       const configuredOrigin = apiOriginMeta ? apiOriginMeta.content.replace(/\/$/, "") : "";
-      const isGithubPages = window.location.hostname.endsWith("github.io");
+      const isGithubPages = /^[a-z0-9-]+\.github\.io$/i.test(window.location.hostname);
       return isGithubPages && configuredOrigin ? configuredOrigin : window.location.origin;
     }
 

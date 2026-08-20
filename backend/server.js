@@ -1,4 +1,5 @@
 import express from "express";
+import { rateLimit } from "express-rate-limit";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFile, stat } from "node:fs/promises";
@@ -175,6 +176,27 @@ async function resolveStaticFile(requestPath) {
   return null;
 }
 
+const apiLimiter = rateLimit({
+  windowMs: 60_000,
+  limit: 60,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (_request, response) => {
+    setCorsHeaders(response);
+    response.status(429).json({ error: "rate_limited" });
+  },
+});
+
+const staticLimiter = rateLimit({
+  windowMs: 60_000,
+  limit: 240,
+  standardHeaders: true,
+  legacyHeaders: false,
+  handler: (_request, response) => {
+    response.status(429).type("text/plain").send("Too many requests");
+  },
+});
+
 app.options("/api/qa", (_request, response) => {
   setCorsHeaders(response);
   response.status(204).end();
@@ -183,6 +205,8 @@ app.options("/api/qa", (_request, response) => {
 app.get("/healthz", (_request, response) => {
   response.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
 });
+
+app.use("/api/qa", apiLimiter);
 
 app.post("/api/qa", async (request, response) => {
   setCorsHeaders(response);
@@ -247,6 +271,8 @@ app.post("/api/qa", async (request, response) => {
   response.status(finalAdmissibility.admissibility === "blocked" ? 403 : 200).json(payload);
 });
 
+app.use(staticLimiter);
+
 app.use(async (request, response, next) => {
   if (!["GET", "HEAD"].includes(request.method) || request.path.startsWith("/api/")) {
     next();
@@ -265,12 +291,13 @@ app.use(async (request, response, next) => {
     response.writeHead(200, { "Content-Type": contentTypes[path.extname(resolvedFile).toLowerCase()] || "application/octet-stream" });
     response.end(request.method === "HEAD" ? undefined : fileBuffer);
   } catch (error) {
-    response.status(500).type("text/plain").send(`Server error: ${error instanceof Error ? error.message : "unknown"}`);
+    console.error("static_file_error", error);
+    response.status(500).type("text/plain").send("Server error");
   }
 });
 
 app.use((request, response) => {
-  response.status(404).type("text/plain").send(`Not found: ${request.path}`);
+  response.status(404).type("text/plain").send("Not found");
 });
 
 app.listen(config.renderPort, () => {
