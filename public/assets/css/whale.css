@@ -138,7 +138,7 @@ body.whale-surface {
   display: inline-block;
   width: 40px;
   height: 40px;
-  background-image: url('/codex-labs-homepage/public/assets/img/whale-trident.svg');
+  background-image: url('../img/whale-trident.svg');
   background-repeat: no-repeat;
   background-size: contain;
   vertical-align: middle;
