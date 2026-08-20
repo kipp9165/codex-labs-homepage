@@ -24,11 +24,8 @@ const contentTypes = {
   ".jpg": "image/jpeg",
   ".js": "application/javascript; charset=utf-8",
   ".json": "application/json; charset=utf-8",
-  ".md": "text/markdown; charset=utf-8",
-  ".pdf": "application/pdf",
   ".png": "image/png",
   ".svg": "image/svg+xml",
-  ".txt": "text/plain; charset=utf-8",
   ".webp": "image/webp",
 };
 
@@ -39,6 +36,16 @@ const blockedSegments = new Set([
   "node_modules",
   "service",
   "webhook",
+]);
+
+const blockedFiles = new Set([
+  ".env.example",
+  "Cargo.lock",
+  "Cargo.toml",
+  "package-lock.json",
+  "package.json",
+  "render.yaml",
+  "requirements.txt",
 ]);
 
 app.disable("x-powered-by");
@@ -121,6 +128,10 @@ function sanitizePathname(requestPath) {
 
   const segments = normalized.split("/").filter(Boolean);
   if (segments.some((segment) => blockedSegments.has(segment) || segment.startsWith("."))) {
+    return null;
+  }
+
+  if (segments.length > 0 && blockedFiles.has(segments[segments.length - 1])) {
     return null;
   }
 
