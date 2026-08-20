@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 80" fill="none" stroke="#C9A86A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Central shaft -->
+  <line x1="30" y1="4" x2="30" y2="62"/>
+  <!-- Left prong -->
+  <path d="M30 18 Q18 14 16 4"/>
+  <line x1="16" y1="4" x2="16" y2="26"/>
+  <!-- Right prong -->
+  <path d="M30 18 Q42 14 44 4"/>
+  <line x1="44" y1="4" x2="44" y2="26"/>
+  <!-- Base crest waves -->
+  <path d="M14 66 Q20 60 26 66 Q30 70 34 66 Q40 60 46 66"/>
+  <path d="M18 72 Q24 66 30 72 Q36 66 42 72"/>
+</svg>

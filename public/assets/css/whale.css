@@ -1,0 +1,257 @@
+/* Whale Tier — Codex Labs OS v2.0 */
+
+:root {
+  --whale-bg: #050B18;
+  --whale-card-bg: #0A1A3A;
+  --whale-gold: #C9A86A;
+  --whale-silver: #B0BEC5;
+  --whale-text: #D8DDE3;
+  --whale-border: #1B3060;
+  --whale-header-bg-start: #0A1A3A;
+  --whale-header-bg-end: #050B18;
+}
+
+/* Body */
+body.whale-surface {
+  background: var(--whale-bg);
+  color: var(--whale-text);
+  font-family: system-ui, "Segoe UI", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+/* Header / hero area */
+.whale-header {
+  background: radial-gradient(circle at top left, var(--whale-header-bg-start), var(--whale-card-bg) 40%, var(--whale-header-bg-end) 90%);
+  padding: 48px 24px 40px;
+  border-bottom: 1px solid var(--whale-gold);
+}
+
+.whale-header h1 {
+  color: var(--whale-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: clamp(28px, 3.5vw, 46px);
+  margin: 12px 0 8px;
+  line-height: 1.15;
+}
+
+.whale-header p {
+  color: var(--whale-text);
+  max-width: 640px;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+/* Badge */
+.whale-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #0D2250, #071030);
+  border: 1px solid var(--whale-gold);
+  color: var(--whale-gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+/* Sections */
+.whale-section {
+  background: var(--whale-bg);
+  border-left: 3px solid var(--whale-gold);
+  padding: 24px 28px;
+  margin-bottom: 28px;
+  border-radius: 0 6px 6px 0;
+}
+
+.whale-section h2 {
+  color: var(--whale-gold);
+  font-size: clamp(18px, 2vw, 22px);
+  margin-top: 0;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+
+.whale-section ul {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--whale-text);
+}
+
+.whale-section ul li {
+  margin-bottom: 6px;
+}
+
+.whale-section p {
+  color: var(--whale-text);
+  margin: 0;
+}
+
+/* Links */
+.whale-link {
+  color: var(--whale-gold);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s, border-bottom-color 0.2s;
+}
+
+.whale-link:hover {
+  color: var(--whale-silver);
+  border-bottom-color: var(--whale-silver);
+}
+
+/* Surface links (next surfaces list) */
+.whale-surface-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.whale-surface-links a {
+  color: var(--whale-gold);
+  border: 1px solid var(--whale-gold);
+  padding: 8px 18px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: background 0.2s, color 0.2s;
+}
+
+.whale-surface-links a:hover {
+  background: var(--whale-gold);
+  color: var(--whale-bg);
+}
+
+/* Icon placeholder */
+.whale-icon {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-image: url('../img/whale-trident.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  vertical-align: middle;
+}
+
+/* Advisory cards */
+.whale-advisory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 16px;
+}
+
+.whale-advisory-card {
+  background: var(--whale-card-bg);
+  border: 1px solid var(--whale-gold);
+  border-radius: 6px;
+  padding: 24px 20px;
+}
+
+.whale-advisory-card h3 {
+  color: var(--whale-text);
+  margin-top: 0;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.whale-advisory-price {
+  color: var(--whale-gold);
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.whale-advisory-card p {
+  color: var(--whale-text);
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* Q/A priority banner */
+.whale-priority-banner {
+  background: #142B5C;
+  border: 1px solid var(--whale-gold);
+  color: var(--whale-gold);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 10px 20px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Whale nav item highlight */
+.nav-whale {
+  color: var(--whale-gold) !important;
+  font-weight: 600;
+}
+
+.nav-whale:hover {
+  color: var(--whale-silver) !important;
+}
+
+/* Shared page wrapper */
+.whale-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+/* Nav */
+.whale-nav {
+  background: #071030;
+  border-bottom: 1px solid var(--whale-gold);
+  padding: 0 24px;
+}
+
+.whale-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+
+.whale-nav ul li a {
+  display: block;
+  padding: 14px 16px;
+  color: var(--whale-text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 0.2s;
+}
+
+.whale-nav ul li a:hover,
+.whale-nav ul li a.active {
+  color: var(--whale-gold);
+}
+
+/* Footer */
+.whale-footer {
+  background: #071030;
+  border-top: 1px solid var(--whale-gold);
+  padding: 24px;
+  text-align: center;
+  color: var(--whale-text);
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
