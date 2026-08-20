@@ -86,6 +86,45 @@
       All transitions propagate continuity tokens and remain fully reversible.
     </p>
   </section>
+
+  <section class="scroll-detail-continuity">
+    <h2>Whale Tier Continuity Receipts — Examples</h2>
+    <p>The following are example continuity receipts issued for Whale Tier onboarding interactions. These are illustrative; no backend changes are implied.</p>
+    <pre style="background:#0A1A3A;border:1px solid #C9A86A;color:#D8DDE3;padding:20px;border-radius:6px;overflow-x:auto;font-size:0.82rem;line-height:1.55;">{
+  "whale_id": "whale-001",
+  "tier": "whale",
+  "interaction_type": "onboarding",
+  "surface": "whale_access_page",
+  "claimed_identity": "kipp.wiggins",
+  "claimed_authority": "founder.whale.access",
+  "admissibility": "allowed",
+  "continuity": {
+    "prior_thread_ref": "thread-2025-09-14-founder-session"
+  },
+  "drift": {
+    "tier_delta": 0,
+    "channel_delta": 0
+  },
+  "final_disposition": "whale_onboarded"
+}</pre>
+    <pre style="background:#0A1A3A;border:1px solid #C9A86A;color:#D8DDE3;padding:20px;border-radius:6px;overflow-x:auto;font-size:0.82rem;line-height:1.55;margin-top:16px;">{
+  "whale_id": "whale-unknown",
+  "tier": "unrecognized",
+  "interaction_type": "onboarding",
+  "surface": "whale_access_page",
+  "claimed_identity": "unknown",
+  "claimed_authority": "none",
+  "admissibility": "blocked",
+  "continuity": {
+    "prior_thread_ref": null
+  },
+  "drift": {
+    "tier_delta": null,
+    "channel_delta": null
+  },
+  "final_disposition": "whale_access_denied"
+}</pre>
+  </section>
 </main>
 
 <script>
