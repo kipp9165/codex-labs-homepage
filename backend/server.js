@@ -204,6 +204,7 @@ app.options("/api/qa", (_request, response) => {
 
 app.get("/api/qa", (_request, response) => {
   setCorsHeaders(response);
+  response.set("Allow", "OPTIONS, POST");
   response.status(405).json({ error: "POST required" });
 });
 
