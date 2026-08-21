@@ -202,6 +202,11 @@ app.options("/api/qa", (_request, response) => {
   response.status(204).end();
 });
 
+app.get("/api/qa", (_request, response) => {
+  setCorsHeaders(response);
+  response.status(405).json({ error: "POST required" });
+});
+
 app.get("/healthz", (_request, response) => {
   response.status(200).json({ status: "ok", timestamp: new Date().toISOString() });
 });
