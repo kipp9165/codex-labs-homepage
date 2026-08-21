@@ -14,6 +14,7 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
 const basePath = "/codex-labs-homepage";
 const app = express();
+app.use(express.json());
 
 const contentTypes = {
   ".css": "text/css; charset=utf-8",
