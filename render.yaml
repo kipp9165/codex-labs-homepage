@@ -1,20 +1,24 @@
 services:
   - type: web
-    name: codex-labs-homepage
+    name: codex-qa-backend
     env: node
-    plan: starter
+    plan: free
     region: oregon
-    branch: main
-    autoDeploy: true
-    buildCommand: npm install
-    startCommand: npm start
-    healthCheckPath: /healthz
+
+    buildCommand: |
+      cd backend
+      npm install
+
+    startCommand: |
+      cd backend
+      node server.js
+
     envVars:
+      - key: PORT
+        value: 10000
       - key: BASEROW_API_KEY
         sync: false
       - key: BASEROW_TABLE_ID
         sync: false
       - key: STRIPE_SECRET_KEY
         sync: false
-      - key: PORT
-        value: 10000
