@@ -55,7 +55,7 @@ app.use(express.json({ limit: "100kb" }));
 
 function setCorsHeaders(response) {
   response.setHeader("Access-Control-Allow-Origin", "*");
-  response.setHeader("Access-Control-Allow-Headers", "Content-Type, X-Stripe-Customer-Id, X-Stripe-Customer-Email, X-Stripe-Subscription-Id");
+  response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Origin, Referer, X-Stripe-Customer-Id, X-Stripe-Customer-Email, X-Stripe-Subscription-Id");
   response.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
 }
 
