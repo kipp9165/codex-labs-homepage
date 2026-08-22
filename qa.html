@@ -273,9 +273,7 @@
     const apiOriginMeta = document.querySelector('meta[name="codex-qa-api-origin"]');
 
     function resolveApiOrigin() {
-      const configuredOrigin = apiOriginMeta ? apiOriginMeta.content.replace(/\/$/, "") : "";
-      const isGithubPages = /^[a-z0-9-]+\.github\.io$/i.test(window.location.hostname);
-      return isGithubPages && configuredOrigin ? configuredOrigin : window.location.origin;
+      return "https://codex-qa-backend.onrender.com";
     }
 
     function setStatus(message, isError = false) {
