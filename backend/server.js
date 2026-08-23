@@ -221,7 +221,14 @@ app.post("/api/qa", async (request, response) => {
   const timestamp = new Date().toISOString();
   const whalePriority = userTier === "whale";
 
-  const stripeAccess = await enforceStripeAccess(resolveAccessContext(request));
+  const accessContext = resolveAccessContext(request);
+  let stripeAccess = await enforceStripeAccess(accessContext);
+
+  // Temporary bypass for Kipp only
+  if (accessContext.accessReference === "kippkppwggns@aol.com") {
+    console.log("Bypass: granting Whale-tier access for Kipp");
+    stripeAccess = { ...stripeAccess, allowed: true, reason: null };
+  }
 
   let finalAdmissibility = admissibility;
   let responseFrame = whalePriority
