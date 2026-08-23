@@ -137,6 +137,14 @@
       padding: 14px;
     }
 
+    .drift-box {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+      font-family: monospace;
+      padding: 8px;
+    }
+
     .qa-meta-label {
       display: block;
       color: #8b8da0;
@@ -230,7 +238,7 @@
         </div>
         <div class="qa-meta-block">
           <span class="qa-meta-label">Drift</span>
-          <span id="qa-drift"></span>
+          <pre id="qa-drift" class="drift-box"></pre>
         </div>
         <div class="qa-meta-block">
           <span class="qa-meta-label">Timestamp</span>
@@ -286,7 +294,7 @@
       responseNode.textContent = payload.response || "";
       domainNode.textContent = payload.domain || "—";
       admissibilityNode.textContent = payload.admissibility || "—";
-      driftNode.textContent = payload.drift ? JSON.stringify(payload.drift) : "—";
+      driftNode.textContent = payload.drift ? JSON.stringify(payload.drift, null, 2) : "—";
       timestampNode.textContent = payload.timestamp || "—";
       whaleBanner.hidden = !payload.whale_priority;
     }
