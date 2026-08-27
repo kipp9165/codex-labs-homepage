@@ -1,20 +1,7 @@
 services:
-  - type: web
-    name: codex-labs-homepage
-    env: node
-    plan: starter
-    region: oregon
-    branch: main
+  - type: static
+    name: codex-labs-homepage-static
+    env: static
+    buildCommand: ""
+    publish: "."
     autoDeploy: true
-    buildCommand: npm install
-    startCommand: npm start
-    healthCheckPath: /healthz
-    envVars:
-      - key: BASEROW_API_KEY
-        sync: false
-      - key: BASEROW_TABLE_ID
-        sync: false
-      - key: STRIPE_SECRET_KEY
-        sync: false
-      - key: PORT
-        value: 10000
