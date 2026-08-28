@@ -90,3 +90,29 @@ stabilization/    → Stability, Resilience, Integrity Monitor, Continuity Monit
 sovereign/        → Sovereign Hub, Protocol Registry, Operator Surface
 Codex Labs OS — Sovereign Edition is now complete.
 
+
+---
+
+# Codex Labs OS v2.0 — The Entertainment OS
+
+Codex Labs OS v2.0 is a unified, design‑preserving operating system for creators,
+entertainment engineers, sovereign operators, and enterprise clarity teams.
+
+## Live Surfaces
+- **Homepage:** https://kipp9165.github.io/codex-labs-homepage/public/index.html
+- **Scroll Library:** https://kipp9165.github.io/codex-labs-homepage/scrolls.html
+- **Whale Tier:** https://kipp9165.github.io/codex-labs-homepage/public/whale/index.html
+
+## Monetization
+All tiers and scrolls are activated with Stripe payment links:
+- Whale Tier
+- Founder Tier
+- Sovereign Tier
+- Continuum Pass
+- Eternity Seal V
+- Wildlife Monitoring
+- Home Security
+- Network Defense
+- Sovereign Governance
+
+Codex Labs OS v2.0 is fully unified, Stripe‑powered, and GitHub Pages‑native.
