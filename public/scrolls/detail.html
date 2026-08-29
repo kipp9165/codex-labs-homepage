@@ -187,52 +187,52 @@
       "independence-momentum-v1": {
         title: "Independence Momentum Scroll v1",
         description: "A compact operating scroll that establishes independence momentum through deliberate sequencing, continuity checkpoints, and weekly execution cadence.",
-        href: "https://dashboard.stripe.com/products/independence-momentum-v1"
+        href: "https://pay.codexlitigation.org/b/9B63cvfJ58QdgVG1FufbC29"
       },
       "independence-alignment-v1": {
         title: "Independence Alignment Protocol v1",
         description: "A founder alignment protocol that binds priorities, constraints, and commitments into one deterministic operating loop for clean execution.",
-        href: "https://dashboard.stripe.com/products/independence-alignment-v1"
+        href: "https://pay.codexlitigation.org/b/fZu3cvaoL9UhaxigAofbA1P"
       },
       "structural-liberation-v1": {
         title: "Structural Liberation Scroll v1",
         description: "A structural reset scroll designed to remove lock-in patterns, reduce friction, and restore controllable pathways for high-leverage work.",
-        href: "https://dashboard.stripe.com/products/structural-liberation-v1"
+        href: "https://pay.codexlitigation.org/b/5kQfZheF17M9gVGgAofbA1D"
       },
       "cognitive-stabilization-v1": {
         title: "Cognitive Stabilization Scroll v1",
         description: "A stabilization scroll for preserving cognitive clarity under pressure, reducing drift, and maintaining high-quality judgment across cycles.",
-        href: "https://dashboard.stripe.com/products/cognitive-stabilization-v1"
+        href: "https://pay.codexlitigation.org/b/7sY4gz40n6I57l697WfbA1F"
       },
       "high-clarity-decision-v1": {
         title: "High Clarity Decision Protocol v1",
         description: "A decision protocol that converts ambiguity into explicit decision paths, enabling consistent judgment without reactive noise.",
-        href: "https://dashboard.stripe.com/products/high-clarity-decision-v1"
+        href: "https://pay.codexlitigation.org/b/fZu3cvaoL9UhaxigAofbA1P"
       },
       "execution-stabilization-v1": {
         title: "Execution Stabilization Scroll v1",
         description: "A practical execution scroll that reduces variance in delivery by enforcing repeatable sequencing, review checkpoints, and continuity rules.",
-        href: "https://dashboard.stripe.com/products/execution-stabilization-v1"
+        href: "https://pay.codexlitigation.org/b/8x25kDcwT8Qd20M2JyfbA1L"
       },
       "systems-integrity-v1": {
         title: "Systems Integrity Scroll v1",
         description: "A systems integrity scroll that hardens operating reliability through explicit control points, handoff standards, and drift detection.",
-        href: "https://dashboard.stripe.com/products/systems-integrity-v1"
+        href: "https://pay.codexlitigation.org/b/5kQfZheF17M9gVGgAofbA1D"
       },
       "structural-synchronization-v1": {
         title: "Structural Synchronization Scroll v1",
         description: "A synchronization scroll that aligns ownership, structure, and execution timing so operating layers move as one coherent system.",
-        href: "https://dashboard.stripe.com/products/structural-synchronization-v1"
+        href: "https://pay.codexlitigation.org/b/5kQdR940n4zX7l66ZOfbA1R"
       },
       "temporal-alignment-v1": {
         title: "Temporal Alignment Scroll v1",
         description: "A temporal alignment scroll that maps work to realistic horizons, preserving momentum by coordinating planning windows and commitments.",
-        href: "https://dashboard.stripe.com/products/temporal-alignment-v1"
+        href: "https://pay.codexlitigation.org/b/9B63cvfJ58QdgVG1FufbC29"
       },
       "harmonic-systems-v1": {
         title: "Harmonic Systems Scroll v1",
         description: "A harmonic capstone scroll that integrates all OS layers into a continuity loop, preserving coherence across decisions, systems, and timing.",
-        href: "https://dashboard.stripe.com/products/harmonic-systems-v1"
+        href: "https://pay.codexlitigation.org/b/4gM4gzdAX5E15cY0BqfbA2V"
       },
       "high-clarity-decision-protocol": {
         title: "High-Clarity Decision Protocol",
@@ -305,8 +305,11 @@
 
     document.getElementById("scroll-title").textContent = item.title;
     document.getElementById("scroll-description").textContent = item.description;
-    document.getElementById("scroll-route-link").href = item.href;
-    document.getElementById("scroll-route-link").setAttribute("data-product-id", "nav_" + slug.replace(/-/g, "_"));
+    var routeLink = document.getElementById("scroll-route-link");
+    if (routeLink) {
+      routeLink.href = item.href;
+      routeLink.setAttribute("data-product-id", "nav_" + slug.replace(/-/g, "_"));
+    }
   })();
 </script>
 <script src="../assets/js/checkout-links.js"></script>
