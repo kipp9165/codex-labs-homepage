@@ -67,9 +67,17 @@ export async function enforceStripeAccess({ accessReference, customerId, custome
       const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
         expand: ["items.data.price.product"],
       });
+      const subscriptionCustomerId = typeof subscription.customer === "string"
+        ? subscription.customer
+        : subscription.customer?.id;
 
       if (subscriptionHasAccess(subscription, runtimeConfig)) {
-        return { allowed: true, reason: "active_subscription", subscriptionId: subscription.id };
+        return {
+          allowed: true,
+          reason: "active_subscription",
+          customerId: subscriptionCustomerId,
+          subscriptionId: subscription.id,
+        };
       }
     }
 
@@ -84,7 +92,12 @@ export async function enforceStripeAccess({ accessReference, customerId, custome
     const matchingSubscription = await listCustomerSubscriptions(stripe, resolvedCustomerId, runtimeConfig);
 
     if (!matchingSubscription) {
-      return { allowed: false, reason: "stripe_access_denied", detail: "subscription_not_found" };
+      return {
+        allowed: false,
+        reason: "stripe_access_denied",
+        detail: "subscription_not_found",
+        customerId: resolvedCustomerId,
+      };
     }
 
     return {
