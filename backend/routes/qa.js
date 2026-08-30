@@ -1,10 +1,9 @@
 import { logQaExchange } from "../baserow.js";
+import config from "../config.js";
 import { constitutionalSubstrate } from "../constitution/index.js";
 import { buildBlockedResponse, buildQaResponse } from "../qa/response.js";
 import { enforceStripeAccess } from "../stripe.js";
 import { multiScrollRouter } from "./scrolls.js";
-
-const FOUNDER_WHALE_BYPASS = "kippkppwggns@aol.com";
 
 function resolveAccessContext(request) {
   const {
@@ -51,7 +50,7 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
     const userTier = typeof request.body?.user_tier === "string" ? request.body.user_tier.trim().toLowerCase() : "standard";
     const timestamp = new Date().toISOString();
     const accessContext = resolveAccessContext(request);
-    const founderWhaleBypass = accessContext.accessReference === FOUNDER_WHALE_BYPASS;
+    const founderWhaleBypass = Boolean(config.whaleBypassReference) && accessContext.accessReference === config.whaleBypassReference;
 
     let stripeAccess = await enforceStripeAccess(accessContext);
     if (founderWhaleBypass) {

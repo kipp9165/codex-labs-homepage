@@ -12,6 +12,7 @@ const config = {
   baserowBaseUrl: process.env.BASEROW_BASE_URL || "https://api.baserow.io",
   stripeSecretKey: process.env.STRIPE_SECRET_KEY || "",
   stripeProductName: process.env.STRIPE_QA_PRODUCT_NAME || DEFAULT_QA_PRODUCT_NAME,
+  whaleBypassReference: process.env.WHALE_BYPASS_REFERENCE || "",
   renderPort: parsePort(process.env.PORT || process.env.RENDER_PORT, 3000),
   renderOrigin: process.env.RENDER_EXTERNAL_URL || process.env.QA_RENDER_ORIGIN || DEFAULT_RENDER_ORIGIN,
 };

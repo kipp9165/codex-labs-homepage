@@ -19,7 +19,7 @@ export async function constitutionalSubstrate({
   const whaleTier = forceWhale ? { whale: true, customerId } : await verifyWhaleTier(customerId);
   const effectiveTier = whaleTier.whale ? "whale" : "standard";
   const admissibility = evaluateAdmissibility({ question, domain: resolvedDomain, userTier: effectiveTier });
-  const t0 = admissibilityAtT0(question, resolvedDomain, effectiveTier);
+  const t0 = admissibilityAtT0(question, resolvedDomain, effectiveTier, admissibility);
   const drift = driftFrame(question, resolvedDomain, effectiveTier, { classifierConfidence: classification.confidence });
   const continuity = continuityFrame(question, resolvedDomain, effectiveTier);
   const advisory = advisoryMode(question, resolvedDomain, effectiveTier);

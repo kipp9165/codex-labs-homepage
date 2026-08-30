@@ -6,8 +6,7 @@ function clamp(value, minimum, maximum) {
   return Math.min(maximum, Math.max(minimum, value));
 }
 
-export function admissibilityAtT0(question, domain, tier) {
-  const admissibility = evaluateAdmissibility({ question, domain, userTier: tier });
+export function admissibilityAtT0(question, domain, tier, admissibility = evaluateAdmissibility({ question, domain, userTier: tier })) {
   const missionCriticalBoundary = MISSION_CRITICAL_PATTERN.test(String(question)) || ["authority", "continuity"].includes(domain);
   const baseScore = admissibility.admissibility === "allowed" ? 0.74 : 0.22;
   const score = clamp(
