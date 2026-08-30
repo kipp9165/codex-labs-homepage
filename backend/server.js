@@ -11,6 +11,7 @@ const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
 const basePath = "/codex-labs-homepage";
 const app = express();
+app.set("trust proxy", 1);
 app.use(express.json());
 
 const contentTypes = {
