@@ -2,35 +2,9 @@ import Stripe from "stripe";
 import config from "../config.js";
 
 const ACTIVE_STATUSES = new Set(["active"]);
-const WHALE_PRODUCT_TOKENS = new Set(["whale_tier", "whale tier"]);
 
 function createStripeClient(runtimeConfig) {
   return runtimeConfig.stripeSecretKey ? new Stripe(runtimeConfig.stripeSecretKey) : null;
-}
-
-function normalizeProductTokens(product) {
-  if (!product) {
-    return [];
-  }
-
-  if (typeof product === "string") {
-    return [product.trim().toLowerCase()];
-  }
-
-  return [
-    product.id,
-    product.name,
-    product.lookup_key,
-    product.metadata?.code,
-    product.metadata?.tier,
-    product.metadata?.product,
-  ]
-    .filter(Boolean)
-    .map((value) => String(value).trim().toLowerCase());
-}
-
-function isWhaleProduct(product) {
-  return normalizeProductTokens(product).some((token) => WHALE_PRODUCT_TOKENS.has(token));
 }
 
 export async function verifyWhaleTier(customerId, runtimeConfig = config) {
@@ -44,18 +18,19 @@ export async function verifyWhaleTier(customerId, runtimeConfig = config) {
     return { whale: false };
   }
 
+  const whalePriceId = runtimeConfig.whaleTierPriceId;
+
   try {
     const subscriptions = await stripe.subscriptions.list({
       customer: normalizedCustomerId,
       limit: 100,
-      status: "all",
-      expand: ["data.items.data.price.product"],
+      status: "active",
+      expand: ["data.items.data.price"],
     });
 
-    const whale = subscriptions.data.some((subscription) => (
-      ACTIVE_STATUSES.has(subscription.status)
-      && subscription.items.data.some((item) => isWhaleProduct(item.price?.product))
-    ));
+    const whale = subscriptions.data.some((subscription) =>
+      subscription.items.data.some((item) => item.price?.id === whalePriceId)
+    );
 
     return {
       whale,
