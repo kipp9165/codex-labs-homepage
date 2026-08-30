@@ -13,12 +13,22 @@ function subscriptionHasAccess(subscription, runtimeConfig) {
   }
 
   const whalePriceId = runtimeConfig.whaleTierPriceId;
-  console.log(
-    "[DEBUG enforceStripeAccess]",
-    "whalePriceId:", whalePriceId,
-    "itemPrices:", subscription.items.data.map((i) => i.price?.id)
-  );
-  return subscription.items.data.some((item) => item.price?.id === whalePriceId);
+  const hasAccess = subscription.items.data.some((item) => item.price?.id === whalePriceId);
+  if (!hasAccess) {
+    console.log(
+      "[DEBUG stripe-denial]",
+      "stripeCustomerId:", typeof subscription.customer === "string" ? subscription.customer : subscription.customer?.id,
+      "whalePriceId:", whalePriceId,
+      "subscriptionItemPriceIds:",
+      subscription.items.data.map(i => i.price?.id),
+      "comparisonResults:",
+      subscription.items.data.map(i => ({
+        itemPrice: i.price?.id,
+        matchesWhale: i.price?.id === whalePriceId
+      }))
+    );
+  }
+  return hasAccess;
 }
 
 async function listCustomerSubscriptions(stripe, customerId, runtimeConfig) {
