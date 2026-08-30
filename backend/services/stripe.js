@@ -28,6 +28,14 @@ export async function verifyWhaleTier(customerId, runtimeConfig = config) {
       expand: ["data.items.data.price"],
     });
 
+    console.log(
+      "[DEBUG verifyWhaleTier]",
+      "whaleTierPriceId:", whalePriceId,
+      "subscriptions:", subscriptions.data.map((sub) =>
+        sub.items.data.map((item) => item.price?.id)
+      )
+    );
+
     const whale = subscriptions.data.some((subscription) =>
       subscription.items.data.some((item) => item.price?.id === whalePriceId)
     );
