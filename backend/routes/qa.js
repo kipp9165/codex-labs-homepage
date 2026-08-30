@@ -93,6 +93,14 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       payload.error = substrate.whaleGate.error;
       payload.message = substrate.whaleGate.message;
     } else if (substrate.admissibility.admissibility === "blocked") {
+      // eslint-disable-next-line no-console
+      console.log(
+        "[DEBUG admissibility-block]",
+        "reason:", "admissibility",
+        "question:", request.body.question,
+        "domain:", substrate.admissibility.domain ?? substrate.domain,
+        "admissibility_delta:", substrate.admissibility.drift?.admissibility_delta,
+      );
       responseFrame = buildBlockedResponse(substrate.admissibility.reason);
     } else {
       responseFrame = buildQaResponse({

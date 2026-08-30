@@ -35,6 +35,17 @@ export function evaluateAdmissibility({ question = "", domain = "admissibility",
   const authorityDelta = scoreToDelta(authorityScore);
   const admissibilityDelta = Number((((identityScore + authorityScore + domainScore + surfaceScore + contextScore) / 5) - 1).toFixed(2));
 
+  // eslint-disable-next-line no-console
+  console.log(
+    "[DEBUG admissibility]",
+    "question:", normalizedQuestion,
+    "domain:", domain,
+    "admissibility_delta:", admissibilityDelta,
+    "identity_delta:", identityDelta,
+    "authority_delta:", authorityDelta,
+    "blocked:", blocked,
+  );
+
   return {
     admissibility: blocked ? "blocked" : "allowed",
     reason: !normalizedQuestion
