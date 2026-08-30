@@ -7,24 +7,13 @@ function createStripeClient(runtimeConfig) {
   return runtimeConfig.stripeSecretKey ? new Stripe(runtimeConfig.stripeSecretKey) : null;
 }
 
-function productMatches(product, runtimeConfig) {
-  if (!product) {
-    return false;
-  }
-
-  if (typeof product === "string") {
-    return false;
-  }
-
-  return product.name === runtimeConfig.stripeProductName;
-}
-
 function subscriptionHasAccess(subscription, runtimeConfig) {
   if (!ACTIVE_STATUSES.has(subscription.status)) {
     return false;
   }
 
-  return subscription.items.data.some((item) => productMatches(item.price?.product, runtimeConfig));
+  const whalePriceId = runtimeConfig.whaleTierPriceId;
+  return subscription.items.data.some((item) => item.price?.id === whalePriceId);
 }
 
 async function listCustomerSubscriptions(stripe, customerId, runtimeConfig) {
@@ -32,7 +21,7 @@ async function listCustomerSubscriptions(stripe, customerId, runtimeConfig) {
     customer: customerId,
     limit: 100,
     status: "all",
-    expand: ["data.items.data.price.product"],
+    expand: ["data.items.data.price"],
   });
 
   return subscriptions.data.find((subscription) => subscriptionHasAccess(subscription, runtimeConfig));
@@ -65,7 +54,7 @@ export async function enforceStripeAccess({ accessReference, customerId, custome
   try {
     if (subscriptionId?.startsWith("sub_")) {
       const subscription = await stripe.subscriptions.retrieve(subscriptionId, {
-        expand: ["items.data.price.product"],
+        expand: ["items.data.price"],
       });
       const subscriptionCustomerId = typeof subscription.customer === "string"
         ? subscription.customer
