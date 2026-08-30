@@ -13,6 +13,11 @@ function subscriptionHasAccess(subscription, runtimeConfig) {
   }
 
   const whalePriceId = runtimeConfig.whaleTierPriceId;
+  console.log(
+    "[DEBUG enforceStripeAccess]",
+    "whalePriceId:", whalePriceId,
+    "itemPrices:", subscription.items.data.map((i) => i.price?.id)
+  );
   return subscription.items.data.some((item) => item.price?.id === whalePriceId);
 }
 
