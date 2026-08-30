@@ -97,7 +97,7 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       console.log(
         "[DEBUG admissibility-block]",
         "reason:", "admissibility",
-        "question:", request.body.question,
+        "question:", String(request.body.question ?? "").slice(0, 120),
         "domain:", substrate.admissibility.domain ?? substrate.domain,
         "admissibility_delta:", substrate.admissibility.drift?.admissibility_delta,
       );

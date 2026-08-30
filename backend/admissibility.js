@@ -38,7 +38,7 @@ export function evaluateAdmissibility({ question = "", domain = "admissibility",
   // eslint-disable-next-line no-console
   console.log(
     "[DEBUG admissibility]",
-    "question:", normalizedQuestion,
+    "question:", normalizedQuestion.slice(0, 120),
     "domain:", domain,
     "admissibility_delta:", admissibilityDelta,
     "identity_delta:", identityDelta,
