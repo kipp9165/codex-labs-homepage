@@ -14,26 +14,59 @@ function debugStripeAllow(runtimeConfig, ...args) {
   console.log("[DEBUG stripe-allow]", ...args);
 }
 
+function evaluateWhaleTierItemMatch(item, whalePriceId, context = {}) {
+  const priceId = item.price?.id;
+  const planId = item.plan?.id;
+  const lookupKey = item.price?.lookup_key || item.plan?.lookup_key;
+  const productId = item.price?.product || item.plan?.product;
+  const matched = (
+    priceId === whalePriceId
+    || planId === whalePriceId
+    || lookupKey === whalePriceId
+    || productId === whalePriceId
+  );
+
+  console.log("[DEBUG stripe-match-attempt-compound]", {
+    ...context,
+    whalePriceId,
+    priceId,
+    planId,
+    lookupKey,
+    productId,
+    matched,
+  });
+
+  return {
+    matched,
+    identifier:
+      priceId
+      || planId
+      || lookupKey
+      || productId,
+  };
+}
+
 function subscriptionHasAccess(subscription, runtimeConfig) {
   if (!ACTIVE_STATUSES.has(subscription.status)) {
     return false;
   }
 
   const whalePriceId = runtimeConfig.whaleTierPriceId;
-  const hasAccess = subscription.items.data.some((item) => item.price?.id === whalePriceId);
+  const matchResults = subscription.items.data.map((item, itemIndex) =>
+    evaluateWhaleTierItemMatch(item, whalePriceId, {
+      stripeCustomerId: typeof subscription.customer === "string" ? subscription.customer : subscription.customer?.id,
+      subscriptionId: subscription.id,
+      itemIndex,
+    })
+  );
+  const hasAccess = matchResults.some((result) => result.matched);
   if (!hasAccess) {
-    console.log(
-      "[DEBUG stripe-denial]",
-      "stripeCustomerId:", typeof subscription.customer === "string" ? subscription.customer : subscription.customer?.id,
-      "whalePriceId:", whalePriceId,
-      "subscriptionItemPriceIds:",
-      subscription.items.data.map(i => i.price?.id),
-      "comparisonResults:",
-      subscription.items.data.map(i => ({
-        itemPrice: i.price?.id,
-        matchesWhale: i.price?.id === whalePriceId
-      }))
-    );
+    console.log("[DEBUG stripe-denial-compound]", {
+      stripeCustomerId: typeof subscription.customer === "string" ? subscription.customer : subscription.customer?.id,
+      whalePriceId,
+      reason: "No subscription item matched price.id, plan.id, lookup_key, or product",
+      subscriptionItemPriceIds: matchResults.map((result) => result.identifier),
+    });
   }
   return hasAccess;
 }
@@ -62,12 +95,26 @@ async function ensureWhaleSubscription(stripe, stripeCustomerId, whalePriceId) {
   });
 
   const hasWhale = subscriptions.data.some((subscription) =>
-    subscription.items.data.some((item) => item.price?.id === whalePriceId)
+    subscription.items.data.some((item, itemIndex) =>
+      evaluateWhaleTierItemMatch(item, whalePriceId, {
+        stripeCustomerId,
+        subscriptionId: subscription.id,
+        itemIndex,
+        mode: "ensure",
+      }).matched
+    )
   );
 
   if (hasWhale) {
     const existingWhaleSubscription = subscriptions.data.find((subscription) =>
-      subscription.items.data.some((item) => item.price?.id === whalePriceId)
+      subscription.items.data.some((item, itemIndex) =>
+        evaluateWhaleTierItemMatch(item, whalePriceId, {
+          stripeCustomerId,
+          subscriptionId: subscription.id,
+          itemIndex,
+          mode: "ensure-existing",
+        }).matched
+      )
     );
     return {
       ensured: true,
