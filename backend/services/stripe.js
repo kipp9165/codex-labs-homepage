@@ -28,20 +28,33 @@ export async function verifyWhaleTier(customerId, runtimeConfig = config) {
       expand: ["data.items.data.price"],
     });
 
-    console.log(
-      "[DEBUG verifyWhaleTier]",
-      "whaleTierPriceId:", whalePriceId,
-      "subscriptions:", subscriptions.data.map((sub) =>
-        sub.items.data.map((item) => item.price?.id)
-      )
-    );
-
-    const whale = subscriptions.data.some((subscription) =>
+    const whaleSubscription = subscriptions.data.find((subscription) =>
       subscription.items.data.some((item) => item.price?.id === whalePriceId)
     );
 
+    if (!whaleSubscription) {
+      console.log("[DEBUG stripe-denial]", {
+        stripeCustomerId: normalizedCustomerId,
+        whalePriceId,
+        subscriptionItemPriceIds: subscriptions.data.flatMap((subscription) =>
+          subscription.items.data.map((item) => item.price?.id)
+        ),
+      });
+      return {
+        whale: false,
+        customerId: normalizedCustomerId,
+      };
+    }
+
+    const subscriptionItemPriceIds = whaleSubscription.items.data.map((item) => item.price?.id);
+    console.log("[DEBUG stripe-allow]", {
+      stripeCustomerId: normalizedCustomerId,
+      whalePriceId,
+      subscriptionItemPriceIds,
+    });
+
     return {
-      whale,
+      whale: true,
       customerId: normalizedCustomerId,
     };
   } catch (error) {
