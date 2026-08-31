@@ -42,6 +42,34 @@ async function listCustomerSubscriptions(stripe, customerId, runtimeConfig) {
   return subscriptions.data.find((subscription) => subscriptionHasAccess(subscription, runtimeConfig));
 }
 
+async function ensureWhaleSubscription(stripe, stripeCustomerId, whalePriceId) {
+  if (!stripeCustomerId?.startsWith("cus_") || !whalePriceId) {
+    return { ensured: false, created: false };
+  }
+
+  const subscriptions = await stripe.subscriptions.list({
+    customer: stripeCustomerId,
+    limit: 100,
+    status: "active",
+    expand: ["data.items.data.price"],
+  });
+
+  const hasWhale = subscriptions.data.some((subscription) =>
+    subscription.items.data.some((item) => item.price?.id === whalePriceId)
+  );
+
+  if (hasWhale) {
+    return { ensured: true, created: false };
+  }
+
+  await stripe.subscriptions.create({
+    customer: stripeCustomerId,
+    items: [{ price: whalePriceId }],
+  });
+
+  return { ensured: true, created: true };
+}
+
 async function resolveCustomerIdFromReference(stripe, reference) {
   if (!reference) {
     return null;
@@ -76,6 +104,12 @@ export async function enforceStripeAccess({ accessReference, customerId, custome
         : subscription.customer?.id;
 
       if (subscriptionHasAccess(subscription, runtimeConfig)) {
+        console.log(
+          "[DEBUG stripe-allow]",
+          "customerId:", subscriptionCustomerId,
+          "subscriptionId:", subscription.id,
+          "source:", "subscription_id"
+        );
         return {
           allowed: true,
           reason: "active_subscription",
@@ -93,6 +127,20 @@ export async function enforceStripeAccess({ accessReference, customerId, custome
       return { allowed: false, reason: "stripe_access_denied", detail: "missing_customer_reference" };
     }
 
+    if (resolvedCustomerId === runtimeConfig.whaleActivationCustomerId) {
+      const whaleSubscription = await ensureWhaleSubscription(
+        stripe,
+        resolvedCustomerId,
+        runtimeConfig.whaleTierPriceId
+      );
+      console.log(
+        "[DEBUG stripe-allow]",
+        "customerId:", resolvedCustomerId,
+        "whalePriceId:", runtimeConfig.whaleTierPriceId,
+        "whaleSubscriptionCreated:", whaleSubscription.created
+      );
+    }
+
     const matchingSubscription = await listCustomerSubscriptions(stripe, resolvedCustomerId, runtimeConfig);
 
     if (!matchingSubscription) {
@@ -103,6 +151,13 @@ export async function enforceStripeAccess({ accessReference, customerId, custome
         customerId: resolvedCustomerId,
       };
     }
+
+    console.log(
+      "[DEBUG stripe-allow]",
+      "customerId:", resolvedCustomerId,
+      "subscriptionId:", matchingSubscription.id,
+      "source:", "customer_lookup"
+    );
 
     return {
       allowed: true,
