@@ -53,7 +53,15 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       const accessContext = resolveAccessContext(request);
       const founderWhaleBypass = Boolean(config.whaleBypassReference) && accessContext.accessReference === config.whaleBypassReference;
 
-      let stripeAccess = await enforceStripeAccess(accessContext);
+      let stripeAccess = await enforceStripeAccess({ ...accessContext, userTier });
+      // eslint-disable-next-line no-console
+      console.log(
+        "[DEBUG enforceStripeAccess]",
+        "customerId:", accessContext.customerId,
+        "userTier:", userTier,
+        "allowed:", stripeAccess.allowed,
+        "reason:", stripeAccess.reason,
+      );
       if (founderWhaleBypass) {
         stripeAccess = {
           ...stripeAccess,
