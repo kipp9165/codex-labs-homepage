@@ -18,7 +18,7 @@ export async function verifyWhaleTier(customerId, runtimeConfig = config) {
     return { whale: false };
   }
 
-  const whalePriceId = runtimeConfig.whaleTierPriceId;
+  const WHALE_TIER_PRICE_ID = runtimeConfig.whaleTierPriceId;
 
   try {
     const subscriptions = await stripe.subscriptions.list({
@@ -29,16 +29,26 @@ export async function verifyWhaleTier(customerId, runtimeConfig = config) {
     });
 
     const whaleSubscription = subscriptions.data.find((subscription) =>
-      subscription.items.data.some((item) => item.price?.id === whalePriceId)
+      subscription.items.data.some((item) => {
+        const priceId = item.price?.id;
+        const planId = item.plan?.id;
+        const lookupKey = item.price?.lookup_key || item.plan?.lookup_key;
+        const productId = item.price?.product || item.plan?.product;
+
+        return (
+          priceId === WHALE_TIER_PRICE_ID
+          || planId === WHALE_TIER_PRICE_ID
+          || lookupKey === WHALE_TIER_PRICE_ID
+          || productId === WHALE_TIER_PRICE_ID
+        );
+      })
     );
 
     if (!whaleSubscription) {
-      console.log("[DEBUG stripe-denial]", {
+      console.log("[DEBUG stripe-denial-compound]", {
         stripeCustomerId: normalizedCustomerId,
-        whalePriceId,
-        subscriptionItemPriceIds: subscriptions.data.flatMap((subscription) =>
-          subscription.items.data.map((item) => item.price?.id)
-        ),
+        whalePriceId: WHALE_TIER_PRICE_ID,
+        reason: "No subscription item matched price.id, plan.id, lookup_key, or product",
       });
       return {
         whale: false,
@@ -46,10 +56,17 @@ export async function verifyWhaleTier(customerId, runtimeConfig = config) {
       };
     }
 
-    const subscriptionItemPriceIds = whaleSubscription.items.data.map((item) => item.price?.id);
-    console.log("[DEBUG stripe-allow]", {
+    const subscriptionItemPriceIds = whaleSubscription.items.data.map((item) =>
+      item.price?.id
+      || item.plan?.id
+      || item.price?.lookup_key
+      || item.plan?.lookup_key
+      || item.price?.product
+      || item.plan?.product
+    );
+    console.log("[DEBUG stripe-allow-compound]", {
       stripeCustomerId: normalizedCustomerId,
-      whalePriceId,
+      whalePriceId: WHALE_TIER_PRICE_ID,
       subscriptionItemPriceIds,
     });
 
