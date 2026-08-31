@@ -7,6 +7,13 @@ function createStripeClient(runtimeConfig) {
   return runtimeConfig.stripeSecretKey ? new Stripe(runtimeConfig.stripeSecretKey) : null;
 }
 
+function debugStripeAllow(runtimeConfig, ...args) {
+  if (!runtimeConfig.stripeAllowDebugEnabled) {
+    return;
+  }
+  console.log("[DEBUG stripe-allow]", ...args);
+}
+
 function subscriptionHasAccess(subscription, runtimeConfig) {
   if (!ACTIVE_STATUSES.has(subscription.status)) {
     return false;
@@ -44,7 +51,7 @@ async function listCustomerSubscriptions(stripe, customerId, runtimeConfig) {
 
 async function ensureWhaleSubscription(stripe, stripeCustomerId, whalePriceId) {
   if (!stripeCustomerId?.startsWith("cus_") || !whalePriceId) {
-    return { ensured: false, created: false };
+    return { ensured: false, created: false, subscriptionId: null, status: null };
   }
 
   const subscriptions = await stripe.subscriptions.list({
@@ -59,15 +66,32 @@ async function ensureWhaleSubscription(stripe, stripeCustomerId, whalePriceId) {
   );
 
   if (hasWhale) {
-    return { ensured: true, created: false };
+    const existingWhaleSubscription = subscriptions.data.find((subscription) =>
+      subscription.items.data.some((item) => item.price?.id === whalePriceId)
+    );
+    return {
+      ensured: true,
+      created: false,
+      subscriptionId: existingWhaleSubscription?.id || null,
+      status: existingWhaleSubscription?.status || null,
+    };
   }
 
-  await stripe.subscriptions.create({
+  const createdSubscription = await stripe.subscriptions.create({
     customer: stripeCustomerId,
     items: [{ price: whalePriceId }],
+    collection_method: "send_invoice",
+    days_until_due: 30,
+    payment_behavior: "allow_incomplete",
+    expand: ["items.data.price"],
   });
 
-  return { ensured: true, created: true };
+  return {
+    ensured: true,
+    created: true,
+    subscriptionId: createdSubscription.id,
+    status: createdSubscription.status,
+  };
 }
 
 async function resolveCustomerIdFromReference(stripe, reference) {
@@ -104,8 +128,8 @@ export async function enforceStripeAccess({ accessReference, customerId, custome
         : subscription.customer?.id;
 
       if (subscriptionHasAccess(subscription, runtimeConfig)) {
-        console.log(
-          "[DEBUG stripe-allow]",
+        debugStripeAllow(
+          runtimeConfig,
           "customerId:", subscriptionCustomerId,
           "subscriptionId:", subscription.id,
           "source:", "subscription_id"
@@ -128,17 +152,35 @@ export async function enforceStripeAccess({ accessReference, customerId, custome
     }
 
     if (resolvedCustomerId === runtimeConfig.whaleActivationCustomerId) {
-      const whaleSubscription = await ensureWhaleSubscription(
-        stripe,
-        resolvedCustomerId,
-        runtimeConfig.whaleTierPriceId
-      );
-      console.log(
-        "[DEBUG stripe-allow]",
-        "customerId:", resolvedCustomerId,
-        "whalePriceId:", runtimeConfig.whaleTierPriceId,
-        "whaleSubscriptionCreated:", whaleSubscription.created
-      );
+      try {
+        const whaleSubscription = await ensureWhaleSubscription(
+          stripe,
+          resolvedCustomerId,
+          runtimeConfig.whaleTierPriceId
+        );
+        debugStripeAllow(
+          runtimeConfig,
+          "customerId:", resolvedCustomerId,
+          "whalePriceId:", runtimeConfig.whaleTierPriceId,
+          "whaleSubscriptionCreated:", whaleSubscription.created,
+          "whaleSubscriptionStatus:", whaleSubscription.status
+        );
+        if (whaleSubscription.subscriptionId && whaleSubscription.created) {
+          return {
+            allowed: true,
+            reason: "provisioned_subscription",
+            customerId: resolvedCustomerId,
+            subscriptionId: whaleSubscription.subscriptionId,
+          };
+        }
+      } catch (error) {
+        debugStripeAllow(
+          runtimeConfig,
+          "customerId:", resolvedCustomerId,
+          "whalePriceId:", runtimeConfig.whaleTierPriceId,
+          "whaleSubscriptionError:", error instanceof Error ? error.message : "subscription_create_failed"
+        );
+      }
     }
 
     const matchingSubscription = await listCustomerSubscriptions(stripe, resolvedCustomerId, runtimeConfig);
@@ -152,8 +194,8 @@ export async function enforceStripeAccess({ accessReference, customerId, custome
       };
     }
 
-    console.log(
-      "[DEBUG stripe-allow]",
+    debugStripeAllow(
+      runtimeConfig,
       "customerId:", resolvedCustomerId,
       "subscriptionId:", matchingSubscription.id,
       "source:", "customer_lookup"
