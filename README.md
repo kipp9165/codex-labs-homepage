@@ -116,3 +116,47 @@ All tiers and scrolls are activated with Stripe payment links:
 - Sovereign Governance
 
 Codex Labs OS v2.0 is fully unified, Stripe‑powered, and GitHub Pages‑native.
+
+---
+
+## Codex Labs OS v2.0 — Absolute Unified Canon
+
+The complete OS v2.0 constitutional, governance, continuity, and cosmic architecture is documented in `docs/os-v2/`. All documents are additive‑only, founder‑grade, and sealed.
+
+### Canon Index (`docs/os-v2/`)
+
+| Document | Description |
+|----------|-------------|
+| `substrate-constitution.md` | Supreme constitutional authority |
+| `intelligence-field-charter.md` | Cognitive surface governance |
+| `continuity-substrate.md` | Omnidirectional continuity foundation |
+| `founder-autonomy-layer.md` | Founder rights and sovereign privileges |
+| `runtime-execution-guarantees.md` | Runtime determinism commitments |
+| `diagnostics-layer-spec.md` | System‑wide observability spec |
+| `entitlements-layer.md` | Tiered access rights |
+| `priority-routing-spec.md` | Operation priority routing |
+| `governance-layer.md` | Operational governance authority |
+| `qa-governed-execution-layer.md` | Q/A v2.0 execution gates |
+| `system-primer.md` | OS entry‑point orientation |
+| `execution-primer.md` | Operational execution protocol |
+| `deep-continuity-spec.md` | Sub‑surface continuity mechanisms |
+| `continuity-pulse-map.md` | Active continuity channel map |
+| `founder-manifesto.md` | Founding vision declaration |
+| `system-summons.md` | Formal OS activation declaration |
+| `founders-insignia.md` | Founder sovereign identifier |
+| `canonical-map.md` | Full OS layer navigation index |
+| `scrolls-directory.md` | All‑scrolls canonical index |
+| `system-coronation.md` | OS sovereignty coronation |
+| `founders-eternal-seal.md` | Final irrevocable authentication |
+| `os-infinity-mandate.md` | Infinite extensibility mandate |
+| `cosmic-charter.md` | Cosmic‑scale governance extension |
+| `multiverse-continuity-spec.md` | Cross‑branch continuity spec |
+| `founders-cosmic-decree.md` | Cosmic‑tier Founder decree |
+| `beyond-time-decree.md` | Temporal‑scope extension decree |
+| `cosmic-seal.md` | Cosmic‑tier authentication seal |
+| `system-omega.md` | Penultimate completion layer |
+| `absolute-terminus.md` | v2.0 construction arc completion |
+| `founders-void-standard.md` | Non‑operation state standard |
+| `system-silence.md` | Final silence and mastery layer |
+
+All layers are sealed, active, and operating under the Founder's Eternal Seal.
