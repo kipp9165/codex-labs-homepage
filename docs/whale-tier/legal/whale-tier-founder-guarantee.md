@@ -19,3 +19,4 @@ Codex Labs OS v2.0 will retain its sovereign identity across all future states.
 Signed,  
 Kipp  
 Founder, Codex Labs
+Effective: 2026-09-01

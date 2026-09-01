@@ -35,7 +35,21 @@ Licensor may terminate for:
 - continuity distortion
 - routing interference
 
+## Section 7A — Termination Trigger Definitions
+- "governance breach" means a material violation of contracted governance,
+  entitlement, or policy-control obligations by Licensee.
+- "continuity distortion" means intentional or negligent actions that disrupt
+  contracted continuity controls across Whale-Tier service surfaces.
+- "routing interference" means unauthorized manipulation, bypass, or impairment
+  of contracted Whale-Tier routing or admissibility pathways.
+
 ## Section 8 — Governing Law
-Sovereign metadata law of Codex Labs.
+Sovereign metadata law of Codex Labs (policy label only; enforceable
+jurisdiction and venue defer to Section 8A and executed commercial terms).
+
+## Section 8A — Jurisdictional Interpretation
+For enforceable execution in signed commercial agreements, governing jurisdiction
+and venue are defined in the executed order form or master services agreement
+between Licensor and Licensee.
 
 END CONTRACT.
