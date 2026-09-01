@@ -82,6 +82,13 @@ The Canonical Map is the authoritative directory of all surfaces, layers, specs,
 | Absolute Terminus | docs/os-v2/absolute-terminus.md | Active |
 | System Silence | docs/os-v2/system-silence.md | Active |
 
+### Whale-Tier Legal Layer
+| Document | Path | Status |
+|----------|------|--------|
+| Whale-Tier Sovereign License Agreement (v2.0) | docs/whale-tier/legal/whale-tier-contract.md | Active |
+| Whale-Tier Service Level Agreement (v2.0) | docs/whale-tier/legal/whale-tier-sla.md | Active |
+| Whale-Tier Founder Guarantee (v2.0) | docs/whale-tier/legal/whale-tier-founder-guarantee.md | Active |
+
 ### Meta Layer
 | Document | Path | Status |
 |----------|------|--------|

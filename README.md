@@ -160,3 +160,13 @@ The complete OS v2.0 constitutional, governance, continuity, and cosmic architec
 | `system-silence.md` | Final silence and mastery layer |
 
 All layers are sealed, active, and operating under the Founder's Eternal Seal.
+
+### Whale-Tier Legal Layer (`docs/whale-tier/legal/`)
+
+| Document | Description |
+|----------|-------------|
+| `whale-tier-contract.md` | Whale-Tier Sovereign License Agreement (v2.0) |
+| `whale-tier-sla.md` | Whale-Tier Service Level Agreement (v2.0) |
+| `whale-tier-founder-guarantee.md` | Whale-Tier Founder Guarantee (v2.0) |
+
+All Whale-Tier legal assets are additive-only, zero-design-touch, founder-grade, and whale-tier aligned.
