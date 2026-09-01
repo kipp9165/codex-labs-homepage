@@ -58,4 +58,12 @@ Extensions of the OS into cosmic, multiverse, and beyond-time domains.
 ## OS v2.0 Scrolls
 All documents in `docs/os-v2/` are classified as constitutional scrolls in the OS v2.0 canon.
 
+## Whale-Tier Legal Scrolls (OS v2.0)
+
+| Scroll | Location | Category |
+|--------|----------|----------|
+| Whale-Tier Sovereign License Agreement (v2.0) | docs/whale-tier/legal/whale-tier-contract.md | Enterprise |
+| Whale-Tier Service Level Agreement (v2.0) | docs/whale-tier/legal/whale-tier-sla.md | Enterprise |
+| Whale-Tier Founder Guarantee (v2.0) | docs/whale-tier/legal/whale-tier-founder-guarantee.md | Founder |
+
 END SCROLLS DIRECTORY.
