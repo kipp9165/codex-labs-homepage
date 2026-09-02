@@ -9,8 +9,9 @@ function parsePort(value, fallback = 3000) {
 
 const config = {
   baserowApiKey: process.env.BASEROW_API_KEY || process.env.BASEROW_API_TOKEN || "",
+  baserowWhaleTableId: process.env.BASEROW_WHALE_TABLE_ID || process.env.BASEROW_SIGNAL_WHALE_TABLE_ID || "",
   baserowTableId: process.env.BASEROW_TABLE_ID || "",
-  baserowBaseUrl: process.env.BASEROW_BASE_URL || "https://api.baserow.io",
+  baserowBaseUrl: process.env.BASEROW_BASE_URL || process.env.BASEROW_API_BASE || "https://api.baserow.io",
   stripeSecretKey: process.env.STRIPE_SECRET_KEY || "",
   stripeAllowDebugEnabled: process.env.DEBUG_STRIPE_ALLOW === "1" || process.env.DEBUG_STRIPE_ALLOW === "true",
   stripeProductName: process.env.STRIPE_QA_PRODUCT_NAME || DEFAULT_QA_PRODUCT_NAME,

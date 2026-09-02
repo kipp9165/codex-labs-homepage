@@ -1,9 +1,16 @@
 import { logQaExchange } from "../baserow.js";
-import config from "../config.js";
 import { constitutionalSubstrate } from "../constitution/index.js";
+import { getWhaleTierAccessState, resolveStripeCustomerId } from "../entitlements/checkWhaleTier.js";
 import { buildBlockedResponse, buildQaResponse } from "../qa/response.js";
-import { enforceStripeAccess } from "../stripe.js";
+import { syncWhaleLedgerEntry } from "../baserow.js";
+import {
+  logWhaleAdmissibilityBoundary,
+  logWhaleEntitlementStatus,
+  logWhaleRoutingDecision,
+} from "../telemetry/whale.js";
 import { multiScrollRouter } from "./scrolls.js";
+
+const WHALE_CANONICAL_REFERENCES = ["PR #63"];
 
 function resolveAccessContext(request) {
   const {
@@ -48,35 +55,19 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       const question = typeof request.body?.question === "string" ? request.body.question.trim() : "";
       const bodyDomain = typeof request.body?.domain === "string" ? request.body.domain.trim().toLowerCase() : "";
       const requestedDomain = bodyDomain === "auto" ? "" : bodyDomain;
-      const userTier = typeof request.body?.user_tier === "string" ? request.body.user_tier.trim().toLowerCase() : "standard";
       const timestamp = new Date().toISOString();
       const accessContext = resolveAccessContext(request);
-      const founderWhaleBypass = Boolean(config.whaleBypassReference) && accessContext.accessReference === config.whaleBypassReference;
-
-      let stripeAccess = await enforceStripeAccess({ ...accessContext, userTier });
-      // eslint-disable-next-line no-console
-      console.log(
-        "[DEBUG enforceStripeAccess]",
-        "customerId:", accessContext.customerId,
-        "userTier:", userTier,
-        "allowed:", stripeAccess.allowed,
-        "reason:", stripeAccess.reason,
-      );
-      if (founderWhaleBypass) {
-        stripeAccess = {
-          ...stripeAccess,
-          allowed: true,
-          reason: null,
-          customerId: stripeAccess.customerId || accessContext.customerId,
-        };
-      }
+      const customerId = await resolveStripeCustomerId(accessContext);
+      const whaleTierStatus = await getWhaleTierAccessState(customerId, {
+        subscriptionId: accessContext.subscriptionId,
+      });
+      logWhaleEntitlementStatus(whaleTierStatus);
 
       const substrate = await constitutionalSubstrate({
         question,
         domain: requestedDomain,
-        tier: userTier,
-        customerId: stripeAccess.customerId || accessContext.customerId,
-        forceWhale: founderWhaleBypass,
+        customerId: whaleTierStatus.customerId || customerId,
+        whaleTierStatus,
       });
 
       const whalePriority = substrate.effectiveTier === "whale";
@@ -95,6 +86,10 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         continuity: substrate.continuity,
         scroll_routing: multiScrollRouter(substrate.whaleGate?.domain || substrate.domain, substrate.effectiveTier),
       };
+
+      if (whalePriority) {
+        payload.canonical_references = WHALE_CANONICAL_REFERENCES;
+      }
 
       let responseFrame;
       if (substrate.whaleGate) {
@@ -128,6 +123,24 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         payload.advisory = substrate.advisory;
       }
 
+      logWhaleRoutingDecision({
+        customerId: whaleTierStatus.customerId || customerId,
+        hasWhaleTier: whaleTierStatus.hasWhaleTier,
+        domain: payload.domain,
+        admissibility: payload.admissibility,
+        whalePriority,
+        routePath,
+        canonicalReferences: whalePriority ? WHALE_CANONICAL_REFERENCES : [],
+      });
+      logWhaleAdmissibilityBoundary({
+        customerId: whaleTierStatus.customerId || customerId,
+        hasWhaleTier: whaleTierStatus.hasWhaleTier,
+        boundaryClassification: payload.admissibility_t0?.boundary_classification || "",
+        missionCriticalBoundary: Boolean(payload.admissibility_t0?.mission_critical_boundary),
+        admissibilityScore: payload.admissibility_t0?.admissibility_score || 0,
+        domain: payload.domain,
+      });
+
       try {
         await logQaExchange({
           question,
@@ -135,6 +148,12 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
           response: responseFrame,
           admissibility: payload.admissibility,
           user_tier: substrate.effectiveTier,
+          timestamp,
+        });
+        await syncWhaleLedgerEntry({
+          ...whaleTierStatus,
+          admissibility: payload.admissibility,
+          canonicalReferences: whalePriority ? WHALE_CANONICAL_REFERENCES : [],
           timestamp,
         });
       } catch (error) {
