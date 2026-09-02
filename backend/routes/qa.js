@@ -1,6 +1,10 @@
 import { logQaExchange } from "../baserow.js";
 import { constitutionalSubstrate } from "../constitution/index.js";
-import { getWhaleTierAccessState, resolveStripeCustomerId } from "../entitlements/checkWhaleTier.js";
+import {
+  checkWhaleTier,
+  getWhaleTierAccessState,
+  resolveStripeCustomerId,
+} from "../entitlements/checkWhaleTier.js";
 import { buildBlockedResponse, buildQaResponse } from "../qa/response.js";
 import { syncWhaleLedgerEntry } from "../baserow.js";
 import {
@@ -57,6 +61,19 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       const requestedDomain = bodyDomain === "auto" ? "" : bodyDomain;
       const timestamp = new Date().toISOString();
       const accessContext = resolveAccessContext(request);
+      const isWhale = await checkWhaleTier(accessContext.accessReference);
+
+      if (!isWhale) {
+        return response.json({
+          domain: "authority",
+          admissibility: "blocked",
+          whale_priority: false,
+          error: "stripe_access_denied",
+          message: "Whale Tier required",
+          response: "Access blocked: Whale Tier required.",
+        });
+      }
+
       const customerId = await resolveStripeCustomerId(accessContext);
       const whaleTierStatus = await getWhaleTierAccessState(customerId, {
         subscriptionId: accessContext.subscriptionId,
