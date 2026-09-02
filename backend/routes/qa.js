@@ -18,29 +18,43 @@ const WHALE_CANONICAL_REFERENCES = ["PR #63"];
 
 function resolveAccessContext(request) {
   const {
+    accessReference: camelAccessReference,
     access_reference: accessReference,
+    stripeCustomerId: camelStripeCustomerId,
     stripe_customer_id: stripeCustomerId,
+    stripeSubscriptionId: camelStripeSubscriptionId,
     stripe_subscription_id: stripeSubscriptionId,
+    customerEmail: camelCustomerEmail,
     customer_email: customerEmail,
   } = request.body || {};
 
   return {
-    accessReference: typeof accessReference === "string" ? accessReference.trim() : "",
-    customerId: typeof stripeCustomerId === "string"
-      ? stripeCustomerId.trim()
-      : typeof request.headers["x-stripe-customer-id"] === "string"
-        ? request.headers["x-stripe-customer-id"].trim()
+    accessReference: typeof camelAccessReference === "string"
+      ? camelAccessReference.trim()
+      : typeof accessReference === "string"
+        ? accessReference.trim()
         : "",
-    customerEmail: typeof customerEmail === "string"
-      ? customerEmail.trim()
-      : typeof request.headers["x-stripe-customer-email"] === "string"
-        ? request.headers["x-stripe-customer-email"].trim()
-        : "",
-    subscriptionId: typeof stripeSubscriptionId === "string"
-      ? stripeSubscriptionId.trim()
-      : typeof request.headers["x-stripe-subscription-id"] === "string"
-        ? request.headers["x-stripe-subscription-id"].trim()
-        : "",
+    customerId: typeof camelStripeCustomerId === "string"
+      ? camelStripeCustomerId.trim()
+      : typeof stripeCustomerId === "string"
+        ? stripeCustomerId.trim()
+        : typeof request.headers["x-stripe-customer-id"] === "string"
+          ? request.headers["x-stripe-customer-id"].trim()
+          : "",
+    customerEmail: typeof camelCustomerEmail === "string"
+      ? camelCustomerEmail.trim()
+      : typeof customerEmail === "string"
+        ? customerEmail.trim()
+        : typeof request.headers["x-stripe-customer-email"] === "string"
+          ? request.headers["x-stripe-customer-email"].trim()
+          : "",
+    subscriptionId: typeof camelStripeSubscriptionId === "string"
+      ? camelStripeSubscriptionId.trim()
+      : typeof stripeSubscriptionId === "string"
+        ? stripeSubscriptionId.trim()
+        : typeof request.headers["x-stripe-subscription-id"] === "string"
+          ? request.headers["x-stripe-subscription-id"].trim()
+          : "",
   };
 }
 
