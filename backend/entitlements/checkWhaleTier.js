@@ -165,8 +165,23 @@ export async function getWhaleTierAccessState(
   stripeClient = createResolvedStripeClient(runtimeConfig),
 ) {
   const normalizedCustomerId = normalizeString(customerId);
-  const normalizedFeatureKey = normalizeString(featureKey) || WHALE_TIER_FEATURE_KEY;
+  const normalizedRequestedFeatureKey = normalizeString(featureKey);
+  const normalizedFeatureKey = normalizedRequestedFeatureKey || WHALE_TIER_FEATURE_KEY;
+  if (!normalizedRequestedFeatureKey) {
+    console.log("[WhaleTier] Short-circuit: missing featureKey, using fallback", {
+      featureKey,
+      fallbackFeatureKey: normalizedFeatureKey,
+      customerId: normalizedCustomerId,
+    });
+  }
   if (!stripeClient) {
+    console.log("[WhaleTier] Short-circuit: stripeKey missing", {
+      customerId: normalizedCustomerId,
+      featureKey: normalizedFeatureKey,
+      stripeKeyPresent: Boolean(runtimeConfig?.stripeSecretKey),
+      stripeKeyEnvPresent: Boolean(process.env.STRIPE_SECRET_KEY),
+      detail: getStripeConfigurationDetail(runtimeConfig),
+    });
     console.error("[WhaleTier]", getStripeConfigurationDetail(runtimeConfig));
     return {
       hasWhaleTier: false,
@@ -178,6 +193,10 @@ export async function getWhaleTierAccessState(
   }
 
   if (!normalizedCustomerId) {
+    console.log("[WhaleTier] Short-circuit: missing customerId", {
+      customerId,
+      featureKey: normalizedFeatureKey,
+    });
     console.error("[WhaleTier] Missing customerId");
     return {
       hasWhaleTier: false,
@@ -189,6 +208,12 @@ export async function getWhaleTierAccessState(
   }
 
   try {
+    console.log("[WhaleTier] Calling ActiveEntitlements.list()", {
+      customerId: normalizedCustomerId,
+      featureKey: normalizedFeatureKey,
+      stripeKeyPresent: Boolean(runtimeConfig?.stripeSecretKey),
+      stripeKeyEnvPresent: Boolean(process.env.STRIPE_SECRET_KEY),
+    });
     const entitlements = await stripeClient.entitlements.activeEntitlements.list({
       customer: normalizedCustomerId,
       feature: normalizedFeatureKey,
@@ -248,11 +273,54 @@ export async function checkWhaleTier(
   featureKey = WHALE_TIER_FEATURE_KEY,
   runtimeConfig = config,
 ) {
+  const normalizedCustomerId = normalizeString(customerId);
+  const normalizedFeatureKey = normalizeString(featureKey);
+  const userTier = runtimeConfig?.userTier || "unknown";
+  console.log("[WhaleTier] Starting entitlement check", {
+    customerId: normalizedCustomerId,
+    featureKey: normalizedFeatureKey || WHALE_TIER_FEATURE_KEY,
+    userTier,
+    stripeKeyPresent: !!process.env.STRIPE_SECRET_KEY,
+  });
+
+  if (!normalizedCustomerId) {
+    console.log("[WhaleTier] Short-circuit: missing customerId", {
+      customerId,
+      featureKey: normalizedFeatureKey || WHALE_TIER_FEATURE_KEY,
+      userTier,
+    });
+  }
+
+  if (!normalizedFeatureKey) {
+    console.log("[WhaleTier] Short-circuit: missing featureKey, using fallback block", {
+      featureKey,
+      fallbackFeatureKey: WHALE_TIER_FEATURE_KEY,
+      userTier,
+    });
+  }
+
+  if (!runtimeConfig?.stripeSecretKey) {
+    console.log("[WhaleTier] Short-circuit: stripeKey missing", {
+      customerId: normalizedCustomerId,
+      featureKey: normalizedFeatureKey || WHALE_TIER_FEATURE_KEY,
+      userTier,
+      stripeKeyPresent: !!process.env.STRIPE_SECRET_KEY,
+    });
+  }
+
   const entitlementState = await getWhaleTierAccessState(
     customerId,
     { featureKey },
     runtimeConfig,
   );
+  if (!entitlementState.hasWhaleTier) {
+    console.log("[WhaleTier] Short-circuit: cached false / user_tier mismatch / fallback block", {
+      customerId: entitlementState.customerId || normalizedCustomerId,
+      featureKey: normalizedFeatureKey || WHALE_TIER_FEATURE_KEY,
+      userTier,
+      detail: entitlementState.detail,
+    });
+  }
   return entitlementState.hasWhaleTier;
 }
 
