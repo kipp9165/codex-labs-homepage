@@ -30,13 +30,9 @@ function summarizeEntitlement(entitlement) {
   };
 }
 
-function matchesWhaleTierEntitlement(entitlement) {
+function matchesWhaleTierEntitlement(entitlement, featureKey = WHALE_TIER_FEATURE_KEY) {
   const summary = summarizeEntitlement(entitlement);
-  return [
-    summary.lookupKey,
-    summary.featureId,
-    summary.featureLookupKey,
-  ].includes(WHALE_TIER_FEATURE_KEY);
+  return [summary.lookupKey, summary.featureLookupKey].includes(featureKey);
 }
 
 function summarizeSubscription(subscription) {
@@ -159,10 +155,11 @@ export async function resolveStripeCustomerId({
 
 export async function getWhaleTierAccessState(
   customerId,
-  { subscriptionId = "" } = {},
+  { subscriptionId = "", featureKey = WHALE_TIER_FEATURE_KEY } = {},
   runtimeConfig = config,
 ) {
   const normalizedCustomerId = normalizeString(customerId);
+  const normalizedFeatureKey = normalizeString(featureKey) || WHALE_TIER_FEATURE_KEY;
   if (!runtimeConfig.stripeSecretKey) {
     console.error("[WhaleTier] Missing STRIPE_SECRET_KEY");
     return {
@@ -190,12 +187,13 @@ export async function getWhaleTierAccessState(
   try {
     const entitlements = await stripe.entitlements.activeEntitlements.list({
       customer: normalizedCustomerId,
+      feature: normalizedFeatureKey,
       expand: ["data.feature"],
       limit: 100,
     });
 
     const matchedEntitlements = entitlements.data
-      .filter(matchesWhaleTierEntitlement)
+      .filter((entitlement) => matchesWhaleTierEntitlement(entitlement, normalizedFeatureKey))
       .map(summarizeEntitlement);
     const hasWhaleTier = matchedEntitlements.length > 0;
     const subscription = await resolveSubscriptionSummary(stripe, normalizedCustomerId, subscriptionId);
@@ -223,8 +221,16 @@ export async function getWhaleTierAccessState(
   }
 }
 
-export async function checkWhaleTier(customerId, runtimeConfig = config) {
-  const entitlementState = await getWhaleTierAccessState(customerId, {}, runtimeConfig);
+export async function checkWhaleTier(
+  customerId,
+  featureKey = WHALE_TIER_FEATURE_KEY,
+  runtimeConfig = config,
+) {
+  const entitlementState = await getWhaleTierAccessState(
+    customerId,
+    { featureKey },
+    runtimeConfig,
+  );
   return entitlementState.hasWhaleTier;
 }
 

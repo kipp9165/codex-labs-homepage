@@ -5,6 +5,7 @@ import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: "2024-06-20",
 });
+const WHALE_TIER_FEATURE_KEY = "whale_tier_access";
 
 /**
  * Canonical Whale-Tier entitlement check.
@@ -25,6 +26,7 @@ export async function checkWhaleTier(customerId: string): Promise<boolean> {
   try {
     const entitlements = await stripe.entitlements.activeEntitlements.list({
       customer: customerId,
+      feature: WHALE_TIER_FEATURE_KEY,
       expand: ["data.feature"],
       limit: 100,
     });
@@ -39,8 +41,8 @@ export async function checkWhaleTier(customerId: string): Promise<boolean> {
         : entitlement.feature?.lookup_key;
 
       return (
-        featureId === "whale_tier_access"
-        || featureLookupKey === "whale_tier_access"
+        featureId === WHALE_TIER_FEATURE_KEY
+        || featureLookupKey === WHALE_TIER_FEATURE_KEY
       );
     });
 
