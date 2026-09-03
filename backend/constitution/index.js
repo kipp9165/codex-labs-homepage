@@ -1,6 +1,6 @@
 import { classifyDomain } from "../classifier.js";
 import { evaluateAdmissibility } from "../admissibility.js";
-import { getWhaleTierAccessState } from "../entitlements/checkWhaleTier.js";
+import { getWhaleTierAccessState, WHALE_TIER_FEATURE_KEY } from "../entitlements/checkWhaleTier.js";
 import { advisoryMode } from "./advisory.js";
 import { admissibilityAtT0 } from "./admissibility.js";
 import { continuityFrame } from "./continuity.js";
@@ -25,7 +25,7 @@ export async function constitutionalSubstrate({
         subscription: null,
         detail: "forced_whale_tier",
       }
-    : whaleTierStatus || await getWhaleTierAccessState(customerId);
+    : whaleTierStatus || await getWhaleTierAccessState(customerId, { featureKey: WHALE_TIER_FEATURE_KEY });
   const effectiveTier = entitlement.hasWhaleTier ? "whale" : "standard";
   const admissibility = evaluateAdmissibility({ question, domain: resolvedDomain, userTier: effectiveTier });
   const t0 = admissibilityAtT0(question, resolvedDomain, effectiveTier, admissibility);

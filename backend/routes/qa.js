@@ -4,6 +4,7 @@ import {
   checkWhaleTier,
   getWhaleTierAccessState,
   resolveStripeCustomerId,
+  WHALE_TIER_FEATURE_KEY,
 } from "../entitlements/checkWhaleTier.js";
 import { buildBlockedResponse, buildQaResponse } from "../qa/response.js";
 import { syncWhaleLedgerEntry } from "../baserow.js";
@@ -76,7 +77,7 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       const timestamp = new Date().toISOString();
       const accessContext = resolveAccessContext(request);
       const customerId = await resolveStripeCustomerId(accessContext);
-      const entitlementWhale = await checkWhaleTier(customerId);
+      const entitlementWhale = await checkWhaleTier(customerId, WHALE_TIER_FEATURE_KEY);
 
       if (!entitlementWhale) {
         return response.status(403).json({
@@ -91,6 +92,7 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
 
       const whaleTierStatus = await getWhaleTierAccessState(customerId, {
         subscriptionId: accessContext.subscriptionId,
+        featureKey: WHALE_TIER_FEATURE_KEY,
       });
       logWhaleEntitlementStatus(whaleTierStatus);
 
