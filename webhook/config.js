@@ -1,4 +1,4 @@
-import Stripe from "stripe";
+import { createStripeClient, resolveStripeSecretKey } from "../backend/stripeClient.js";
 
 // ---------------------------------------------------------------------------
 // Environment validation
@@ -18,6 +18,15 @@ if (missing.length) {
       ts: new Date().toISOString(),
     })
   );
+  process.exit(1);
+}
+
+const { sanitizedKey: stripeSecretKey, validationError: stripeSecretKeyError } = resolveStripeSecretKey(
+  process.env.STRIPE_SECRET_KEY,
+  { logSanitization: true },
+);
+
+if (stripeSecretKeyError) {
   process.exit(1);
 }
 
@@ -55,6 +64,4 @@ export const config = {
   stripeWebhookSecret: process.env.STRIPE_WEBHOOK_SECRET,
 };
 
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2025-03-31.basil",
-});
+export const stripe = createStripeClient(stripeSecretKey, { apiVersion: "2025-03-31.basil" });

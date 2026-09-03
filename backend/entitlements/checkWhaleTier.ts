@@ -1,10 +1,15 @@
 // backend/entitlements/checkWhaleTier.ts
 
-import Stripe from "stripe";
+import { createStripeClient, resolveStripeSecretKey } from "../stripeClient.js";
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-  apiVersion: "2024-06-20",
-});
+const { sanitizedKey: stripeSecretKey, validationError: stripeSecretKeyError } = resolveStripeSecretKey(
+  process.env.STRIPE_SECRET_KEY,
+);
+const stripe = stripeSecretKeyError
+  ? null
+  : createStripeClient(stripeSecretKey, {
+      apiVersion: "2024-06-20",
+    });
 const WHALE_TIER_FEATURE_KEY = "whale_tier_access";
 
 /**
@@ -13,8 +18,8 @@ const WHALE_TIER_FEATURE_KEY = "whale_tier_access";
  * - Returns true only if whale_tier_access is active
  */
 export async function checkWhaleTier(customerId: string): Promise<boolean> {
-  if (!process.env.STRIPE_SECRET_KEY) {
-    console.error("[WhaleTier] Missing STRIPE_SECRET_KEY");
+  if (stripeSecretKeyError || !stripe) {
+    console.error("[WhaleTier]", stripeSecretKeyError ?? "Missing STRIPE_SECRET_KEY");
     return false;
   }
 
