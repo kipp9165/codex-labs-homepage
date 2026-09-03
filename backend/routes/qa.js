@@ -75,7 +75,8 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       const requestedDomain = bodyDomain === "auto" ? "" : bodyDomain;
       const timestamp = new Date().toISOString();
       const accessContext = resolveAccessContext(request);
-      const entitlementWhale = await checkWhaleTier(accessContext.accessReference);
+      const customerId = await resolveStripeCustomerId(accessContext);
+      const entitlementWhale = await checkWhaleTier(customerId);
 
       if (!entitlementWhale) {
         return response.status(403).json({
@@ -88,7 +89,6 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         });
       }
 
-      const customerId = await resolveStripeCustomerId(accessContext);
       const whaleTierStatus = await getWhaleTierAccessState(customerId, {
         subscriptionId: accessContext.subscriptionId,
       });
