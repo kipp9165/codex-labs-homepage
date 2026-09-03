@@ -1,5 +1,5 @@
-import Stripe from "stripe";
 import config from "../config.js";
+import { createStripeClient } from "../stripeClient.js";
 
 const STRIPE_API_VERSION = "2024-06-20";
 const WHALE_TIER_FEATURE_KEY = "whale_tier_access";
@@ -8,10 +8,16 @@ function normalizeString(value) {
   return typeof value === "string" ? value.trim() : "";
 }
 
-function createStripeClient(runtimeConfig = config) {
-  return runtimeConfig.stripeSecretKey
-    ? new Stripe(runtimeConfig.stripeSecretKey, { apiVersion: STRIPE_API_VERSION })
-    : null;
+function createResolvedStripeClient(runtimeConfig = config) {
+  if (runtimeConfig.stripeSecretKeyError || !runtimeConfig.stripeSecretKey) {
+    return null;
+  }
+
+  return createStripeClient(runtimeConfig.stripeSecretKey, { apiVersion: STRIPE_API_VERSION });
+}
+
+function getStripeConfigurationDetail(runtimeConfig = config) {
+  return runtimeConfig.stripeSecretKeyError || "stripe_not_configured";
 }
 
 function summarizeEntitlement(entitlement) {
@@ -103,21 +109,20 @@ export async function resolveStripeCustomerId({
   customerId = "",
   customerEmail = "",
   subscriptionId = "",
-} = {}, runtimeConfig = config) {
+} = {}, runtimeConfig = config, stripeClient = createResolvedStripeClient(runtimeConfig)) {
   const normalizedCustomerId = normalizeString(customerId);
   if (normalizedCustomerId.startsWith("cus_")) {
     return normalizedCustomerId;
   }
 
-  const stripe = createStripeClient(runtimeConfig);
-  if (!stripe) {
+  if (!stripeClient) {
     return "";
   }
 
   const normalizedSubscriptionId = normalizeString(subscriptionId);
   if (normalizedSubscriptionId.startsWith("sub_")) {
     try {
-      const subscriptionCustomerId = await retrieveSubscriptionCustomerId(stripe, normalizedSubscriptionId);
+      const subscriptionCustomerId = await retrieveSubscriptionCustomerId(stripeClient, normalizedSubscriptionId);
       if (subscriptionCustomerId.startsWith("cus_")) {
         return subscriptionCustomerId;
       }
@@ -140,7 +145,7 @@ export async function resolveStripeCustomerId({
     }
 
     try {
-      const customers = await stripe.customers.list({ email: candidate, limit: 1 });
+      const customers = await stripeClient.customers.list({ email: candidate, limit: 1 });
       const resolvedCustomerId = customers.data[0]?.id || "";
       if (resolvedCustomerId.startsWith("cus_")) {
         return resolvedCustomerId;
@@ -157,17 +162,18 @@ export async function getWhaleTierAccessState(
   customerId,
   { subscriptionId = "", featureKey = WHALE_TIER_FEATURE_KEY } = {},
   runtimeConfig = config,
+  stripeClient = createResolvedStripeClient(runtimeConfig),
 ) {
   const normalizedCustomerId = normalizeString(customerId);
   const normalizedFeatureKey = normalizeString(featureKey) || WHALE_TIER_FEATURE_KEY;
-  if (!runtimeConfig.stripeSecretKey) {
-    console.error("[WhaleTier] Missing STRIPE_SECRET_KEY");
+  if (!stripeClient) {
+    console.error("[WhaleTier]", getStripeConfigurationDetail(runtimeConfig));
     return {
       hasWhaleTier: false,
       customerId: normalizedCustomerId,
       matchedEntitlements: [],
       subscription: null,
-      detail: "stripe_not_configured",
+      detail: getStripeConfigurationDetail(runtimeConfig),
     };
   }
 
@@ -182,10 +188,8 @@ export async function getWhaleTierAccessState(
     };
   }
 
-  const stripe = createStripeClient(runtimeConfig);
-
   try {
-    const entitlements = await stripe.entitlements.activeEntitlements.list({
+    const entitlements = await stripeClient.entitlements.activeEntitlements.list({
       customer: normalizedCustomerId,
       feature: normalizedFeatureKey,
       expand: ["data.feature"],
@@ -196,7 +200,7 @@ export async function getWhaleTierAccessState(
       .filter((entitlement) => matchesWhaleTierEntitlement(entitlement, normalizedFeatureKey))
       .map(summarizeEntitlement);
     const hasWhaleTier = matchedEntitlements.length > 0;
-    const subscription = await resolveSubscriptionSummary(stripe, normalizedCustomerId, subscriptionId);
+    const subscription = await resolveSubscriptionSummary(stripeClient, normalizedCustomerId, subscriptionId);
 
     console.log(
       `[WhaleTier] customer=${normalizedCustomerId} hasWhaleTier=${hasWhaleTier} entitlementCount=${matchedEntitlements.length}`,
@@ -219,6 +223,24 @@ export async function getWhaleTierAccessState(
       detail: error instanceof Error ? error.message : "whale_tier_lookup_failed",
     };
   }
+}
+
+export async function resolveWhaleTierAccessState(
+  accessContext = {},
+  { featureKey = WHALE_TIER_FEATURE_KEY } = {},
+  runtimeConfig = config,
+) {
+  const stripeClient = createResolvedStripeClient(runtimeConfig);
+  const resolvedCustomerId = await resolveStripeCustomerId(accessContext, runtimeConfig, stripeClient);
+  return getWhaleTierAccessState(
+    resolvedCustomerId,
+    {
+      subscriptionId: accessContext.subscriptionId,
+      featureKey,
+    },
+    runtimeConfig,
+    stripeClient,
+  );
 }
 
 export async function checkWhaleTier(

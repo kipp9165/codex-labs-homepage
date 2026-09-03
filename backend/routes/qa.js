@@ -1,9 +1,7 @@
 import { logQaExchange } from "../baserow.js";
 import { constitutionalSubstrate } from "../constitution/index.js";
 import {
-  checkWhaleTier,
-  getWhaleTierAccessState,
-  resolveStripeCustomerId,
+  resolveWhaleTierAccessState,
   WHALE_TIER_FEATURE_KEY,
 } from "../entitlements/checkWhaleTier.js";
 import { buildBlockedResponse, buildQaResponse } from "../qa/response.js";
@@ -76,10 +74,13 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       const requestedDomain = bodyDomain === "auto" ? "" : bodyDomain;
       const timestamp = new Date().toISOString();
       const accessContext = resolveAccessContext(request);
-      const customerId = await resolveStripeCustomerId(accessContext);
-      const entitlementWhale = await checkWhaleTier(customerId, WHALE_TIER_FEATURE_KEY);
+      const whaleTierStatus = await resolveWhaleTierAccessState(accessContext, {
+        featureKey: WHALE_TIER_FEATURE_KEY,
+      });
+      const customerId = whaleTierStatus.customerId;
+      logWhaleEntitlementStatus(whaleTierStatus);
 
-      if (!entitlementWhale) {
+      if (!whaleTierStatus.hasWhaleTier) {
         return response.status(403).json({
           domain: "authority",
           admissibility: "blocked",
@@ -90,12 +91,6 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         });
       }
 
-      const whaleTierStatus = await getWhaleTierAccessState(customerId, {
-        subscriptionId: accessContext.subscriptionId,
-        featureKey: WHALE_TIER_FEATURE_KEY,
-      });
-      logWhaleEntitlementStatus(whaleTierStatus);
-
       const substrate = await constitutionalSubstrate({
         question,
         domain: requestedDomain,
@@ -103,7 +98,7 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         whaleTierStatus,
       });
 
-      const whalePriority = entitlementWhale && substrate.effectiveTier === "whale";
+      const whalePriority = substrate.effectiveTier === "whale";
       const payload = {
         domain: substrate.whaleGate?.domain || substrate.domain,
         admissibility: substrate.whaleGate?.admissibility || substrate.admissibility.admissibility,

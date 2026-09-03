@@ -1,10 +1,14 @@
-import Stripe from "stripe";
 import config from "./config.js";
+import { createStripeClient as buildStripeClient } from "./stripeClient.js";
 
 const ACTIVE_STATUSES = new Set(["active"]);
 
 function createStripeClient(runtimeConfig) {
-  return runtimeConfig.stripeSecretKey ? new Stripe(runtimeConfig.stripeSecretKey) : null;
+  if (runtimeConfig.stripeSecretKeyError || !runtimeConfig.stripeSecretKey) {
+    return null;
+  }
+
+  return buildStripeClient(runtimeConfig.stripeSecretKey);
 }
 
 function debugStripeAllow(runtimeConfig, ...args) {
