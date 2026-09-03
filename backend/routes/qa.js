@@ -75,16 +75,16 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       const requestedDomain = bodyDomain === "auto" ? "" : bodyDomain;
       const timestamp = new Date().toISOString();
       const accessContext = resolveAccessContext(request);
-      const isWhale = await checkWhaleTier(accessContext.accessReference);
+      const entitlementWhale = await checkWhaleTier(accessContext.accessReference);
 
-      if (!isWhale) {
-        return response.json({
+      if (!entitlementWhale) {
+        return response.status(403).json({
           domain: "authority",
           admissibility: "blocked",
           whale_priority: false,
           error: "stripe_access_denied",
           message: "Whale Tier required",
-          response: "Access blocked: Whale Tier required.",
+          response: buildBlockedResponse("Whale Tier required"),
         });
       }
 
@@ -101,7 +101,7 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         whaleTierStatus,
       });
 
-      const whalePriority = substrate.effectiveTier === "whale";
+      const whalePriority = entitlementWhale && substrate.effectiveTier === "whale";
       const payload = {
         domain: substrate.whaleGate?.domain || substrate.domain,
         admissibility: substrate.whaleGate?.admissibility || substrate.admissibility.admissibility,
@@ -191,7 +191,8 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         payload.logging_warning = error instanceof Error ? error.message : "Baserow logging failed";
       }
 
-      response.status(payload.admissibility === "blocked" ? 403 : 200).json(payload);
+      const statusCode = payload.admissibility === "blocked" ? 403 : 200;
+      response.status(statusCode).json(payload);
     });
   };
 
