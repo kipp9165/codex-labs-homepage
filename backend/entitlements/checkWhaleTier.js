@@ -216,7 +216,7 @@ export async function getWhaleTierAccessState(
     });
     const entitlements = await stripeClient.entitlements.activeEntitlements.list({
       customer: normalizedCustomerId,
-      feature: normalizedFeatureKey,
+      lookup_keys: [normalizedFeatureKey],
       expand: ["data.feature"],
       limit: 100,
     });
