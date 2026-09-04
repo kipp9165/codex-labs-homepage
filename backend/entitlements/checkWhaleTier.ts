@@ -36,7 +36,7 @@ function resolveEntitlementLookupState(
   entitlements: { data: ActiveEntitlement[] },
   featureKey: string,
 ) {
-  const entitlement_lookup_keys = entitlements.data
+  const entitlementLookupKeys = entitlements.data
     .map((entitlement) => entitlement.lookup_key)
     .filter(Boolean);
   const hasWhaleTier = entitlements.data.some(
@@ -45,7 +45,7 @@ function resolveEntitlementLookupState(
 
   return {
     hasWhaleTier,
-    entitlement_lookup_keys,
+    entitlementLookupKeys,
   };
 }
 
@@ -74,7 +74,7 @@ export async function checkWhaleTier(
     const entitlementState = resolveEntitlementLookupState(entitlements, normalizedFeatureKey);
 
     console.log(
-      `[WhaleTier] customer=${customerId} hasWhaleTier=${entitlementState.hasWhaleTier} entitlementKeys=${entitlementState.entitlement_lookup_keys.join(",")}`,
+      `[WhaleTier] customer=${customerId} hasWhaleTier=${entitlementState.hasWhaleTier} entitlementKeys=${entitlementState.entitlementLookupKeys.join(",")}`,
     );
 
     return entitlementState.hasWhaleTier;
