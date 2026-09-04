@@ -96,7 +96,7 @@ function resolveEntitlementLookupState(entitlements, featureKey) {
 
   return {
     hasWhaleTier,
-    entitlement_lookup_keys: entitlementLookupKeys,
+    entitlementLookupKeys,
     matchedEntitlements,
   };
 }
@@ -252,7 +252,7 @@ export async function getWhaleTierAccessState(
     return {
       hasWhaleTier: entitlementState.hasWhaleTier,
       customerId: normalizedCustomerId,
-      entitlement_lookup_keys: entitlementState.entitlement_lookup_keys,
+      entitlement_lookup_keys: entitlementState.entitlementLookupKeys,
       matchedEntitlements: entitlementState.matchedEntitlements,
       subscription,
       detail: "entitlements_checked",
