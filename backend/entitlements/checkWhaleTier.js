@@ -83,6 +83,24 @@ async function listAllActiveEntitlements(stripe, customerId) {
   return entitlements;
 }
 
+function resolveEntitlementLookupState(entitlements, featureKey) {
+  const entitlementLookupKeys = entitlements.data
+    .map((entitlement) => entitlement.lookup_key)
+    .filter(Boolean);
+  const hasWhaleTier = entitlements.data.some(
+    (entitlement) => entitlement.lookup_key === featureKey,
+  );
+  const matchedEntitlements = entitlements.data
+    .filter((entitlement) => entitlement.lookup_key === featureKey)
+    .map(summarizeEntitlement);
+
+  return {
+    hasWhaleTier,
+    entitlement_lookup_keys: entitlementLookupKeys,
+    matchedEntitlements,
+  };
+}
+
 async function resolveSubscriptionSummary(stripe, customerId, preferredSubscriptionId = "") {
   const normalizedSubscriptionId = normalizeString(preferredSubscriptionId);
 
@@ -224,27 +242,18 @@ export async function getWhaleTierAccessState(
       stripeKeyEnvPresent: Boolean(process.env.STRIPE_SECRET_KEY),
     });
     const entitlements = await listAllActiveEntitlements(stripeClient, normalizedCustomerId);
-
-    const entitlementLookupKeys = entitlements.data
-      .map((entitlement) => entitlement.lookup_key)
-      .filter(Boolean);
-    const hasWhaleTier = entitlements.data.some(
-      (entitlement) => entitlement.lookup_key === normalizedFeatureKey,
-    );
-    const matchedEntitlements = entitlements.data
-      .filter((entitlement) => entitlement.lookup_key === normalizedFeatureKey)
-      .map(summarizeEntitlement);
+    const entitlementState = resolveEntitlementLookupState(entitlements, normalizedFeatureKey);
     const subscription = await resolveSubscriptionSummary(stripeClient, normalizedCustomerId, subscriptionId);
 
     console.log(
-      `[WhaleTier] customer=${normalizedCustomerId} hasWhaleTier=${hasWhaleTier} entitlementCount=${matchedEntitlements.length}`,
+      `[WhaleTier] customer=${normalizedCustomerId} hasWhaleTier=${entitlementState.hasWhaleTier} entitlementCount=${entitlementState.matchedEntitlements.length}`,
     );
 
     return {
-      hasWhaleTier,
+      hasWhaleTier: entitlementState.hasWhaleTier,
       customerId: normalizedCustomerId,
-      entitlement_lookup_keys: entitlementLookupKeys,
-      matchedEntitlements,
+      entitlement_lookup_keys: entitlementState.entitlement_lookup_keys,
+      matchedEntitlements: entitlementState.matchedEntitlements,
       subscription,
       detail: "entitlements_checked",
     };

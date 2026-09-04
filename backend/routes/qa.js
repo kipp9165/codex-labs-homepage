@@ -80,17 +80,6 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
       const customerId = whaleTierStatus.customerId;
       logWhaleEntitlementStatus(whaleTierStatus);
 
-      if (!whaleTierStatus.hasWhaleTier) {
-        return response.status(403).json({
-          domain: "authority",
-          admissibility: "blocked",
-          whale_priority: false,
-          error: "stripe_access_denied",
-          message: "Whale Tier required",
-          response: buildBlockedResponse("Whale Tier required"),
-        });
-      }
-
       const substrate = await constitutionalSubstrate({
         question,
         domain: requestedDomain,
@@ -104,6 +93,8 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         admissibility: substrate.whaleGate?.admissibility || substrate.admissibility.admissibility,
         timestamp,
         whale_priority: whalePriority,
+        customer_id: whaleTierStatus.customerId || customerId,
+        entitlement_lookup_keys: whaleTierStatus.entitlement_lookup_keys || [],
         classifier: {
           confidence: substrate.classification.confidence,
           domain: substrate.classification.domain,
@@ -112,6 +103,7 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         drift_frame: substrate.drift,
         admissibility_t0: substrate.admissibility_t0,
         continuity: substrate.continuity,
+        entitlement: substrate.entitlement,
         scroll_routing: multiScrollRouter(substrate.whaleGate?.domain || substrate.domain, substrate.effectiveTier),
       };
 
