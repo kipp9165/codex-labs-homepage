@@ -87,7 +87,7 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         whaleTierStatus,
       });
 
-      const whalePriority = substrate.effectiveTier === "whale";
+      const whalePriority = !substrate.whaleGate && substrate.effectiveTier === "whale";
       const payload = {
         domain: substrate.whaleGate?.domain || substrate.domain,
         admissibility: substrate.whaleGate?.admissibility || substrate.admissibility.admissibility,
