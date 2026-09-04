@@ -8,10 +8,13 @@ function emitWhaleTelemetry(message, context = {}) {
 }
 
 export function logWhaleEntitlementStatus(status) {
+  const entitlementLookupKeys = status.entitlement_lookup_keys
+    || status.matchedEntitlements?.map((entitlement) => entitlement.lookupKey || entitlement.featureLookupKey).filter(Boolean)
+    || [];
   emitWhaleTelemetry("entitlement_status", {
     customer_id: status.customerId || "",
     has_whale_tier: Boolean(status.hasWhaleTier),
-    entitlement_lookup_keys: status.matchedEntitlements?.map((entitlement) => entitlement.lookupKey || entitlement.featureLookupKey).filter(Boolean) || [],
+    entitlement_lookup_keys: entitlementLookupKeys,
     subscription_id: status.subscription?.id || "",
     subscription_status: status.subscription?.status || "",
     detail: status.detail || "",

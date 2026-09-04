@@ -36,11 +36,6 @@ function summarizeEntitlement(entitlement) {
   };
 }
 
-function matchesWhaleTierEntitlement(entitlement, featureKey = WHALE_TIER_FEATURE_KEY) {
-  const summary = summarizeEntitlement(entitlement);
-  return [summary.lookupKey, summary.featureLookupKey].includes(featureKey);
-}
-
 function summarizeSubscription(subscription) {
   if (!subscription) {
     return null;
@@ -186,6 +181,7 @@ export async function getWhaleTierAccessState(
     return {
       hasWhaleTier: false,
       customerId: normalizedCustomerId,
+      entitlement_lookup_keys: [],
       matchedEntitlements: [],
       subscription: null,
       detail: getStripeConfigurationDetail(runtimeConfig),
@@ -201,6 +197,7 @@ export async function getWhaleTierAccessState(
     return {
       hasWhaleTier: false,
       customerId: "",
+      entitlement_lookup_keys: [],
       matchedEntitlements: [],
       subscription: null,
       detail: "missing_customer_id",
@@ -216,15 +213,17 @@ export async function getWhaleTierAccessState(
     });
     const entitlements = await stripeClient.entitlements.activeEntitlements.list({
       customer: normalizedCustomerId,
-      lookup_keys: [normalizedFeatureKey],
-      expand: ["data.feature"],
-      limit: 100,
     });
 
+    const entitlementLookupKeys = entitlements.data
+      .map((entitlement) => entitlement.lookup_key)
+      .filter(Boolean);
+    const hasWhaleTier = entitlements.data.some(
+      (entitlement) => entitlement.lookup_key === normalizedFeatureKey,
+    );
     const matchedEntitlements = entitlements.data
-      .filter((entitlement) => matchesWhaleTierEntitlement(entitlement, normalizedFeatureKey))
+      .filter((entitlement) => entitlement.lookup_key === normalizedFeatureKey)
       .map(summarizeEntitlement);
-    const hasWhaleTier = matchedEntitlements.length > 0;
     const subscription = await resolveSubscriptionSummary(stripeClient, normalizedCustomerId, subscriptionId);
 
     console.log(
@@ -234,6 +233,7 @@ export async function getWhaleTierAccessState(
     return {
       hasWhaleTier,
       customerId: normalizedCustomerId,
+      entitlement_lookup_keys: entitlementLookupKeys,
       matchedEntitlements,
       subscription,
       detail: "entitlements_checked",
@@ -243,6 +243,7 @@ export async function getWhaleTierAccessState(
     return {
       hasWhaleTier: false,
       customerId: normalizedCustomerId,
+      entitlement_lookup_keys: [],
       matchedEntitlements: [],
       subscription: null,
       detail: error instanceof Error ? error.message : "whale_tier_lookup_failed",

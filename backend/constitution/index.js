@@ -21,6 +21,7 @@ export async function constitutionalSubstrate({
     ? {
         hasWhaleTier: true,
         customerId,
+        entitlement_lookup_keys: [],
         matchedEntitlements: [],
         subscription: null,
         detail: "forced_whale_tier",

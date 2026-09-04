@@ -77,6 +77,11 @@ export async function syncWhaleLedgerEntry(entry, runtimeConfig = config) {
 
   const existingRows = await fetchBaserowRows(runtimeConfig.baserowWhaleTableId, runtimeConfig);
   const existingRow = existingRows.find((row) => row.customer_id === normalizedCustomerId);
+  const entitlementLookupKeys = Array.isArray(entry.entitlement_lookup_keys)
+    ? entry.entitlement_lookup_keys.filter(Boolean)
+    : (entry.matchedEntitlements || [])
+      .map((item) => item.lookupKey || item.featureLookupKey)
+      .filter(Boolean);
   const payload = {
     customer_id: normalizedCustomerId,
     has_whale_tier: Boolean(entry.hasWhaleTier),
@@ -84,10 +89,7 @@ export async function syncWhaleLedgerEntry(entry, runtimeConfig = config) {
     subscription_status: entry.subscription?.status || "",
     subscription_metadata: JSON.stringify(entry.subscription?.metadata || {}),
     entitlement_ids: (entry.matchedEntitlements || []).map((item) => item.id).join(","),
-    entitlement_lookup_keys: (entry.matchedEntitlements || [])
-      .map((item) => item.lookupKey || item.featureLookupKey)
-      .filter(Boolean)
-      .join(","),
+    entitlement_lookup_keys: entitlementLookupKeys.join(","),
     canonical_references: Array.isArray(entry.canonicalReferences) ? entry.canonicalReferences.join(",") : "",
     last_admissibility: entry.admissibility || "",
     updated_at: entry.timestamp || new Date().toISOString(),

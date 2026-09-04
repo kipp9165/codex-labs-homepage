@@ -31,25 +31,11 @@ export async function checkWhaleTier(customerId: string): Promise<boolean> {
   try {
     const entitlements = await stripe.entitlements.activeEntitlements.list({
       customer: customerId,
-      feature: WHALE_TIER_FEATURE_KEY,
-      expand: ["data.feature"],
-      limit: 100,
     });
 
-    const hasWhaleTier = entitlements.data.some((entitlement) => {
-      const featureId = typeof entitlement.feature === "string"
-        ? entitlement.feature
-        : entitlement.feature?.id;
-
-      const featureLookupKey = typeof entitlement.feature === "string"
-        ? undefined
-        : entitlement.feature?.lookup_key;
-
-      return (
-        featureId === WHALE_TIER_FEATURE_KEY
-        || featureLookupKey === WHALE_TIER_FEATURE_KEY
-      );
-    });
+    const hasWhaleTier = entitlements.data.some(
+      (entitlement) => entitlement.lookup_key === WHALE_TIER_FEATURE_KEY,
+    );
 
     console.log(
       `[WhaleTier] customer=${customerId} hasWhaleTier=${hasWhaleTier}`,
