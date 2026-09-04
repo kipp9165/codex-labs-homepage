@@ -12,12 +12,19 @@ const stripe = stripeSecretKeyError
     });
 const WHALE_TIER_FEATURE_KEY = "whale_tier_access";
 
+function normalizeString(value: string | undefined | null): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
 /**
  * Canonical Whale-Tier entitlement check.
  * - Reads Stripe entitlements for a given customer
  * - Returns true only if whale_tier_access is active
  */
-export async function checkWhaleTier(customerId: string): Promise<boolean> {
+export async function checkWhaleTier(
+  customerId: string,
+  featureKey: string = WHALE_TIER_FEATURE_KEY,
+): Promise<boolean> {
   if (stripeSecretKeyError || !stripe) {
     console.error("[WhaleTier]", stripeSecretKeyError ?? "Missing STRIPE_SECRET_KEY");
     return false;
@@ -29,12 +36,13 @@ export async function checkWhaleTier(customerId: string): Promise<boolean> {
   }
 
   try {
+    const normalizedFeatureKey = normalizeString(featureKey) || WHALE_TIER_FEATURE_KEY;
     const entitlements = await stripe.entitlements.activeEntitlements.list({
       customer: customerId,
     });
 
     const hasWhaleTier = entitlements.data.some(
-      (entitlement) => entitlement.lookup_key === WHALE_TIER_FEATURE_KEY,
+      (entitlement) => entitlement.lookup_key === normalizedFeatureKey,
     );
 
     console.log(
