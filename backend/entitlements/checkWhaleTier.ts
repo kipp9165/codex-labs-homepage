@@ -12,12 +12,35 @@ const stripe = stripeSecretKeyError
     });
 const WHALE_TIER_FEATURE_KEY = "whale_tier_access";
 
+function normalizeString(value: string | undefined | null): string {
+  return typeof value === "string" ? value.trim() : "";
+}
+
+type ActiveEntitlement = Awaited<
+  ReturnType<NonNullable<typeof stripe>["entitlements"]["activeEntitlements"]["list"]>
+>["data"][number];
+
+async function listAllActiveEntitlements(customerId: string) {
+  const entitlements: { data: ActiveEntitlement[] } = { data: [] };
+
+  for await (const entitlement of stripe.entitlements.activeEntitlements.list({
+    customer: customerId,
+  })) {
+    entitlements.data.push(entitlement);
+  }
+
+  return entitlements;
+}
+
 /**
  * Canonical Whale-Tier entitlement check.
  * - Reads Stripe entitlements for a given customer
  * - Returns true only if whale_tier_access is active
  */
-export async function checkWhaleTier(customerId: string): Promise<boolean> {
+export async function checkWhaleTier(
+  customerId: string,
+  featureKey: string = WHALE_TIER_FEATURE_KEY,
+): Promise<boolean> {
   if (stripeSecretKeyError || !stripe) {
     console.error("[WhaleTier]", stripeSecretKeyError ?? "Missing STRIPE_SECRET_KEY");
     return false;
@@ -29,27 +52,12 @@ export async function checkWhaleTier(customerId: string): Promise<boolean> {
   }
 
   try {
-    const entitlements = await stripe.entitlements.activeEntitlements.list({
-      customer: customerId,
-      feature: WHALE_TIER_FEATURE_KEY,
-      expand: ["data.feature"],
-      limit: 100,
-    });
+    const normalizedFeatureKey = normalizeString(featureKey) || WHALE_TIER_FEATURE_KEY;
+    const entitlements = await listAllActiveEntitlements(customerId);
 
-    const hasWhaleTier = entitlements.data.some((entitlement) => {
-      const featureId = typeof entitlement.feature === "string"
-        ? entitlement.feature
-        : entitlement.feature?.id;
-
-      const featureLookupKey = typeof entitlement.feature === "string"
-        ? undefined
-        : entitlement.feature?.lookup_key;
-
-      return (
-        featureId === WHALE_TIER_FEATURE_KEY
-        || featureLookupKey === WHALE_TIER_FEATURE_KEY
-      );
-    });
+    const hasWhaleTier = entitlements.data.some(
+      (entitlement) => entitlement.lookup_key === normalizedFeatureKey,
+    );
 
     console.log(
       `[WhaleTier] customer=${customerId} hasWhaleTier=${hasWhaleTier}`,
