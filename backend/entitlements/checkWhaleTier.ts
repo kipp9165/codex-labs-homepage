@@ -32,6 +32,23 @@ async function listAllActiveEntitlements(customerId: string) {
   return entitlements;
 }
 
+function resolveEntitlementLookupState(
+  entitlements: { data: ActiveEntitlement[] },
+  featureKey: string,
+) {
+  const entitlementLookupKeys = entitlements.data
+    .map((entitlement) => entitlement.lookup_key)
+    .filter(Boolean);
+  const hasWhaleTier = entitlements.data.some(
+    (entitlement) => entitlement.lookup_key === featureKey,
+  );
+
+  return {
+    hasWhaleTier,
+    entitlementLookupKeys,
+  };
+}
+
 /**
  * Canonical Whale-Tier entitlement check.
  * - Reads Stripe entitlements for a given customer
@@ -54,16 +71,13 @@ export async function checkWhaleTier(
   try {
     const normalizedFeatureKey = normalizeString(featureKey) || WHALE_TIER_FEATURE_KEY;
     const entitlements = await listAllActiveEntitlements(customerId);
-
-    const hasWhaleTier = entitlements.data.some(
-      (entitlement) => entitlement.lookup_key === normalizedFeatureKey,
-    );
+    const entitlementState = resolveEntitlementLookupState(entitlements, normalizedFeatureKey);
 
     console.log(
-      `[WhaleTier] customer=${customerId} hasWhaleTier=${hasWhaleTier}`,
+      `[WhaleTier] customer=${customerId} hasWhaleTier=${entitlementState.hasWhaleTier} entitlementKeys=${entitlementState.entitlementLookupKeys.join(",")}`,
     );
 
-    return hasWhaleTier;
+    return entitlementState.hasWhaleTier;
   } catch (err) {
     console.error("[WhaleTier] Error fetching entitlements", err);
     return false;
