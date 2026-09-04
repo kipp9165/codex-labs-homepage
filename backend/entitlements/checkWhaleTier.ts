@@ -16,6 +16,22 @@ function normalizeString(value: string | undefined | null): string {
   return typeof value === "string" ? value.trim() : "";
 }
 
+type ActiveEntitlement = Awaited<
+  ReturnType<NonNullable<typeof stripe>["entitlements"]["activeEntitlements"]["list"]>
+>["data"][number];
+
+async function listAllActiveEntitlements(customerId: string) {
+  const entitlements: { data: ActiveEntitlement[] } = { data: [] };
+
+  for await (const entitlement of stripe.entitlements.activeEntitlements.list({
+    customer: customerId,
+  })) {
+    entitlements.data.push(entitlement);
+  }
+
+  return entitlements;
+}
+
 /**
  * Canonical Whale-Tier entitlement check.
  * - Reads Stripe entitlements for a given customer
@@ -37,9 +53,7 @@ export async function checkWhaleTier(
 
   try {
     const normalizedFeatureKey = normalizeString(featureKey) || WHALE_TIER_FEATURE_KEY;
-    const entitlements = await stripe.entitlements.activeEntitlements.list({
-      customer: customerId,
-    });
+    const entitlements = await listAllActiveEntitlements(customerId);
 
     const hasWhaleTier = entitlements.data.some(
       (entitlement) => entitlement.lookup_key === normalizedFeatureKey,

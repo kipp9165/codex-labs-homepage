@@ -71,6 +71,18 @@ async function listCustomerSubscriptions(stripe, customerId) {
   return subscriptions.data;
 }
 
+async function listAllActiveEntitlements(stripe, customerId) {
+  const entitlements = { data: [] };
+
+  for await (const entitlement of stripe.entitlements.activeEntitlements.list({
+    customer: customerId,
+  })) {
+    entitlements.data.push(entitlement);
+  }
+
+  return entitlements;
+}
+
 async function resolveSubscriptionSummary(stripe, customerId, preferredSubscriptionId = "") {
   const normalizedSubscriptionId = normalizeString(preferredSubscriptionId);
 
@@ -211,9 +223,7 @@ export async function getWhaleTierAccessState(
       stripeKeyPresent: Boolean(runtimeConfig?.stripeSecretKey),
       stripeKeyEnvPresent: Boolean(process.env.STRIPE_SECRET_KEY),
     });
-    const entitlements = await stripeClient.entitlements.activeEntitlements.list({
-      customer: normalizedCustomerId,
-    });
+    const entitlements = await listAllActiveEntitlements(stripeClient, normalizedCustomerId);
 
     const entitlementLookupKeys = entitlements.data
       .map((entitlement) => entitlement.lookup_key)
