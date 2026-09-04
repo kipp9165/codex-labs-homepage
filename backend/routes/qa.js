@@ -93,7 +93,6 @@ export function registerQaRoutes(app, { apiLimiter, setCorsHeaders }) {
         admissibility: substrate.whaleGate?.admissibility || substrate.admissibility.admissibility,
         timestamp,
         whale_priority: whalePriority,
-        customer_id: whaleTierStatus.customerId || customerId,
         entitlement_lookup_keys: whaleTierStatus.entitlement_lookup_keys || [],
         classifier: {
           confidence: substrate.classification.confidence,
